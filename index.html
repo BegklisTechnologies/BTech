@@ -930,10 +930,10 @@
     </style>
 </head>
 <body>
+    <canvas id="particles-canvas"></canvas>
     <!-- Global Mouse Particles -->
     <div class="global-mouse-particles" id="globalMouseParticles"></div>
-    <canvas id="particles-canvas"></canvas>
-
+	
     <!-- Navigation -->
     <nav id="navbar">
         <div class="nav-container">
@@ -1672,12 +1672,12 @@
         // Create Global particle trail effect
         function createGlobalParticleTrail(x, y) {
             const trail = document.createElement('div');
-            trail.className = 'particle-trail';
+            trail.className = 'global-particle-trail';
             trail.style.left = x + 'px';
             trail.style.top = y + 'px';
-            trail.style.setProperty('--trail-x', (Math.random() - 0.5) * 100 + 'px');
-            trail.style.setProperty('--trail-y', (Math.random() - 0.5) * 100 + 'px');
-            document.getElementById('mouseParticles').appendChild(trail);
+            trail.style.setProperty('--trail-x', (Math.random() - 0.5) * 150 + 'px');
+            trail.style.setProperty('--trail-y', (Math.random() - 0.5) * 150 + 'px');
+            document.getElementById('globalMouseParticles').appendChild(trail);
             
             setTimeout(() => trail.remove(), 2000);
         }

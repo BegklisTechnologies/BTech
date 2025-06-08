@@ -1,0 +1,1665 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BTech - AI Consulting Excellence</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #6366f1;
+            --secondary: #818cf8;
+            --dark: #0f172a;
+            --light: #f8fafc;
+            --accent: #fbbf24;
+            --gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            background: var(--dark);
+            color: var(--light);
+            overflow-x: hidden;
+            line-height: 1.6;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+
+        /* Smooth Scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 1rem 5%;
+            background: rgba(15, 23, 42, 0.95);
+            backdrop-filter: blur(20px);
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        nav.scrolled {
+            padding: 0.5rem 5%;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .logo img {
+            height: 40px;
+            width: auto;
+        }
+
+        .logo-text {
+            font-size: 2rem;
+            font-weight: 900;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: glow 2s ease-in-out infinite alternate;
+        }
+
+        @keyframes glow {
+            from { filter: drop-shadow(0 0 20px rgba(99, 102, 241, 0.5)); }
+            to { filter: drop-shadow(0 0 30px rgba(99, 102, 241, 0.8)); }
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--light);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            position: relative;
+            font-weight: 500;
+        }
+
+        .nav-links a:hover {
+            color: var(--secondary);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--secondary);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+            background: radial-gradient(ellipse at center, rgba(99, 102, 241, 0.1) 0%, transparent 70%);
+        }
+
+        .hero-content {
+            text-align: center;
+            z-index: 10;
+            max-width: 1200px;
+            padding: 0 2rem;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero h1 {
+            font-size: clamp(3rem, 8vw, 6rem);
+            font-weight: 900;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: gradient 3s ease infinite;
+            background-size: 200% 200%;
+        }
+
+        @keyframes gradient {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .hero-subtitle {
+            font-size: 1.5rem;
+            color: #cbd5e1;
+            margin-bottom: 2rem;
+            opacity: 0;
+            animation: fadeIn 1s ease-out 0.5s forwards;
+        }
+
+        @keyframes fadeIn {
+            to { opacity: 1; }
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            opacity: 0;
+            animation: fadeIn 1s ease-out 1s forwards;
+        }
+
+        .btn {
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            display: inline-block;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-primary {
+            background: var(--gradient);
+            color: white;
+            box-shadow: 0 10px 30px rgba(99, 102, 241, 0.3);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(99, 102, 241, 0.4);
+        }
+
+        .btn-secondary {
+            border: 2px solid var(--secondary);
+            color: var(--secondary);
+            background: transparent;
+        }
+
+        .btn-secondary:hover {
+            background: var(--secondary);
+            color: white;
+            transform: translateY(-3px);
+        }
+
+        /* Floating Elements */
+        .floating-element {
+            position: absolute;
+            animation: float 6s ease-in-out infinite;
+            transition: all 0.3s ease;
+        }
+
+        .float-1 {
+            width: 300px;
+            height: 300px;
+            top: 10%;
+            left: -100px;
+            animation-delay: 0s;
+            background: radial-gradient(circle at 30% 30%, rgba(99, 102, 241, 0.3), rgba(99, 102, 241, 0.1));
+            border-radius: 50%;
+            filter: blur(0.5px);
+        }
+
+        .float-2 {
+            width: 250px;
+            height: 250px;
+            top: 60%;
+            right: -50px;
+            animation-delay: 2s;
+            background: linear-gradient(45deg, rgba(129, 140, 248, 0.3), rgba(99, 102, 241, 0.1));
+            border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+            filter: blur(0.5px);
+        }
+
+        .float-3 {
+            width: 200px;
+            height: 200px;
+            bottom: 10%;
+            left: 10%;
+            animation-delay: 4s;
+            background: conic-gradient(from 45deg, rgba(251, 191, 36, 0.2), rgba(99, 102, 241, 0.2), rgba(129, 140, 248, 0.2));
+            clip-path: polygon(50% 0%, 100% 38%, 82% 100%, 18% 100%, 0% 38%);
+        }
+
+        .floating-element:hover {
+            transform: scale(1.1);
+            filter: brightness(1.3);
+        }
+
+        @keyframes float {
+            0%, 100% { 
+                transform: translateY(0) rotate(0deg) scale(1);
+            }
+            33% { 
+                transform: translateY(-30px) rotate(120deg) scale(1.05);
+            }
+            66% { 
+                transform: translateY(20px) rotate(240deg) scale(0.95);
+            }
+        }
+
+        /* Particle trails */
+        .particle-trail {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: radial-gradient(circle, rgba(99, 102, 241, 0.8) 0%, transparent 70%);
+            border-radius: 50%;
+            pointer-events: none;
+            animation: trail 3s linear infinite;
+        }
+
+        @keyframes trail {
+            0% {
+                transform: translate(0, 0) scale(1);
+                opacity: 1;
+            }
+            100% {
+                transform: translate(var(--trail-x), var(--trail-y)) scale(0);
+                opacity: 0;
+            }
+        }
+
+        /* AI Network Animation */
+        .ai-network {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0.3;
+        }
+
+        /* Services Section */
+        .services {
+            padding: 5rem 5%;
+            background: linear-gradient(180deg, var(--dark) 0%, #1e293b 100%);
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: #94a3b8;
+            font-size: 1.25rem;
+            margin-bottom: 3rem;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .service-card {
+            background: rgba(30, 41, 59, 0.5);
+            border: 1px solid rgba(99, 102, 241, 0.2);
+            border-radius: 20px;
+            padding: 2rem;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at center, rgba(99, 102, 241, 0.1) 0%, transparent 70%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--secondary);
+            box-shadow: 0 20px 40px rgba(99, 102, 241, 0.2);
+        }
+
+        .service-card:hover::before {
+            opacity: 1;
+        }
+
+        .service-icon {
+            width: 60px;
+            height: 60px;
+            background: var(--gradient);
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .service-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        /* About Section */
+        .about {
+            padding: 5rem 5%;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .about-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .about-content {
+            position: relative;
+            z-index: 10;
+        }
+
+        .about-image {
+            position: relative;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 30px 60px rgba(99, 102, 241, 0.3);
+            transform: perspective(1000px) rotateY(-5deg);
+            transition: transform 0.3s ease;
+        }
+
+        .about-image:hover {
+            transform: perspective(1000px) rotateY(0deg);
+        }
+
+        .about-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* Stats */
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .stat {
+            text-align: center;
+            padding: 1.5rem;
+            background: rgba(99, 102, 241, 0.1);
+            border-radius: 15px;
+            border: 1px solid rgba(99, 102, 241, 0.2);
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 900;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* Leadership */
+        .leadership {
+            margin-top: 4rem;
+        }
+
+        .leadership h3 {
+            font-size: 2rem;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .leaders-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .leader-card {
+            text-align: center;
+            padding: 2rem;
+            background: rgba(30, 41, 59, 0.5);
+            border-radius: 20px;
+            border: 1px solid rgba(99, 102, 241, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .leader-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(99, 102, 241, 0.2);
+        }
+
+        .leader-avatar {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            background: var(--gradient);
+            margin: 0 auto 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            color: white;
+            overflow: hidden;
+        }
+
+        .leader-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Testimonials */
+        .testimonials {
+            padding: 5rem 5%;
+            background: linear-gradient(180deg, #1e293b 0%, var(--dark) 100%);
+        }
+
+        .testimonials-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .testimonial-card {
+            background: rgba(30, 41, 59, 0.5);
+            border: 1px solid rgba(99, 102, 241, 0.2);
+            border-radius: 20px;
+            padding: 2rem;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .testimonial-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(99, 102, 241, 0.2);
+        }
+
+        .quote-icon {
+            font-size: 3rem;
+            color: var(--secondary);
+            opacity: 0.3;
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+        }
+
+        .testimonial-text {
+            font-style: italic;
+            margin-bottom: 1.5rem;
+            color: #cbd5e1;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .author-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: var(--gradient);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+        }
+
+        /* Contact Section */
+        .contact {
+            padding: 5rem 5%;
+            position: relative;
+        }
+
+        .contact-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: rgba(30, 41, 59, 0.5);
+            border: 1px solid rgba(99, 102, 241, 0.2);
+            border-radius: 30px;
+            padding: 3rem;
+            backdrop-filter: blur(10px);
+        }
+
+        .contact-form {
+            display: grid;
+            gap: 1.5rem;
+        }
+
+        .form-group {
+            display: grid;
+            gap: 0.5rem;
+        }
+
+        .form-group label {
+            color: #94a3b8;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 0.25rem;
+        }
+
+        .required-star {
+            color: #ef4444;
+            font-size: 0.9rem;
+        }
+
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            background: rgba(15, 23, 42, 0.5);
+            border: 1px solid rgba(99, 102, 241, 0.2);
+            border-radius: 10px;
+            padding: 1rem;
+            color: white;
+            transition: all 0.3s ease;
+            width: 100%;
+        }
+
+        .form-group input::placeholder,
+        .form-group textarea::placeholder {
+            color: #64748b;
+            font-style: italic;
+        }
+
+        .form-group select {
+            cursor: pointer;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%236366f1'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M19 9l-7 7-7-7'%3E%3C/path%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 1rem center;
+            background-size: 1.5rem;
+            padding-right: 3rem;
+            appearance: none;
+        }
+
+        .form-group select option {
+            background: #1e293b;
+            color: white;
+        }
+
+        .form-group input:invalid:focus:not(:placeholder-shown),
+        .form-group textarea:invalid:focus:not(:placeholder-shown),
+        .form-group select:invalid:focus {
+            border-color: #ef4444;
+        }
+
+        .form-group select:invalid:not(:focus):not([value=""]) {
+            border-color: #ef4444;
+        }
+
+        .form-group input.invalid,
+        .form-group textarea.invalid,
+        .form-group select.invalid {
+            border-color: #ef4444;
+        }
+
+        .form-group input.invalid + .error-message,
+        .form-group textarea.invalid + .error-message,
+        .form-group select.invalid + .error-message {
+            display: block;
+        }
+
+        .error-message {
+            display: none;
+            color: #ef4444;
+            font-size: 0.875rem;
+            margin-top: 0.25rem;
+            font-style: italic;
+        }
+
+        .form-completed {
+            text-align: center;
+            padding: 4rem 2rem;
+            animation: fadeIn 0.8s ease-out;
+        }
+
+        .form-completed-icon {
+            font-size: 5rem;
+            margin-bottom: 1.5rem;
+            animation: bounce 1s ease-out;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+            40% { transform: translateY(-20px); }
+            60% { transform: translateY(-10px); }
+        }
+
+        .form-completed h3 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .form-completed p {
+            color: #cbd5e1;
+            font-size: 1.2rem;
+            line-height: 1.8;
+        }
+
+        .form-submit {
+            background: var(--gradient);
+            color: white;
+            border: none;
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 1rem;
+        }
+
+        .form-submit:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(99, 102, 241, 0.4);
+        }
+
+        /* Success Modal */
+        .success-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 2000;
+            backdrop-filter: blur(10px);
+        }
+
+        .success-content {
+            background: linear-gradient(135deg, #1e293b 0%, #334155 100%);
+            border: 2px solid var(--secondary);
+            border-radius: 30px;
+            padding: 3rem;
+            text-align: center;
+            max-width: 500px;
+            animation: successPop 0.5s ease-out;
+            box-shadow: 0 30px 60px rgba(99, 102, 241, 0.4);
+        }
+
+        @keyframes successPop {
+            from {
+                transform: scale(0.8);
+                opacity: 0;
+            }
+            to {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+        .success-icon {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            animation: checkmark 0.8s ease-out 0.3s forwards;
+            opacity: 0;
+        }
+
+        @keyframes checkmark {
+            from {
+                transform: scale(0) rotate(-45deg);
+                opacity: 0;
+            }
+            to {
+                transform: scale(1) rotate(0);
+                opacity: 1;
+            }
+        }
+
+        .success-title {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .success-message {
+            color: #cbd5e1;
+            margin-bottom: 2rem;
+            line-height: 1.8;
+        }
+
+        .success-close {
+            background: var(--gradient);
+            color: white;
+            border: none;
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .success-close:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(99, 102, 241, 0.4);
+        }
+        footer {
+            padding: 3rem 5%;
+            background: #0a0e1a;
+            text-align: center;
+            border-top: 1px solid rgba(99, 102, 241, 0.2);
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .social-link {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(99, 102, 241, 0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--secondary);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .social-link:hover {
+            background: var(--secondary);
+            color: white;
+            transform: translateY(-3px);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .hero h1 {
+                font-size: 3rem;
+            }
+            
+            .about-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .leaders-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Animations on Scroll */
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease;
+        }
+
+        .animate-on-scroll.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Particle Background */
+        #particles-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            opacity: 0.7;
+            z-index: 1;
+        }
+    </style>
+</head>
+<body>
+    <canvas id="particles-canvas"></canvas>
+
+    <!-- Navigation -->
+    <nav id="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <img src="logo.png" alt="BTech Logo">
+                <span class="logo-text">BTech</span>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#testimonials">Testimonials</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="floating-element float-1"></div>
+        <div class="floating-element float-2"></div>
+        <div class="floating-element float-3"></div>
+        
+        <!-- Interactive particles that follow mouse -->
+        <div class="mouse-particles" id="mouseParticles"></div>
+        
+        <div class="hero-content">
+            <h1>Transform Your Business with AI</h1>
+            <p class="hero-subtitle">Unlock 10x efficiency using AI automation with your existing tools</p>
+            <div class="cta-buttons">
+                <a href="#contact" class="btn btn-primary">Start Your AI Journey</a>
+                <a href="#services" class="btn btn-secondary">Explore Services</a>
+            </div>
+        </div>
+
+        <div class="ai-network">
+            <svg width="100%" height="100%" style="position: absolute;">
+                <defs>
+                    <linearGradient id="line-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%" stop-color="#6366f1" stop-opacity="0.6"/>
+                        <stop offset="100%" stop-color="#818cf8" stop-opacity="0.3"/>
+                    </linearGradient>
+                    <filter id="glow">
+                        <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+                        <feMerge>
+                            <feMergeNode in="coloredBlur"/>
+                            <feMergeNode in="SourceGraphic"/>
+                        </feMerge>
+                    </filter>
+                </defs>
+            </svg>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services animate-on-scroll" id="services">
+        <h2 class="section-title">Our Services</h2>
+        <p class="section-subtitle">Empowering businesses with practical AI solutions</p>
+        
+        <div class="services-grid">
+            <div class="service-card">
+                <div class="service-icon">🤖</div>
+                <h3>AI Integration</h3>
+                <p>Seamlessly integrate AI into your existing workflow without changing your tools. We optimize what you already use.</p>
+            </div>
+            
+            <div class="service-card">
+                <div class="service-icon">🎓</div>
+                <h3>Masterclasses</h3>
+                <p>Comprehensive AI education programs designed for teams. Learn practical implementation strategies that deliver results.</p>
+            </div>
+            
+            <div class="service-card">
+                <div class="service-icon">👥</div>
+                <h3>Private Consultations</h3>
+                <p>One-on-one sessions tailored to your specific business needs. Get personalized AI strategies from our experts.</p>
+            </div>
+            
+            <div class="service-card">
+                <div class="service-icon">🌐</div>
+                <h3>Webinars & Seminars</h3>
+                <p>Regular online and in-person events covering the latest AI trends and practical applications for business.</p>
+            </div>
+            
+            <div class="service-card">
+                <div class="service-icon">📜</div>
+                <h3>Certification Programs</h3>
+                <p>Industry-recognized certifications that validate your team's AI proficiency and implementation skills.</p>
+            </div>
+            
+            <div class="service-card">
+                <div class="service-icon">⚡</div>
+                <h3>Process Automation</h3>
+                <p>Identify and automate repetitive tasks, freeing your team to focus on strategic, high-value activities.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about animate-on-scroll" id="about">
+        <h2 class="section-title">About BTech</h2>
+        <p class="section-subtitle">Pioneers in practical AI implementation</p>
+        
+        <div class="about-container">
+            <div class="about-content">
+                <h3 style="font-size: 2rem; margin-bottom: 1rem;">Our Story</h3>
+                <p style="margin-bottom: 1.5rem; color: #cbd5e1;">
+                    Founded in 2020 by a team of AI researchers and business strategists, BTech emerged from a simple observation: 
+                    businesses were drowning in AI hype but lacking practical implementation paths. While others sold expensive 
+                    software solutions, we took a different approach.
+                </p>
+                <p style="margin-bottom: 1.5rem; color: #cbd5e1;">
+                    We believe the best AI solution is the one that works with what you already have. Our mission is to democratize 
+                    AI adoption by teaching businesses how to leverage existing tools more intelligently, not by adding complexity 
+                    to their tech stack.
+                </p>
+                <p style="color: #cbd5e1;">
+                    Today, we've helped over 500 European companies achieve remarkable efficiency gains, with an average 
+                    productivity increase of 340% in automated processes.
+                </p>
+                
+                <div class="stats">
+                    <div class="stat">
+                        <div class="stat-number">500+</div>
+                        <div>Companies Transformed</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-number">340%</div>
+                        <div>Average Efficiency Gain</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-number">50k+</div>
+                        <div>Professionals Trained</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-number">15+</div>
+                        <div>Countries Served</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="about-image">
+                <div style="width: 100%; height: 500px; background: var(--gradient); display: flex; align-items: center; justify-content: center; font-size: 4rem; color: white;">
+                    🚀
+                </div>
+            </div>
+        </div>
+
+        <div class="leadership">
+            <h3>Our Leadership</h3>
+            <div class="leaders-grid">
+                <div class="leader-card">
+                    <div class="leader-avatar">
+                        <img src="CEO.png" alt="Nikolaos Begklis">
+                    </div>
+                    <h4>Nikolaos Begklis</h4>
+                    <p style="color: var(--secondary); margin-bottom: 0.5rem;">CEO & Co-Founder</p>
+                    <p style="color: #94a3b8; font-size: 0.9rem;">Electrical Engineer, AI specialist from Dubai with years of experience in Machine Learning and business transformation.</p>
+                </div>
+                
+                <div class="leader-card">
+                    <div class="leader-avatar">
+                        <img src="Advisory.png" alt="Vassileios Begklis">
+                    </div>
+                    <h4>Vassileios Begklis</h4>
+                    <p style="color: var(--secondary); margin-bottom: 0.5rem;">Business Advisor & Co-Founder</p>
+                    <p style="color: #94a3b8; font-size: 0.9rem;">30+ Years of Experience in Corporate World, Executive Positions. Excellent in Strategic plans and executions.</p>
+                </div>
+                
+                <div class="leader-card">
+                    <div class="leader-avatar">
+                        <img src="CTO.png" alt="Larnen Ambleton">
+                    </div>
+                    <h4>Larnen Ambleton</h4>
+                    <p style="color: var(--secondary); margin-bottom: 0.5rem;">CTO & Head of Training</p>
+                    <p style="color: #94a3b8; font-size: 0.9rem;">Financial Advisor & Logistics. Experienced, Driven and Insightful.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials animate-on-scroll" id="testimonials">
+        <h2 class="section-title">Success Stories</h2>
+        <p class="section-subtitle">Hear from the companies we've transformed</p>
+        
+        <div class="testimonials-container">
+            <div class="testimonial-card">
+                <div class="quote-icon">"</div>
+                <p class="testimonial-text">
+                    "BTech helped us automate 70% of our customer service inquiries using our existing CRM. 
+                    Our response time dropped from hours to minutes, and customer satisfaction soared."
+                </p>
+                <div class="testimonial-author">
+                    <div class="author-avatar">VW</div>
+                    <div>
+                        <div style="font-weight: 600;">Volkswagen Group</div>
+                        <div style="color: #94a3b8; font-size: 0.9rem;">Automotive Giant</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="testimonial-card">
+                <div class="quote-icon">"</div>
+                <p class="testimonial-text">
+                    "The masterclass transformed how we approach data analysis. We're now processing 
+                    market insights 10x faster with the same tools we've always used."
+                </p>
+                <div class="testimonial-author">
+                    <div class="author-avatar">SG</div>
+                    <div>
+                        <div style="font-weight: 600;">Société Générale</div>
+                        <div style="color: #94a3b8; font-size: 0.9rem;">Banking & Finance</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="testimonial-card">
+                <div class="quote-icon">"</div>
+                <p class="testimonial-text">
+                    "BTech's approach is refreshing. No expensive software, just smart implementation. 
+                    Our marketing team now creates personalized campaigns at scale."
+                </p>
+                <div class="testimonial-author">
+                    <div class="author-avatar">AD</div>
+                    <div>
+                        <div style="font-weight: 600;">Adidas</div>
+                        <div style="color: #94a3b8; font-size: 0.9rem;">Sports & Lifestyle</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="testimonial-card">
+                <div class="quote-icon">"</div>
+                <p class="testimonial-text">
+                    "The ROI was immediate. Within 2 months, we reduced operational costs by 40% 
+                    through intelligent automation of our supply chain processes."
+                </p>
+                <div class="testimonial-author">
+                    <div class="author-avatar">CP</div>
+                    <div>
+                        <div style="font-weight: 600;">Carrefour</div>
+                        <div style="color: #94a3b8; font-size: 0.9rem;">Retail Leader</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="testimonial-card">
+                <div class="quote-icon">"</div>
+                <p class="testimonial-text">
+                    "Their certification program elevated our entire IT department. We're now the 
+                    AI champions within our organization, driving innovation across all divisions."
+                </p>
+                <div class="testimonial-author">
+                    <div class="author-avatar">SF</div>
+                    <div>
+                        <div style="font-weight: 600;">Siemens</div>
+                        <div style="color: #94a3b8; font-size: 0.9rem;">Technology & Innovation</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="testimonial-card">
+                <div class="quote-icon">"</div>
+                <p class="testimonial-text">
+                    "BTech showed us AI isn't about replacing people, it's about empowering them. 
+                    Our team is more creative and productive than ever before."
+                </p>
+                <div class="testimonial-author">
+                    <div class="author-avatar">LO</div>
+                    <div>
+                        <div style="font-weight: 600;">L'Oréal</div>
+                        <div style="color: #94a3b8; font-size: 0.9rem;">Beauty & Cosmetics</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact animate-on-scroll" id="contact">
+        <h2 class="section-title">Get In Touch</h2>
+        <p class="section-subtitle">Ready to transform your business with AI?</p>
+        
+        <div class="contact-container">
+            <div id="formContainer">
+                <form class="contact-form" onsubmit="handleSubmit(event)">
+                    <div class="form-group">
+                        <label for="name">Your Name <span class="required-star">*</span></label>
+                        <input type="text" id="name" name="name" placeholder="e.g. John Doe" required>
+                        <span class="error-message">This field is required</span>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="company">Company <span class="required-star">*</span></label>
+                        <input type="text" id="company" name="company" placeholder="e.g. Tech Solutions Ltd." required>
+                        <span class="error-message">This field is required</span>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email">Email Address <span class="required-star">*</span></label>
+                        <input type="email" id="email" name="email" placeholder="e.g. john@company.com" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" required>
+                        <span class="error-message">Please enter a valid email address</span>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="phone">Phone Number <span class="required-star">*</span></label>
+                        <input type="tel" id="phone" name="phone" placeholder="e.g. +30 694 263 162" pattern="^\+30\s?6\d{2}\s?\d{3}\s?\d{3,4}$" title="Please enter a valid Greek mobile number (e.g. +30 694 263 162)" required>
+                        <span class="error-message">Please enter a valid Greek mobile number (e.g. +30 694 263 162)</span>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="service">Service Interest <span class="required-star">*</span></label>
+                        <select id="service" name="service" required>
+                            <option value="" selected disabled>Select a service</option>
+                            <option value="integration">AI Integration</option>
+                            <option value="masterclass">Masterclasses</option>
+                            <option value="consultation">Private Consultation</option>
+                            <option value="webinar">Webinars & Seminars</option>
+                            <option value="certification">Certification Program</option>
+                            <option value="automation">Process Automation</option>
+                        </select>
+                        <span class="error-message">Please select a service</span>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="message">Tell us about your AI goals <span class="required-star">*</span></label>
+                        <textarea id="message" name="message" rows="4" placeholder="e.g. We want to automate our customer service responses and improve our data analysis processes..." required></textarea>
+                        <span class="error-message">This field is required</span>
+                    </div>
+                    
+                    <button type="submit" class="form-submit">Start Your AI Journey</button>
+                </form>
+            </div>
+            
+            <div id="thankYouMessage" class="form-completed" style="display: none;">
+                <div class="form-completed-icon">🚀</div>
+                <h3>Thank You!</h3>
+                <p>
+                    Your journey to AI transformation has begun!<br><br>
+                    We've received your information and our team is already reviewing your requirements. 
+                    Expect a call or email from us within the next 24 hours.<br><br>
+                    Together, we'll unlock your business's true potential with AI.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="logo" style="font-size: 2.5rem; margin-bottom: 1rem;">
+                <img src="logo.png" alt="BTech Logo" style="height: 60px;">
+                <span class="logo-text">BTech</span>
+            </div>
+            <p style="color: #94a3b8; margin-bottom: 2rem;">Empowering businesses with practical AI solutions</p>
+            
+            <div class="social-links">
+                <a href="#" class="social-link">📧</a>
+                <a href="#" class="social-link">💼</a>
+                <a href="#" class="social-link">🐦</a>
+                <a href="#" class="social-link">📺</a>
+            </div>
+            
+            <p style="color: #64748b; margin-top: 2rem; font-size: 0.9rem;">
+                © 2025 BTech AI Consulting. All rights reserved. | Privacy Policy | Terms of Service
+            </p>
+        </div>
+    </footer>
+
+    <!-- Success Modal -->
+    <div class="success-modal" id="successModal">
+        <div class="success-content">
+            <div class="success-icon">✅</div>
+            <h2 class="success-title">Thank You for Reaching Out!</h2>
+            <p class="success-message">
+                Your inquiry has been successfully submitted. Our AI transformation experts will review your requirements and get back to you within 24 hours via email or phone.
+                <br><br>
+                Get ready to revolutionize your business with BTech!
+            </p>
+            <button class="success-close" onclick="closeSuccessModal()">Perfect!</button>
+        </div>
+    </div>
+
+    <script>
+        // Particle Animation with improved clarity
+        const canvas = document.getElementById('particles-canvas');
+        const ctx = canvas.getContext('2d');
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+
+        const particles = [];
+        const particleCount = 80;
+        const connectionDistance = 200;
+        const mouseRadius = 150;
+        let mouseX = 0;
+        let mouseY = 0;
+
+        class Particle {
+            constructor() {
+                this.x = Math.random() * canvas.width;
+                this.y = Math.random() * canvas.height;
+                this.vx = (Math.random() - 0.5) * 0.8;
+                this.vy = (Math.random() - 0.5) * 0.8;
+                this.radius = Math.random() * 3 + 1;
+                this.color = `rgba(${99 + Math.random() * 50}, ${102 + Math.random() * 50}, 241, ${0.6 + Math.random() * 0.4})`;
+            }
+
+            update() {
+                // Mouse interaction
+                const dx = mouseX - this.x;
+                const dy = mouseY - this.y;
+                const distance = Math.sqrt(dx * dx + dy * dy);
+                
+                if (distance < mouseRadius) {
+                    const force = (mouseRadius - distance) / mouseRadius;
+                    const angle = Math.atan2(dy, dx);
+                    this.vx -= Math.cos(angle) * force * 0.5;
+                    this.vy -= Math.sin(angle) * force * 0.5;
+                }
+
+                this.x += this.vx;
+                this.y += this.vy;
+
+                // Friction
+                this.vx *= 0.98;
+                this.vy *= 0.98;
+
+                // Bounce off walls
+                if (this.x < 0 || this.x > canvas.width) {
+                    this.vx = -this.vx;
+                    this.x = Math.max(0, Math.min(canvas.width, this.x));
+                }
+                if (this.y < 0 || this.y > canvas.height) {
+                    this.vy = -this.vy;
+                    this.y = Math.max(0, Math.min(canvas.height, this.y));
+                }
+            }
+
+            draw() {
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+                ctx.fillStyle = this.color;
+                ctx.fill();
+                
+                // Add glow effect
+                ctx.shadowBlur = 10;
+                ctx.shadowColor = this.color;
+                ctx.fill();
+                ctx.shadowBlur = 0;
+            }
+        }
+
+        // Initialize particles
+        for (let i = 0; i < particleCount; i++) {
+            particles.push(new Particle());
+        }
+
+        // Track mouse position
+        window.addEventListener('mousemove', (e) => {
+            mouseX = e.clientX;
+            mouseY = e.clientY;
+        });
+
+        function animate() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+            particles.forEach(particle => {
+                particle.update();
+                particle.draw();
+            });
+
+            // Draw connections with better clarity
+            ctx.lineWidth = 2;
+            particles.forEach((particle, i) => {
+                particles.slice(i + 1).forEach(otherParticle => {
+                    const dx = particle.x - otherParticle.x;
+                    const dy = particle.y - otherParticle.y;
+                    const distance = Math.sqrt(dx * dx + dy * dy);
+
+                    if (distance < connectionDistance) {
+                        ctx.beginPath();
+                        ctx.moveTo(particle.x, particle.y);
+                        ctx.lineTo(otherParticle.x, otherParticle.y);
+                        
+                        const opacity = 0.6 * (1 - distance / connectionDistance);
+                        ctx.strokeStyle = `rgba(99, 102, 241, ${opacity})`;
+                        ctx.stroke();
+                    }
+                });
+            });
+
+            requestAnimationFrame(animate);
+        }
+
+        animate();
+
+        // Resize handler
+        window.addEventListener('resize', () => {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        });
+
+        // Navbar scroll effect
+        window.addEventListener('scroll', () => {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 100) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.animate-on-scroll').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Form submission
+        function handleSubmit(event) {
+            event.preventDefault();
+            
+            // Validate all fields
+            const form = event.target;
+            const inputs = form.querySelectorAll('input, textarea, select');
+            let isValid = true;
+            
+            inputs.forEach(input => {
+                if (!input.checkValidity()) {
+                    input.classList.add('invalid');
+                    isValid = false;
+                } else {
+                    input.classList.remove('invalid');
+                }
+            });
+            
+            if (!isValid) {
+                return;
+            }
+            
+            // Get form data
+            const formData = new FormData(event.target);
+            const data = {
+                name: formData.get('name'),
+                company: formData.get('company'),
+                email: formData.get('email'),
+                phone: formData.get('phone'),
+                service: formData.get('service'),
+                message: formData.get('message'),
+                timestamp: new Date().toLocaleString('el-GR', { timeZone: 'Europe/Athens' })
+            };
+            
+            // Save to localStorage (simulating file save)
+            let submissions = JSON.parse(localStorage.getItem('btechSubmissions') || '[]');
+            submissions.push(data);
+            localStorage.setItem('btechSubmissions', JSON.stringify(submissions));
+            
+            // Create downloadable CSV content
+            const csvContent = createCSV(submissions);
+            
+            // Show success modal
+            document.getElementById('successModal').style.display = 'flex';
+            
+            // Log the data (in real implementation, this would be sent to a server)
+            console.log('Form submitted:', data);
+            console.log('CSV ready for download:', csvContent);
+        }
+        
+        function closeSuccessModal() {
+            document.getElementById('successModal').style.display = 'none';
+            
+            // Replace form with thank you message
+            document.getElementById('formContainer').style.display = 'none';
+            document.getElementById('thankYouMessage').style.display = 'block';
+            
+            // Scroll to the thank you message
+            document.getElementById('contact').scrollIntoView({ behavior: 'smooth' });
+        }
+        
+        function createCSV(data) {
+            const headers = ['Name', 'Company', 'Email', 'Phone', 'Service', 'Message', 'Timestamp'];
+            const rows = data.map(item => [
+                item.name,
+                item.company,
+                item.email,
+                item.phone,
+                item.service,
+                item.message.replace(/,/g, ';'), // Replace commas to avoid CSV issues
+                item.timestamp
+            ]);
+            
+            const csvContent = [
+                headers.join(','),
+                ...rows.map(row => row.map(cell => `"${cell}"`).join(','))
+            ].join('\n');
+            
+            return csvContent;
+        }
+        
+        // Download submissions (can be called from console)
+        function downloadSubmissions() {
+            const submissions = JSON.parse(localStorage.getItem('btechSubmissions') || '[]');
+            if (submissions.length === 0) {
+                alert('No submissions to download');
+                return;
+            }
+            
+            const csvContent = createCSV(submissions);
+            const blob = new Blob([csvContent], { type: 'text/csv' });
+            const url = window.URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.setAttribute('hidden', '');
+            a.setAttribute('href', url);
+            a.setAttribute('download', 'btech_submissions.csv');
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+        }
+        
+        // Add real-time validation
+        document.addEventListener('DOMContentLoaded', function() {
+            const inputs = document.querySelectorAll('.contact-form input, .contact-form textarea, .contact-form select');
+            
+            inputs.forEach(input => {
+                input.addEventListener('blur', function() {
+                    if (this.value && !this.checkValidity()) {
+                        this.classList.add('invalid');
+                    } else {
+                        this.classList.remove('invalid');
+                    }
+                });
+                
+                input.addEventListener('input', function() {
+                    if (this.checkValidity()) {
+                        this.classList.remove('invalid');
+                    }
+                });
+            });
+        });
+
+        // Add smooth parallax effect to floating elements
+        document.addEventListener('mousemove', (e) => {
+            const floatingElements = document.querySelectorAll('.floating-element');
+            const x = e.clientX / window.innerWidth;
+            const y = e.clientY / window.innerHeight;
+
+            floatingElements.forEach((el, index) => {
+                const speed = (index + 1) * 0.5;
+                const rotateSpeed = (index + 1) * 30;
+                el.style.transform = `translate(${x * speed * 20}px, ${y * speed * 20}px) rotate(${x * rotateSpeed}deg)`;
+            });
+            
+            // Create particle trails on mouse move
+            if (Math.random() > 0.8) {
+                createParticleTrail(e.clientX, e.clientY);
+            }
+        });
+
+        // Create particle trail effect
+        function createParticleTrail(x, y) {
+            const trail = document.createElement('div');
+            trail.className = 'particle-trail';
+            trail.style.left = x + 'px';
+            trail.style.top = y + 'px';
+            trail.style.setProperty('--trail-x', (Math.random() - 0.5) * 100 + 'px');
+            trail.style.setProperty('--trail-y', (Math.random() - 0.5) * 100 + 'px');
+            document.getElementById('mouseParticles').appendChild(trail);
+            
+            setTimeout(() => trail.remove(), 3000);
+        }
+
+        // Animated counter for stats
+        function animateCounter(element, target) {
+            let current = 0;
+            const increment = target / 100;
+            const timer = setInterval(() => {
+                current += increment;
+                if (current >= target) {
+                    current = target;
+                    clearInterval(timer);
+                }
+                element.textContent = Math.floor(current) + (element.textContent.includes('%') ? '%' : '+');
+            }, 20);
+        }
+
+        // Trigger counter animation when stats section is visible
+        const statsObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const statNumbers = entry.target.querySelectorAll('.stat-number');
+                    statNumbers.forEach(stat => {
+                        const text = stat.textContent;
+                        const number = parseInt(text.replace(/\D/g, ''));
+                        animateCounter(stat, number);
+                    });
+                    statsObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.5 });
+
+        const statsSection = document.querySelector('.stats');
+        if (statsSection) {
+            statsObserver.observe(statsSection);
+        }
+
+        // AI Network animation in hero with clearer lines
+        const heroSection = document.querySelector('.hero');
+        const svgElement = heroSection.querySelector('svg');
+        const nodes = [];
+        const nodeCount = 10;
+
+        // Create nodes
+        for (let i = 0; i < nodeCount; i++) {
+            const angle = (i / nodeCount) * Math.PI * 2;
+            const radius = 250 + Math.random() * 100;
+            const x = window.innerWidth / 2 + Math.cos(angle) * radius;
+            const y = window.innerHeight / 2 + Math.sin(angle) * radius;
+            nodes.push({ x, y, angle, radius });
+            
+            // Create node circles
+            const circle = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+            circle.setAttribute('cx', x);
+            circle.setAttribute('cy', y);
+            circle.setAttribute('r', '4');
+            circle.setAttribute('fill', '#6366f1');
+            circle.setAttribute('filter', 'url(#glow)');
+            circle.style.animation = `pulse ${2 + Math.random()}s ease-in-out infinite`;
+            svgElement.appendChild(circle);
+        }
+
+        // Draw connections with improved clarity
+        function drawNetwork() {
+            nodes.forEach((node, i) => {
+                // Connect to nearby nodes only
+                nodes.slice(i + 1).forEach((otherNode, j) => {
+                    if (j < 3) { // Connect to next 3 nodes for cleaner look
+                        const line = document.createElementNS('http://www.w3.org/2000/svg', 'line');
+                        line.setAttribute('x1', node.x);
+                        line.setAttribute('y1', node.y);
+                        line.setAttribute('x2', otherNode.x);
+                        line.setAttribute('y2', otherNode.y);
+                        line.setAttribute('stroke', 'url(#line-gradient)');
+                        line.setAttribute('stroke-width', '2');
+                        line.setAttribute('filter', 'url(#glow)');
+                        line.style.animation = `pulse ${3 + Math.random() * 2}s ease-in-out infinite`;
+                        svgElement.appendChild(line);
+                    }
+                });
+            });
+        }
+
+        // Add pulse animation
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes pulse {
+                0%, 100% { opacity: 0.3; }
+                50% { opacity: 0.8; }
+            }
+        `;
+        document.head.appendChild(style);
+
+        drawNetwork();
+    </script>
+</body>
+</html>

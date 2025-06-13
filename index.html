@@ -1390,7 +1390,7 @@
         canvas.height = window.innerHeight;
 
         const particles = [];
-        const particleCount = 80;
+        const particleCount = 40;
         const connectionDistance = 200;
         const mouseRadius = 150;
         let mouseX = 0;
@@ -1725,10 +1725,18 @@
         // Create nodes
         for (let i = 0; i < nodeCount; i++) {
 	// Create B shape
-	    const angle = (i / nodeCount) * Math.PI * 1.5 - Math.PI * 0.25; // Creates B curve
-	    const radius = i % 3 === 1 ? 200 : 250; // Makes middle indent for B shape
-            const x = window.innerWidth / 2 + Math.cos(angle) * radius;
-            const y = window.innerHeight / 2 + Math.sin(angle) * radius;
+	let x, y;
+	    if (i < nodeCount / 2) {
+    		// Left vertical line of B
+   	 	x = window.innerWidth / 2 - 100;
+    		y = window.innerHeight / 2 - 150 + (i * 300 / (nodeCount/2));
+	    } else {
+   	 	// Right curves of B
+    		const curveIndex = i - nodeCount / 2;
+    		const curveAngle = curveIndex * Math.PI / (nodeCount/2);
+    		x = window.innerWidth / 2 + 50 + Math.cos(curveAngle) * 100;
+    		y = window.innerHeight / 2 - 75 + Math.sin(curveAngle) * 75;
+	     }
             nodes.push({ x, y, angle, radius });
             
             // Create node circles

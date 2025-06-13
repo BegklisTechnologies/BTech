@@ -1720,12 +1720,13 @@
         const heroSection = document.querySelector('.hero');
         const svgElement = heroSection.querySelector('svg');
         const nodes = [];
-        const nodeCount = 10;
+        const nodeCount = 6;
 
         // Create nodes
         for (let i = 0; i < nodeCount; i++) {
-            const angle = (i / nodeCount) * Math.PI * 2;
-            const radius = 250 + Math.random() * 100;
+	// Create B shape
+	    const angle = (i / nodeCount) * Math.PI * 1.5 - Math.PI * 0.25; // Creates B curve
+	    const radius = i % 3 === 1 ? 200 : 250; // Makes middle indent for B shape
             const x = window.innerWidth / 2 + Math.cos(angle) * radius;
             const y = window.innerHeight / 2 + Math.sin(angle) * radius;
             nodes.push({ x, y, angle, radius });
@@ -1746,7 +1747,7 @@
             nodes.forEach((node, i) => {
                 // Connect to nearby nodes only
                 nodes.slice(i + 1).forEach((otherNode, j) => {
-                    if (j < 3) { // Connect to next 3 nodes for cleaner look
+                    if (j < 2) { // Connect to next 3 nodes for cleaner look
                         const line = document.createElementNS('http://www.w3.org/2000/svg', 'line');
                         line.setAttribute('x1', node.x);
                         line.setAttribute('y1', node.y);

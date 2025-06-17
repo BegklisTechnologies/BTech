@@ -47,6 +47,98 @@
             scroll-behavior: smooth;
         }
 
+        /* Language Switcher */
+        .language-switcher {
+            display: flex;
+            gap: 0.5rem;
+            align-items: center;
+            margin-left: 2rem;
+        }
+
+	.flag-button {
+    		width: 32px;
+    		height: 22px;
+    		cursor: pointer;
+    		border-radius: 3px;
+    		overflow: hidden;
+    		transition: all 0.3s ease;
+    		border: 1px solid transparent;
+    		opacity: 0.7;
+    		box-sizing: border-box;
+	}
+
+        .flag-button:hover {
+            transform: scale(1.1);
+            opacity: 1;
+        }
+
+        .flag-button.active {
+            border-color: var(--secondary);
+            opacity: 1;
+            box-shadow: 0 0 15px rgba(129, 140, 248, 0.5);
+        }
+
+        .flag-button img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Language transition effect */
+        .stardust-transition {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: radial-gradient(circle, rgba(255, 215, 0, 1) 0%, rgba(255, 140, 0, 0.8) 50%, transparent 70%);
+            border-radius: 50%;
+            pointer-events: none;
+            animation: stardustMove 1.5s ease-out forwards;
+            box-shadow: 0 0 10px rgba(255, 215, 0, 0.8);
+            z-index: 10000;
+        }
+
+        @keyframes stardustMove {
+            0% {
+                transform: translate(0, 0) scale(1);
+                opacity: 1;
+            }
+            100% {
+                transform: translate(var(--end-x), var(--end-y)) scale(0);
+                opacity: 0;
+            }
+        }
+
+        .text-transitioning {
+            position: relative;
+            overflow: visible;
+        }
+
+        .text-fade-out {
+            animation: textFadeOut 0.3s ease-out forwards;
+        }
+
+        .text-fade-in {
+            animation: textFadeIn 0.3s ease-out forwards;
+        }
+
+        @keyframes textFadeOut {
+            to {
+                opacity: 0;
+                filter: blur(5px);
+            }
+        }
+
+        @keyframes textFadeIn {
+            from {
+                opacity: 0;
+                filter: blur(5px);
+            }
+            to {
+                opacity: 1;
+                filter: blur(0);
+            }
+        }
+
         /* Global Mouse Trail Effect */
         .global-mouse-particles {
             position: fixed;
@@ -103,6 +195,12 @@
             align-items: center;
             max-width: 1400px;
             margin: 0 auto;
+        }
+
+        .nav-right {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
         }
 
         .logo {
@@ -901,897 +999,1054 @@
             }
             
             .about-container {
-                grid-template-columns: 1fr;
-            }
-            
-            .leaders-grid {
-                grid-template-columns: 1fr;
-            }
-                	    
-	        #particles-canvas {
-        	display: none !important;
-     	    }
-        }
+		grid-template-columns: 1fr;
+           }
+           
+           .leaders-grid {
+               grid-template-columns: 1fr;
+           }
+               	    
+           #particles-canvas {
+       	display: none !important;
+    	    }
+       }
 
-        /* Animations on Scroll */
-        .animate-on-scroll {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: all 0.8s ease;
-        }
+       /* Animations on Scroll */
+       .animate-on-scroll {
+           opacity: 0;
+           transform: translateY(30px);
+           transition: all 0.8s ease;
+       }
 
-        .animate-on-scroll.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
+       .animate-on-scroll.visible {
+           opacity: 1;
+           transform: translateY(0);
+       }
 
-        /* Particle Background */
-        #particles-canvas {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            opacity: 0.7;
-            z-index: 1;
-        }
-    </style>
+       /* Particle Background */
+       #particles-canvas {
+           position: fixed;
+           top: 0;
+           left: 0;
+           width: 100%;
+           height: 100%;
+           pointer-events: none;
+           opacity: 0.7;
+           z-index: 1;
+       }
+   </style>
 </head>
 <body>
-    <canvas id="particles-canvas"></canvas>
-    <!-- Global Mouse Particles -->
-    <div class="global-mouse-particles" id="globalMouseParticles"></div>
-	
-    <!-- Navigation -->
-    <nav id="navbar">
-        <div class="nav-container">
-            <div class="logo">
-                <img src="logo.png" alt="BTech Logo">
-                <span class="logo-text">BTech<span style="color: #818cf8; font-size: 0.5em; vertical-align: super;">.ai</span></span>
-            </div>
-            <ul class="nav-links">
-                <li><a href="#home">Home</a></li>
-                <li><a href="#services">Services</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#testimonials">Testimonials</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-        </div>
-    </nav>
+   <canvas id="particles-canvas"></canvas>
+   <!-- Global Mouse Particles -->
+   <div class="global-mouse-particles" id="globalMouseParticles"></div>
+   
+   <!-- Navigation -->
+   <nav id="navbar">
+       <div class="nav-container">
+           <div class="logo">
+               <img src="logo.png" alt="BTech Logo">
+               <span class="logo-text">BTech<span style="color: #818cf8; font-size: 0.5em; vertical-align: super;">.ai</span></span>
+           </div>
+           <div class="nav-right">
+               <ul class="nav-links">
+                   <li><a href="#home" data-translate="nav-home">Home</a></li>
+                   <li><a href="#services" data-translate="nav-services">Services</a></li>
+                   <li><a href="#about" data-translate="nav-about">About</a></li>
+                   <li><a href="#testimonials" data-translate="nav-testimonials">Testimonials</a></li>
+                   <li><a href="#contact" data-translate="nav-contact">Contact</a></li>
+               </ul>
+               <div class="language-switcher">
+                   <div class="flag-button active" onclick="changeLanguage('en')" data-lang="en">
+                       <img src="https://flagcdn.com/w40/gb.png" alt="English">
+                   </div>
+                   <div class="flag-button" onclick="changeLanguage('el')" data-lang="el">
+                       <img src="https://flagcdn.com/w40/gr.png" alt="Greek">
+                   </div>
+               </div>
+           </div>
+       </div>
+   </nav>
 
-    <!-- Hero Section -->
-    <section class="hero" id="home">
-        <div class="floating-element float-1"></div>
-        <div class="floating-element float-2"></div>
-        <div class="floating-element float-3"></div>
-        
-        <!-- Interactive particles that follow mouse -->
-        <div class="mouse-particles" id="mouseParticles"></div>
-        
-        <div class="hero-content">
-            <h1>Transform Your Business with AI</h1>
-            <p class="hero-subtitle">Unlock 10x efficiency using AI automation with your existing tools</p>
-            <div class="cta-buttons">
-                <a href="#contact" class="btn btn-primary">Start Your AI Journey</a>
-                <a href="#services" class="btn btn-secondary">Explore Services</a>
-            </div>
-        </div>
+   <!-- Hero Section -->
+   <section class="hero" id="home">
+       <div class="floating-element float-1"></div>
+       <div class="floating-element float-2"></div>
+       <div class="floating-element float-3"></div>
+       
+       <!-- Interactive particles that follow mouse -->
+       <div class="mouse-particles" id="mouseParticles"></div>
+       
+       <div class="hero-content">
+           <h1 data-translate="hero-title">Transform Your Business with AI</h1>
+           <p class="hero-subtitle" data-translate="hero-subtitle">Unlock 10x efficiency using AI automation with your existing tools</p>
+           <div class="cta-buttons">
+               <a href="#contact" class="btn btn-primary" data-translate="cta-start">Start Your AI Journey</a>
+               <a href="#services" class="btn btn-secondary" data-translate="cta-explore">Explore Services</a>
+           </div>
+       </div>
 
-        <div class="ai-network">
-            <svg width="100%" height="100%" style="position: absolute;">
-                <defs>
-                    <linearGradient id="line-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                        <stop offset="0%" stop-color="#6366f1" stop-opacity="0.6"/>
-                        <stop offset="100%" stop-color="#818cf8" stop-opacity="0.3"/>
-                    </linearGradient>
-                    <filter id="glow">
-                        <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
-                        <feMerge>
-                            <feMergeNode in="coloredBlur"/>
-                            <feMergeNode in="SourceGraphic"/>
-                        </feMerge>
-                    </filter>
-                </defs>
-            </svg>
-        </div>
-    </section>
+       <div class="ai-network">
+           <svg width="100%" height="100%" style="position: absolute;">
+               <defs>
+                   <linearGradient id="line-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                       <stop offset="0%" stop-color="#6366f1" stop-opacity="0.6"/>
+                       <stop offset="100%" stop-color="#818cf8" stop-opacity="0.3"/>
+                   </linearGradient>
+                   <filter id="glow">
+                       <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+                       <feMerge>
+                           <feMergeNode in="coloredBlur"/>
+                           <feMergeNode in="SourceGraphic"/>
+                       </feMerge>
+                   </filter>
+               </defs>
+           </svg>
+       </div>
+   </section>
 
-    <!-- Services Section -->
-    <section class="services animate-on-scroll" id="services">
-        <h2 class="section-title">Our Services</h2>
-        <p class="section-subtitle">Empowering businesses with practical AI solutions</p>
-        
-        <div class="services-grid">
-            <div class="service-card">
-                <div class="service-icon">
-                    <i class="fas fa-microchip"></i>
-                </div>
-                <h3>AI Integration</h3>
-                <p>Seamlessly integrate AI into your existing workflow without changing your tools. We optimize what you already use.</p>
-            </div>
-            
-            <div class="service-card">
-                <div class="service-icon">
-                    <i class="fas fa-graduation-cap"></i>
-                </div>
-                <h3>Masterclasses</h3>
-                <p>Comprehensive AI education programs designed for teams. Learn practical implementation strategies that deliver results.</p>
-            </div>
-            
-            <div class="service-card">
-                <div class="service-icon">
-                    <i class="fas fa-user-tie"></i>
-                </div>
-                <h3>Private Consultations</h3>
-                <p>One-on-one sessions tailored to your specific business needs. Get personalized AI strategies from our experts.</p>
-            </div>
-            
-            <div class="service-card">
-                <div class="service-icon">
-                    <i class="fas fa-globe"></i>
-                </div>
-                <h3>Webinars & Seminars</h3>
-                <p>Regular online and in-person events covering the latest AI trends and practical applications for business.</p>
-            </div>
-            
-            <div class="service-card">
-                <div class="service-icon">
-                    <i class="fas fa-certificate"></i>
-                </div>
-                <h3>Certification Programs</h3>
-                <p>Industry-recognized certifications that validate your team's AI proficiency and implementation skills.</p>
-            </div>
-            
-            <div class="service-card">
-                <div class="service-icon">
-                    <i class="fas fa-cogs"></i>
-                </div>
-                <h3>Process Automation</h3>
-                <p>Identify and automate repetitive tasks, freeing your team to focus on strategic, high-value activities.</p>
-            </div>
-        </div>
-    </section>
+   <!-- Services Section -->
+   <section class="services animate-on-scroll" id="services">
+       <h2 class="section-title" data-translate="services-title">Our Services</h2>
+       <p class="section-subtitle" data-translate="services-subtitle">Empowering businesses with practical AI solutions</p>
+       
+       <div class="services-grid">
+           <div class="service-card">
+               <div class="service-icon">
+                   <i class="fas fa-microchip"></i>
+               </div>
+               <h3 data-translate="service-1-title">AI Integration</h3>
+               <p data-translate="service-1-desc">Seamlessly integrate AI into your existing workflow without changing your tools. We optimize what you already use.</p>
+           </div>
+           
+           <div class="service-card">
+               <div class="service-icon">
+                   <i class="fas fa-graduation-cap"></i>
+               </div>
+               <h3 data-translate="service-2-title">Masterclasses</h3>
+               <p data-translate="service-2-desc">Comprehensive AI education programs designed for teams. Learn practical implementation strategies that deliver results.</p>
+           </div>
+           
+           <div class="service-card">
+               <div class="service-icon">
+                   <i class="fas fa-user-tie"></i>
+               </div>
+               <h3 data-translate="service-3-title">Private Consultations</h3>
+               <p data-translate="service-3-desc">One-on-one sessions tailored to your specific business needs. Get personalized AI strategies from our experts.</p>
+           </div>
+           
+           <div class="service-card">
+               <div class="service-icon">
+                   <i class="fas fa-globe"></i>
+               </div>
+               <h3 data-translate="service-4-title">Webinars & Seminars</h3>
+               <p data-translate="service-4-desc">Regular online and in-person events covering the latest AI trends and practical applications for business.</p>
+           </div>
+           
+           <div class="service-card">
+               <div class="service-icon">
+                   <i class="fas fa-certificate"></i>
+               </div>
+               <h3 data-translate="service-5-title">Certification Programs</h3>
+               <p data-translate="service-5-desc">Industry-recognized certifications that validate your team's AI proficiency and implementation skills.</p>
+           </div>
+           
+           <div class="service-card">
+               <div class="service-icon">
+                   <i class="fas fa-cogs"></i>
+               </div>
+               <h3 data-translate="service-6-title">Process Automation</h3>
+               <p data-translate="service-6-desc">Identify and automate repetitive tasks, freeing your team to focus on strategic, high-value activities.</p>
+           </div>
+       </div>
+   </section>
 
-    <!-- About Section -->
-    <section class="about animate-on-scroll" id="about">
-        <h2 class="section-title">About BTech</h2>
-        <p class="section-subtitle">Pioneers in practical AI implementation</p>
-        
-        <div class="about-container">
-            <div class="about-content">
-                <h3 style="font-size: 2rem; margin-bottom: 1rem;">Our Story</h3>
-                <p style="margin-bottom: 1.5rem; color: #cbd5e1;">
-                    Founded in 2020 by a team of AI researchers and business strategists, BTech emerged from a simple observation: 
-                    businesses were drowning in AI hype but lacking practical implementation paths. While others sold expensive 
-                    software solutions, we took a different approach.
-                </p>
-                <p style="margin-bottom: 1.5rem; color: #cbd5e1;">
-                    We believe the best AI solution is the one that works with what you already have. Our mission is to democratize 
-                    AI adoption by teaching businesses how to leverage existing tools more intelligently, not by adding complexity 
-                    to their tech stack.
-                </p>
-                <p style="color: #cbd5e1;">
-                    Today, we've helped over 500 Professionals and companies worldwide achieve remarkable efficiency gains, with an average 
-                    productivity increase of 340% in automated processes.
-                </p>
-                
-                <div class="stats">
-                    <div class="stat">
-                        <div class="stat-number">22+</div>
-                        <div>Companies Transformed</div>
-                    </div>
-                    <div class="stat">
-                        <div class="stat-number">340%</div>
-                        <div>Average Efficiency Gain</div>
-                    </div>
-                    <div class="stat">
-                        <div class="stat-number">500+</div>
-                        <div>Professionals Trained</div>
-                    </div>
-                    <div class="stat">
-                        <div class="stat-number">6+</div>
-                        <div>Countries Served</div>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="about-image">
-                <img src="office.png" alt="BTech AI Solutions" style="width: 100%; height: auto;">
-            </div>
-        </div>
+   <!-- About Section -->
+   <section class="about animate-on-scroll" id="about">
+       <h2 class="section-title" data-translate="about-title">About BTech</h2>
+       <p class="section-subtitle" data-translate="about-subtitle">Pioneers in practical AI implementation</p>
+       
+       <div class="about-container">
+           <div class="about-content">
+               <h3 style="font-size: 2rem; margin-bottom: 1rem;" data-translate="about-story-title">Our Story</h3>
+               <p style="margin-bottom: 1.5rem; color: #cbd5e1;" data-translate="about-story-1">
+                   Founded in 2020 by a team of AI researchers and business strategists, BTech emerged from a simple observation: 
+                   businesses were drowning in AI hype but lacking practical implementation paths. While others sold expensive 
+                   software solutions, we took a different approach.
+               </p>
+               <p style="margin-bottom: 1.5rem; color: #cbd5e1;" data-translate="about-story-2">
+                   We believe the best AI solution is the one that works with what you already have. Our mission is to democratize 
+                   AI adoption by teaching businesses how to leverage existing tools more intelligently, not by adding complexity 
+                   to their tech stack.
+               </p>
+               <p style="color: #cbd5e1;" data-translate="about-story-3">
+                   Today, we've helped over 500 Professionals and companies worldwide achieve remarkable efficiency gains, with an average 
+                   productivity increase of 340% in automated processes.
+               </p>
+               
+               <div class="stats">
+                   <div class="stat">
+                       <div class="stat-number">22+</div>
+                       <div data-translate="stat-companies">Companies Transformed</div>
+                   </div>
+                   <div class="stat">
+                       <div class="stat-number">340%</div>
+                       <div data-translate="stat-efficiency">Average Efficiency Gain</div>
+                   </div>
+                   <div class="stat">
+                       <div class="stat-number">500+</div>
+                       <div data-translate="stat-professionals">Professionals Trained</div>
+                   </div>
+                   <div class="stat">
+                       <div class="stat-number">6+</div>
+                       <div data-translate="stat-countries">Countries Served</div>
+                   </div>
+               </div>
+           </div>
+           
+           <div class="about-image">
+               <img src="office.png" alt="BTech AI Solutions" style="width: 100%; height: auto;">
+           </div>
+       </div>
 
-        <div class="leadership">
-            <h3>Our Leadership</h3>
-            <div class="leaders-grid">
-                <div class="leader-card">
-                    <div class="leader-avatar">
-                        <img src="CEO.png" alt="Nikolaos Begklis">
-                    </div>
-                    <h4>Nikolaos Begklis</h4>
-                    <p style="color: var(--secondary); margin-bottom: 0.5rem;">CEO</p>
-                    <p style="color: #94a3b8; font-size: 0.9rem;">Electrical Engineer, AI specialist from Dubai with years of experience in Machine Learning and business transformation.</p>
-                </div>
-                
-                <div class="leader-card">
-                    <div class="leader-avatar">
-                        <img src="Advisory.png" alt="Vassileios Begklis">
-                    </div>
-                    <h4>Vassileios Begklis</h4>
-                    <p style="color: var(--secondary); margin-bottom: 0.5rem;">Business Advisor</p>
-                    <p style="color: #94a3b8; font-size: 0.9rem;">30+ Years of Experience in Corporate World, Executive Positions. Excellent in Strategic plans and executions.</p>
-                </div>
-                
-                <div class="leader-card">
-                    <div class="leader-avatar">
-                        <img src="CTO.png" alt="Efstratios Athanasiou">
-                    </div>
-                    <h4>Efstratios Athanasiou</h4>
-                    <p style="color: var(--secondary); margin-bottom: 0.5rem;">CTO</p>
-                    <p style="color: #94a3b8; font-size: 0.9rem;">Logistics, Legal Advisory, Head of Training, Client Relationships</p>
-                </div>
-            </div>
-        </div>
-    </section>
+       <div class="leadership">
+           <h3 data-translate="leadership-title">Our Leadership</h3>
+           <div class="leaders-grid">
+               <div class="leader-card">
+                   <div class="leader-avatar">
+                       <img src="CEO.png" alt="Nikolaos Begklis">
+                   </div>
+                   <h4>Nikolaos Begklis</h4>
+                   <p style="color: var(--secondary); margin-bottom: 0.5rem;" data-translate="leader-1-role">CEO - Chief Executive Officer</p>
+                   <p style="color: #94a3b8; font-size: 0.9rem;" data-translate="leader-1-desc">Electrical Engineer, AI specialist from Dubai with years of experience in Machine Learning and Business transformation.</p>
+               </div>
+               
+               <div class="leader-card">
+                   <div class="leader-avatar">
+                       <img src="Advisory.png" alt="Vassileios Begklis">
+                   </div>
+                   <h4>Vassileios Begklis</h4>
+                   <p style="color: var(--secondary); margin-bottom: 0.5rem;" data-translate="leader-2-role">Business Advisor</p>
+                   <p style="color: #94a3b8; font-size: 0.9rem;" data-translate="leader-2-desc">30+ Years of Experience in Corporate World, Executive Positions. Excellent in Strategic plans and executions.</p>
+               </div>
+               
+               <div class="leader-card">
+                   <div class="leader-avatar">
+                       <img src="CTO.png" alt="Efstratios Athanasiou">
+                   </div>
+                   <h4>Efstratios Athanasiou</h4>
+                   <p style="color: var(--secondary); margin-bottom: 0.5rem;" data-translate="leader-3-role">COO - Chief Operating Officer</p>
+                   <p style="color: #94a3b8; font-size: 0.9rem;" data-translate="leader-3-desc">Client Relationships & Marketing responsibility</p>
+               </div>
+           </div>
+       </div>
+   </section>
 
-<!-- Testimonials Section -->
-    <section class="testimonials animate-on-scroll" id="testimonials">
-        <h2 class="section-title">Success Stories</h2>
-        <p class="section-subtitle">Hear from the companies we've transformed</p>
-        
-        <div class="testimonials-container">
-            <div class="testimonial-card">
-                <div class="quote-icon">"</div>
-                <p class="testimonial-text">
-                    "BTech revolutionized our event production workflow. We now create PowerPoint presentations 
-                    85% faster, and our marketing brochures are generated in minutes instead of days. 
-                    This efficiency boost allowed us to take on 40% more clients this quarter."
-                </p>
-                <div class="testimonial-author">
-                    <div class="author-avatar">IM</div>
-                    <div>
-                        <div style="font-weight: 600;">Impact Makers LLC</div>
-                        <div style="color: #94a3b8; font-size: 0.9rem;">Event & Exhibition Company, Dubai</div>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="testimonial-card">
-                <div class="quote-icon">"</div>
-                <p class="testimonial-text">
-                    "The AI implementation for our packaging design and product development cut our 
-                    time-to-market by 60%. We've seen a 35% increase in customer engagement with 
-                    our new AI-optimized product descriptions and visuals."
-                </p>
-                <div class="testimonial-author">
-                    <div class="author-avatar">HH</div>
-                    <div>
-                        <div style="font-weight: 600;">Helion Healthcare</div>
-                        <div style="color: #94a3b8; font-size: 0.9rem;">Longevity Supplements, Dubai</div>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="testimonial-card">
-                <div class="quote-icon">"</div>
-                <p class="testimonial-text">
-                    "The AI meeting assistant has transformed our operations. We save 15 hours weekly 
-                    on meeting documentation and follow-ups. The accuracy of our transcriptions is 
-                    now 99%, making decision-making faster and more reliable."
-                </p>
-                <div class="testimonial-author">
-                    <div class="author-avatar">TL</div>
-                    <div>
-                        <div style="font-weight: 600;">TechnoLogistiki</div>
-                        <div style="color: #94a3b8; font-size: 0.9rem;">Logistics Solutions, Athens</div>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="testimonial-card">
-                <div class="quote-icon">"</div>
-                <p class="testimonial-text">
-                    "Our social media engagement increased by 240% after implementing BTech's AI tools. 
-                    The automated content creation and scheduling saves us 30 hours per week while 
-                    maintaining our brand voice perfectly."
-                </p>
-                <div class="testimonial-author">
-                    <div class="author-avatar">KD</div>
-                    <div>
-                        <div style="font-weight: 600;">Kastoria Designs</div>
-                        <div style="color: #94a3b8; font-size: 0.9rem;">Fashion & Retail, Thessaloniki</div>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="testimonial-card">
-                <div class="quote-icon">"</div>
-                <p class="testimonial-text">
-                    "BTech's AI task automation reduced our administrative workload by 70%. 
-                    Our team now focuses on strategic growth instead of repetitive tasks. 
-                    Revenue increased by 25% in just 3 months."
-                </p>
-                <div class="testimonial-author">
-                    <div class="author-avatar">ME</div>
-                    <div>
-                        <div style="font-weight: 600;">MedExpress Pharmacies</div>
-                        <div style="color: #94a3b8; font-size: 0.9rem;">Healthcare Chain, Crete</div>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="testimonial-card">
-                <div class="quote-icon">"</div>
-                <p class="testimonial-text">
-                    "Email marketing automation through BTech delivered incredible results. 
-                    Our open rates jumped from 18% to 47%, and conversion rates tripled. 
-                    We're now expanding to 5 new European markets with confidence."
-                </p>
-                <div class="testimonial-author">
-                    <div class="author-avatar">VV</div>
-                    <div>
-                        <div style="font-weight: 600;">VEVOR</div>
-                        <div style="color: #94a3b8; font-size: 0.9rem;">Standing Desks & Tools, Czech Republic</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+   <!-- Contact Section -->
+   <section class="contact animate-on-scroll" id="contact">
+       <h2 class="section-title" data-translate="contact-title">Get In Touch</h2>
+       <p class="section-subtitle" data-translate="contact-subtitle">Ready to transform your business with AI?</p>
+       
+       <div class="contact-container">
+           <div id="formContainer">
+               <form class="contact-form" id="contactForm" action="https://formspree.io/f/xkgbjoob" method="POST">
+                   <div class="form-group">
+                       <label for="name"><span data-translate="form-name">Your Name</span> <span class="required-star">*</span></label>
+                       <input type="text" id="name" name="name" placeholder="e.g. John Doe" required>
+                       <span class="error-message" data-translate="error-required">This field is required</span>
+                   </div>
+                   
+                   <div class="form-group">
+                       <label for="company"><span data-translate="form-company">Company</span> <span class="required-star">*</span></label>
+                       <input type="text" id="company" name="company" placeholder="e.g. Tech Solutions Ltd." required>
+                       <span class="error-message" data-translate="error-required">This field is required</span>
+                   </div>
+                   
+                   <div class="form-group">
+                       <label for="email"><span data-translate="form-email">Email Address</span> <span class="required-star">*</span></label>
+                       <input type="email" id="email" name="email" placeholder="e.g. john@company.com" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" required>
+                       <span class="error-message" data-translate="error-email">Please enter a valid email address</span>
+                   </div>
+                   
+                   <div class="form-group">
+                       <label for="phone"><span data-translate="form-phone">Phone Number</span> <span class="required-star">*</span></label>
+                       <input type="tel" id="phone" name="phone" placeholder="e.g. +30 694 263 162" pattern="^\+30\s?6\d{2}\s?\d{3}\s?\d{3,4}$" title="Please enter a valid Greek mobile number (e.g. +30 694 263 162)" required>
+                       <span class="error-message" data-translate="error-phone">Please enter a valid Greek mobile number (e.g. +30 694 263 162)</span>
+                   </div>
+                   
+                   <div class="form-group">
+                       <label for="service"><span data-translate="form-service">Service Interest</span> <span class="required-star">*</span></label>
+                       <select id="service" name="service" required>
+                           <option value="" selected disabled data-translate="form-select-service">Select a service</option>
+                           <option value="integration" data-translate="option-integration">AI Integration</option>
+                           <option value="masterclass" data-translate="option-masterclass">Masterclasses</option>
+                           <option value="consultation" data-translate="option-consultation">Private Consultation</option>
+                           <option value="webinar" data-translate="option-webinar">Webinars & Seminars</option>
+                           <option value="certification" data-translate="option-certification">Certification Program</option>
+                           <option value="automation" data-translate="option-automation">Process Automation</option>
+                       </select>
+                       <span class="error-message" data-translate="error-service">Please select a service</span>
+                   </div>
+                   
+                   <div class="form-group">
+                       <label for="message"><span data-translate="form-message">Tell us about your AI goals</span> <span class="required-star">*</span></label>
+                       <textarea id="message" name="message" rows="4" placeholder="e.g. We want to automate our customer service responses and improve our data analysis processes..." required></textarea>
+                       <span class="error-message" data-translate="error-required">This field is required</span>
+                   </div>
+                   
+                   <button type="submit" class="form-submit" data-translate="form-submit">Start Your AI Journey</button>
+               </form>
+           </div>
+           
+           <div id="thankYouMessage" class="form-completed" style="display: none;">
+               <div class="form-completed-icon">🚀</div>
+               <h3 data-translate="thank-you-title">Thank You!</h3>
+               <p data-translate="thank-you-message">
+                   Your journey to AI transformation has begun!<br><br>
+                   We've received your information and our team is already reviewing your requirements. 
+                   Expect a call or email from us within the next 24 hours.<br><br>
+                   Together, we'll unlock your business's true potential with AI.
+               </p>
+           </div>
+       </div>
+   </section>
 
-    <!-- Contact Section -->
-    <section class="contact animate-on-scroll" id="contact">
-        <h2 class="section-title">Get In Touch</h2>
-        <p class="section-subtitle">Ready to transform your business with AI?</p>
-        
-        <div class="contact-container">
-            <div id="formContainer">
-                <form class="contact-form" id="contactForm" action="https://formspree.io/f/xkgbjoob" method="POST">
-                    <div class="form-group">
-                        <label for="name">Your Name <span class="required-star">*</span></label>
-                        <input type="text" id="name" name="name" placeholder="e.g. John Doe" required>
-                        <span class="error-message">This field is required</span>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="company">Company <span class="required-star">*</span></label>
-                        <input type="text" id="company" name="company" placeholder="e.g. Tech Solutions Ltd." required>
-                        <span class="error-message">This field is required</span>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="email">Email Address <span class="required-star">*</span></label>
-                        <input type="email" id="email" name="email" placeholder="e.g. john@company.com" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" required>
-                        <span class="error-message">Please enter a valid email address</span>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="phone">Phone Number <span class="required-star">*</span></label>
-                        <input type="tel" id="phone" name="phone" placeholder="e.g. +30 694 263 162" pattern="^\+30\s?6\d{2}\s?\d{3}\s?\d{3,4}$" title="Please enter a valid Greek mobile number (e.g. +30 694 263 162)" required>
-                        <span class="error-message">Please enter a valid Greek mobile number (e.g. +30 694 263 162)</span>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="service">Service Interest <span class="required-star">*</span></label>
-                        <select id="service" name="service" required>
-                            <option value="" selected disabled>Select a service</option>
-                            <option value="integration">AI Integration</option>
-                            <option value="masterclass">Masterclasses</option>
-                            <option value="consultation">Private Consultation</option>
-                            <option value="webinar">Webinars & Seminars</option>
-                            <option value="certification">Certification Program</option>
-                            <option value="automation">Process Automation</option>
-                        </select>
-                        <span class="error-message">Please select a service</span>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="message">Tell us about your AI goals <span class="required-star">*</span></label>
-                        <textarea id="message" name="message" rows="4" placeholder="e.g. We want to automate our customer service responses and improve our data analysis processes..." required></textarea>
-                        <span class="error-message">This field is required</span>
-                    </div>
-                    
-                    <button type="submit" class="form-submit">Start Your AI Journey</button>
-                </form>
-            </div>
-            
-            <div id="thankYouMessage" class="form-completed" style="display: none;">
-                <div class="form-completed-icon">🚀</div>
-                <h3>Thank You!</h3>
-                <p>
-                    Your journey to AI transformation has begun!<br><br>
-                    We've received your information and our team is already reviewing your requirements. 
-                    Expect a call or email from us within the next 24 hours.<br><br>
-                    Together, we'll unlock your business's true potential with AI.
-                </p>
-            </div>
-        </div>
-    </section>
-    <script>
-    // Add this script right after your form or in your existing script section
-    document.getElementById('contactForm').addEventListener('submit', function(e) {
-        e.preventDefault();
-    
-        // Get the form element
-        var form = e.target;
-        var formData = new FormData(form);
-    
-        // Submit to Formspree using AJAX
-        fetch(form.action, {
-            method: 'POST',
-            body: formData,
-            headers: {
-                'Accept': 'application/json'
-            }
-        })
-        .then(response => {
-            if (response.ok) {
-                // Show success modal
-                document.getElementById('successModal').style.display = 'flex';
-            
-                // Clear form
-                form.reset();
-            
-                // Optional: Save to localStorage as before
-                var data = {
-                    name: formData.get('name'),
-                    company: formData.get('company'),
-                    email: formData.get('email'),
-                    phone: formData.get('phone'),
-                    service: formData.get('service'),
-                    message: formData.get('message'),
-                    timestamp: new Date().toLocaleString('el-GR', { timeZone: 'Europe/Athens' })
-                };
-            
-                var submissions = JSON.parse(localStorage.getItem('btechSubmissions') || '[]');
-                submissions.push(data);
-                localStorage.setItem('btechSubmissions', JSON.stringify(submissions));
-            } else {
-                alert('Oops! There was a problem submitting your form. Please try again.');
-            }
-        })
-        .catch(error => {
-            alert('Oops! There was a problem submitting your form. Please try again.');
-        });
-    });
-    </script>
-	
-    <!-- Footer -->
-    <footer>
-        <div class="footer-content">
-            <div class="logo" style="font-size: 2.5rem; margin-bottom: 1rem;">
-                <img src="logo.png" alt="BTech Logo" style="height: 60px;">
-                <span class="logo-text">BTech<span style="color: #818cf8; font-size: 0.5em; vertical-align: super;">.ai</span></span>
-            </div>
-            <p style="color: #94a3b8; margin-bottom: 2rem;">Empowering businesses with practical AI solutions</p>
-            
-            <div class="social-links">
-                <a href="mailto:nmpegklis@gmail.com" class="social-link"><i class="fas fa-envelope"></i></a>
-                <a href="https://www.linkedin.com/in/nikolaos-begklis" class="social-link"><i class="fab fa-linkedin"></i></a>
-                <a href="https://www.facebook.com/Cristiano" class="social-link"><i class="fab fa-facebook"></i></a>
-                <a href="https://www.instagram.com/nickbeglis/" class="social-link"><i class="fab fa-instagram"></i></a>
-            </div>
-            
-            <p style="color: #64748b; margin-top: 2rem; font-size: 0.9rem;">
-                © 2025 BTech AI Consulting. All rights reserved. | Privacy Policy | Terms of Service
-            </p>
-        </div>
-    </footer>
+   <!-- Footer -->
+   <footer>
+       <div class="footer-content">
+           <div class="logo" style="font-size: 2.5rem; margin-bottom: 1rem;">
+               <img src="logo.png" alt="BTech Logo" style="height: 60px;">
+               <span class="logo-text">BTech<span style="color: #818cf8; font-size: 0.5em; vertical-align: super;">.ai</span></span>
+           </div>
+           <p style="color: #94a3b8; margin-bottom: 2rem;" data-translate="footer-tagline">Empowering businesses with practical AI solutions</p>
+           
+           <div class="social-links">
+               <a href="mailto:nmpegklis@gmail.com" class="social-link"><i class="fas fa-envelope"></i></a>
+               <a href="https://www.linkedin.com/in/nikolaos-begklis" class="social-link"><i class="fab fa-linkedin"></i></a>
+               <a href="https://www.facebook.com/Cristiano" class="social-link"><i class="fab fa-facebook"></i></a>
+               <a href="https://www.instagram.com/nickbeglis/" class="social-link"><i class="fab fa-instagram"></i></a>
+           </div>
+           
+           <p style="color: #64748b; margin-top: 2rem; font-size: 0.9rem;" data-translate="footer-copyright">
+               © 2025 BTech AI Consulting. All rights reserved. | Privacy Policy | Terms of Service
+           </p>
+       </div>
+   </footer>
 
-    <!-- Success Modal -->
-    <div class="success-modal" id="successModal">
-        <div class="success-content">
-            <div class="success-icon">✅</div>
-            <h2 class="success-title">Thank You for Reaching Out!</h2>
-            <p class="success-message">
-                Your inquiry has been successfully submitted. Our AI transformation experts will review your requirements and get back to you within 24 hours via email or phone.
-                <br><br>
-                Get ready to revolutionize your business with BTech!
-            </p>
-            <button class="success-close" onclick="closeSuccessModal()">Perfect!</button>
-        </div>
-    </div>
+   <!-- Success Modal -->
+   <div class="success-modal" id="successModal">
+       <div class="success-content">
+           <div class="success-icon">✅</div>
+           <h2 class="success-title" data-translate="success-title">Thank You for Reaching Out!</h2>
+           <p class="success-message" data-translate="success-message">
+               Your inquiry has been successfully submitted. Our AI transformation experts will review your requirements and get back to you within 24 hours via email or phone.
+               <br><br>
+               Get ready to revolutionize your business with BTech!
+           </p>
+           <button class="success-close" onclick="closeSuccessModal()" data-translate="success-button">Perfect!</button>
+       </div>
+   </div>
 
-    <script>
-        // Particle Animation with improved clarity
-        const canvas = document.getElementById('particles-canvas');
-        const ctx = canvas.getContext('2d');
-        canvas.width = window.innerWidth;
-        canvas.height = window.innerHeight;
+   <script>
+       // Translations
+       const translations = {
+           en: {
+               // Navigation
+               'nav-home': 'Home',
+               'nav-services': 'Services',
+               'nav-about': 'About',
+               'nav-testimonials': 'Testimonials',
+               'nav-contact': 'Contact',
+               
+               // Hero
+               'hero-title': 'Transform Your Business with AI',
+               'hero-subtitle': 'Unlock 10x efficiency using AI automation with your existing tools',
+               'cta-start': 'Start Your AI Journey',
+               'cta-explore': 'Explore Services',
+               
+               // Services
+               'services-title': 'Our Services',
+               'services-subtitle': 'Empowering businesses with practical AI solutions',
+               'service-1-title': 'AI Integration',
+               'service-1-desc': 'Seamlessly integrate AI into your existing workflow without changing your tools. We optimize what you already use.',
+               'service-2-title': 'Masterclasses',
+               'service-2-desc': 'Comprehensive AI education programs designed for teams. Learn practical implementation strategies that deliver results.',
+               'service-3-title': 'Private Consultations',
+               'service-3-desc': 'One-on-one sessions tailored to your specific business needs. Get personalized AI strategies from our experts.',
+               'service-4-title': 'Webinars & Seminars',
+               'service-4-desc': 'Regular online and in-person events covering the latest AI trends and practical applications for business.',
+               'service-5-title': 'Certification Programs',
+               'service-5-desc': 'Industry-recognized certifications that validate your team\'s AI proficiency and implementation skills.',
+               'service-6-title': 'Process Automation',
+               'service-6-desc': 'Identify and automate repetitive tasks, freeing your team to focus on strategic, high-value activities.',
+               
+               // About
+               'about-title': 'About BTech',
+               'about-subtitle': 'Pioneers in practical AI implementation',
+               'about-story-title': 'Our Story',
+               'about-story-1': 'Founded in 2020 by a team of AI researchers and business strategists, BTech emerged from a simple observation: businesses were drowning in AI hype but lacking practical implementation paths. While others sold expensive software solutions, we took a different approach.',
+               'about-story-2': 'We believe the best AI solution is the one that works with what you already have. Our mission is to democratize AI adoption by teaching businesses how to leverage existing tools more intelligently, not by adding complexity to their tech stack.',
+               'about-story-3': 'Today, we\'ve helped over 500 Professionals and companies worldwide achieve remarkable efficiency gains, with an average productivity increase of 340% in automated processes.',
+               
+               // Stats
+               'stat-companies': 'Companies Transformed',
+               'stat-efficiency': 'Average Efficiency Gain',
+               'stat-professionals': 'Professionals Trained',
+               'stat-countries': 'Countries Served',
+               
+               // Leadership
+               'leadership-title': 'Our Leadership',
+               'leader-1-role': 'CEO - Chief Executive Officer',
+               'leader-1-desc': 'Electrical Engineer, AI specialist from Dubai with years of experience in Machine Learning and business transformation.',
+               'leader-2-role': 'Business Advisor',
+               'leader-2-desc': '30+ Years of Experience in Corporate World, Executive Positions. Excellent in Strategic plans and executions.',
+               'leader-3-role': 'COO - Chief Operational Officer',
+               'leader-3-desc': 'Client Relationships & Marketing Responsibility',
+               
+               // Contact
+               'contact-title': 'Get In Touch',
+               'contact-subtitle': 'Ready to transform your business with AI?',
+               'form-name': 'Your Name',
+               'form-company': 'Company',
+               'form-email': 'Email Address',
+               'form-phone': 'Phone Number',
+               'form-service': 'Service Interest',
+               'form-message': 'Tell us about your AI goals',
+               'form-select-service': 'Select a service',
+               'option-integration': 'AI Integration',
+               'option-masterclass': 'Masterclasses',
+               'option-consultation': 'Private Consultation',
+               'option-webinar': 'Webinars & Seminars',
+               'option-certification': 'Certification Program',
+               'option-automation': 'Process Automation',
+               'form-submit': 'Start Your AI Journey',
+               'error-required': 'This field is required',
+               'error-email': 'Please enter a valid email address',
+               'error-phone': 'Please enter a valid Greek mobile number (e.g. +30 694 263 162)',
+               'error-service': 'Please select a service',
+               
+               // Thank you
+               'thank-you-title': 'Thank You!',
+               'thank-you-message': 'Your journey to AI transformation has begun!<br><br>We\'ve received your information and our team is already reviewing your requirements. Expect a call or email from us within the next 24 hours.<br><br>Together, we\'ll unlock your business\'s true potential with AI.',
+               
+               // Success Modal
+               'success-title': 'Thank You for Reaching Out!',
+               'success-message': 'Your inquiry has been successfully submitted. Our AI transformation experts will review your requirements and get back to you within 24 hours via email or phone.<br><br>Get ready to revolutionize your business with BTech!',
+               'success-button': 'Perfect!',
+               
+               // Footer
+               'footer-tagline': 'Empowering businesses with practical AI solutions',
+               'footer-copyright': '© 2025 BTech AI Consulting. All rights reserved. | Privacy Policy | Terms of Service'
+           },
+           el: {
+               // Navigation
+               'nav-home': 'Αρχική',
+               'nav-services': 'Υπηρεσίες',
+               'nav-about': 'Σχετικά',
+               'nav-testimonials': 'Μαρτυρίες',
+               'nav-contact': 'Επικοινωνία',
+               
+               // Hero
+               'hero-title': 'Μεταμορφώστε την Επιχείρησή σας με AI',
+               'hero-subtitle': 'Ξεκλειδώστε 10x απόδοση χρησιμοποιώντας αυτοματισμό AI με τα υπάρχοντα εργαλεία σας',
+               'cta-start': 'Ξεκινήστε το AI Ταξίδι σας',
+               'cta-explore': 'Εξερευνήστε τις Υπηρεσίες',
+               
+               // Services
+               'services-title': 'Οι Υπηρεσίες μας',
+               'services-subtitle': 'Ενδυναμώνουμε επιχειρήσεις με πρακτικές λύσεις AI',
+               'service-1-title': 'Ενσωμάτωση AI',
+               'service-1-desc': 'Ενσωματώστε απρόσκοπτα το AI στη ροή εργασίας σας χωρίς να αλλάξετε τα εργαλεία σας. Βελτιστοποιούμε αυτά που ήδη χρησιμοποιείτε.',
+               'service-2-title': 'Masterclasses',
+               'service-2-desc': 'Ολοκληρωμένα εκπαιδευτικά προγράμματα AI σχεδιασμένα για ομάδες. Μάθετε πρακτικές στρατηγικές υλοποίησης που αποφέρουν αποτελέσματα.',
+               'service-3-title': 'Ιδιωτικές Συμβουλές',
+               'service-3-desc': 'Προσωπικές συνεδρίες προσαρμοσμένες στις συγκεκριμένες ανάγκες της επιχείρησής σας. Λάβετε εξατομικευμένες στρατηγικές AI από τους ειδικούς μας.',
+               'service-4-title': 'Webinars & Σεμινάρια',
+               'service-4-desc': 'Τακτικές διαδικτυακές και δια ζώσης εκδηλώσεις που καλύπτουν τις τελευταίες τάσεις AI και πρακτικές εφαρμογές για επιχειρήσεις.',
+               'service-5-title': 'Προγράμματα Πιστοποίησης',
+               'service-5-desc': 'Αναγνωρισμένες πιστοποιήσεις που επικυρώνουν την επάρκεια και τις δεξιότητες υλοποίησης AI της ομάδας σας.',
+               'service-6-title': 'Αυτοματισμός Διαδικασιών',
+               'service-6-desc': 'Εντοπίστε και αυτοματοποιήστε επαναλαμβανόμενες εργασίες, απελευθερώνοντας την ομάδα σας να εστιάσει σε στρατηγικές δραστηριότητες υψηλής αξίας.',
+               
+               // About
+               'about-title': 'Σχετικά με την BTech',
+               'about-subtitle': 'Πρωτοπόροι στην πρακτική εφαρμογή AI',
+               'about-story-title': 'Η Ιστορία μας',
+               'about-story-1': 'Ιδρυθείσα το 2020 από μια ομάδα ερευνητών AI και επιχειρηματικών στρατηγικών, η BTech προέκυψε από μια απλή παρατήρηση: οι επιχειρήσεις πνίγονταν στον θόρυβο του AI αλλά στερούνταν πρακτικών μονοπατιών υλοποίησης. Ενώ άλλοι πουλούσαν ακριβές λύσεις λογισμικού, εμείς ακολουθήσαμε διαφορετική προσέγγιση.',
+               'about-story-2': 'Πιστεύουμε ότι η καλύτερη λύση AI είναι αυτή που λειτουργεί με αυτά που ήδη έχετε. Η αποστολή μας είναι να εκδημοκρατίσουμε την υιοθέτηση AI διδάσκοντας τις επιχειρήσεις πώς να αξιοποιούν τα υπάρχοντα εργαλεία πιο έξυπνα, όχι προσθέτοντας πολυπλοκότητα στο τεχνολογικό τους σύνολο.',
+               'about-story-3': 'Σήμερα, έχουμε βοηθήσει πάνω από 500 επαγγελματίες και εταιρείες παγκοσμίως να επιτύχουν αξιοσημείωτα κέρδη απόδοσης, με μέση αύξηση παραγωγικότητας 340% σε αυτοματοποιημένες διαδικασίες.',
+               
+               // Stats
+               'stat-companies': 'Εταιρείες που Μεταμορφώθηκαν',
+               'stat-efficiency': 'Μέση Αύξηση Απόδοσης',
+               'stat-professionals': 'Επαγγελματίες που Εκπαιδεύτηκαν',
+               'stat-countries': 'Χώρες που Εξυπηρετούνται',
+               
+               // Leadership
+               'leadership-title': 'Η Ηγεσία μας',
+               'leader-1-role': 'Διευθύνων Σύμβουλος',
+               'leader-1-desc': 'Ηλεκτρολόγος Μηχανικός, ειδικός AI από το Ντουμπάι με χρόνια εμπειρίας στη Μηχανική Μάθηση και τον επιχειρηματικό μετασχηματισμό.',
+               'leader-2-role': 'Επιχειρηματικός Σύμβουλος',
+               'leader-2-desc': '30+ Χρόνια Εμπειρίας στον Εταιρικό Κόσμο, Εκτελεστικές Θέσεις. Άριστος σε Στρατηγικά σχέδια και εκτελέσεις.',
+               'leader-3-role': 'Διοικητικός Γενικός Διευθυντής',
+               'leader-3-desc': 'Πελατειακές Σχέσεις & Υπεύθυνος Μαρκετινγκ',
+               
+               // Contact
+               'contact-title': 'Επικοινωνήστε μαζί μας',
+               'contact-subtitle': 'Έτοιμοι να μεταμορφώσετε την επιχείρησή σας με AI;',
+               'form-name': 'Το Όνομά σας',
+               'form-company': 'Εταιρεία',
+               'form-email': 'Διεύθυνση Email',
+               'form-phone': 'Αριθμός Τηλεφώνου',
+               'form-service': 'Ενδιαφέρον για Υπηρεσία',
+               'form-message': 'Πείτε μας για τους AI στόχους σας',
+               'form-select-service': 'Επιλέξτε μια υπηρεσία',
+               'option-integration': 'Ενσωμάτωση AI',
+               'option-masterclass': 'Masterclasses',
+               'option-consultation': 'Ιδιωτική Συμβουλευτική',
+               'option-webinar': 'Webinars & Σεμινάρια',
+               'option-certification': 'Πρόγραμμα Πιστοποίησης',
+               'option-automation': 'Αυτοματισμός Διαδικασιών',
+               'form-submit': 'Ξεκινήστε το AI Ταξίδι σας',
+               'error-required': 'Αυτό το πεδίο είναι υποχρεωτικό',
+               'error-email': 'Παρακαλώ εισάγετε μια έγκυρη διεύθυνση email',
+               'error-phone': 'Παρακαλώ εισάγετε έναν έγκυρο ελληνικό αριθμό κινητού (π.χ. +30 694 263 162)',
+               'error-service': 'Παρακαλώ επιλέξτε μια υπηρεσία',
+               
+               // Thank you
+               'thank-you-title': 'Ευχαριστούμε!',
+               'thank-you-message': 'Το ταξίδι σας στον μετασχηματισμό AI έχει ξεκινήσει!<br><br>Λάβαμε τις πληροφορίες σας και η ομάδα μας εξετάζει ήδη τις απαιτήσεις σας. Αναμένετε κλήση ή email από εμάς εντός των επόμενων 24 ωρών.<br><br>Μαζί, θα ξεκλειδώσουμε το πραγματικό δυναμικό της επιχείρησής σας με AI.',
+               
+               // Success Modal
+               'success-title': 'Ευχαριστούμε που Επικοινωνήσατε!',
+               'success-message': 'Το αίτημά σας υποβλήθηκε επιτυχώς. Οι ειδικοί μας στον μετασχηματισμό AI θα εξετάσουν τις απαιτήσεις σας και θα επικοινωνήσουν μαζί σας εντός 24 ωρών μέσω email ή τηλεφώνου.<br><br>Ετοιμαστείτε να επαναστατήσετε την επιχείρησή σας με την BTech!',
+               'success-button': 'Τέλεια!',
+               
+               // Footer
+               'footer-tagline': 'Ενδυναμώνουμε επιχειρήσεις με πρακτικές λύσεις AI',
+               'footer-copyright': '© 2025 BTech AI Consulting. Όλα τα δικαιώματα διατηρούνται. | Πολιτική Απορρήτου | Όροι Χρήσης'
+           }
+       };
 
-        const particles = [];
-        const particleCount = 40;
-        const connectionDistance = 200;
-        const mouseRadius = 150;
-        let mouseX = 0;
-        let mouseY = 0;
+       let currentLang = 'en';
 
-        class Particle {
-            constructor() {
-                this.x = Math.random() * canvas.width;
-                this.y = Math.random() * canvas.height;
-                this.vx = (Math.random() - 0.5) * 0.8;
-                this.vy = (Math.random() - 0.5) * 0.8;
-                this.radius = Math.random() * 3 + 1;
-                this.color = `rgba(${99 + Math.random() * 50}, ${102 + Math.random() * 50}, 241, ${0.6 + Math.random() * 0.4})`;
-            }
+       // Stardust effect for language change
+       function createStardustEffect(element) {
+           const rect = element.getBoundingClientRect();
+           const centerX = rect.left + rect.width / 2;
+           const centerY = rect.top + rect.height / 2;
+           
+           // Create multiple stardust particles
+           for (let i = 0; i < 5; i++) {
+               const stardust = document.createElement('div');
+               stardust.className = 'stardust-transition';
+               stardust.style.left = centerX + 'px';
+               stardust.style.top = centerY + 'px';
+               
+               // Random end position
+               const angle = (Math.PI * 2 * i) / 5;
+               const distance = 50 + Math.random() * 50;
+               const endX = Math.cos(angle) * distance;
+               const endY = Math.sin(angle) * distance;
+               
+               stardust.style.setProperty('--end-x', endX + 'px');
+               stardust.style.setProperty('--end-y', endY + 'px');
+               
+               document.body.appendChild(stardust);
+               
+               setTimeout(() => stardust.remove(), 1500);
+           }
+       }
 
-            update() {
-                // Mouse interaction
-                const dx = mouseX - this.x;
-                const dy = mouseY - this.y;
-                const distance = Math.sqrt(dx * dx + dy * dy);
-                
-                if (distance < mouseRadius) {
-                    const force = (mouseRadius - distance) / mouseRadius;
-                    const angle = Math.atan2(dy, dx);
-                    this.vx -= Math.cos(angle) * force * 0.5;
-                    this.vy -= Math.sin(angle) * force * 0.5;
-                }
+       // Change language with magical effect
+       function changeLanguage(lang) {
+           if (currentLang === lang) return;
+           
+           currentLang = lang;
+           
+           // Update flag buttons
+           document.querySelectorAll('.flag-button').forEach(btn => {
+               btn.classList.toggle('active', btn.dataset.lang === lang);
+           });
+           
+           // Get all translatable elements
+           const elements = document.querySelectorAll('[data-translate]');
+           
+           elements.forEach((element, index) => {
+               setTimeout(() => {
+                   // Create stardust effect
+                   createStardustEffect(element);
+                   
+                   // Add transition class
+                   element.classList.add('text-transitioning', 'text-fade-out');
+                   
+                   setTimeout(() => {
+                       // Update text
+                       const key = element.getAttribute('data-translate');
+                       if (translations[lang][key]) {
+                           element.innerHTML = translations[lang][key];
+                       }
+                       
+                       // Fade in
+                       element.classList.remove('text-fade-out');
+                       element.classList.add('text-fade-in');
+                       
+                       setTimeout(() => {
+                           element.classList.remove('text-transitioning', 'text-fade-in');
+                       }, 300);
+                   }, 300);
+               }, index * 20); // Stagger the effect
+           });
+           
+           // Update placeholders
+           if (lang === 'el') {
+               document.getElementById('name').placeholder = 'π.χ. Γιάννης Παπαδόπουλος';
+               document.getElementById('company').placeholder = 'π.χ. Tech Solutions ΕΠΕ';
+               document.getElementById('email').placeholder = 'π.χ. giannis@company.gr';
+               document.getElementById('message').placeholder = 'π.χ. Θέλουμε να αυτοματοποιήσουμε τις απαντήσεις εξυπηρέτησης πελατών και να βελτιώσουμε τις διαδικασίες ανάλυσης δεδομένων μας...';
+           } else {
+               document.getElementById('name').placeholder = 'e.g. John Doe';
+               document.getElementById('company').placeholder = 'e.g. Tech Solutions Ltd.';
+               document.getElementById('email').placeholder = 'e.g. john@company.com';
+               document.getElementById('message').placeholder = 'e.g. We want to automate our customer service responses and improve our data analysis processes...';
+           }
+           
+           // Store language preference
+           localStorage.setItem('preferredLanguage', lang);
+       }
 
-                this.x += this.vx;
-                this.y += this.vy;
+       // Load preferred language on page load
+       window.addEventListener('DOMContentLoaded', () => {
+           const savedLang = localStorage.getItem('preferredLanguage') || 'en';
+           if (savedLang !== 'en') {
+               changeLanguage(savedLang);
+           }
+       });
 
-                // Friction
-                this.vx *= 0.98;
-                this.vy *= 0.98;
+       // Original JavaScript code continues...
+       
+       // Form submission with Formspree
+       document.getElementById('contactForm').addEventListener('submit', function(e) {
+           e.preventDefault();
+       
+           // Get the form element
+           var form = e.target;
+           var formData = new FormData(form);
+       
+           // Submit to Formspree using AJAX
+           fetch(form.action, {
+               method: 'POST',
+               body: formData,
+               headers: {
+                   'Accept': 'application/json'
+               }
+           })
+           .then(response => {
+               if (response.ok) {
+                   // Show success modal
+                   document.getElementById('successModal').style.display = 'flex';
+               
+                   // Clear form
+                   form.reset();
+               
+                   // Optional: Save to localStorage as before
+                   var data = {
+                       name: formData.get('name'),
+                       company: formData.get('company'),
+                       email: formData.get('email'),
+                       phone: formData.get('phone'),
+                       service: formData.get('service'),
+                       message: formData.get('message'),
+                       timestamp: new Date().toLocaleString('el-GR', { timeZone: 'Europe/Athens' })
+                   };
+               
+                   var submissions = JSON.parse(localStorage.getItem('btechSubmissions') || '[]');
+                   submissions.push(data);
+                   localStorage.setItem('btechSubmissions', JSON.stringify(submissions));
+               } else {
+                   alert('Oops! There was a problem submitting your form. Please try again.');
+               }
+           })
+           .catch(error => {
+               alert('Oops! There was a problem submitting your form. Please try again.');
+           });
+       });
 
-                // Bounce off walls
-                if (this.x < 0 || this.x > canvas.width) {
-                    this.vx = -this.vx;
-                    this.x = Math.max(0, Math.min(canvas.width, this.x));
-                }
-                if (this.y < 0 || this.y > canvas.height) {
-                    this.vy = -this.vy;
-                    this.y = Math.max(0, Math.min(canvas.height, this.y));
-                }
-            }
+       // Particle Animation with improved clarity
+       const canvas = document.getElementById('particles-canvas');
+       const ctx = canvas.getContext('2d');
+       canvas.width = window.innerWidth;
+       canvas.height = window.innerHeight;
 
-            draw() {
-                ctx.beginPath();
-                ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
-                ctx.fillStyle = this.color;
-                ctx.fill();
-                
-                // Add glow effect
-                ctx.shadowBlur = 10;
-                ctx.shadowColor = this.color;
-                ctx.fill();
-                ctx.shadowBlur = 0;
-            }
-        }
+       const particles = [];
+       const particleCount = 40;
+       const connectionDistance = 200;
+       const mouseRadius = 150;
+       let mouseX = 0;
+       let mouseY = 0;
 
-        // Initialize particles
-        for (let i = 0; i < particleCount; i++) {
-            particles.push(new Particle());
-        }
+       class Particle {
+           constructor() {
+               this.x = Math.random() * canvas.width;
+               this.y = Math.random() * canvas.height;
+               this.vx = (Math.random() - 0.5) * 0.8;
+               this.vy = (Math.random() - 0.5) * 0.8;
+               this.radius = Math.random() * 3 + 1;
+               this.color = `rgba(${99 + Math.random() * 50}, ${102 + Math.random() * 50}, 241, ${0.6 + Math.random() * 0.4})`;
+           }
 
-        // Track mouse position
-        window.addEventListener('mousemove', (e) => {
-            mouseX = e.clientX;
-            mouseY = e.clientY;
-        });
+           update() {
+               // Mouse interaction
+               const dx = mouseX - this.x;
+               const dy = mouseY - this.y;
+               const distance = Math.sqrt(dx * dx + dy * dy);
+               
+               if (distance < mouseRadius) {
+                   const force = (mouseRadius - distance) / mouseRadius;
+                   const angle = Math.atan2(dy, dx);
+                   this.vx -= Math.cos(angle) * force * 0.5;
+                   this.vy -= Math.sin(angle) * force * 0.5;
+               }
 
-        function animate() {
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
+               this.x += this.vx;
+               this.y += this.vy;
 
-            particles.forEach(particle => {
-                particle.update();
-                particle.draw();
-            });
+               // Friction
+               this.vx *= 0.98;
+               this.vy *= 0.98;
 
-            // Draw connections with better clarity
-            ctx.lineWidth = 2;
-            particles.forEach((particle, i) => {
-                particles.slice(i + 1).forEach(otherParticle => {
-                    const dx = particle.x - otherParticle.x;
-                    const dy = particle.y - otherParticle.y;
-                    const distance = Math.sqrt(dx * dx + dy * dy);
+               // Bounce off walls
+               if (this.x < 0 || this.x > canvas.width) {
+                   this.vx = -this.vx;
+                   this.x = Math.max(0, Math.min(canvas.width, this.x));
+               }
+               if (this.y < 0 || this.y > canvas.height) {
+                   this.vy = -this.vy;
+                   this.y = Math.max(0, Math.min(canvas.height, this.y));
+               }
+           }
 
-                    if (distance < connectionDistance) {
-                        ctx.beginPath();
-                        ctx.moveTo(particle.x, particle.y);
-                        ctx.lineTo(otherParticle.x, otherParticle.y);
-                        
-                        const opacity = 0.6 * (1 - distance / connectionDistance);
-                        ctx.strokeStyle = `rgba(99, 102, 241, ${opacity})`;
-                        ctx.stroke();
-                    }
-                });
-            });
+           draw() {
+               ctx.beginPath();
+               ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+               ctx.fillStyle = this.color;
+               ctx.fill();
+               
+               // Add glow effect
+               ctx.shadowBlur = 10;
+               ctx.shadowColor = this.color;
+               ctx.fill();
+               ctx.shadowBlur = 0;
+           }
+       }
 
-            requestAnimationFrame(animate);
-        }
+       // Initialize particles
+       for (let i = 0; i < particleCount; i++) {
+           particles.push(new Particle());
+       }
 
-        animate();
+       // Track mouse position
+       window.addEventListener('mousemove', (e) => {
+           mouseX = e.clientX;
+           mouseY = e.clientY;
+       });
 
-        // Resize handler
-        window.addEventListener('resize', () => {
-            canvas.width = window.innerWidth;
-            canvas.height = window.innerHeight;
-        });
+       function animate() {
+           ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-        // Navbar scroll effect
-        window.addEventListener('scroll', () => {
-            const navbar = document.getElementById('navbar');
-            if (window.scrollY > 100) {
-                navbar.classList.add('scrolled');
-            } else {
-                navbar.classList.remove('scrolled');
-            }
-        });
+           particles.forEach(particle => {
+               particle.update();
+               particle.draw();
+           });
 
-        // Scroll animations
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
+           // Draw connections with better clarity
+           ctx.lineWidth = 2;
+           particles.forEach((particle, i) => {
+               particles.slice(i + 1).forEach(otherParticle => {
+                   const dx = particle.x - otherParticle.x;
+                   const dy = particle.y - otherParticle.y;
+                   const distance = Math.sqrt(dx * dx + dy * dy);
 
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                }
-            });
-        }, observerOptions);
+                   if (distance < connectionDistance) {
+                       ctx.beginPath();
+                       ctx.moveTo(particle.x, particle.y);
+                       ctx.lineTo(otherParticle.x, otherParticle.y);
+                       
+                       const opacity = 0.6 * (1 - distance / connectionDistance);
+                       ctx.strokeStyle = `rgba(99, 102, 241, ${opacity})`;
+                       ctx.stroke();
+                   }
+               });
+           });
 
-        document.querySelectorAll('.animate-on-scroll').forEach(el => {
-            observer.observe(el);
-        });
+           requestAnimationFrame(animate);
+       }
 
-        // Form submission
-        function handleSubmit(event) {
-            event.preventDefault();
-            
-            // Validate all fields
-            const form = event.target;
-            const inputs = form.querySelectorAll('input, textarea, select');
-            let isValid = true;
-            
-            inputs.forEach(input => {
-                if (!input.checkValidity()) {
-                    input.classList.add('invalid');
-                    isValid = false;
-                } else {
-                    input.classList.remove('invalid');
-                }
-            });
-            
-            if (!isValid) {
-                return;
-            }
-            
-            // Get form data
-            const formData = new FormData(event.target);
-            const data = {
-                name: formData.get('name'),
-                company: formData.get('company'),
-                email: formData.get('email'),
-                phone: formData.get('phone'),
-                service: formData.get('service'),
-                message: formData.get('message'),
-                timestamp: new Date().toLocaleString('el-GR', { timeZone: 'Europe/Athens' })
-            };
-            
-            // Save to localStorage (simulating file save)
-            let submissions = JSON.parse(localStorage.getItem('btechSubmissions') || '[]');
-            submissions.push(data);
-            localStorage.setItem('btechSubmissions', JSON.stringify(submissions));
-            
-            // Create downloadable CSV content
-            const csvContent = createCSV(submissions);
-            
-            // Show success modal
-            document.getElementById('successModal').style.display = 'flex';
-            
-            // Log the data (in real implementation, this would be sent to a server)
-            console.log('Form submitted:', data);
-            console.log('CSV ready for download:', csvContent);
-        }
-        
-        function closeSuccessModal() {
-            document.getElementById('successModal').style.display = 'none';
-            
-            // Replace form with thank you message
-            document.getElementById('formContainer').style.display = 'none';
-            document.getElementById('thankYouMessage').style.display = 'block';
-            
-            // Scroll to the thank you message
-            document.getElementById('contact').scrollIntoView({ behavior: 'smooth' });
-        }
-        
-        function createCSV(data) {
-            const headers = ['Name', 'Company', 'Email', 'Phone', 'Service', 'Message', 'Timestamp'];
-            const rows = data.map(item => [
-                item.name,
-                item.company,
-                item.email,
-                item.phone,
-                item.service,
-                item.message.replace(/,/g, ';'), // Replace commas to avoid CSV issues
-                item.timestamp
-            ]);
-            
-            const csvContent = [
-                headers.join(','),
-                ...rows.map(row => row.map(cell => `"${cell}"`).join(','))
-            ].join('\n');
-            
-            return csvContent;
-        }
-        
-        // Download submissions (can be called from console)
-        function downloadSubmissions() {
-            const submissions = JSON.parse(localStorage.getItem('btechSubmissions') || '[]');
-            if (submissions.length === 0) {
-                alert('No submissions to download');
-                return;
-            }
-            
-            const csvContent = createCSV(submissions);
-            const blob = new Blob([csvContent], { type: 'text/csv' });
-            const url = window.URL.createObjectURL(blob);
-            const a = document.createElement('a');
-            a.setAttribute('hidden', '');
-            a.setAttribute('href', url);
-            a.setAttribute('download', 'btech_submissions.csv');
-            document.body.appendChild(a);
-            a.click();
-            document.body.removeChild(a);
-        }
-        
-        // Add real-time validation
-        document.addEventListener('DOMContentLoaded', function() {
-            const inputs = document.querySelectorAll('.contact-form input, .contact-form textarea, .contact-form select');
-            
-            inputs.forEach(input => {
-                input.addEventListener('blur', function() {
-                    if (this.value && !this.checkValidity()) {
-                        this.classList.add('invalid');
-                    } else {
-                        this.classList.remove('invalid');
-                    }
-                });
-                
-                input.addEventListener('input', function() {
-                    if (this.checkValidity()) {
-                        this.classList.remove('invalid');
-                    }
-                });
-            });
-        });
+       animate();
 
-        // Add smooth parallax effect to floating elements
-        document.addEventListener('mousemove', (e) => {
-            const floatingElements = document.querySelectorAll('.floating-element');
-            const x = e.clientX / window.innerWidth;
-            const y = e.clientY / window.innerHeight;
+       // Resize handler
+       window.addEventListener('resize', () => {
+           canvas.width = window.innerWidth;
+           canvas.height = window.innerHeight;
+       });
 
-            floatingElements.forEach((el, index) => {
-                const speed = (index + 1) * 0.5;
-                const rotateSpeed = (index + 1) * 30;
-                el.style.transform = `translate(${x * speed * 20}px, ${y * speed * 20}px) rotate(${x * rotateSpeed}deg)`;
-            });
-            
-            // Create particle trails on mouse move
-            if (Math.random() > 0.3) {
-                createGlobalParticleTrail(e.clientX, e.clientY);
-            }
-        });
+       // Navbar scroll effect
+       window.addEventListener('scroll', () => {
+           const navbar = document.getElementById('navbar');
+           if (window.scrollY > 100) {
+               navbar.classList.add('scrolled');
+           } else {
+               navbar.classList.remove('scrolled');
+           }
+       });
 
-        // Create Global particle trail effect
-        function createGlobalParticleTrail(x, y) {
-            const trail = document.createElement('div');
-            trail.className = 'global-particle-trail';
-            trail.style.left = x + 'px';
-            trail.style.top = y + 'px';
-            trail.style.setProperty('--trail-x', (Math.random() - 0.5) * 150 + 'px');
-            trail.style.setProperty('--trail-y', (Math.random() - 0.5) * 150 + 'px');
-            document.getElementById('globalMouseParticles').appendChild(trail);
-            
-            setTimeout(() => trail.remove(), 2000);
-        }
+       // Scroll animations
+       const observerOptions = {
+           threshold: 0.1,
+           rootMargin: '0px 0px -50px 0px'
+       };
 
-        // Animated counter for stats
-        function animateCounter(element, target) {
-            let current = 0;
-            const increment = target / 100;
-            const timer = setInterval(() => {
-                current += increment;
-                if (current >= target) {
-                    current = target;
-                    clearInterval(timer);
-                }
-                element.textContent = Math.floor(current) + (element.textContent.includes('%') ? '%' : '+');
-            }, 20);
-        }
+       const observer = new IntersectionObserver((entries) => {
+           entries.forEach(entry => {
+               if (entry.isIntersecting) {
+                   entry.target.classList.add('visible');
+               }
+           });
+       }, observerOptions);
 
-        // Trigger counter animation when stats section is visible
-        const statsObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    const statNumbers = entry.target.querySelectorAll('.stat-number');
-                    statNumbers.forEach(stat => {
-                        const text = stat.textContent;
-                        const number = parseInt(text.replace(/\D/g, ''));
-                        animateCounter(stat, number);
-                    });
-                    statsObserver.unobserve(entry.target);
-                }
-            });
-        }, { threshold: 0.5 });
+       document.querySelectorAll('.animate-on-scroll').forEach(el => {
+           observer.observe(el);
+       });
 
-        const statsSection = document.querySelector('.stats');
-        if (statsSection) {
-            statsObserver.observe(statsSection);
-        }
+       // Form submission
+       function handleSubmit(event) {
+           event.preventDefault();
+           
+           // Validate all fields
+           const form = event.target;
+           const inputs = form.querySelectorAll('input, textarea, select');
+           let isValid = true;
+           
+           inputs.forEach(input => {
+               if (!input.checkValidity()) {
+                   input.classList.add('invalid');
+                   isValid = false;
+               } else {
+                   input.classList.remove('invalid');
+               }
+           });
+           
+           if (!isValid) {
+               return;
+           }
+           
+           // Get form data
+           const formData = new FormData(event.target);
+           const data = {
+               name: formData.get('name'),
+               company: formData.get('company'),
+               email: formData.get('email'),
+               phone: formData.get('phone'),
+               service: formData.get('service'),
+               message: formData.get('message'),
+               timestamp: new Date().toLocaleString('el-GR', { timeZone: 'Europe/Athens' })
+           };
+           
+           // Save to localStorage (simulating file save)
+           let submissions = JSON.parse(localStorage.getItem('btechSubmissions') || '[]');
+           submissions.push(data);
+           localStorage.setItem('btechSubmissions', JSON.stringify(submissions));
+           
+           // Create downloadable CSV content
+           const csvContent = createCSV(submissions);
+           
+           // Show success modal
+           document.getElementById('successModal').style.display = 'flex';
+           
+           // Log the data (in real implementation, this would be sent to a server)
+           console.log('Form submitted:', data);
+           console.log('CSV ready for download:', csvContent);
+       }
+       
+       function closeSuccessModal() {
+           document.getElementById('successModal').style.display = 'none';
+           
+           // Replace form with thank you message
+           document.getElementById('formContainer').style.display = 'none';
+           document.getElementById('thankYouMessage').style.display = 'block';
+           
+           // Scroll to the thank you message
+           document.getElementById('contact').scrollIntoView({ behavior: 'smooth' });
+       }
+       
+       function createCSV(data) {
+           const headers = ['Name', 'Company', 'Email', 'Phone', 'Service', 'Message', 'Timestamp'];
+           const rows = data.map(item => [
+               item.name,
+               item.company,
+               item.email,
+               item.phone,
+               item.service,
+               item.message.replace(/,/g, ';'), // Replace commas to avoid CSV issues
+               item.timestamp
+           ]);
+           
+           const csvContent = [
+               headers.join(','),
+               ...rows.map(row => row.map(cell => `"${cell}"`).join(','))
+           ].join('\n');
+           
+           return csvContent;
+       }
+       
+       // Download submissions (can be called from console)
+       function downloadSubmissions() {
+           const submissions = JSON.parse(localStorage.getItem('btechSubmissions') || '[]');
+           if (submissions.length === 0) {
+               alert('No submissions to download');
+               return;
+           }
+           
+           const csvContent = createCSV(submissions);
+           const blob = new Blob([csvContent], { type: 'text/csv' });
+           const url = window.URL.createObjectURL(blob);
+           const a = document.createElement('a');
+           a.setAttribute('hidden', '');
+           a.setAttribute('href', url);
+           a.setAttribute('download', 'btech_submissions.csv');
+           document.body.appendChild(a);
+           a.click();
+           document.body.removeChild(a);
+       }
+       
+       // Add real-time validation
+       document.addEventListener('DOMContentLoaded', function() {
+           const inputs = document.querySelectorAll('.contact-form input, .contact-form textarea, .contact-form select');
+           
+           inputs.forEach(input => {
+               input.addEventListener('blur', function() {
+                   if (this.value && !this.checkValidity()) {
+                       this.classList.add('invalid');
+                   } else {
+                       this.classList.remove('invalid');
+                   }
+               });
+               
+               input.addEventListener('input', function() {
+                   if (this.checkValidity()) {
+                       this.classList.remove('invalid');
+                   }
+               });
+           });
+       });
 
-        // AI Network animation in hero with clearer lines
-        const heroSection = document.querySelector('.hero');
-        const svgElement = heroSection.querySelector('svg');
-        const nodes = [];
-        const nodeCount = 6;
+       // Add smooth parallax effect to floating elements
+       document.addEventListener('mousemove', (e) => {
+           const floatingElements = document.querySelectorAll('.floating-element');
+           const x = e.clientX / window.innerWidth;
+           const y = e.clientY / window.innerHeight;
 
-        // Create nodes
-        for (let i = 0; i < nodeCount; i++) {
-	// Create B shape
-	let x, y;
-	    if (i < nodeCount / 2) {
-    		// Left vertical line of B
-   	 	x = window.innerWidth / 2 - 100;
-    		y = window.innerHeight / 2 - 150 + (i * 300 / (nodeCount/2));
-	    } else {
-   	 	// Right curves of B
-    		const curveIndex = i - nodeCount / 2;
-    		const curveAngle = curveIndex * Math.PI / (nodeCount/2);
-    		x = window.innerWidth / 2 + 50 + Math.cos(curveAngle) * 100;
-    		y = window.innerHeight / 2 - 75 + Math.sin(curveAngle) * 75;
-	     }
-            
-            // Create node circles
-            const circle = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
-            circle.setAttribute('cx', x);
-            circle.setAttribute('cy', y);
-            circle.setAttribute('r', '4');
-            circle.setAttribute('fill', '#6366f1');
-            circle.setAttribute('filter', 'url(#glow)');
-            circle.style.animation = `pulse ${2 + Math.random()}s ease-in-out infinite`;
-            svgElement.appendChild(circle);
-        }
+           floatingElements.forEach((el, index) => {
+               const speed = (index + 1) * 0.5;
+               const rotateSpeed = (index + 1) * 30;
+               el.style.transform = `translate(${x * speed * 20}px, ${y * speed * 20}px) rotate(${x * rotateSpeed}deg)`;
+           });
+           
+           // Create particle trails on mouse move
+           if (Math.random() > 0.3) {
+               createGlobalParticleTrail(e.clientX, e.clientY);
+           }
+       });
 
-        // Draw connections with improved clarity
-        function drawNetwork() {
-            nodes.forEach((node, i) => {
-                // Connect to nearby nodes only
-                nodes.slice(i + 1).forEach((otherNode, j) => {
-                    if (j < 2) { // Connect to next 3 nodes for cleaner look
-                        const line = document.createElementNS('http://www.w3.org/2000/svg', 'line');
-                        line.setAttribute('x1', node.x);
-                        line.setAttribute('y1', node.y);
-                        line.setAttribute('x2', otherNode.x);
-                        line.setAttribute('y2', otherNode.y);
-                        line.setAttribute('stroke', 'url(#line-gradient)');
-                        line.setAttribute('stroke-width', '2');
-                        line.setAttribute('filter', 'url(#glow)');
-                        line.style.animation = `pulse ${3 + Math.random() * 2}s ease-in-out infinite`;
-                        svgElement.appendChild(line);
-                    }
-                });
-            });
-        }
+       // Create Global particle trail effect
+       function createGlobalParticleTrail(x, y) {
+           const trail = document.createElement('div');
+           trail.className = 'global-particle-trail';
+           trail.style.left = x + 'px';
+           trail.style.top = y + 'px';
+           trail.style.setProperty('--trail-x', (Math.random() - 0.5) * 150 + 'px');
+           trail.style.setProperty('--trail-y', (Math.random() - 0.5) * 150 + 'px');
+           document.getElementById('globalMouseParticles').appendChild(trail);
+           
+           setTimeout(() => trail.remove(), 2000);
+       }
 
-        // Add pulse animation
-        const style = document.createElement('style');
-        style.textContent = `
-            @keyframes pulse {
-                0%, 100% { opacity: 0.3; }
-                50% { opacity: 0.8; }
-            }
-        `;
-        document.head.appendChild(style);
+       // Animated counter for stats
+       function animateCounter(element, target) {
+           let current = 0;
+           const increment = target / 100;
+           const timer = setInterval(() => {
+               current += increment;
+               if (current >= target) {
+                   current = target;
+                   clearInterval(timer);
+               }
+               element.textContent = Math.floor(current) + (element.textContent.includes('%') ? '%' : '+');
+           }, 20);
+       }
 
-        drawNetwork();
-    </script>
+       // Trigger counter animation when stats section is visible
+       const statsObserver = new IntersectionObserver((entries) => {
+           entries.forEach(entry => {
+               if (entry.isIntersecting) {
+                   const statNumbers = entry.target.querySelectorAll('.stat-number');
+                   statNumbers.forEach(stat => {
+                       const text = stat.textContent;
+                       const number = parseInt(text.replace(/\D/g, ''));
+                       animateCounter(stat, number);
+                   });
+                   statsObserver.unobserve(entry.target);
+               }
+           });
+       }, { threshold: 0.5 });
 
+       const statsSection = document.querySelector('.stats');
+       if (statsSection) {
+           statsObserver.observe(statsSection);
+       }
 
+       // AI Network animation in hero with clearer lines
+       const heroSection = document.querySelector('.hero');
+       const svgElement = heroSection.querySelector('svg');
+       const nodes = [];
+       const nodeCount = 6;
+
+       // Create nodes
+       for (let i = 0; i < nodeCount; i++) {
+           // Create B shape
+           let x, y;
+           if (i < nodeCount / 2) {
+               // Left vertical line of B
+               x = window.innerWidth / 2 - 100;
+               y = window.innerHeight / 2 - 150 + (i * 300 / (nodeCount/2));
+           } else {
+               // Right curves of B
+               const curveIndex = i - nodeCount / 2;
+               const curveAngle = curveIndex * Math.PI / (nodeCount/2);
+               x = window.innerWidth / 2 + 50 + Math.cos(curveAngle) * 100;
+               y = window.innerHeight / 2 - 75 + Math.sin(curveAngle) * 75;
+           }
+               
+           // Create node circles
+           const circle = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+           circle.setAttribute('cx', x);
+           circle.setAttribute('cy', y);
+           circle.setAttribute('r', '4');
+           circle.setAttribute('fill', '#6366f1');
+           circle.setAttribute('filter', 'url(#glow)');
+           circle.style.animation = `pulse ${2 + Math.random()}s ease-in-out infinite`;
+           svgElement.appendChild(circle);
+       }
+
+       // Add pulse animation
+       const style = document.createElement('style');
+       style.textContent = `
+           @keyframes pulse {
+               0%, 100% { opacity: 0.3; }
+               50% { opacity: 0.8; }
+           }
+       `;
+       document.head.appendChild(style);
+   </script>
 </body>
 </html>

@@ -2219,22 +2219,6 @@
             }
         }
 
-        // Auto-advance carousel
-        let carouselInterval = setInterval(() => {
-            moveCarousel(1);
-        }, 5000);
-
-        // Pause carousel on hover
-        document.querySelector('.portfolio-carousel')?.addEventListener('mouseenter', () => {
-            clearInterval(carouselInterval);
-        });
-
-        document.querySelector('.portfolio-carousel')?.addEventListener('mouseleave', () => {
-            carouselInterval = setInterval(() => {
-                moveCarousel(1);
-            }, 5000);
-        });
-
         // Initialize indicators on page load
         window.addEventListener('DOMContentLoaded', () => {
             updateIndicators();
@@ -2590,3 +2574,4 @@
 </html>
 
         
+

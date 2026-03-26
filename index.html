@@ -35,6 +35,16 @@
             box-sizing: border-box;
         }
 
+        /* Protect images from dragging */
+        img {
+            -webkit-user-drag: none;
+            -khtml-user-drag: none;
+            -moz-user-drag: none;
+            -o-user-drag: none;
+            user-drag: none;
+            pointer-events: auto;
+        }
+
         /* Purple scrollbar */
         ::-webkit-scrollbar {
             width: 12px;
@@ -1620,22 +1630,22 @@
             <div class="leaders-grid">
                 <div class="leader-card">
                     <div class="leader-avatar">
-                        <img src="CEO.png" alt="Nikolaos Begklis">
-                    </div>
-                    <h4>Nikolaos Begklis</h4>
-                    <p style="color: var(--secondary); margin-bottom: 0.5rem;" data-translate="leader-1-role">CEO - Chief Executive Officer</p>
-                    <p style="color: #94a3b8; font-size: 0.9rem;" data-translate="leader-1-desc">Electrical Engineer, AI specialist from Dubai with years of experience in Machine Learning and business transformation.</p>
-                </div>
-                
-                <div class="leader-card">
-                    <div class="leader-avatar">
                         <img src="Advisory.png" alt="Vassileios Mpegklis">
                     </div>
                     <h4>Vassileios Mpegklis</h4>
                     <p style="color: var(--secondary); margin-bottom: 0.5rem;" data-translate="leader-2-role">Business Advisor</p>
                     <p style="color: #94a3b8; font-size: 0.9rem;" data-translate="leader-2-desc">30+ Years of Experience in Corporate World, Executive Positions. Excellent in Strategic plans and executions.</p>
                 </div>
-                
+
+                <div class="leader-card">
+                    <div class="leader-avatar">
+                        <img src="CEO.png" alt="Nikolaos Begklis">
+                    </div>
+                    <h4>Nikolaos Begklis</h4>
+                    <p style="color: var(--secondary); margin-bottom: 0.5rem;" data-translate="leader-1-role">CEO - Chief Executive Officer</p>
+                    <p style="color: #94a3b8; font-size: 0.9rem;" data-translate="leader-1-desc">Electrical Engineer, AI specialist from Dubai with years of experience in Machine Learning and business transformation.</p>
+                </div>
+
                 <div class="leader-card">
                     <div class="leader-avatar">
                         <img src="CTO.png" alt="Efstratios Athanasiou">
@@ -1689,15 +1699,13 @@
             <div class="testimonial-card">
                 <div class="quote-icon">"</div>
                 <p class="testimonial-text" data-translate="testimonial-3">
-                    "The AI meeting assistant has transformed our operations. We save 15 hours weekly 
-                    on meeting documentation and follow-ups. The accuracy of our transcriptions is 
-                    now 99%, making decision-making faster and more reliable."
+                    "BTech created a modern, seamless website for us at www.cranbrookcivil.com. As a contractor and construction company built from the ground up in the United States, we needed a site that truly represented our brand. Nikolaos and his team are experts — top-notch professionals we recommend everywhere."
                 </p>
                 <div class="testimonial-author">
-                    <div class="author-avatar">TL</div>
+                    <div class="author-avatar">CC</div>
                     <div>
-                        <div style="font-weight: 600;">TechnoLogistiki</div>
-                        <div style="color: #94a3b8; font-size: 0.9rem;">Logistics Solutions, Athens</div>
+                        <div style="font-weight: 600;">Cranbrook Civil</div>
+                        <div style="color: #94a3b8; font-size: 0.9rem;">Contractor & Construction, United States</div>
                     </div>
                 </div>
             </div>
@@ -1705,15 +1713,13 @@
             <div class="testimonial-card">
                 <div class="quote-icon">"</div>
                 <p class="testimonial-text" data-translate="testimonial-4">
-                    "Our social media engagement increased by 240% after implementing BTech's AI tools. 
-                    The automated content creation and scheduling saves us 30 hours per week while 
-                    maintaining our brand voice perfectly."
+                    "BTech developed a custom program that tracks time, efficiency, and AI analysis for each patient. Now I can understand the timing needed for every operation — fillings, extractions, and more. The AI analyzes my efficiency based on assistants, time of day, and other factors. A game-changer for our practice."
                 </p>
                 <div class="testimonial-author">
-                    <div class="author-avatar">KD</div>
+                    <div class="author-avatar">TD</div>
                     <div>
-                        <div style="font-weight: 600;">Kastoria Designs</div>
-                        <div style="color: #94a3b8; font-size: 0.9rem;">Fashion & Retail, Thessaloniki</div>
+                        <div style="font-weight: 600;">Topalidis Dental Clinic</div>
+                        <div style="color: #94a3b8; font-size: 0.9rem;">Dental Healthcare, Greece</div>
                     </div>
                 </div>
             </div>
@@ -1831,16 +1837,14 @@
             </div>
             <p style="color: #94a3b8; margin-bottom: 2rem;" data-translate="footer-tagline">Empowering businesses with AI and cutting-edge technology</p>
             
-            <div class="social-links">
-                <a href="mailto:nmpegklis@gmail.com" class="social-link" aria-label="Email"><i class="fas fa-envelope"></i></a>
-                <a href="https://www.linkedin.com/in/nikolaos-begklis" class="social-link" aria-label="LinkedIn" target="_blank" rel="noopener"><i class="fab fa-linkedin"></i></a>
-                <a href="https://www.facebook.com/Cristiano" class="social-link" aria-label="Facebook" target="_blank" rel="noopener"><i class="fab fa-facebook"></i></a>
-                <a href="https://www.instagram.com/nickbeglis/" class="social-link" aria-label="Instagram" target="_blank" rel="noopener"><i class="fab fa-instagram"></i></a>
-            </div>
             
             <p style="color: #64748b; margin-top: 2rem; font-size: 0.9rem;" data-translate="footer-copyright">
                 © 2026 BTech AI. All rights reserved. | Privacy Policy | Terms of Service
             </p>
+            <div style="display: flex; align-items: center; justify-content: center; gap: 0.5rem; margin-top: 1.5rem; color: #64748b; font-size: 0.85rem;">
+                <span>Developed and Managed by BTech</span>
+                <img src="cooool.png" alt="BTech" style="height: 1.5rem; width: auto; transition: filter 0.3s ease;" onmouseover="this.style.filter='drop-shadow(0 0 8px rgba(99, 102, 241, 0.8)) drop-shadow(0 0 15px rgba(129, 140, 248, 0.6))'" onmouseout="this.style.filter='none'">
+            </div>
         </div>
     </footer>
 
@@ -1903,10 +1907,10 @@
                 'portfolio-1-desc': 'Event Production & Exhibition Platform with AI-powered Content Generation',
                 'portfolio-2-title': 'Helion Healthcare',
                 'portfolio-2-desc': 'E-commerce Platform with AI Product Recommendations',
-                'portfolio-3-title': 'TechnoLogistiki',
-                'portfolio-3-desc': 'Logistics Management Dashboard with Real-time Tracking',
-                'portfolio-4-title': 'Kastoria Designs',
-                'portfolio-4-desc': 'Fashion E-commerce with AI Style Recommendations',
+                'portfolio-3-title': 'Cranbrook Civil',
+                'portfolio-3-desc': 'Modern Website for Contractor & Construction Company, United States',
+                'portfolio-4-title': 'Topalidis Dental Clinic',
+                'portfolio-4-desc': 'Patient Time Tracking & AI Efficiency Analysis System',
                 'portfolio-5-title': 'MedExpress Pharmacies',
                 'portfolio-5-desc': 'Healthcare Management System with AI Inventory Optimization',
                 'portfolio-6-title': 'VEVOR Europe',
@@ -1940,8 +1944,8 @@
                 'testimonials-subtitle': 'Hear from the companies we\'ve transformed',
                 'testimonial-1': '"BTech revolutionized our event production workflow. We now create PowerPoint presentations 85% faster, and our marketing brochures are generated in minutes instead of days. This efficiency boost allowed us to take on 40% more clients this quarter."',
                 'testimonial-2': '"The AI implementation for our packaging design and product development cut our time-to-market by 60%. We\'ve seen a 35% increase in customer engagement with our new AI-optimized product descriptions and visuals."',
-                'testimonial-3': '"The AI meeting assistant has transformed our operations. We save 15 hours weekly on meeting documentation and follow-ups. The accuracy of our transcriptions is now 99%, making decision-making faster and more reliable."',
-                'testimonial-4': '"Our social media engagement increased by 240% after implementing BTech\'s AI tools. The automated content creation and scheduling saves us 30 hours per week while maintaining our brand voice perfectly."',
+                'testimonial-3': '"BTech created a modern, seamless website for us at www.cranbrookcivil.com. As a contractor and construction company built from the ground up in the United States, we needed a site that truly represented our brand. Nikolaos and his team are experts — top-notch professionals we recommend everywhere."',
+                'testimonial-4': '"BTech developed a custom program that tracks time, efficiency, and AI analysis for each patient. Now I can understand the timing needed for every operation — fillings, extractions, and more. The AI analyzes my efficiency based on assistants, time of day, and other factors. A game-changer for our practice."',
                 'testimonial-5': '"BTech\'s AI task automation reduced our administrative workload by 70%. Our team now focuses on strategic growth instead of repetitive tasks. Revenue increased by 25% in just 3 months."',
                 'testimonial-6': '"Email marketing automation through BTech delivered incredible results. Our open rates jumped from 18% to 47%, and conversion rates tripled. We\'re now expanding to 5 new European markets with confidence."',
                 
@@ -1980,7 +1984,7 @@
                 
                 // Footer
                 'footer-tagline': 'Empowering businesses with AI and cutting-edge technology',
-                'footer-copyright': '© 2025 BTech AI. All rights reserved. | Privacy Policy | Terms of Service'
+                'footer-copyright': '© 2026 BTech AI. All rights reserved. | Privacy Policy | Terms of Service'
             },
 
             el: {
@@ -2025,10 +2029,10 @@
                 'portfolio-1-desc': 'Πλατφόρμα Παραγωγής Εκδηλώσεων με Δημιουργία Περιεχομένου με AI',
                 'portfolio-2-title': 'Helion Healthcare',
                 'portfolio-2-desc': 'Πλατφόρμα E-commerce με Προτάσεις Προϊόντων μέσω AI',
-                'portfolio-3-title': 'TechnoLogistiki',
-                'portfolio-3-desc': 'Ταμπλό Διαχείρισης Logistics με Παρακολούθηση σε Πραγματικό Χρόνο',
-                'portfolio-4-title': 'Kastoria Designs',
-                'portfolio-4-desc': 'E-commerce Μόδας με Προτάσεις Styling μέσω AI',
+                'portfolio-3-title': 'Cranbrook Civil',
+                'portfolio-3-desc': 'Σύγχρονη Ιστοσελίδα για Εργολαβική & Κατασκευαστική Εταιρεία, ΗΠΑ',
+                'portfolio-4-title': 'Topalidis Dental Clinic',
+                'portfolio-4-desc': 'Σύστημα Παρακολούθησης Χρόνου Ασθενών & Ανάλυσης Αποδοτικότητας με AI',
                 'portfolio-5-title': 'MedExpress Pharmacies',
                 'portfolio-5-desc': 'Σύστημα Διαχείρισης Υγείας με Βελτιστοποίηση Αποθέματος μέσω AI',
                 'portfolio-6-title': 'VEVOR Europe',
@@ -2062,8 +2066,8 @@
                 'testimonials-subtitle': 'Ακούστε από τις εταιρείες που μεταμορφώσαμε',
                 'testimonial-1': '"Η BTech επαναστάτησε τη ροή εργασίας της παραγωγής εκδηλώσεών μας. Τώρα δημιουργούμε παρουσιάσεις PowerPoint 85% πιο γρήγορα και τα διαφημιστικά μας φυλλάδια δημιουργούνται σε λεπτά αντί για ημέρες. Αυτή η αύξηση απόδοσης μας επέτρεψε να αναλάβουμε 40% περισσότερους πελάτες αυτό το τρίμηνο."',
                 'testimonial-2': '"Η εφαρμογή AI για το σχεδιασμό συσκευασίας και την ανάπτυξη προϊόντων μείωσε τον χρόνο διάθεσης στην αγορά κατά 60%. Είδαμε αύξηση 35% στην αφοσίωση των πελατών με τις νέες περιγραφές και οπτικά προϊόντων βελτιστοποιημένα με AI."',
-                'testimonial-3': '"Ο AI βοηθός συναντήσεων μεταμόρφωσε τις λειτουργίες μας. Εξοικονομούμε 15 ώρες εβδομαδιαίως στην τεκμηρίωση συναντήσεων και στις παρακολουθήσεις. Η ακρίβεια των απομαγνητοφωνήσεων μας είναι τώρα 99%, καθιστώντας τη λήψη αποφάσεων πιο γρήγορη και αξιόπιστη."',
-                'testimonial-4': '"Η αφοσίωση στα μέσα κοινωνικής δικτύωσης αυξήθηκε κατά 240% μετά την υλοποίηση των εργαλείων AI της BTech. Η αυτοματοποιημένη δημιουργία και προγραμματισμός περιεχομένου μας εξοικονομεί 30 ώρες την εβδομάδα διατηρώντας τέλεια τη φωνή της μάρκας μας."',
+                'testimonial-3': '"Η BTech δημιούργησε μια σύγχρονη, απρόσκοπτη ιστοσελίδα για εμάς στο www.cranbrookcivil.com. Ως εργολαβική και κατασκευαστική εταιρεία χτισμένη από το μηδέν στις Ηνωμένες Πολιτείες, χρειαζόμασταν ένα site που να αντιπροσωπεύει πραγματικά το brand μας. Ο Νικόλαος και η ομάδα του είναι ειδικοί — κορυφαίοι επαγγελματίες που προτείνουμε παντού."',
+                'testimonial-4': '"Η BTech ανέπτυξε ένα προσαρμοσμένο πρόγραμμα που παρακολουθεί χρόνο, αποδοτικότητα και AI ανάλυση για κάθε ασθενή. Τώρα μπορώ να κατανοήσω τον χρόνο που χρειάζεται για κάθε επέμβαση — σφραγίσματα, εξαγωγές και άλλα. Το AI αναλύει την αποδοτικότητά μου βάσει βοηθών, ώρας της ημέρας και άλλων παραγόντων. Αλλαγή παιχνιδιού για το ιατρείο μας."',
                 'testimonial-5': '"Ο αυτοματισμός εργασιών AI της BTech μείωσε το διοικητικό μας φόρτο εργασίας κατά 70%. Η ομάδα μας τώρα επικεντρώνεται σε στρατηγική ανάπτυξη αντί για επαναλαμβανόμενες εργασίες. Τα έσοδα αυξήθηκαν κατά 25% σε μόλις 3 μήνες."',
                 'testimonial-6': '"Ο αυτοματισμός email marketing μέσω της BTech παρέδωσε απίστευτα αποτελέσματα. Τα ποσοστά ανοίγματος πήδησαν από 18% σε 47% και τα ποσοστά μετατροπής τριπλασιάστηκαν. Τώρα επεκτεινόμαστε σε 5 νέες ευρωπαϊκές αγορές με αυτοπεποίθηση."',
                 
@@ -2102,7 +2106,7 @@
                 
                 // Footer
                 'footer-tagline': 'Ενδυναμώνουμε επιχειρήσεις με AI και τεχνολογία αιχμής',
-                'footer-copyright': '© 2025 BTech AI. Όλα τα δικαιώματα διατηρούνται. | Πολιτική Απορρήτου | Όροι Χρήσης'
+                'footer-copyright': '© 2026 BTech AI. Όλα τα δικαιώματα διατηρούνται. | Πολιτική Απορρήτου | Όροι Χρήσης'
             }
         };
 
@@ -2570,10 +2574,38 @@
             }
         }
     </script>
+    <script>
+        // Protect images from drag-and-drop and right-click save
+        document.addEventListener('DOMContentLoaded', function() {
+            document.querySelectorAll('img').forEach(function(img) {
+                img.setAttribute('draggable', 'false');
+                img.addEventListener('contextmenu', function(e) {
+                    e.preventDefault();
+                });
+            });
+            // Also protect dynamically added images
+            const observer = new MutationObserver(function(mutations) {
+                mutations.forEach(function(mutation) {
+                    mutation.addedNodes.forEach(function(node) {
+                        if (node.tagName === 'IMG') {
+                            node.setAttribute('draggable', 'false');
+                            node.addEventListener('contextmenu', function(e) { e.preventDefault(); });
+                        }
+                        if (node.querySelectorAll) {
+                            node.querySelectorAll('img').forEach(function(img) {
+                                img.setAttribute('draggable', 'false');
+                                img.addEventListener('contextmenu', function(e) { e.preventDefault(); });
+                            });
+                        }
+                    });
+                });
+            });
+            observer.observe(document.body, { childList: true, subtree: true });
+        });
+    </script>
 </body>
 </html>
 
         
-
 
 

@@ -476,6 +476,167 @@
             opacity: 0.3;
         }
 
+        /* Solutions Section (Clickable) */
+        .solutions {
+            padding: 5rem 5%;
+            background: var(--dark);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .solutions::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80%;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(99, 102, 241, 0.4), transparent);
+        }
+
+        .solutions-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+            gap: 2.5rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .solution-card {
+            background: linear-gradient(135deg, rgba(99, 102, 241, 0.08) 0%, rgba(129, 140, 248, 0.04) 100%);
+            border: 1px solid rgba(99, 102, 241, 0.3);
+            border-radius: 24px;
+            padding: 2.5rem;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+            text-decoration: none;
+            color: inherit;
+            display: flex;
+            flex-direction: column;
+            cursor: pointer;
+        }
+
+        .solution-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle at center, rgba(99, 102, 241, 0.15) 0%, transparent 50%);
+            opacity: 0;
+            transition: opacity 0.4s ease;
+            pointer-events: none;
+        }
+
+        .solution-card:hover {
+            transform: translateY(-12px);
+            border-color: var(--secondary);
+            box-shadow: 0 30px 60px rgba(99, 102, 241, 0.3),
+                        0 0 0 1px rgba(129, 140, 248, 0.5),
+                        inset 0 0 30px rgba(99, 102, 241, 0.05);
+        }
+
+        .solution-card:hover::before {
+            opacity: 1;
+        }
+
+        .solution-badge {
+            position: absolute;
+            top: 1.5rem;
+            right: 1.5rem;
+            background: var(--gradient);
+            color: white;
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            box-shadow: 0 5px 15px rgba(99, 102, 241, 0.4);
+            animation: pulseBadge 2s ease-in-out infinite;
+        }
+
+        @keyframes pulseBadge {
+            0%, 100% { box-shadow: 0 5px 15px rgba(99, 102, 241, 0.4); }
+            50% { box-shadow: 0 5px 25px rgba(99, 102, 241, 0.7); }
+        }
+
+        .solution-icon {
+            width: 70px;
+            height: 70px;
+            background: var(--gradient);
+            border-radius: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 10px 30px rgba(99, 102, 241, 0.3);
+            transition: transform 0.4s ease;
+        }
+
+        .solution-card:hover .solution-icon {
+            transform: rotate(-5deg) scale(1.1);
+        }
+
+        .solution-icon i {
+            color: white;
+        }
+
+        .solution-card h3 {
+            font-size: 1.75rem;
+            margin-bottom: 0.5rem;
+            font-weight: 700;
+        }
+
+        .solution-tag {
+            color: var(--secondary);
+            font-size: 0.85rem;
+            font-weight: 600;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            margin-bottom: 1rem;
+        }
+
+        .solution-card > p:not(.solution-tag) {
+            color: #cbd5e1;
+            line-height: 1.7;
+            flex: 1;
+            margin-bottom: 1.5rem;
+        }
+
+        .solution-cta {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--secondary);
+            font-weight: 600;
+            padding: 0.75rem 1.5rem;
+            border-radius: 50px;
+            background: rgba(99, 102, 241, 0.1);
+            border: 1px solid rgba(99, 102, 241, 0.3);
+            align-self: flex-start;
+            transition: all 0.3s ease;
+        }
+
+        .solution-card:hover .solution-cta {
+            background: var(--gradient);
+            color: white;
+            border-color: transparent;
+            transform: translateX(5px);
+            box-shadow: 0 10px 25px rgba(99, 102, 241, 0.4);
+        }
+
+        .solution-card:hover .solution-cta i {
+            transform: translateX(3px);
+        }
+
+        .solution-cta i {
+            transition: transform 0.3s ease;
+        }
+
         /* Services Section */
         .services {
             padding: 5rem 5%;
@@ -1321,6 +1482,7 @@
             <div class="nav-right">
                 <ul class="nav-links">
                     <li><a href="#home" data-translate="nav-home">Home</a></li>
+                    <li><a href="#solutions" data-translate="nav-solutions">Solutions</a></li>
                     <li><a href="#services" data-translate="nav-services">Services</a></li>
                     <li><a href="#portfolio" data-translate="nav-portfolio">Portfolio</a></li>
                     <li><a href="#about" data-translate="nav-about">About</a></li>
@@ -1375,6 +1537,41 @@
         </div>
     </section>
 
+    <!-- Solutions Section (Clickable Products & Showcases) -->
+    <section class="solutions animate-on-scroll" id="solutions">
+        <h2 class="section-title" data-translate="solutions-title">Our Solutions</h2>
+        <p class="section-subtitle" data-translate="solutions-subtitle">Live products and showcases — click to explore in depth</p>
+
+        <div class="solutions-grid">
+            <a href="btech-invoicer.html" class="solution-card">
+                <div class="solution-badge" data-translate="solution-badge-new">NEW</div>
+                <div class="solution-icon">
+                    <i class="fas fa-file-invoice-dollar"></i>
+                </div>
+                <h3>BTech Invoicer</h3>
+                <p class="solution-tag" data-translate="solution-1-tag">Cloud ERP · myDATA</p>
+                <p data-translate="solution-1-desc">Modern multi-tenant invoicing & accounting SaaS for Greek businesses. Direct submission to AADE myDATA, mobile-first, no installation required.</p>
+                <div class="solution-cta">
+                    <span data-translate="view-details">View Details</span>
+                    <i class="fas fa-arrow-right"></i>
+                </div>
+            </a>
+
+            <a href="btech-web.html" class="solution-card">
+                <div class="solution-icon">
+                    <i class="fas fa-globe"></i>
+                </div>
+                <h3 data-translate="solution-2-title">Web Development</h3>
+                <p class="solution-tag" data-translate="solution-2-tag">Live Portfolio · 6+ Projects</p>
+                <p data-translate="solution-2-desc">Modern, responsive websites and web applications. From corporate sites to e-commerce platforms — explore our live portfolio of delivered projects.</p>
+                <div class="solution-cta">
+                    <span data-translate="view-portfolio">View Portfolio</span>
+                    <i class="fas fa-arrow-right"></i>
+                </div>
+            </a>
+        </div>
+    </section>
+
     <!-- Services Section -->
     <section class="services animate-on-scroll" id="services">
         <h2 class="section-title" data-translate="services-title">Our Services</h2>
@@ -1395,14 +1592,6 @@
                 </div>
                 <h3 data-translate="service-2-title">Custom Software Development</h3>
                 <p data-translate="service-2-desc">Tailored software solutions designed specifically for your business needs. Scalable, secure, and maintainable applications.</p>
-            </div>
-            
-            <div class="service-card">
-                <div class="service-icon">
-                    <i class="fas fa-globe"></i>
-                </div>
-                <h3 data-translate="service-3-title">Web Development</h3>
-                <p data-translate="service-3-desc">Modern, responsive websites and web applications built with cutting-edge technologies. SEO-optimized and performance-focused.</p>
             </div>
             
             <div class="service-card">
@@ -1786,7 +1975,18 @@
             en: {
                 // Navigation
                 'nav-home': 'Home',
+                'nav-solutions': 'Solutions',
                 'nav-services': 'Services',
+                'solutions-title': 'Our Solutions',
+                'solutions-subtitle': 'Live products and showcases — click to explore in depth',
+                'solution-badge-new': 'NEW',
+                'solution-1-tag': 'Cloud ERP · myDATA',
+                'solution-1-desc': 'Modern multi-tenant invoicing & accounting SaaS for Greek businesses. Direct submission to AADE myDATA, mobile-first, no installation required.',
+                'solution-2-title': 'Web Development',
+                'solution-2-tag': 'Live Portfolio · 6+ Projects',
+                'solution-2-desc': 'Modern, responsive websites and web applications. From corporate sites to e-commerce platforms — explore our live portfolio of delivered projects.',
+                'view-details': 'View Details',
+                'view-portfolio': 'View Portfolio',
                 'nav-portfolio': 'Portfolio',
                 'nav-about': 'About',
                 'nav-testimonials': 'Testimonials',
@@ -1805,8 +2005,6 @@
                 'service-1-desc': 'Custom AI programs, intelligent automation, and seamless integration with your existing systems. From chatbots to predictive analytics.',
                 'service-2-title': 'Custom Software Development',
                 'service-2-desc': 'Tailored software solutions designed specifically for your business needs. Scalable, secure, and maintainable applications.',
-                'service-3-title': 'Web Development',
-                'service-3-desc': 'Modern, responsive websites and web applications built with cutting-edge technologies. SEO-optimized and performance-focused.',
                 'service-4-title': 'Digital Infrastructure',
                 'service-4-desc': 'Complete digital infrastructure management including cloud solutions, hosting, security, and system optimization.',
                 'service-5-title': 'AI Chatbots & Virtual Assistants',
@@ -1899,7 +2097,18 @@
             el: {
                 // Navigation
                 'nav-home': 'Αρχική',
+                'nav-solutions': 'Λύσεις',
                 'nav-services': 'Υπηρεσίες',
+                'solutions-title': 'Οι Λύσεις μας',
+                'solutions-subtitle': 'Διαθέσιμα προϊόντα και έργα — πατήστε για αναλυτική παρουσίαση',
+                'solution-badge-new': 'ΝΕΟ',
+                'solution-1-tag': 'Cloud ERP · myDATA',
+                'solution-1-desc': 'Σύγχρονο cloud SaaS τιμολόγησης & λογιστικής για ελληνικές επιχειρήσεις. Απευθείας διαβίβαση στο myDATA της ΑΑΔΕ, mobile-first, χωρίς εγκατάσταση.',
+                'solution-2-title': 'Ανάπτυξη Ιστοσελίδων',
+                'solution-2-tag': 'Live Portfolio · 6+ Έργα',
+                'solution-2-desc': 'Σύγχρονες, responsive ιστοσελίδες και web εφαρμογές. Από εταιρικά sites έως e-commerce πλατφόρμες — εξερευνήστε το live portfolio των έργων μας.',
+                'view-details': 'Δείτε Αναλυτικά',
+                'view-portfolio': 'Δείτε το Portfolio',
                 'nav-portfolio': 'Έργα',
                 'nav-about': 'Σχετικά',
                 'nav-testimonials': 'Μαρτυρίες',
@@ -1918,8 +2127,6 @@
                 'service-1-desc': 'Προσαρμοσμένα προγράμματα AI, έξυπνος αυτοματισμός και απρόσκοπτη ενσωμάτωση με τα υπάρχοντα συστήματά σας. Από chatbots έως προβλεπτική ανάλυση.',
                 'service-2-title': 'Ανάπτυξη Προσαρμοσμένου Λογισμικού',
                 'service-2-desc': 'Λύσεις λογισμικού σχεδιασμένες ειδικά για τις ανάγκες της επιχείρησής σας. Επεκτάσιμες, ασφαλείς και συντηρήσιμες εφαρμογές.',
-                'service-3-title': 'Ανάπτυξη Ιστοσελίδων',
-                'service-3-desc': 'Σύγχρονες, responsive ιστοσελίδες και web εφαρμογές χτισμένες με τεχνολογίες αιχμής. Βελτιστοποιημένες για SEO και απόδοση.',
                 'service-4-title': 'Ψηφιακή Υποδομή',
                 'service-4-desc': 'Πλήρης διαχείριση ψηφιακής υποδομής συμπεριλαμβανομένων cloud λύσεων, hosting, ασφάλειας και βελτιστοποίησης συστημάτων.',
                 'service-5-title': 'AI Chatbots & Εικονικοί Βοηθοί',

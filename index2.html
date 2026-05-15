@@ -1,0 +1,1395 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BTech AI - Complete Services Portfolio</title>
+    <meta name="description" content="Professional AI consulting, website development, and subscription services by BTech AI. Complete solutions for every business size.">
+    
+    <link rel="icon" type="image/png" href="logo.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #6366f1;
+            --secondary: #818cf8;
+            --dark: #0f172a;
+            --light: #f8fafc;
+            --accent: #fbbf24;
+            --gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            --success: #10b981;
+            --warning: #f59e0b;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            background: var(--dark);
+            color: var(--light);
+            overflow-x: hidden;
+            line-height: 1.6;
+            cursor: default;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+
+        /* Protect images from saving/dragging */
+        img {
+            pointer-events: none;
+            -webkit-user-drag: none;
+            -khtml-user-drag: none;
+            -moz-user-drag: none;
+            -o-user-drag: none;
+            user-drag: none;
+        }
+
+        /* Purple scrollbar */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--dark);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--secondary);
+            border-radius: 5px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--primary);
+        }
+
+        html {
+            scroll-behavior: smooth;
+            scrollbar-color: var(--secondary) var(--dark);
+            scrollbar-width: thin;
+        }
+
+        /* Print Styles */
+        @media print {
+            body {
+                background: white !important;
+                color: black !important;
+            }
+            
+            .floating-element, #particles-canvas, .language-switcher {
+                display: none !important;
+            }
+            
+            .service-card, .category-header {
+                border: 1px solid #ccc !important;
+                break-inside: avoid;
+                page-break-inside: avoid;
+            }
+            
+            .category-section {
+                page-break-before: always;
+            }
+            
+            .category-section:first-child {
+                page-break-before: auto;
+            }
+        }
+
+        /* Language Switcher */
+        .language-switcher {
+            position: fixed;
+            top: 2rem;
+            right: 2rem;
+            z-index: 1000;
+            display: flex;
+            gap: 0.5rem;
+            align-items: center;
+        }
+
+        .flag-button {
+            width: 32px;
+            height: 22px;
+            cursor: pointer;
+            border-radius: 3px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            border: 1px solid transparent;
+            opacity: 0.7;
+        }
+
+        .flag-button:hover {
+            transform: scale(1.1);
+            opacity: 1;
+        }
+
+        .flag-button.active {
+            border-color: var(--secondary);
+            opacity: 1;
+            box-shadow: 0 0 15px rgba(129, 140, 248, 0.5);
+        }
+
+        .flag-button img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Header */
+        .header {
+            padding: 4rem 5% 2rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            background: radial-gradient(ellipse at center, rgba(99, 102, 241, 0.1) 0%, transparent 70%);
+        }
+
+        .logo-section {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            position: relative;
+            z-index: 10;
+        }
+
+        .logo-section img {
+            height: 60px;
+            width: auto;
+        }
+
+        .logo-text {
+            font-size: 3rem;
+            font-weight: 900;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: glow 2s ease-in-out infinite alternate;
+        }
+
+        @keyframes glow {
+            from { filter: drop-shadow(0 0 20px rgba(99, 102, 241, 0.5)); }
+            to { filter: drop-shadow(0 0 30px rgba(99, 102, 241, 0.8)); }
+        }
+
+        .header-title {
+            font-size: clamp(2.5rem, 6vw, 4rem);
+            font-weight: 900;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: gradient 3s ease infinite;
+            background-size: 200% 200%;
+        }
+
+        @keyframes gradient {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .header-subtitle {
+            font-size: 1.5rem;
+            color: #cbd5e1;
+            margin-bottom: 3rem;
+        }
+
+        /* Service Categories */
+        .categories-container {
+            padding: 2rem 5%;
+        }
+
+        .category-section {
+            margin-bottom: 5rem;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease;
+        }
+
+        .category-section.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .category-header {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+            padding: 2rem;
+            background: rgba(30, 41, 59, 0.5);
+            border: 1px solid rgba(99, 102, 241, 0.2);
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+        }
+
+        .category-icon {
+            width: 80px;
+            height: 80px;
+            background: var(--gradient);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            color: white;
+            box-shadow: 0 10px 30px rgba(99, 102, 241, 0.3);
+        }
+
+        .category-info h2 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .category-description {
+            color: #94a3b8;
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .employee-count {
+            color: var(--secondary);
+            font-weight: 600;
+            font-size: 1rem;
+        }
+
+        .company-examples {
+            color: #64748b;
+            font-size: 0.9rem;
+            font-style: italic;
+        }
+
+        /* Services Grid */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .service-card {
+            background: rgba(30, 41, 59, 0.5);
+            border: 1px solid rgba(99, 102, 241, 0.2);
+            border-radius: 20px;
+            padding: 2.5rem;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at center, rgba(99, 102, 241, 0.1) 0%, transparent 70%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--secondary);
+            box-shadow: 0 20px 40px rgba(99, 102, 241, 0.2);
+        }
+
+        .service-card:hover::before {
+            opacity: 1;
+        }
+
+        .service-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .service-icon {
+            width: 50px;
+            height: 50px;
+            background: var(--gradient);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            color: white;
+        }
+
+        .service-icon i {
+            transition: transform 0.3s ease;
+        }
+
+        .service-card:hover .service-icon i {
+            transform: rotate(360deg);
+        }
+
+        .service-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--light);
+        }
+
+        .service-description {
+            color: #cbd5e1;
+            margin-bottom: 2rem;
+            line-height: 1.7;
+        }
+
+        .features-list {
+            list-style: none;
+            margin-bottom: 2rem;
+        }
+
+        .features-list li {
+            color: #94a3b8;
+            margin-bottom: 0.5rem;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .features-list li::before {
+            content: '✓';
+            color: var(--secondary);
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+        }
+
+        .enterprise-cta {
+            display: inline-block;
+            margin-top: 0.5rem;
+            padding: 0.75rem 1.5rem;
+            background: var(--gradient);
+            color: white;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .enterprise-cta:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(99, 102, 241, 0.4);
+        }
+
+        .price-section {
+            border-top: 1px solid rgba(99, 102, 241, 0.2);
+            padding-top: 1.5rem;
+            text-align: center;
+        }
+
+        .price {
+            font-size: 2.5rem;
+            font-weight: 900;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 0.5rem;
+        }
+
+        .price-unit {
+            color: #94a3b8;
+            font-size: 1rem;
+        }
+
+        .price-range {
+            font-size: 1.8rem;
+            font-weight: 700;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* Subscription Services */
+        .subscription-card {
+            background: rgba(30, 41, 59, 0.5);
+            border: 1px solid rgba(16, 185, 129, 0.2);
+            border-radius: 20px;
+            padding: 2rem;
+            transition: all 0.3s ease;
+        }
+
+        .subscription-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--success);
+            box-shadow: 0 15px 30px rgba(16, 185, 129, 0.2);
+        }
+
+        .subscription-tiers {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .tier {
+            background: rgba(15, 23, 42, 0.6);
+            border: 1px solid rgba(99, 102, 241, 0.1);
+            border-radius: 12px;
+            padding: 1rem;
+            text-align: center;
+        }
+
+        .tier-name {
+            font-weight: 600;
+            color: var(--secondary);
+            margin-bottom: 0.5rem;
+        }
+
+        .tier-price {
+            font-size: 1.2rem;
+            font-weight: 700;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .setup-price {
+            color: var(--warning);
+            font-weight: 600;
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+
+        /* Contact Section */
+        .contact-section {
+            padding: 5rem 5%;
+            text-align: center;
+            background: linear-gradient(180deg, var(--dark) 0%, #1e293b 100%);
+        }
+
+        .contact-title {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .contact-subtitle {
+            color: #94a3b8;
+            font-size: 1.25rem;
+            margin-bottom: 3rem;
+        }
+
+        .contact-buttons {
+            display: flex;
+            gap: 2rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-primary {
+            background: var(--gradient);
+            color: white;
+            box-shadow: 0 10px 30px rgba(99, 102, 241, 0.3);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(99, 102, 241, 0.4);
+        }
+
+        .btn-secondary {
+            border: 2px solid var(--secondary);
+            color: var(--secondary);
+            background: transparent;
+        }
+
+        .btn-secondary:hover {
+            background: var(--secondary);
+            color: white;
+            transform: translateY(-3px);
+        }
+
+        /* Footer */
+        .footer {
+            padding: 3rem 5%;
+            background: #0a0e1a;
+            text-align: center;
+            border-top: 1px solid rgba(99, 102, 241, 0.2);
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .social-link {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(99, 102, 241, 0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--secondary);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .social-link:hover {
+            background: var(--secondary);
+            color: white;
+            transform: translateY(-3px);
+        }
+
+        /* Floating Elements */
+        .floating-element {
+            position: absolute;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .float-1 {
+            width: 150px;
+            height: 150px;
+            top: 10%;
+            left: -50px;
+            background: radial-gradient(circle at 30% 30%, rgba(99, 102, 241, 0.3), rgba(99, 102, 241, 0.1));
+            border-radius: 50%;
+            filter: blur(0.5px);
+        }
+
+        .float-2 {
+            width: 200px;
+            height: 200px;
+            bottom: 20%;
+            right: -75px;
+            background: linear-gradient(45deg, rgba(129, 140, 248, 0.3), rgba(99, 102, 241, 0.1));
+            border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+            filter: blur(0.5px);
+            animation-delay: 3s;
+        }
+
+        @keyframes float {
+            0%, 100% { 
+                transform: translateY(0) rotate(0deg) scale(1);
+            }
+            33% { 
+                transform: translateY(-20px) rotate(120deg) scale(1.05);
+            }
+            66% { 
+                transform: translateY(15px) rotate(240deg) scale(0.95);
+            }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .header-title {
+                font-size: 2.5rem;
+            }
+            
+            .category-header {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .contact-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .language-switcher {
+                top: 1rem;
+                right: 1rem;
+            }
+            
+            .subscription-tiers {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Animation Classes */
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease;
+        }
+
+        .animate-on-scroll.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Particle Background */
+        #particles-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            opacity: 0.3;
+            z-index: 1;
+        }
+    </style>
+</head>
+
+<body>
+    <canvas id="particles-canvas"></canvas>
+    
+    <!-- Language Switcher -->
+    <div class="language-switcher">
+        <div class="flag-button active" onclick="changeLanguage('en')" data-lang="en">
+            <img src="https://flagcdn.com/w40/gb.png" alt="English">
+        </div>
+        <div class="flag-button" onclick="changeLanguage('el')" data-lang="el">
+            <img src="https://flagcdn.com/w40/gr.png" alt="Greek">
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header class="header">
+        <div class="floating-element float-1"></div>
+        <div class="floating-element float-2"></div>
+        
+        <div class="logo-section">
+            <img src="logo.png" alt="BTech Logo">
+            <span class="logo-text">BTech<span style="color: #818cf8; font-size: 0.5em; vertical-align: super;">.ai</span></span>
+        </div>
+        
+        <h1 class="header-title" data-translate="header-title">Complete AI Services & Solutions Portfolio</h1>
+        <p class="header-subtitle" data-translate="header-subtitle">Professional AI consulting, website development, and subscription services for every business size</p>
+    </header>
+
+    <!-- Services Categories -->
+    <main class="categories-container">
+        <!-- Website Development Services -->
+        <section class="category-section animate-on-scroll">
+            <div class="category-header">
+                <div class="category-icon">
+                    <i class="fas fa-globe"></i>
+                </div>
+                <div class="category-info">
+                    <h2 data-translate="website-services-title">Website Development Services</h2>
+                    <p class="category-description" data-translate="website-services-desc">Professional website development for all business needs</p>
+                </div>
+            </div>
+            
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-header">
+                        <div class="service-icon">
+                            <i class="fas fa-file"></i>
+                        </div>
+                        <h3 class="service-title">Basic</h3>
+                    </div>
+                    <p class="service-description" data-translate="basic-website-desc">Professional website with One Page flow and basic SEO</p>
+                    <ul class="features-list">
+                        <li data-translate="feature-professional-website">Professional website</li>
+                        <li data-translate="feature-one-page">One Page flow</li>
+                        <li data-translate="feature-basic-seo">Basic SEO</li>
+                        <li data-translate="feature-responsive">Responsive design</li>
+                    </ul>
+                    <div class="price-section">
+                        <div class="price">€1,000</div>
+                        <div class="price-unit" data-translate="price-maintenance-basic">+ €140 / year maintenance</div>
+                    </div>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-header">
+                        <div class="service-icon">
+                            <i class="fas fa-sitemap"></i>
+                        </div>
+                        <h3 class="service-title">Advanced</h3>
+                    </div>
+                    <p class="service-description" data-translate="advanced-website-desc">Everything in Basic, plus more pages, blog and advanced SEO</p>
+                    <ul class="features-list">
+                        <li data-translate="feature-professional-website">Professional website</li>
+                        <li data-translate="feature-responsive">Responsive design</li>
+                        <li data-translate="feature-5-pages">5 total pages</li>
+                        <li data-translate="feature-blog">Blog / Articles</li>
+                        <li data-translate="feature-advanced-seo">Advanced SEO</li>
+                    </ul>
+                    <div class="price-section">
+                        <div class="price">€1,200</div>
+                        <div class="price-unit" data-translate="price-maintenance-advanced">+ €160 / year maintenance</div>
+                    </div>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-header">
+                        <div class="service-icon">
+                            <i class="fas fa-crown"></i>
+                        </div>
+                        <h3 class="service-title">Premium</h3>
+                    </div>
+                    <p class="service-description" data-translate="premium-website-desc">Everything in Advanced, plus booking, content strategy and Google visibility</p>
+                    <ul class="features-list">
+                        <li data-translate="feature-professional-website">Professional website</li>
+                        <li data-translate="feature-responsive">Responsive design</li>
+                        <li data-translate="feature-10-pages">10 total pages</li>
+                        <li data-translate="feature-blog">Blog / Articles</li>
+                        <li data-translate="feature-advanced-seo">Advanced SEO</li>
+                        <li data-translate="feature-booking">Online booking</li>
+                        <li data-translate="feature-content-strategy">Content strategy</li>
+                        <li data-translate="feature-google-maps">Google Maps optimization</li>
+                        <li data-translate="feature-google-business">Google Business</li>
+                    </ul>
+                    <div class="price-section">
+                        <div class="price">€1,500</div>
+                        <div class="price-unit" data-translate="price-maintenance-premium">+ €200 / year maintenance</div>
+                    </div>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-header">
+                        <div class="service-icon">
+                            <i class="fas fa-rocket"></i>
+                        </div>
+                        <h3 class="service-title">Enterprise</h3>
+                    </div>
+                    <p class="service-description" data-translate="enterprise-website-desc">Everything in Premium, plus custom design, branding and unlimited possibilities</p>
+                    <ul class="features-list">
+                        <li data-translate="feature-everything-premium">Everything in Premium</li>
+                        <li data-translate="feature-10plus-pages">10+ pages</li>
+                        <li data-translate="feature-custom-requirements">Custom requirements & graphics</li>
+                        <li data-translate="feature-full-branding">Complete branding</li>
+                        <li data-translate="feature-dedicated-support">Dedicated support</li>
+                    </ul>
+                    <div class="price-section">
+                        <div class="price" data-translate="enterprise-price">Custom Pricing</div>
+                        <a href="mailto:nbegklis@btech-ai.com" class="enterprise-cta" data-translate="enterprise-cta">Request an Offer</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- AI Subscription Services -->
+        <section class="category-section animate-on-scroll">
+            <div class="category-header">
+                <div class="category-icon">
+                    <i class="fas fa-robot"></i>
+                </div>
+                <div class="category-info">
+                    <h2 data-translate="ai-subscriptions-title">AI Services & Monthly Subscriptions</h2>
+                    <p class="category-description" data-translate="ai-subscriptions-desc">Ongoing AI solutions with monthly subscription plans</p>
+                </div>
+            </div>
+            
+            <div class="services-grid">
+                <div class="subscription-card">
+                    <div class="service-header">
+                        <div class="service-icon">
+                            <i class="fas fa-comments"></i>
+                        </div>
+                        <h3 class="service-title" data-translate="chatbot-title">AI Chatbot (RAG)</h3>
+                    </div>
+                    <p class="service-description" data-translate="chatbot-desc">Smart chatbot with knowledge of your documents</p>
+                    <div class="setup-price" data-translate="setup-price">Setup & Configuration: €1,500</div>
+                    <div class="subscription-tiers">
+                        <div class="tier">
+                            <div class="tier-name" data-translate="tier-small">Small Business</div>
+                            <div class="tier-price">€45/month</div>
+                        </div>
+                        <div class="tier">
+                            <div class="tier-name" data-translate="tier-medium">Medium Business</div>
+                            <div class="tier-price">€85/month</div>
+                        </div>
+                        <div class="tier">
+                            <div class="tier-name" data-translate="tier-large">Large Companies</div>
+                            <div class="tier-price">€150/month</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="subscription-card">
+                    <div class="service-header">
+                        <div class="service-icon">
+                            <i class="fas fa-headset"></i>
+                        </div>
+                        <h3 class="service-title" data-translate="secretary-title">AI Secretary</h3>
+                    </div>
+                    <p class="service-description" data-translate="secretary-desc">Virtual assistant with AI</p>
+                    <ul class="features-list">
+                        <li data-translate="feature-email-management">Email management</li>
+                        <li data-translate="feature-appointment-scheduling">Appointment scheduling</li>
+                        <li data-translate="feature-basic-answers">Basic question responses</li>
+                    </ul>
+                    <div class="subscription-tiers">
+                        <div class="tier">
+                            <div class="tier-name" data-translate="tier-basic">Basic</div>
+                            <div class="tier-price">€65/month</div>
+                        </div>
+                        <div class="tier">
+                            <div class="tier-name" data-translate="tier-pro">Pro</div>
+                            <div class="tier-price">€120/month</div>
+                        </div>
+                        <div class="tier">
+                            <div class="tier-name" data-translate="tier-enterprise">Enterprise</div>
+                            <div class="tier-price">€220/month</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="subscription-card">
+                    <div class="service-header">
+                        <div class="service-icon">
+                            <i class="fas fa-microphone"></i>
+                        </div>
+                        <h3 class="service-title" data-translate="meeting-assistant-title">AI Meeting Assistant</h3>
+                    </div>
+                    <p class="service-description" data-translate="meeting-assistant-desc">Meeting assistant</p>
+                    <ul class="features-list">
+                        <li data-translate="feature-auto-transcription">Automatic transcriptions</li>
+                        <li data-translate="feature-meeting-summaries">Meeting summaries</li>
+                        <li data-translate="feature-action-tracking">Action items tracking</li>
+                    </ul>
+                    <div class="subscription-tiers">
+                        <div class="tier">
+                            <div class="tier-name" data-translate="tier-starter">Starter</div>
+                            <div class="tier-price">€35/month</div>
+                        </div>
+                        <div class="tier">
+                            <div class="tier-name" data-translate="tier-business">Business</div>
+                            <div class="tier-price">€75/month</div>
+                        </div>
+                        <div class="tier">
+                            <div class="tier-name" data-translate="tier-enterprise">Enterprise</div>
+                            <div class="tier-price">€135/month</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="subscription-card">
+                    <div class="service-header">
+                        <div class="service-icon">
+                            <i class="fas fa-share-alt"></i>
+                        </div>
+                        <h3 class="service-title" data-translate="social-media-title">AI Social Media Manager</h3>
+                    </div>
+                    <p class="service-description" data-translate="social-media-desc">Automated social media management</p>
+                    <ul class="features-list">
+                        <li data-translate="feature-content-creation">Content creation</li>
+                        <li data-translate="feature-scheduled-posts">Scheduled posts</li>
+                        <li data-translate="feature-analytics-insights">Analytics & insights</li>
+                    </ul>
+                    <div class="subscription-tiers">
+                        <div class="tier">
+                            <div class="tier-name" data-translate="tier-basic">Basic</div>
+                            <div class="tier-price">€95/month</div>
+                        </div>
+                        <div class="tier">
+                            <div class="tier-name" data-translate="tier-pro">Pro</div>
+                            <div class="tier-price">€165/month</div>
+                        </div>
+                        <div class="tier">
+                            <div class="tier-name" data-translate="tier-agency">Agency</div>
+                            <div class="tier-price">€285/month</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="subscription-card">
+                    <div class="service-header">
+                        <div class="service-icon">
+                            <i class="fas fa-edit"></i>
+                        </div>
+                        <h3 class="service-title" data-translate="content-generator-title">AI Content Generator</h3>
+                    </div>
+                    <p class="service-description" data-translate="content-generator-desc">AI content creation</p>
+                    <ul class="features-list">
+                        <li data-translate="feature-blog-posts">Blog posts & articles</li>
+                        <li data-translate="feature-product-descriptions">Product descriptions</li>
+                        <li data-translate="feature-email-campaigns">Email campaigns</li>
+                    </ul>
+                    <div class="subscription-tiers">
+                        <div class="tier">
+                            <div class="tier-name" data-translate="tier-freelancer">Freelancer</div>
+                            <div class="tier-price">€55/month</div>
+                        </div>
+                        <div class="tier">
+                            <div class="tier-name" data-translate="tier-business">Business</div>
+                            <div class="tier-price">€110/month</div>
+                        </div>
+                        <div class="tier">
+                            <div class="tier-name" data-translate="tier-enterprise">Enterprise</div>
+                            <div class="tier-price">€195/month</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="subscription-card">
+                    <div class="service-header">
+                        <div class="service-icon">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <h3 class="service-title" data-translate="analytics-title">AI Business Analytics</h3>
+                    </div>
+                    <p class="service-description" data-translate="analytics-desc">Advanced data analysis</p>
+                    <ul class="features-list">
+                        <li data-translate="feature-predictive-analytics">Predictive analytics</li>
+                        <li data-translate="feature-custom-dashboards">Custom dashboards</li>
+                        <li data-translate="feature-automated-reports">Automated reports</li>
+                    </ul>
+                    <div class="subscription-tiers">
+                        <div class="tier">
+                            <div class="tier-name" data-translate="tier-startup">Startup</div>
+                            <div class="tier-price">€125/month</div>
+                        </div>
+                        <div class="tier">
+                            <div class="tier-name" data-translate="tier-business">Business</div>
+                            <div class="tier-price">€245/month</div>
+                        </div>
+                        <div class="tier">
+                            <div class="tier-name" data-translate="tier-enterprise">Enterprise</div>
+                            <div class="tier-price">€450/month</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Personal Consulting -->
+        <section class="category-section animate-on-scroll">
+            <div class="category-header">
+                <div class="category-icon">
+                    <i class="fas fa-user"></i>
+                </div>
+                <div class="category-info">
+                    <h2 data-translate="personal-consulting-title">Personal Consulting</h2>
+                    <p class="category-description" data-translate="personal-consulting-desc">One-on-one AI consultation sessions</p>
+                </div>
+            </div>
+            
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-header">
+                        <div class="service-icon">
+                            <i class="fas fa-user-clock"></i>
+                        </div>
+                        <h3 class="service-title" data-translate="one-on-one-title">One-on-One AI Consultation</h3>
+                    </div>
+                    <p class="service-description" data-translate="one-on-one-desc">Private AI consulting sessions tailored to your specific needs</p>
+                    <div class="price-section">
+                        <div class="price">€100</div>
+                        <div class="price-unit" data-translate="price-hour">/ hour</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Contact Section -->
+    <section class="contact-section">
+        <h2 class="contact-title" data-translate="contact-title">Ready to Transform Your Business?</h2>
+        <p class="contact-subtitle" data-translate="contact-subtitle">Get started with AI solutions tailored to your company size and needs</p>
+        
+        <div class="contact-buttons">
+            <a href="mailto:nbegklis@btech-ai.com" class="btn btn-primary">
+                <i class="fas fa-envelope"></i>
+                <span data-translate="btn-contact">Contact Us</span>
+            </a>
+            <a href="https://www.btech-ai.com" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">
+                <i class="fas fa-globe"></i>
+                <span data-translate="btn-website">Website</span>
+            </a>
+            <a href="#" class="btn btn-secondary" onclick="downloadBrochure()">
+                <i class="fas fa-download"></i>
+                <span data-translate="btn-download">Download PDF</span>
+            </a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="logo-section" style="font-size: 2rem; margin-bottom: 1rem;">
+                <img src="logo.png" alt="BTech Logo" style="height: 50px;">
+                <span class="logo-text">BTech<span style="color: #818cf8; font-size: 0.5em; vertical-align: super;">.ai</span></span>
+            </div>
+            <p style="color: #94a3b8; margin-bottom: 2rem;" data-translate="footer-tagline">Empowering businesses with practical AI solutions</p>
+
+            <p style="color: #64748b; margin-top: 2rem; font-size: 0.9rem;" data-translate="footer-copyright">
+                © 2026 BTech AI. All rights reserved.
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        // Translations
+        const translations = {
+            en: {
+                // Header
+                'header-title': 'Complete AI Services & Solutions Portfolio',
+                'header-subtitle': 'Professional AI consulting, website development, and subscription services for every business size',
+
+                // Categories
+                'website-services-title': 'Website Development Services',
+                'website-services-desc': 'Professional website development for all business needs',
+
+                'ai-subscriptions-title': 'AI Services & Monthly Subscriptions',
+                'ai-subscriptions-desc': 'Ongoing AI solutions with monthly subscription plans',
+
+                'personal-consulting-title': 'Personal Consulting',
+                'personal-consulting-desc': 'One-on-one AI consultation sessions',
+
+                // Website Services
+                'basic-website-desc': 'Professional website with One Page flow and basic SEO',
+                'advanced-website-desc': 'Everything in Basic, plus more pages, blog and advanced SEO',
+                'premium-website-desc': 'Everything in Advanced, plus booking, content strategy and Google visibility',
+                'enterprise-website-desc': 'Everything in Premium, plus custom design, branding and unlimited possibilities',
+                'feature-professional-website': 'Professional website',
+                'feature-one-page': 'One Page flow',
+                'feature-basic-seo': 'Basic SEO',
+                'feature-5-pages': '5 total pages',
+                'feature-blog': 'Blog / Articles',
+                'feature-advanced-seo': 'Advanced SEO',
+                'feature-10-pages': '10 total pages',
+                'feature-booking': 'Online booking',
+                'feature-content-strategy': 'Content strategy',
+                'feature-google-maps': 'Google Maps optimization',
+                'feature-google-business': 'Google Business',
+                'feature-everything-premium': 'Everything in Premium',
+                'feature-10plus-pages': '10+ pages',
+                'feature-custom-requirements': 'Custom requirements & graphics',
+                'feature-full-branding': 'Complete branding',
+                'feature-dedicated-support': 'Dedicated support',
+                'enterprise-price': 'Custom Pricing',
+                'enterprise-cta': 'Request an Offer',
+                'price-maintenance-basic': '+ €140 / year maintenance',
+                'price-maintenance-advanced': '+ €160 / year maintenance',
+                'price-maintenance-premium': '+ €200 / year maintenance',
+
+                // AI Subscription Services
+                'chatbot-title': 'AI Chatbot (RAG)',
+                'chatbot-desc': 'Smart chatbot with knowledge of your documents',
+                'secretary-title': 'AI Secretary',
+                'secretary-desc': 'Virtual assistant with AI',
+                'meeting-assistant-title': 'AI Meeting Assistant',
+                'meeting-assistant-desc': 'Meeting assistant',
+                'social-media-title': 'AI Social Media Manager',
+                'social-media-desc': 'Automated social media management',
+                'content-generator-title': 'AI Content Generator',
+                'content-generator-desc': 'AI content creation',
+                'analytics-title': 'AI Business Analytics',
+                'analytics-desc': 'Advanced data analysis',
+
+                // Personal Consulting
+                'one-on-one-title': 'One-on-One AI Consultation',
+                'one-on-one-desc': 'Private AI consulting sessions tailored to your specific needs',
+
+                // Features
+                'feature-responsive': 'Responsive design',
+                'feature-email-management': 'Email management',
+                'feature-appointment-scheduling': 'Appointment scheduling',
+                'feature-basic-answers': 'Basic question responses',
+                'feature-auto-transcription': 'Automatic transcriptions',
+                'feature-meeting-summaries': 'Meeting summaries',
+                'feature-action-tracking': 'Action items tracking',
+                'feature-content-creation': 'Content creation',
+                'feature-scheduled-posts': 'Scheduled posts',
+                'feature-analytics-insights': 'Analytics & insights',
+                'feature-blog-posts': 'Blog posts & articles',
+                'feature-product-descriptions': 'Product descriptions',
+                'feature-email-campaigns': 'Email campaigns',
+                'feature-predictive-analytics': 'Predictive analytics',
+                'feature-custom-dashboards': 'Custom dashboards',
+                'feature-automated-reports': 'Automated reports',
+
+                // Pricing
+                'setup-price': 'Setup & Configuration: €1,500',
+                'price-hour': '/ hour',
+
+                // Tiers
+                'tier-small': 'Small Business',
+                'tier-medium': 'Medium Business',
+                'tier-large': 'Large Companies',
+                'tier-basic': 'Basic',
+                'tier-pro': 'Pro',
+                'tier-enterprise': 'Enterprise',
+                'tier-starter': 'Starter',
+                'tier-business': 'Business',
+                'tier-agency': 'Agency',
+                'tier-freelancer': 'Freelancer',
+                'tier-startup': 'Startup',
+
+                // Contact
+                'contact-title': 'Ready to Transform Your Business?',
+                'contact-subtitle': 'Get started with AI solutions tailored to your company size and needs',
+                'btn-contact': 'Contact Us',
+                'btn-website': 'Website',
+                'btn-download': 'Download PDF',
+
+                // Footer
+                'footer-tagline': 'Empowering businesses with practical AI solutions',
+                'footer-copyright': '© 2026 BTech AI. All rights reserved.'
+            },
+            el: {
+                // Header
+                'header-title': 'Πλήρης Κατάλογος Υπηρεσιών & Λύσεων AI',
+                'header-subtitle': 'Επαγγελματικές υπηρεσίες συμβουλευτικής AI, ανάπτυξης ιστοσελίδων και συνδρομητικές υπηρεσίες για κάθε μέγεθος επιχείρησης',
+
+                // Categories
+                'website-services-title': 'Υπηρεσίες Δημιουργίας Ιστοσελίδων',
+                'website-services-desc': 'Επαγγελματική ανάπτυξη ιστοσελίδων για όλες τις επιχειρηματικές ανάγκες',
+
+                'ai-subscriptions-title': 'AI Υπηρεσίες & Μηνιαίες Συνδρομές',
+                'ai-subscriptions-desc': 'Συνεχείς λύσεις AI με μηνιαία πακέτα συνδρομής',
+
+                'personal-consulting-title': 'Προσωπική Συμβουλευτική',
+                'personal-consulting-desc': 'Ιδιωτικές συνεδρίες συμβουλευτικής AI',
+
+                // Website Services
+                'basic-website-desc': 'Επαγγελματική ιστοσελίδα με One Page flow και basic SEO',
+                'advanced-website-desc': 'Όλα τα Basic, συν περισσότερες σελίδες, blog και advanced SEO',
+                'premium-website-desc': 'Όλα τα Advanced, συν booking, στρατηγική περιεχομένου και Google visibility',
+                'enterprise-website-desc': 'Όλα τα Premium, συν custom design, branding και απεριόριστες δυνατότητες',
+                'feature-professional-website': 'Επαγγελματική ιστοσελίδα',
+                'feature-one-page': 'One Page flow',
+                'feature-basic-seo': 'Basic SEO',
+                'feature-5-pages': '5 σελίδες συνολικά',
+                'feature-blog': 'Blog / Άρθρα',
+                'feature-advanced-seo': 'Advanced SEO',
+                'feature-10-pages': '10 σελίδες συνολικά',
+                'feature-booking': 'Online booking',
+                'feature-content-strategy': 'Στρατηγική περιεχομένου',
+                'feature-google-maps': 'Google Maps optimization',
+                'feature-google-business': 'Google Business',
+                'feature-everything-premium': 'Όλα τα Premium',
+                'feature-10plus-pages': '10+ σελίδες',
+                'feature-custom-requirements': 'Ειδικές απαιτήσεις & graphics',
+                'feature-full-branding': 'Ολοκληρωμένο branding',
+                'feature-dedicated-support': 'Dedicated support',
+                'enterprise-price': 'Custom Pricing',
+                'enterprise-cta': 'Ζητήστε Προσφορά',
+                'price-maintenance-basic': '+ €140 / έτος συντήρηση',
+                'price-maintenance-advanced': '+ €160 / έτος συντήρηση',
+                'price-maintenance-premium': '+ €200 / έτος συντήρηση',
+
+                // AI Subscription Services
+                'chatbot-title': 'AI Chatbot (RAG)',
+                'chatbot-desc': 'Έξυπνο chatbot με γνώση των εγγράφων σας',
+                'secretary-title': 'AI Secretary',
+                'secretary-desc': 'Εικονική γραμματέας με AI',
+                'meeting-assistant-title': 'AI Meeting Assistant',
+                'meeting-assistant-desc': 'Βοηθός για συσκέψεις',
+                'social-media-title': 'AI Social Media Manager',
+                'social-media-desc': 'Αυτοματοποιημένη διαχείριση social media',
+                'content-generator-title': 'AI Content Generator',
+                'content-generator-desc': 'Δημιουργία περιεχομένου με AI',
+                'analytics-title': 'AI Business Analytics',
+                'analytics-desc': 'Προχωρημένη ανάλυση δεδομένων',
+
+                // Personal Consulting
+                'one-on-one-title': 'One-on-One AI Consultation',
+                'one-on-one-desc': 'Ιδιωτικές συνεδρίες συμβουλευτικής AI προσαρμοσμένες στις ανάγκες σας',
+
+                // Features (Greek)
+                'feature-responsive': 'Responsive design',
+                'feature-email-management': 'Email management',
+                'feature-appointment-scheduling': 'Προγραμματισμός ραντεβού',
+                'feature-basic-answers': 'Απαντήσεις σε βασικές ερωτήσεις',
+                'feature-auto-transcription': 'Αυτόματες μεταγραφές',
+                'feature-meeting-summaries': 'Περιλήψεις συναντήσεων',
+                'feature-action-tracking': 'Action items tracking',
+                'feature-content-creation': 'Δημιουργία περιεχομένου',
+                'feature-scheduled-posts': 'Προγραμματισμένες αναρτήσεις',
+                'feature-analytics-insights': 'Analytics & insights',
+                'feature-blog-posts': 'Blog posts & άρθρα',
+                'feature-product-descriptions': 'Product descriptions',
+                'feature-email-campaigns': 'Email campaigns',
+                'feature-predictive-analytics': 'Predictive analytics',
+                'feature-custom-dashboards': 'Custom dashboards',
+                'feature-automated-reports': 'Automated reports',
+
+                // Pricing (Greek)
+                'setup-price': 'Εγκατάσταση & ρύθμιση: €1.500',
+                'price-hour': '/ ώρα',
+
+                // Tiers (Greek)
+                'tier-small': 'Μικρές επιχειρήσεις',
+                'tier-medium': 'Μεσαίες επιχειρήσεις',
+                'tier-large': 'Μεγάλες εταιρείες',
+                'tier-basic': 'Basic',
+                'tier-pro': 'Pro',
+                'tier-enterprise': 'Enterprise',
+                'tier-starter': 'Starter',
+                'tier-business': 'Business',
+                'tier-agency': 'Agency',
+                'tier-freelancer': 'Freelancer',
+                'tier-startup': 'Startup',
+
+                // Contact (Greek)
+                'contact-title': 'Έτοιμοι να Μετασχηματίσετε την Επιχείρησή σας;',
+                'contact-subtitle': 'Ξεκινήστε με λύσεις AI προσαρμοσμένες στο μέγεθος και τις ανάγκες της εταιρείας σας',
+                'btn-contact': 'Επικοινωνήστε',
+                'btn-website': 'Ιστοσελίδα',
+                'btn-download': 'Κατεβάστε PDF',
+
+                // Footer (Greek)
+                'footer-tagline': 'Ενδυναμώνουμε επιχειρήσεις με πρακτικές λύσεις AI',
+                'footer-copyright': '© 2026 BTech AI. Όλα τα δικαιώματα διατηρούνται.'
+            }
+        };
+
+        let currentLang = 'en';
+
+        // Change language function
+        function changeLanguage(lang) {
+            if (currentLang === lang) return;
+            
+            currentLang = lang;
+            
+            // Update flag buttons
+            document.querySelectorAll('.flag-button').forEach(btn => {
+                btn.classList.toggle('active', btn.dataset.lang === lang);
+            });
+            
+            // Update all translatable elements
+            document.querySelectorAll('[data-translate]').forEach(element => {
+                const key = element.getAttribute('data-translate');
+                if (translations[lang][key]) {
+                    element.innerHTML = translations[lang][key];
+                }
+            });
+            
+            // Store language preference
+            localStorage.setItem('preferredLanguage', lang);
+        }
+
+        // Load preferred language on page load
+        window.addEventListener('DOMContentLoaded', () => {
+            const savedLang = localStorage.getItem('preferredLanguage') || 'en';
+            if (savedLang !== 'en') {
+                changeLanguage(savedLang);
+            }
+        });
+
+        // Particle Animation
+        const canvas = document.getElementById('particles-canvas');
+        const ctx = canvas.getContext('2d');
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+
+        const particles = [];
+        const particleCount = 50;
+
+        class Particle {
+            constructor() {
+                this.x = Math.random() * canvas.width;
+                this.y = Math.random() * canvas.height;
+                this.vx = (Math.random() - 0.5) * 0.5;
+                this.vy = (Math.random() - 0.5) * 0.5;
+                this.radius = Math.random() * 2 + 1;
+                this.color = `rgba(${99 + Math.random() * 50}, ${102 + Math.random() * 50}, 241, ${0.3 + Math.random() * 0.4})`;
+            }
+
+            update() {
+                this.x += this.vx;
+                this.y += this.vy;
+
+                if (this.x < 0 || this.x > canvas.width) this.vx = -this.vx;
+                if (this.y < 0 || this.y > canvas.height) this.vy = -this.vy;
+            }
+
+            draw() {
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+                ctx.fillStyle = this.color;
+                ctx.fill();
+            }
+        }
+
+        for (let i = 0; i < particleCount; i++) {
+            particles.push(new Particle());
+        }
+
+        function animate() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            
+            particles.forEach(particle => {
+                particle.update();
+                particle.draw();
+            });
+            
+            requestAnimationFrame(animate);
+        }
+
+        animate();
+
+        // Resize handler
+        window.addEventListener('resize', () => {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        });
+
+        // Scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.animate-on-scroll').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Download brochure function
+        function downloadBrochure() {
+            window.print();
+        }
+
+        // Disable right-click context menu to protect images
+        document.addEventListener('contextmenu', (e) => {
+            e.preventDefault();
+        });
+
+        // Parallax effect for floating elements
+        document.addEventListener('mousemove', (e) => {
+            const floatingElements = document.querySelectorAll('.floating-element');
+            const x = e.clientX / window.innerWidth;
+            const y = e.clientY / window.innerHeight;
+
+            floatingElements.forEach((el, index) => {
+                const speed = (index + 1) * 0.3;
+                el.style.transform = `translate(${x * speed * 15}px, ${y * speed * 15}px)`;
+            });
+        });
+    </script>
+</body>
+</html>

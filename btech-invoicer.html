@@ -1,0 +1,2790 @@
+<!DOCTYPE html>
+<html lang="el">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>BTech Invoicer — Πρόγραμμα Τιμολόγησης & ERP με myDATA | BTech AI</title>
+    <meta name="description" content="Επαγγελματικά τιμολόγια, αυτόματη διαβίβαση στην ΑΑΔΕ myDATA. Από browser ή κινητό. Χωρίς εγκατάσταση, χωρίς λογιστικές γνώσεις. Δωρεάν δοκιμή 14 ημερών.">
+    <meta name="keywords" content="πρόγραμμα τιμολόγησης, myDATA ERP, λογισμικό τιμολόγησης Ελλάδα, ΑΑΔΕ, ηλεκτρονική τιμολόγηση, cloud ERP, BTech Invoicer">
+
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.btech-ai.com/btech-invoicer.html">
+    <meta property="og:title" content="BTech Invoicer — Πρόγραμμα Τιμολόγησης & ERP με myDATA">
+    <meta property="og:description" content="Επαγγελματικά τιμολόγια, αυτόματη διαβίβαση στην ΑΑΔΕ. Από browser ή κινητό. Χωρίς εγκατάσταση.">
+    <meta property="og:image" content="https://www.btech-ai.com/invoicer-screenshots/Dashboard.png">
+
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:title" content="BTech Invoicer — Πρόγραμμα Τιμολόγησης & ERP">
+    <meta property="twitter:description" content="Επαγγελματικά τιμολόγια, αυτόματη διαβίβαση στην ΑΑΔΕ myDATA.">
+
+    <link rel="canonical" href="https://www.btech-ai.com/btech-invoicer.html">
+    <link rel="alternate" hreflang="el" href="https://www.btech-ai.com/btech-invoicer.html">
+    <link rel="icon" type="image/png" href="favicon.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "BTech Invoicer",
+      "applicationCategory": "BusinessApplication",
+      "applicationSubCategory": "Invoicing & Accounting",
+      "operatingSystem": "Web, iOS, Android",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "EUR",
+        "description": "Δωρεάν δοκιμή 14 ημερών"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "BTech",
+        "legalName": "ΜΠΕΓΚΛΗΣ ΝΙΚΟΛΑΟΣ",
+        "taxID": "171075890",
+        "vatID": "EL171075890",
+        "identifier": "192788706000",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Θεσσαλονίκη",
+          "addressCountry": "GR"
+        },
+        "email": "nbegklis@btech-ai.com",
+        "telephone": "+30 698 881 7883"
+      },
+      "featureList": [
+        "Αυτόματη διαβίβαση στο myDATA",
+        "Mobile-first σχεδίαση",
+        "Email αποστολή με ένα κλικ",
+        "Auto-import εξόδων από myDATA",
+        "Πλήρης κάλυψη παραστατικών",
+        "Hosting στην ΕΕ"
+      ]
+    }
+    </script>
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Πόσα παραστατικά μπορώ να εκδώσω;",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Δεν υπάρχει όριο στον αριθμό παραστατικών. Όλα τα πλάνα περιλαμβάνουν απεριόριστα τιμολόγια."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Δουλεύει σε κινητό;",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Ναι, το BTech Invoicer είναι σχεδιασμένο mobile-first. Δουλεύει εξίσου καλά από browser σε κινητό, tablet και desktop."
+          }
+        }
+      ]
+    }
+    </script>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #6366f1;
+            --secondary: #818cf8;
+            --dark: #0f172a;
+            --darker: #0a0f1f;
+            --light: #f8fafc;
+            --accent: #fbbf24;
+            --gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            --gradient-bright: linear-gradient(135deg, #6366f1 0%, #818cf8 50%, #a855f7 100%);
+        }
+
+        /* Image protection */
+        img {
+            -webkit-user-drag: none;
+            -khtml-user-drag: none;
+            -moz-user-drag: none;
+            -o-user-drag: none;
+            user-drag: none;
+        }
+
+        ::-webkit-scrollbar { width: 12px; }
+        ::-webkit-scrollbar-track { background: #1a1a1a; }
+        ::-webkit-scrollbar-thumb { background: #6366f1; border-radius: 6px; }
+        ::-webkit-scrollbar-thumb:hover { background: #818cf8; }
+
+        * {
+            scrollbar-width: thin;
+            scrollbar-color: #6366f1 #1a1a1a;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Inter", Roboto, sans-serif;
+            background: var(--dark);
+            color: var(--light);
+            overflow-x: hidden;
+            line-height: 1.6;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            user-select: none;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Navigation (same as main site) */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 1rem 5%;
+            background: rgba(15, 23, 42, 0.95);
+            backdrop-filter: blur(20px);
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        nav.scrolled {
+            padding: 0.5rem 5%;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            text-decoration: none;
+        }
+
+        .logo img {
+            height: 40px;
+            width: auto;
+        }
+
+        .logo-text {
+            font-size: 1.75rem;
+            font-weight: 900;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .nav-right {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .nav-back {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--secondary);
+            text-decoration: none;
+            font-weight: 500;
+            padding: 0.5rem 1rem;
+            border: 1px solid rgba(99, 102, 241, 0.3);
+            border-radius: 50px;
+            transition: all 0.3s ease;
+        }
+
+        .nav-back:hover {
+            background: rgba(99, 102, 241, 0.1);
+            border-color: var(--secondary);
+        }
+
+        /* Language Switcher */
+        .language-switcher {
+            display: flex;
+            gap: 0.5rem;
+            align-items: center;
+        }
+
+        .flag-button {
+            width: 32px;
+            height: 22px;
+            cursor: pointer;
+            border-radius: 3px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            border: 1px solid transparent;
+            opacity: 0.7;
+            box-sizing: border-box;
+        }
+
+        .flag-button:hover {
+            transform: scale(1.1);
+            opacity: 1;
+        }
+
+        .flag-button.active {
+            border-color: var(--secondary);
+            opacity: 1;
+            box-shadow: 0 0 15px rgba(129, 140, 248, 0.5);
+        }
+
+        .flag-button img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        @media (max-width: 640px) {
+            .nav-back span {
+                display: none;
+            }
+            .nav-back {
+                padding: 0.5rem 0.75rem;
+            }
+        }
+
+        /* Hero */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            padding: 8rem 5% 4rem;
+            overflow: hidden;
+            background: radial-gradient(ellipse at top, rgba(99, 102, 241, 0.15) 0%, transparent 60%);
+        }
+
+        .hero-bg-blob {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(80px);
+            opacity: 0.5;
+            pointer-events: none;
+            animation: blobFloat 20s ease-in-out infinite;
+        }
+
+        .hero-bg-blob.blob-1 {
+            top: -100px;
+            left: -100px;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(99, 102, 241, 0.4), transparent);
+        }
+
+        .hero-bg-blob.blob-2 {
+            bottom: -100px;
+            right: -100px;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(168, 85, 247, 0.3), transparent);
+            animation-delay: 5s;
+        }
+
+        @keyframes blobFloat {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            33% { transform: translate(50px, -30px) scale(1.1); }
+            66% { transform: translate(-30px, 50px) scale(0.95); }
+        }
+
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            max-width: 1400px;
+            margin: 0 auto;
+            align-items: center;
+            position: relative;
+            z-index: 10;
+        }
+
+        .hero-content {
+            animation: fadeInUp 1s ease-out;
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .hero-tag {
+            display: inline-block;
+            padding: 0.5rem 1rem;
+            background: rgba(99, 102, 241, 0.15);
+            border: 1px solid rgba(99, 102, 241, 0.3);
+            border-radius: 50px;
+            color: var(--secondary);
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            letter-spacing: 0.05em;
+        }
+
+        .hero h1 {
+            font-size: clamp(2rem, 4.5vw, 4rem);
+            line-height: 1.1;
+            font-weight: 900;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(135deg, #ffffff 0%, #cbd5e1 50%, #818cf8 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero h1 .highlight {
+            background: var(--gradient-bright);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero-subtitle {
+            font-size: 1.2rem;
+            color: #cbd5e1;
+            margin-bottom: 2.5rem;
+            max-width: 540px;
+        }
+
+        .hero-ctas {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            margin-bottom: 2.5rem;
+        }
+
+        .btn {
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 1rem;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn-primary {
+            background: var(--gradient);
+            color: white;
+            box-shadow: 0 10px 30px rgba(99, 102, 241, 0.4);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(99, 102, 241, 0.6);
+        }
+
+        .btn-secondary {
+            border: 2px solid rgba(129, 140, 248, 0.5);
+            color: var(--secondary);
+            background: rgba(99, 102, 241, 0.05);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(99, 102, 241, 0.15);
+            border-color: var(--secondary);
+            transform: translateY(-3px);
+        }
+
+        .trust-strip {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            font-size: 0.85rem;
+            color: #94a3b8;
+        }
+
+        .trust-strip span {
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+
+        .trust-strip i {
+            color: var(--secondary);
+        }
+
+        /* Hero visual */
+        .hero-visual {
+            position: relative;
+            animation: fadeIn 1.2s ease-out 0.3s both;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .device-laptop {
+            background: #1a1a1a;
+            border-radius: 14px 14px 4px 4px;
+            padding: 12px 12px 18px;
+            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.6),
+                        0 0 0 1px rgba(255, 255, 255, 0.05),
+                        0 0 100px rgba(99, 102, 241, 0.2);
+            position: relative;
+            transition: transform 0.5s ease;
+        }
+
+        .device-laptop:hover {
+            transform: translateY(-10px) scale(1.02);
+        }
+
+        .device-laptop::before {
+            content: '';
+            position: absolute;
+            top: 4px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 6px;
+            height: 6px;
+            background: #333;
+            border-radius: 50%;
+        }
+
+        .device-laptop img {
+            width: 100%;
+            display: block;
+            border-radius: 6px;
+        }
+
+        .device-laptop-base {
+            background: #1a1a1a;
+            height: 14px;
+            border-radius: 0 0 14px 14px;
+            margin: 0 -20px;
+            position: relative;
+        }
+
+        .device-laptop-base::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 4px;
+            background: #0a0a0a;
+            border-radius: 0 0 8px 8px;
+        }
+
+        /* Sections */
+        section {
+            padding: 6rem 5%;
+            position: relative;
+        }
+
+        .section-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-tag {
+            display: block;
+            text-align: center;
+            color: var(--secondary);
+            font-size: 0.9rem;
+            font-weight: 700;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            margin-bottom: 1rem;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: clamp(2rem, 4vw, 3rem);
+            margin-bottom: 1rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #ffffff 0%, #818cf8 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: #94a3b8;
+            font-size: 1.15rem;
+            margin-bottom: 4rem;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Scroll reveal */
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1),
+                        transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .reveal-left {
+            opacity: 0;
+            transform: translateX(-60px);
+            transition: opacity 0.9s cubic-bezier(0.4, 0, 0.2, 1),
+                        transform 0.9s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .reveal-left.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .reveal-right {
+            opacity: 0;
+            transform: translateX(60px);
+            transition: opacity 0.9s cubic-bezier(0.4, 0, 0.2, 1),
+                        transform 0.9s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .reveal-right.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        /* Problem → Solution */
+        .pain-section {
+            background: linear-gradient(180deg, var(--dark) 0%, #0c1325 100%);
+        }
+
+        .pain-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .pain-card {
+            background: rgba(30, 41, 59, 0.4);
+            border: 1px solid rgba(99, 102, 241, 0.15);
+            border-radius: 20px;
+            padding: 2rem;
+            transition: all 0.4s ease;
+        }
+
+        .pain-card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(99, 102, 241, 0.4);
+            box-shadow: 0 20px 40px rgba(99, 102, 241, 0.15);
+        }
+
+        .pain-card .pain-icon {
+            font-size: 2rem;
+            color: #ef4444;
+            opacity: 0.7;
+            margin-bottom: 1rem;
+        }
+
+        .pain-card .solution-icon-small {
+            color: #22c55e;
+            margin: 1rem 0 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        .pain-card h3 {
+            font-size: 1.1rem;
+            color: #f1f5f9;
+            margin-bottom: 0.75rem;
+            font-weight: 600;
+        }
+
+        .pain-card p {
+            color: #94a3b8;
+            font-size: 0.95rem;
+            line-height: 1.7;
+        }
+
+        .pain-card .pain-quote {
+            font-style: italic;
+            color: #cbd5e1;
+            border-left: 3px solid #ef4444;
+            padding-left: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        /* Features Grid */
+        .features-section {
+            background: var(--dark);
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .feature-card {
+            background: linear-gradient(135deg, rgba(99, 102, 241, 0.05) 0%, rgba(129, 140, 248, 0.02) 100%);
+            border: 1px solid rgba(99, 102, 241, 0.2);
+            border-radius: 20px;
+            padding: 2rem;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: var(--gradient-bright);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.4s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-8px);
+            border-color: var(--secondary);
+            box-shadow: 0 20px 40px rgba(99, 102, 241, 0.2);
+        }
+
+        .feature-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .feature-icon {
+            width: 50px;
+            height: 50px;
+            background: var(--gradient);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.4rem;
+            color: white;
+            margin-bottom: 1.25rem;
+            box-shadow: 0 8px 20px rgba(99, 102, 241, 0.3);
+        }
+
+        .feature-card h3 {
+            font-size: 1.15rem;
+            margin-bottom: 0.75rem;
+            font-weight: 700;
+        }
+
+        .feature-card p {
+            color: #cbd5e1;
+            font-size: 0.92rem;
+            line-height: 1.65;
+        }
+
+        /* How it works */
+        .how-section {
+            background: linear-gradient(180deg, var(--dark) 0%, #1e293b 50%, var(--dark) 100%);
+        }
+
+        .steps-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 2rem;
+            position: relative;
+        }
+
+        .step-card {
+            text-align: center;
+            position: relative;
+            padding: 2rem 1rem;
+        }
+
+        .step-number {
+            width: 70px;
+            height: 70px;
+            background: var(--gradient);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.75rem;
+            font-weight: 800;
+            margin: 0 auto 1.5rem;
+            box-shadow: 0 10px 30px rgba(99, 102, 241, 0.4);
+            position: relative;
+            z-index: 2;
+        }
+
+        .step-card h3 {
+            font-size: 1.2rem;
+            margin-bottom: 0.75rem;
+            color: #f1f5f9;
+        }
+
+        .step-card p {
+            color: #94a3b8;
+            font-size: 0.95rem;
+        }
+
+        /* Showcase / Scroll Reveal Screenshots */
+        .showcase-section {
+            background: var(--dark);
+            padding: 6rem 5%;
+        }
+
+        .showcase-block {
+            display: grid;
+            grid-template-columns: 5fr 7fr;
+            gap: 4rem;
+            align-items: center;
+            margin-bottom: 8rem;
+            max-width: 1400px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .showcase-block:nth-child(even) {
+            grid-template-columns: 7fr 5fr;
+        }
+
+        .showcase-block:nth-child(even) .showcase-text {
+            order: 2;
+        }
+
+        .showcase-block:nth-child(even) .showcase-visual {
+            order: 1;
+        }
+
+        .showcase-block:last-child {
+            margin-bottom: 0;
+        }
+
+        .showcase-text h3 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #ffffff 0%, #818cf8 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .showcase-tag {
+            display: inline-block;
+            padding: 0.4rem 0.9rem;
+            background: rgba(99, 102, 241, 0.15);
+            border: 1px solid rgba(99, 102, 241, 0.3);
+            border-radius: 50px;
+            color: var(--secondary);
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            letter-spacing: 0.05em;
+        }
+
+        .showcase-text p {
+            color: #cbd5e1;
+            font-size: 1.05rem;
+            line-height: 1.75;
+            margin-bottom: 1.5rem;
+        }
+
+        .showcase-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .showcase-list li {
+            color: #cbd5e1;
+            padding: 0.5rem 0;
+            display: flex;
+            align-items: flex-start;
+            gap: 0.75rem;
+            font-size: 0.95rem;
+        }
+
+        .showcase-list li i {
+            color: #22c55e;
+            margin-top: 0.3rem;
+            flex-shrink: 0;
+        }
+
+        .showcase-visual {
+            position: relative;
+        }
+
+        .device-frame {
+            background: #1a1a1a;
+            border-radius: 14px;
+            padding: 12px;
+            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.5),
+                        0 0 0 1px rgba(255, 255, 255, 0.05),
+                        0 0 80px rgba(99, 102, 241, 0.15);
+            transition: transform 0.5s ease, box-shadow 0.5s ease;
+            cursor: zoom-in;
+            position: relative;
+        }
+
+        .device-frame::after {
+            content: '\f00e';
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            width: 36px;
+            height: 36px;
+            background: rgba(15, 23, 42, 0.85);
+            backdrop-filter: blur(10px);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--secondary);
+            font-size: 0.85rem;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            pointer-events: none;
+            z-index: 2;
+        }
+
+        .device-frame:hover::after {
+            opacity: 1;
+        }
+
+        .device-frame:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 35px 80px rgba(0, 0, 0, 0.6),
+                        0 0 0 1px rgba(129, 140, 248, 0.3),
+                        0 0 120px rgba(99, 102, 241, 0.3);
+        }
+
+        .device-frame img,
+        .device-frame video {
+            width: 100%;
+            display: block;
+            border-radius: 8px;
+        }
+
+        /* Lightbox Modal */
+        .lightbox {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(5, 10, 25, 0.95);
+            backdrop-filter: blur(20px);
+            z-index: 10000;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+            cursor: zoom-out;
+            animation: lightboxFadeIn 0.3s ease-out;
+        }
+
+        .lightbox.active {
+            display: flex;
+        }
+
+        @keyframes lightboxFadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .lightbox-content {
+            max-width: 95%;
+            max-height: 95vh;
+            position: relative;
+            animation: lightboxZoomIn 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        @keyframes lightboxZoomIn {
+            from { transform: scale(0.8); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
+        }
+
+        .lightbox-content img,
+        .lightbox-content video {
+            max-width: 100%;
+            max-height: 95vh;
+            display: block;
+            border-radius: 12px;
+            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.8),
+                        0 0 0 1px rgba(129, 140, 248, 0.2);
+        }
+
+        .lightbox-close {
+            position: absolute;
+            top: -50px;
+            right: 0;
+            width: 40px;
+            height: 40px;
+            background: rgba(99, 102, 241, 0.2);
+            border: 1px solid rgba(99, 102, 241, 0.4);
+            border-radius: 50%;
+            color: var(--light);
+            font-size: 1.2rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .lightbox-close:hover {
+            background: var(--gradient);
+            transform: rotate(90deg);
+        }
+
+        .lightbox-caption {
+            position: absolute;
+            bottom: -40px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: var(--secondary);
+            font-size: 0.95rem;
+            white-space: nowrap;
+        }
+
+        /* Phone frame for mobile screenshot */
+        .device-phone {
+            max-width: 300px;
+            margin: 0 auto;
+            background: #1a1a1a;
+            border-radius: 32px;
+            padding: 8px;
+            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.5),
+                        0 0 0 1px rgba(255, 255, 255, 0.05),
+                        0 0 80px rgba(99, 102, 241, 0.15);
+            position: relative;
+            transition: transform 0.5s ease;
+        }
+
+        .device-phone::before {
+            content: '';
+            position: absolute;
+            top: 16px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 18px;
+            background: #0a0a0a;
+            border-radius: 12px;
+            z-index: 2;
+        }
+
+        .device-phone:hover {
+            transform: translateY(-8px) rotate(-2deg);
+        }
+
+        .device-phone img {
+            width: 100%;
+            display: block;
+            border-radius: 26px;
+        }
+
+        /* Comparison Table */
+        .comparison-section {
+            background: var(--dark);
+        }
+
+        .comparison-wrapper {
+            max-width: 1100px;
+            margin: 0 auto;
+            overflow-x: auto;
+            border-radius: 20px;
+            border: 1px solid rgba(99, 102, 241, 0.2);
+        }
+
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            background: rgba(30, 41, 59, 0.4);
+            min-width: 700px;
+        }
+
+        .comparison-table th,
+        .comparison-table td {
+            padding: 1.25rem 1rem;
+            text-align: center;
+            border-bottom: 1px solid rgba(99, 102, 241, 0.1);
+        }
+
+        .comparison-table th:first-child,
+        .comparison-table td:first-child {
+            text-align: left;
+            font-weight: 600;
+            color: #cbd5e1;
+        }
+
+        .comparison-table thead {
+            background: rgba(99, 102, 241, 0.15);
+        }
+
+        .comparison-table thead th {
+            color: var(--light);
+            font-weight: 700;
+            font-size: 0.95rem;
+        }
+
+        .comparison-table thead th.us-col {
+            color: var(--secondary);
+            background: rgba(99, 102, 241, 0.25);
+        }
+
+        .comparison-table td.us-col {
+            background: rgba(99, 102, 241, 0.08);
+        }
+
+        .comparison-table .check {
+            color: #22c55e;
+            font-size: 1.2rem;
+        }
+
+        .comparison-table .x {
+            color: #ef4444;
+            font-size: 1.2rem;
+            opacity: 0.5;
+        }
+
+        .comparison-table .partial {
+            color: #fbbf24;
+            font-size: 1.2rem;
+        }
+
+        /* Pricing */
+        .pricing-section {
+            background: linear-gradient(180deg, var(--dark) 0%, #1e293b 100%);
+            text-align: center;
+        }
+
+        .pricing-card {
+            max-width: 700px;
+            margin: 0 auto;
+            background: linear-gradient(135deg, rgba(99, 102, 241, 0.1) 0%, rgba(168, 85, 247, 0.05) 100%);
+            border: 1px solid rgba(99, 102, 241, 0.3);
+            border-radius: 24px;
+            padding: 3rem 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .pricing-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(99, 102, 241, 0.1) 0%, transparent 50%);
+            pointer-events: none;
+        }
+
+        .pricing-card h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+
+        .pricing-card p {
+            color: #cbd5e1;
+            margin-bottom: 2rem;
+            font-size: 1.05rem;
+        }
+
+        .pricing-features {
+            list-style: none;
+            text-align: left;
+            max-width: 400px;
+            margin: 0 auto 2.5rem;
+        }
+
+        .pricing-features li {
+            padding: 0.6rem 0;
+            color: #cbd5e1;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .pricing-features i {
+            color: #22c55e;
+        }
+
+        /* FAQ */
+        .faq-section {
+            background: var(--dark);
+        }
+
+        .faq-list {
+            max-width: 850px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            background: rgba(30, 41, 59, 0.4);
+            border: 1px solid rgba(99, 102, 241, 0.15);
+            border-radius: 16px;
+            margin-bottom: 1rem;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .faq-item:hover {
+            border-color: rgba(99, 102, 241, 0.3);
+        }
+
+        .faq-item summary {
+            padding: 1.25rem 1.5rem;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 1.05rem;
+            color: #f1f5f9;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            list-style: none;
+        }
+
+        .faq-item summary::-webkit-details-marker {
+            display: none;
+        }
+
+        .faq-item summary::after {
+            content: '+';
+            font-size: 1.5rem;
+            color: var(--secondary);
+            font-weight: 300;
+            transition: transform 0.3s ease;
+        }
+
+        .faq-item[open] summary::after {
+            transform: rotate(45deg);
+        }
+
+        .faq-answer {
+            padding: 0 1.5rem 1.5rem;
+            color: #cbd5e1;
+            line-height: 1.75;
+        }
+
+        /* Final CTA */
+        .final-cta {
+            background: linear-gradient(135deg, rgba(99, 102, 241, 0.15) 0%, rgba(168, 85, 247, 0.1) 100%);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            padding: 6rem 5%;
+        }
+
+        .final-cta::before,
+        .final-cta::after {
+            content: '';
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(80px);
+            pointer-events: none;
+        }
+
+        .final-cta::before {
+            top: -100px;
+            left: 10%;
+            width: 300px;
+            height: 300px;
+            background: rgba(99, 102, 241, 0.3);
+        }
+
+        .final-cta::after {
+            bottom: -100px;
+            right: 10%;
+            width: 300px;
+            height: 300px;
+            background: rgba(168, 85, 247, 0.3);
+        }
+
+        .final-cta-content {
+            position: relative;
+            z-index: 2;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .final-cta h2 {
+            font-size: clamp(2rem, 4vw, 3rem);
+            margin-bottom: 1rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #ffffff 0%, #818cf8 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .final-cta p {
+            color: #cbd5e1;
+            font-size: 1.15rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 2rem;
+            margin-top: 2.5rem;
+            color: #94a3b8;
+        }
+
+        .contact-info a {
+            color: var(--secondary);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: color 0.3s ease;
+        }
+
+        .contact-info a:hover {
+            color: var(--light);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--darker);
+            padding: 3rem 5% 2rem;
+            text-align: center;
+            border-top: 1px solid rgba(99, 102, 241, 0.1);
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer-logo {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+            text-decoration: none;
+        }
+
+        .footer-logo img {
+            height: 40px;
+        }
+
+        .footer-logo .logo-text {
+            font-size: 1.5rem;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            margin: 1.5rem 0;
+            font-size: 0.9rem;
+        }
+
+        .footer-links a {
+            color: #94a3b8;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--secondary);
+        }
+
+        .footer-bottom {
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(99, 102, 241, 0.1);
+            color: #64748b;
+            font-size: 0.85rem;
+        }
+
+        .footer-legal-buttons {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+            margin-top: 1rem;
+        }
+
+        .footer-legal-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 1rem;
+            background: transparent;
+            border: 1px solid rgba(99, 102, 241, 0.25);
+            border-radius: 50px;
+            color: #94a3b8;
+            font-size: 0.8rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: inherit;
+        }
+
+        .footer-legal-btn:hover {
+            border-color: var(--secondary);
+            color: var(--secondary);
+            background: rgba(99, 102, 241, 0.08);
+        }
+
+        .footer-legal-btn i {
+            font-size: 0.85rem;
+        }
+
+        /* Legal Modal */
+        .legal-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(5, 10, 25, 0.92);
+            backdrop-filter: blur(15px);
+            z-index: 10001;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+            animation: lightboxFadeIn 0.3s ease-out;
+        }
+
+        .legal-modal.active {
+            display: flex;
+        }
+
+        .legal-modal-content {
+            background: linear-gradient(135deg, rgba(30, 41, 59, 0.98) 0%, rgba(15, 23, 42, 0.98) 100%);
+            border: 1px solid rgba(99, 102, 241, 0.3);
+            border-radius: 20px;
+            max-width: 700px;
+            width: 100%;
+            max-height: 85vh;
+            overflow-y: auto;
+            padding: 2.5rem;
+            position: relative;
+            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.6),
+                        0 0 100px rgba(99, 102, 241, 0.15);
+            animation: lightboxZoomIn 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .legal-modal-close {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            width: 36px;
+            height: 36px;
+            background: rgba(99, 102, 241, 0.15);
+            border: 1px solid rgba(99, 102, 241, 0.3);
+            border-radius: 50%;
+            color: var(--light);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .legal-modal-close:hover {
+            background: var(--gradient);
+            transform: rotate(90deg);
+        }
+
+        .legal-modal-content h2 {
+            font-size: 1.75rem;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(135deg, #ffffff 0%, #818cf8 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            padding-right: 2.5rem;
+        }
+
+        .legal-modal-content h3 {
+            font-size: 1.1rem;
+            color: var(--secondary);
+            margin: 1.5rem 0 0.75rem;
+            font-weight: 600;
+        }
+
+        .legal-modal-content p,
+        .legal-modal-content li {
+            color: #cbd5e1;
+            line-height: 1.75;
+            margin-bottom: 0.75rem;
+            font-size: 0.95rem;
+        }
+
+        .legal-modal-content ul {
+            padding-left: 1.5rem;
+        }
+
+        .legal-modal-content strong {
+            color: var(--light);
+        }
+
+        .legal-modal-content .legal-divider {
+            height: 1px;
+            background: rgba(99, 102, 241, 0.2);
+            margin: 1.5rem 0;
+        }
+
+        .legal-info-row {
+            display: flex;
+            gap: 0.75rem;
+            padding: 0.6rem 0;
+            border-bottom: 1px solid rgba(99, 102, 241, 0.1);
+            font-size: 0.95rem;
+        }
+
+        .legal-info-row:last-child {
+            border-bottom: none;
+        }
+
+        .legal-info-label {
+            color: var(--secondary);
+            font-weight: 600;
+            min-width: 140px;
+        }
+
+        .legal-info-value {
+            color: #cbd5e1;
+            flex: 1;
+        }
+
+        .footer-bottom-brand {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+
+        .footer-bottom-brand img {
+            height: 1.5rem;
+            transition: filter 0.3s ease;
+        }
+
+        .footer-bottom-brand img:hover {
+            filter: drop-shadow(0 0 8px rgba(99, 102, 241, 0.8)) drop-shadow(0 0 15px rgba(129, 140, 248, 0.6));
+        }
+
+        /* Mobile */
+        @media (max-width: 1100px) {
+            .showcase-block,
+            .showcase-block:nth-child(even) {
+                grid-template-columns: 1fr;
+                gap: 2.5rem;
+                margin-bottom: 5rem;
+            }
+
+            .showcase-block:nth-child(even) .showcase-text,
+            .showcase-block:nth-child(even) .showcase-visual {
+                order: unset;
+            }
+        }
+
+        @media (max-width: 968px) {
+            .hero-grid {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+                text-align: center;
+            }
+
+            .hero-subtitle {
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+            .hero-ctas {
+                justify-content: center;
+            }
+
+            .trust-strip {
+                justify-content: center;
+            }
+        }
+
+        @media (max-width: 640px) {
+            section {
+                padding: 4rem 5%;
+            }
+
+            .hero {
+                padding: 7rem 5% 3rem;
+            }
+
+            .features-grid,
+            .pain-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .btn {
+                width: 100%;
+                justify-content: center;
+            }
+
+            .device-phone {
+                max-width: 240px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav id="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo">
+                <img src="logo.png" alt="BTech Logo">
+                <span class="logo-text">BTech<span style="color: #818cf8; font-size: 0.55em; vertical-align: super;">.ai</span></span>
+            </a>
+            <div class="nav-right">
+                <a href="index.html" class="nav-back">
+                    <i class="fas fa-arrow-left"></i>
+                    <span data-translate="nav-back">Πίσω στο BTech.ai</span>
+                </a>
+                <div class="language-switcher">
+                    <div class="flag-button" onclick="changeLanguage('en')" data-lang="en">
+                        <img src="https://flagcdn.com/w40/gb.png" alt="English">
+                    </div>
+                    <div class="flag-button active" onclick="changeLanguage('el')" data-lang="el">
+                        <img src="https://flagcdn.com/w40/gr.png" alt="Greek">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <section class="hero">
+        <div class="hero-bg-blob blob-1"></div>
+        <div class="hero-bg-blob blob-2"></div>
+
+        <div class="hero-grid">
+            <div class="hero-content">
+                <span class="hero-tag" data-translate="hero-tag">🚀 BTech Invoicer · Cloud ERP για την Ελλάδα</span>
+                <h1 data-translate-html="hero-title">
+                    Επαγγελματικά Τιμολόγια.<br>
+                    <span class="highlight">Νόμιμη Διαβίβαση.</span><br>
+                    Από Παντού.
+                </h1>
+                <p class="hero-subtitle" data-translate="hero-subtitle">
+                    Σύγχρονο cloud πρόγραμμα τιμολόγησης με αυτόματη διαβίβαση στην ΑΑΔΕ myDATA.
+                    Από browser ή κινητό. Χωρίς εγκατάσταση, χωρίς λογιστικές γνώσεις.
+                </p>
+
+                <div class="hero-ctas">
+                    <a href="#cta" class="btn btn-primary">
+                        <span data-translate="hero-cta-1">Ξεκινήστε δωρεάν για 14 ημέρες</span>
+                        <i class="fas fa-arrow-right"></i>
+                    </a>
+                    <a href="#how" class="btn btn-secondary">
+                        <i class="fas fa-play"></i>
+                        <span data-translate="hero-cta-2">Δείτε πώς λειτουργεί</span>
+                    </a>
+                </div>
+
+                <div class="trust-strip">
+                    <span><i class="fas fa-shield-alt"></i> <span data-translate="trust-1">Συμμόρφωση Ν.4308/2014</span></span>
+                    <span><i class="fas fa-check-circle"></i> <span data-translate="trust-2">ΑΑΔΕ myDATA</span></span>
+                    <span><i class="fas fa-lock"></i> <span data-translate="trust-3">GDPR</span></span>
+                    <span><i class="fas fa-server"></i> <span data-translate="trust-4">Ελληνικά servers ΕΕ</span></span>
+                </div>
+            </div>
+
+            <div class="hero-visual">
+                <div class="device-laptop">
+                    <img src="invoicer-screenshots/Dashboard.png" alt="BTech Invoicer Dashboard">
+                </div>
+                <div class="device-laptop-base"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Problem → Solution -->
+    <section class="pain-section">
+        <div class="section-container">
+            <span class="section-tag reveal" data-translate="pain-tag">Το Πρόβλημα → Η Λύση</span>
+            <h2 class="section-title reveal" data-translate="pain-title">Τα παλιά ERP δεν είναι φτιαγμένα για εσάς</h2>
+            <p class="section-subtitle reveal" data-translate="pain-subtitle">
+                Είναι ακριβά, δύσχρηστα και απαιτούν να γίνετε λογιστές. Το BTech Invoicer αλλάζει αυτό.
+            </p>
+
+            <div class="pain-grid">
+                <div class="pain-card reveal">
+                    <i class="fas fa-quote-left pain-icon"></i>
+                    <p class="pain-quote" data-translate="pain-1-quote">"Τα παλιά ERP είναι ακριβά, αργά και δύσχρηστα στο κινητό."</p>
+                    <div class="solution-icon-small">
+                        <i class="fas fa-check-circle"></i>
+                        <span data-translate="our-solution">Η λύση μας:</span>
+                    </div>
+                    <h3 data-translate="pain-1-title">Mobile-first, browser-based</h3>
+                    <p data-translate="pain-1-desc">Δουλεύει εξίσου καλά σε κινητό, tablet και desktop. Χωρίς εγκατάσταση, χωρίς updates. Μπείτε από οποιοδήποτε browser, ακόμα και από iPad στο τραπέζι του πελάτη.</p>
+                </div>
+
+                <div class="pain-card reveal">
+                    <i class="fas fa-quote-left pain-icon"></i>
+                    <p class="pain-quote" data-translate="pain-2-quote">"Το myDATA setup είναι μπερδεμένο — φοβάμαι μήπως κάνω λάθος και έχω πρόστιμο."</p>
+                    <div class="solution-icon-small">
+                        <i class="fas fa-check-circle"></i>
+                        <span data-translate="our-solution">Η λύση μας:</span>
+                    </div>
+                    <h3 data-translate="pain-2-title">One-time setup. Αυτόματη διαβίβαση.</h3>
+                    <p data-translate="pain-2-desc">Συνδέετε τα myDATA credentials σας μία φορά. Από εκεί και πέρα, κάθε τιμολόγιο διαβιβάζεται αυτόματα στην ΑΑΔΕ. Δεν χρειάζεται να κάνετε τίποτα άλλο.</p>
+                </div>
+
+                <div class="pain-card reveal">
+                    <i class="fas fa-quote-left pain-icon"></i>
+                    <p class="pain-quote" data-translate="pain-3-quote">"Δεν είμαι λογιστής — θέλω απλά να κόβω τιμολόγια."</p>
+                    <div class="solution-icon-small">
+                        <i class="fas fa-check-circle"></i>
+                        <span data-translate="our-solution">Η λύση μας:</span>
+                    </div>
+                    <h3 data-translate="pain-3-title">Απλή ροή χωρίς λογιστική ορολογία</h3>
+                    <p data-translate="pain-3-desc">Συμπληρώνετε πελάτη, υπηρεσία και ποσό. Η εφαρμογή υπολογίζει ΦΠΑ, χαρακτηρισμούς, τύπο παραστατικού. Εσείς απλά πατάτε «Έκδοση».</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Grid -->
+    <section class="features-section">
+        <div class="section-container">
+            <span class="section-tag reveal" data-translate="features-tag">Γιατί BTech Invoicer</span>
+            <h2 class="section-title reveal" data-translate="features-title">8 λόγοι να το εμπιστευτείτε</h2>
+            <p class="section-subtitle reveal" data-translate="features-subtitle">
+                Όλα όσα χρειάζεστε για να τιμολογήσετε νόμιμα, γρήγορα και χωρίς πονοκέφαλο.
+            </p>
+
+            <div class="features-grid">
+                <div class="feature-card reveal">
+                    <div class="feature-icon"><i class="fas fa-gavel"></i></div>
+                    <h3 data-translate="feat-1-title">Νόμιμο ERP path</h3>
+                    <p data-translate="feat-1-desc">Απευθείας myDATA με τα δικά σας credentials, βάσει της Α.1138/2020 (Άρθρο 4α, ΦΕΚ Β' 2470/22.06.2020). Καμία πιστοποίηση δεν απαιτείται για τη χρήση του.</p>
+                </div>
+
+                <div class="feature-card reveal">
+                    <div class="feature-icon"><i class="fas fa-mobile-alt"></i></div>
+                    <h3 data-translate="feat-2-title">Mobile-first</h3>
+                    <p data-translate="feat-2-desc">Σχεδιασμένο για να δουλεύει το ίδιο καλά σε κινητό και desktop. Bootstrap 5, dark mode, ελληνικά παντού.</p>
+                </div>
+
+                <div class="feature-card reveal">
+                    <div class="feature-icon"><i class="fas fa-paper-plane"></i></div>
+                    <h3 data-translate="feat-3-title">Email με ένα κλικ</h3>
+                    <p data-translate="feat-3-desc">Στείλτε το PDF τιμολόγιο στον πελάτη απευθείας από την εφαρμογή, με την επωνυμία της επιχείρησής σας ως αποστολέα. Δεν μπαίνει σε spam.</p>
+                </div>
+
+                <div class="feature-card reveal">
+                    <div class="feature-icon"><i class="fas fa-download"></i></div>
+                    <h3 data-translate="feat-4-title">Auto-import εξόδων</h3>
+                    <p data-translate="feat-4-desc">Τα τιμολόγια προμηθευτών κατεβαίνουν αυτόματα από το myDATA. Η εφαρμογή θυμάται τον χαρακτηρισμό τους ανά ΑΦΜ και τον προ-συμπληρώνει την επόμενη φορά.</p>
+                </div>
+
+                <div class="feature-card reveal">
+                    <div class="feature-icon"><i class="fas fa-file-invoice"></i></div>
+                    <h3 data-translate="feat-5-title">Όλοι οι τύποι παραστατικών</h3>
+                    <p data-translate="feat-5-desc">Πλήρης κάλυψη όλων των τύπων myDATA: ΤΠΥ, ΑΛΠ, ΑΠΥ, πιστωτικά 5.1/5.2, ακυρώσεις, αποδείξεις και πολλά ακόμη.</p>
+                </div>
+
+                <div class="feature-card reveal">
+                    <div class="feature-icon"><i class="fas fa-shield-alt"></i></div>
+                    <h3 data-translate="feat-6-title">Ασφάλεια enterprise</h3>
+                    <p data-translate="feat-6-desc">Hosting σε servers ΕΕ (Hetzner Γερμανία), HTTPS, multi-tenant isolation, καθημερινά encrypted backups. Τα δεδομένα σας είναι δικά σας.</p>
+                </div>
+
+                <div class="feature-card reveal">
+                    <div class="feature-icon"><i class="fas fa-unlock"></i></div>
+                    <h3 data-translate="feat-7-title">Χωρίς δεσμεύσεις</h3>
+                    <p data-translate="feat-7-desc">Δωρεάν δοκιμή 14 ημερών. Μηνιαία ή ετήσια συνδρομή. Εξαγωγή όλων των δεδομένων σας με ένα κλικ, οποτεδήποτε.</p>
+                </div>
+
+                <div class="feature-card reveal">
+                    <div class="feature-icon"><i class="fas fa-headset"></i></div>
+                    <h3 data-translate="feat-8-title">Ελληνική υποστήριξη</h3>
+                    <p data-translate="feat-8-desc">Μιλάμε ελληνικά. Απαντάμε σε email και τηλέφωνο. Σας βοηθάμε με το migration από το παλιό σας πρόγραμμα.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How it works -->
+    <section class="how-section" id="how">
+        <div class="section-container">
+            <span class="section-tag reveal" data-translate="how-tag">Πώς λειτουργεί</span>
+            <h2 class="section-title reveal" data-translate="how-title">Σε 4 βήματα. Από την εγγραφή στο πρώτο τιμολόγιο.</h2>
+            <p class="section-subtitle reveal" data-translate="how-subtitle">
+                Χωρίς εγκαταστάσεις, χωρίς ραντεβού με τεχνικό. Ξεκινάτε αμέσως.
+            </p>
+
+            <div class="steps-grid">
+                <div class="step-card reveal">
+                    <div class="step-number">1</div>
+                    <h3 data-translate="step-1-title">Εγγραφή σε 2 λεπτά</h3>
+                    <p data-translate="step-1-desc">Email, password, στοιχεία επιχείρησης. Έτοιμοι.</p>
+                </div>
+
+                <div class="step-card reveal">
+                    <div class="step-number">2</div>
+                    <h3 data-translate="step-2-title">Σύνδεση με myDATA</h3>
+                    <p data-translate="step-2-desc">Μόνο μία φορά. Τα credentials σας μένουν δικά σας.</p>
+                </div>
+
+                <div class="step-card reveal">
+                    <div class="step-number">3</div>
+                    <h3 data-translate="step-3-title">Έκδοση παραστατικού</h3>
+                    <p data-translate="step-3-desc">Αυτόματη διαβίβαση στην ΑΑΔΕ. Χωρίς να κάνετε τίποτα.</p>
+                </div>
+
+                <div class="step-card reveal">
+                    <div class="step-number">4</div>
+                    <h3 data-translate="step-4-title">Email στον πελάτη</h3>
+                    <p data-translate="step-4-desc">Ένα κλικ. PDF παραδίδεται στο inbox του.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Showcase / Live Mockups Section with scroll reveals -->
+    <section class="showcase-section">
+        <div class="section-container">
+            <span class="section-tag reveal" data-translate="show-tag">Δείτε το σε δράση</span>
+            <h2 class="section-title reveal" data-translate="show-title">Ένα πραγματικό στιγμιότυπο της εφαρμογής</h2>
+            <p class="section-subtitle reveal" data-translate="show-subtitle">
+                Όλα τα screenshots είναι από την πραγματική εφαρμογή. Δεν υπάρχουν mockups.
+            </p>
+        </div>
+
+        <!-- Block 1: Dashboard -->
+        <div class="showcase-block">
+            <div class="showcase-text reveal-left">
+                <span class="showcase-tag" data-translate="b1-tag">Dashboard</span>
+                <h3 data-translate="b1-title">Όλη η επιχείρησή σας με μια ματιά</h3>
+                <p data-translate="b1-desc">
+                    Έσοδα, έξοδα, ΦΠΑ, εκκρεμότητες, recent activity. Όλα τα critical KPIs σε ένα screen,
+                    με πραγματικό χρόνο sync από το myDATA.
+                </p>
+                <ul class="showcase-list">
+                    <li><i class="fas fa-check"></i> <span data-translate="b1-li-1">Σύνοψη εσόδων / εξόδων μήνα</span></li>
+                    <li><i class="fas fa-check"></i> <span data-translate="b1-li-2">Quick-actions: Νέο τιμολόγιο, Νέο έξοδο</span></li>
+                    <li><i class="fas fa-check"></i> <span data-translate="b1-li-3">Live ειδοποιήσεις myDATA</span></li>
+                    <li><i class="fas fa-check"></i> <span data-translate="b1-li-4">Εκκρεμή για είσπραξη</span></li>
+                </ul>
+            </div>
+            <div class="showcase-visual reveal-right">
+                <div class="device-frame">
+                    <img src="invoicer-screenshots/Dashboard.png" alt="BTech Invoicer Dashboard - Light Mode">
+                </div>
+            </div>
+        </div>
+
+        <!-- Block 2: Dark Mode -->
+        <div class="showcase-block">
+            <div class="showcase-text reveal-right">
+                <span class="showcase-tag" data-translate="b2-tag">Dark Mode</span>
+                <h3 data-translate="b2-title">Αυτόματο dark mode για τα μάτια σας</h3>
+                <p data-translate="b2-desc">
+                    Δουλεύετε αργά το βράδυ; Το dark mode ενεργοποιείται με ένα κλικ.
+                    Όλα τα colors, charts και UI components έχουν σχεδιαστεί για να φαίνονται τέλεια
+                    και στις δύο εκδόσεις.
+                </p>
+                <ul class="showcase-list">
+                    <li><i class="fas fa-check"></i> <span data-translate="b2-li-1">Toggle με ένα κλικ</span></li>
+                    <li><i class="fas fa-check"></i> <span data-translate="b2-li-2">Θυμάται την προτίμησή σας</span></li>
+                    <li><i class="fas fa-check"></i> <span data-translate="b2-li-3">Optimized contrast για readability</span></li>
+                </ul>
+            </div>
+            <div class="showcase-visual reveal-left">
+                <div class="device-frame">
+                    <img src="invoicer-screenshots/DashboardDarkMode.png" alt="BTech Invoicer Dashboard - Dark Mode">
+                </div>
+            </div>
+        </div>
+
+        <!-- Block 3: Invoice main interface -->
+        <div class="showcase-block">
+            <div class="showcase-text reveal-left">
+                <span class="showcase-tag" data-translate="b3-tag">Διαχείριση Παραστατικών</span>
+                <h3 data-translate="b3-title">Λίστα τιμολογίων με όλα όσα χρειάζεστε</h3>
+                <p data-translate="b3-desc">
+                    Αναζήτηση, φίλτρα, status, ποσά, ημερομηνίες. Δείτε ποια είναι εξοφλημένα,
+                    ποια εκκρεμούν, ποια ακυρώθηκαν. Με ένα κλικ ανοίγετε, εκτυπώνετε, στέλνετε email.
+                </p>
+                <ul class="showcase-list">
+                    <li><i class="fas fa-check"></i> <span data-translate="b3-li-1">Αναζήτηση ανά πελάτη, ΑΦΜ, ποσό</span></li>
+                    <li><i class="fas fa-check"></i> <span data-translate="b3-li-2">Bulk actions για πολλά τιμολόγια ταυτόχρονα</span></li>
+                    <li><i class="fas fa-check"></i> <span data-translate="b3-li-3">Status myDATA σε κάθε γραμμή</span></li>
+                    <li><i class="fas fa-check"></i> <span data-translate="b3-li-4">Εκτύπωση & email με ένα κλικ</span></li>
+                </ul>
+            </div>
+            <div class="showcase-visual reveal-right">
+                <div class="device-frame">
+                    <img src="invoicer-screenshots/MainInvoiceInterface.png" alt="BTech Invoicer - Διαχείριση Παραστατικών">
+                </div>
+            </div>
+        </div>
+
+        <!-- Block 4: New Invoice -->
+        <div class="showcase-block">
+            <div class="showcase-text reveal-right">
+                <span class="showcase-tag" data-translate="b4-tag">Έκδοση Τιμολογίου</span>
+                <h3 data-translate="b4-title">Νέο τιμολόγιο σε λιγότερο από 30 δευτερόλεπτα</h3>
+                <p data-translate="b4-desc">
+                    Επιλέγετε πελάτη (autocomplete από ΑΦΜ), προσθέτετε γραμμές, η εφαρμογή υπολογίζει
+                    ΦΠΑ, χαρακτηρισμούς, τύπο παραστατικού αυτόματα. Πατάτε «Έκδοση» και διαβιβάζεται
+                    στην ΑΑΔΕ.
+                </p>
+                <ul class="showcase-list">
+                    <li><i class="fas fa-check"></i> <span data-translate="b4-li-1">Autocomplete πελατών από ΑΦΜ</span></li>
+                    <li><i class="fas fa-check"></i> <span data-translate="b4-li-2">Αυτόματος υπολογισμός ΦΠΑ</span></li>
+                    <li><i class="fas fa-check"></i> <span data-translate="b4-li-3">Smart suggestions υπηρεσιών/προϊόντων</span></li>
+                    <li><i class="fas fa-check"></i> <span data-translate="b4-li-4">Άμεση διαβίβαση & MARK number</span></li>
+                </ul>
+            </div>
+            <div class="showcase-visual reveal-left">
+                <div class="device-frame">
+                    <img src="invoicer-screenshots/NewInvoice.png" alt="BTech Invoicer - Νέο Τιμολόγιο">
+                </div>
+            </div>
+        </div>
+
+        <!-- Block 5: Invoice detail -->
+        <div class="showcase-block">
+            <div class="showcase-text reveal-left">
+                <span class="showcase-tag" data-translate="b5-tag">Προβολή Παραστατικού</span>
+                <h3 data-translate="b5-title">Επαγγελματική εμφάνιση. Δικός σας brand.</h3>
+                <p data-translate="b5-desc">
+                    Κάθε τιμολόγιο που εκδίδετε έχει την επωνυμία, το λογότυπο και τα στοιχεία
+                    της επιχείρησής σας. PDF έτοιμο για εκτύπωση ή email — με ένα κλικ.
+                </p>
+                <ul class="showcase-list">
+                    <li><i class="fas fa-check"></i> <span data-translate="b5-li-1">Custom branding (logo, χρώματα)</span></li>
+                    <li><i class="fas fa-check"></i> <span data-translate="b5-li-2">QR code για άμεση πληρωμή</span></li>
+                    <li><i class="fas fa-check"></i> <span data-translate="b5-li-3">Πλήρης MARK & UID από myDATA</span></li>
+                </ul>
+            </div>
+            <div class="showcase-visual reveal-right">
+                <div class="device-frame">
+                    <img src="invoicer-screenshots/Invoice.png" alt="BTech Invoicer - Προβολή Τιμολογίου">
+                </div>
+            </div>
+        </div>
+
+        <!-- Block 6: Expenses -->
+        <div class="showcase-block">
+            <div class="showcase-text reveal-right">
+                <span class="showcase-tag" data-translate="b6-tag">Διαχείριση Εξόδων</span>
+                <h3 data-translate="b6-title">Έξοδα που κατεβαίνουν μόνα τους</h3>
+                <p data-translate="b6-desc">
+                    Δεν χρειάζεται να καταχωρείτε χειροκίνητα τα τιμολόγια των προμηθευτών σας.
+                    Το BTech Invoicer τα κατεβάζει αυτόματα από το myDATA και τα προ-χαρακτηρίζει
+                    βάσει του ΑΦΜ του εκδότη.
+                </p>
+                <ul class="showcase-list">
+                    <li><i class="fas fa-check"></i> <span data-translate="b6-li-1">Auto-fetch από myDATA</span></li>
+                    <li><i class="fas fa-check"></i> <span data-translate="b6-li-2">Memory χαρακτηρισμού ανά προμηθευτή</span></li>
+                    <li><i class="fas fa-check"></i> <span data-translate="b6-li-3">Bulk χαρακτηρισμός</span></li>
+                </ul>
+            </div>
+            <div class="showcase-visual reveal-left">
+                <div class="device-frame">
+                    <img src="invoicer-screenshots/Expenses.png" alt="BTech Invoicer - Διαχείριση Εξόδων">
+                </div>
+            </div>
+        </div>
+
+        <!-- Block 7: Unpaid -->
+        <div class="showcase-block">
+            <div class="showcase-text reveal-left">
+                <span class="showcase-tag" data-translate="b7-tag">Cash Flow</span>
+                <h3 data-translate="b7-title">Ξέρετε πάντα ποιος σας χρωστάει</h3>
+                <p data-translate="b7-desc">
+                    Λίστα ανείσπρακτων τιμολογίων με ηλικία (aging), σύνολα, και υπενθυμίσεις
+                    με ένα κλικ. Ποτέ ξανά χαμένη πληρωμή.
+                </p>
+                <ul class="showcase-list">
+                    <li><i class="fas fa-check"></i> <span data-translate="b7-li-1">Aging analysis (0-30, 31-60, 60+ ημέρες)</span></li>
+                    <li><i class="fas fa-check"></i> <span data-translate="b7-li-2">Email reminders με ένα κλικ</span></li>
+                    <li><i class="fas fa-check"></i> <span data-translate="b7-li-3">Σύνολα ανά πελάτη</span></li>
+                </ul>
+            </div>
+            <div class="showcase-visual reveal-right">
+                <div class="device-frame">
+                    <img src="invoicer-screenshots/UnpaidExpenses.png" alt="BTech Invoicer - Ανείσπρακτα">
+                </div>
+            </div>
+        </div>
+
+        <!-- Block 8: Activity Log -->
+        <div class="showcase-block">
+            <div class="showcase-text reveal-right">
+                <span class="showcase-tag" data-translate="b8-tag">Διαφάνεια</span>
+                <h3 data-translate="b8-title">Πλήρες ιστορικό κάθε ενέργειας</h3>
+                <p data-translate="b8-desc">
+                    Ποιος εξέδωσε τι, πότε, και ποια ήταν η απάντηση της ΑΑΔΕ. Όλα καταγράφονται
+                    με timestamp για 100% transparency και compliance.
+                </p>
+                <ul class="showcase-list">
+                    <li><i class="fas fa-check"></i> <span data-translate="b8-li-1">Audit trail κάθε action</span></li>
+                    <li><i class="fas fa-check"></i> <span data-translate="b8-li-2">myDATA responses με timestamp</span></li>
+                    <li><i class="fas fa-check"></i> <span data-translate="b8-li-3">User attribution σε multi-user accounts</span></li>
+                </ul>
+            </div>
+            <div class="showcase-visual reveal-left">
+                <div class="device-frame">
+                    <img src="invoicer-screenshots/Avtivity-Log.png" alt="BTech Invoicer - Activity Log">
+                </div>
+            </div>
+        </div>
+
+        <!-- Block 9: Statistics page (video) -->
+        <div class="showcase-block">
+            <div class="showcase-text reveal-left">
+                <span class="showcase-tag" data-translate="b9-tag">Αναλυτικά Στατιστικά</span>
+                <h3 data-translate="b9-title">Δείτε την πλήρη σελίδα στατιστικών</h3>
+                <p data-translate="b9-desc">
+                    Charts ανά μήνα, σύγκριση ετών, top πελάτες, top υπηρεσίες, ΦΠΑ ανά κατηγορία.
+                    Η σελίδα στατιστικών σας δίνει αναλυτική εικόνα της επιχείρησης σε πραγματικό χρόνο.
+                </p>
+                <ul class="showcase-list">
+                    <li><i class="fas fa-check"></i> <span data-translate="b9-li-1">Μηνιαία & ετήσια trends</span></li>
+                    <li><i class="fas fa-check"></i> <span data-translate="b9-li-2">Top πελάτες / υπηρεσίες</span></li>
+                    <li><i class="fas fa-check"></i> <span data-translate="b9-li-3">Export σε Excel / PDF</span></li>
+                </ul>
+            </div>
+            <div class="showcase-visual reveal-right">
+                <div class="device-frame">
+                    <video src="invoicer-screenshots/Statistics.mkv" autoplay loop muted playsinline></video>
+                </div>
+                <p style="text-align: center; color: #64748b; font-size: 0.85rem; margin-top: 1rem;">
+                    <i class="fas fa-info-circle"></i> <span data-translate="b9-caption">Καταγραφή scroll της σελίδας στατιστικών</span>
+                </p>
+            </div>
+        </div>
+
+        <!-- Block 10: Mobile -->
+        <div class="showcase-block">
+            <div class="showcase-text reveal-right">
+                <span class="showcase-tag" data-translate="b10-tag">Mobile App Experience</span>
+                <h3 data-translate="b10-title">Όλη η εφαρμογή στην τσέπη σας</h3>
+                <p data-translate="b10-desc">
+                    Από το κινητό σας μπορείτε να εκδώσετε τιμολόγιο, να δείτε στατιστικά,
+                    να στείλετε email, να ελέγξετε εκκρεμότητες. Browser-based — δεν χρειάζεται
+                    install από App Store.
+                </p>
+                <ul class="showcase-list">
+                    <li><i class="fas fa-check"></i> <span data-translate="b10-li-1">Πλήρης λειτουργικότητα σε κινητό</span></li>
+                    <li><i class="fas fa-check"></i> <span data-translate="b10-li-2">Touch-optimized UI</span></li>
+                    <li><i class="fas fa-check"></i> <span data-translate="b10-li-3">Δεν χρειάζεται install — απλά browser</span></li>
+                    <li><i class="fas fa-check"></i> <span data-translate="b10-li-4">Add to Home Screen ως PWA</span></li>
+                </ul>
+            </div>
+            <div class="showcase-visual reveal-left">
+                <div class="device-phone">
+                    <img src="invoicer-screenshots/PhoneDashboard.png" alt="BTech Invoicer - Mobile Dashboard">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Comparison Table -->
+    <section class="comparison-section">
+        <div class="section-container">
+            <span class="section-tag reveal" data-translate="comp-tag">Σύγκριση</span>
+            <h2 class="section-title reveal" data-translate="comp-title">BTech Invoicer vs Παραδοσιακά ERP</h2>
+            <p class="section-subtitle reveal" data-translate="comp-subtitle">
+                Σύγκριση χαρακτηριστικών — δείτε γιατί τα ελληνικά freelancers επιλέγουν το BTech Invoicer.
+            </p>
+
+            <div class="comparison-wrapper reveal">
+                <table class="comparison-table">
+                    <thead>
+                        <tr>
+                            <th data-translate="comp-th-feat">Χαρακτηριστικό</th>
+                            <th class="us-col">BTech Invoicer</th>
+                            <th data-translate="comp-th-trad">Παραδοσιακά ERP</th>
+                            <th data-translate="comp-th-man">Χειρόγραφα / Excel</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td data-translate="comp-row-1">Cloud (browser, χωρίς install)</td>
+                            <td class="us-col"><i class="fas fa-check check"></i></td>
+                            <td><i class="fas fa-times x"></i></td>
+                            <td><i class="fas fa-times x"></i></td>
+                        </tr>
+                        <tr>
+                            <td data-translate="comp-row-2">Mobile-first σχεδίαση</td>
+                            <td class="us-col"><i class="fas fa-check check"></i></td>
+                            <td><i class="fas fa-minus partial"></i></td>
+                            <td><i class="fas fa-times x"></i></td>
+                        </tr>
+                        <tr>
+                            <td data-translate="comp-row-3">Αυτόματη διαβίβαση myDATA</td>
+                            <td class="us-col"><i class="fas fa-check check"></i></td>
+                            <td><i class="fas fa-check check"></i></td>
+                            <td><i class="fas fa-times x"></i></td>
+                        </tr>
+                        <tr>
+                            <td data-translate="comp-row-4">Auto-import εξόδων από myDATA</td>
+                            <td class="us-col"><i class="fas fa-check check"></i></td>
+                            <td><i class="fas fa-minus partial"></i></td>
+                            <td><i class="fas fa-times x"></i></td>
+                        </tr>
+                        <tr>
+                            <td data-translate="comp-row-5">Email στον πελάτη με 1 κλικ</td>
+                            <td class="us-col"><i class="fas fa-check check"></i></td>
+                            <td><i class="fas fa-minus partial"></i></td>
+                            <td><i class="fas fa-times x"></i></td>
+                        </tr>
+                        <tr>
+                            <td data-translate="comp-row-6">Dark mode</td>
+                            <td class="us-col"><i class="fas fa-check check"></i></td>
+                            <td><i class="fas fa-times x"></i></td>
+                            <td><i class="fas fa-times x"></i></td>
+                        </tr>
+                        <tr>
+                            <td data-translate="comp-row-7">Δωρεάν δοκιμή χωρίς πιστωτική</td>
+                            <td class="us-col"><i class="fas fa-check check"></i></td>
+                            <td><i class="fas fa-minus partial"></i></td>
+                            <td>—</td>
+                        </tr>
+                        <tr>
+                            <td data-translate="comp-row-8">Ελληνική υποστήριξη</td>
+                            <td class="us-col"><i class="fas fa-check check"></i></td>
+                            <td><i class="fas fa-check check"></i></td>
+                            <td>—</td>
+                        </tr>
+                        <tr>
+                            <td data-translate="comp-row-9">Εξαγωγή δεδομένων χωρίς δέσμευση</td>
+                            <td class="us-col"><i class="fas fa-check check"></i></td>
+                            <td><i class="fas fa-minus partial"></i></td>
+                            <td><i class="fas fa-check check"></i></td>
+                        </tr>
+                        <tr>
+                            <td data-translate="comp-row-10">Setup σε λιγότερο από 5 λεπτά</td>
+                            <td class="us-col"><i class="fas fa-check check"></i></td>
+                            <td><i class="fas fa-times x"></i></td>
+                            <td><i class="fas fa-check check"></i></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing teaser -->
+    <section class="pricing-section">
+        <div class="section-container">
+            <span class="section-tag reveal" data-translate="pricing-tag">Τιμολόγηση</span>
+            <h2 class="section-title reveal" data-translate="pricing-title">Καθαρή, προβλέψιμη, χωρίς εκπλήξεις</h2>
+            <p class="section-subtitle reveal" data-translate="pricing-subtitle">
+                Πιο φθηνό από τους παραδοσιακούς παρόχους. Δωρεάν δοκιμή πριν δεσμευτείτε.
+            </p>
+
+            <div class="pricing-card reveal">
+                <h3 data-translate="pricing-card-title">Δωρεάν δοκιμή 14 ημερών</h3>
+                <p data-translate="pricing-card-desc">Όλες οι λειτουργίες, χωρίς πιστωτική κάρτα, χωρίς όρια παραστατικών.</p>
+
+                <ul class="pricing-features">
+                    <li><i class="fas fa-check"></i> <span data-translate="pricing-li-1">Απεριόριστα τιμολόγια</span></li>
+                    <li><i class="fas fa-check"></i> <span data-translate="pricing-li-2">Όλοι οι τύποι παραστατικών myDATA</span></li>
+                    <li><i class="fas fa-check"></i> <span data-translate="pricing-li-3">Αυτόματη διαβίβαση ΑΑΔΕ</span></li>
+                    <li><i class="fas fa-check"></i> <span data-translate="pricing-li-4">Mobile + desktop access</span></li>
+                    <li><i class="fas fa-check"></i> <span data-translate="pricing-li-5">Email υποστήριξη</span></li>
+                </ul>
+
+                <a href="#cta" class="btn btn-primary" style="display: inline-flex;">
+                    <span data-translate="pricing-cta">Επικοινωνήστε για τιμολόγηση</span>
+                    <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="faq-section">
+        <div class="section-container">
+            <span class="section-tag reveal" data-translate="faq-tag">Συχνές Ερωτήσεις</span>
+            <h2 class="section-title reveal" data-translate="faq-title">FAQ</h2>
+            <p class="section-subtitle reveal" data-translate="faq-subtitle">
+                Τα πιο συχνά ερωτήματα, με ξεκάθαρες απαντήσεις.
+            </p>
+
+            <div class="faq-list">
+                <details class="faq-item reveal">
+                    <summary data-translate="faq-1-q">Πόσα παραστατικά μπορώ να εκδώσω;</summary>
+                    <div class="faq-answer" data-translate="faq-1-a">
+                        Δεν υπάρχει όριο. Όλα τα πλάνα περιλαμβάνουν απεριόριστα τιμολόγια, ακυρώσεις,
+                        πιστωτικά και κάθε άλλο τύπο παραστατικού.
+                    </div>
+                </details>
+
+                <details class="faq-item reveal">
+                    <summary data-translate="faq-2-q">Τι γίνεται αν λήξει η συνδρομή μου;</summary>
+                    <div class="faq-answer" data-translate="faq-2-a">
+                        Δεν χάνετε τα δεδομένα σας. Έχετε πρόσβαση σε read-only mode και μπορείτε να
+                        εξάγετε τα πάντα (παραστατικά, πελάτες, στατιστικά) σε PDF/Excel/CSV οποτεδήποτε.
+                    </div>
+                </details>
+
+                <details class="faq-item reveal">
+                    <summary data-translate="faq-3-q">Δουλεύει σε κινητό;</summary>
+                    <div class="faq-answer" data-translate="faq-3-a">
+                        Ναι, και είναι σχεδιασμένο πρώτα για κινητό. Δουλεύει από οποιοδήποτε browser
+                        (Chrome, Safari, Firefox). Μπορείτε να το προσθέσετε στην home screen ως PWA
+                        και να το χρησιμοποιείτε σαν native app.
+                    </div>
+                </details>
+
+                <details class="faq-item reveal">
+                    <summary data-translate="faq-4-q">Πώς γίνεται το migration από άλλο πρόγραμμα;</summary>
+                    <div class="faq-answer" data-translate="faq-4-a">
+                        Σας βοηθάμε εμείς. Στείλτε μας τα δεδομένα σας (export από το παλιό σας πρόγραμμα
+                        σε Excel/CSV) και τα εισάγουμε δωρεάν. Για μεγαλύτερες επιχειρήσεις παρέχουμε
+                        custom migration service.
+                    </div>
+                </details>
+
+                <details class="faq-item reveal">
+                    <summary data-translate="faq-5-q">Πώς ακριβώς φτάνει το email στον πελάτη μου;</summary>
+                    <div class="faq-answer" data-translate-html="faq-5-a">
+                        Τα emails αποστέλλονται μέσω της επαγγελματικής υπηρεσίας <strong>Resend</strong>
+                        για να εξασφαλίσουμε υψηλή deliverability (δεν μπαίνει σε spam). Στον πελάτη σας
+                        εμφανίζεται ως όνομα αποστολέα <strong>η επωνυμία της δικής σας επιχείρησης</strong>,
+                        ενώ η τεχνική διεύθυνση αποστολής είναι ένα no-reply του domain της BTech.
+                        Μπορείτε να ορίσετε <strong>reply-to τη δική σας διεύθυνση email</strong>, ώστε
+                        όταν ο πελάτης σας απαντάει, η απάντηση να έρχεται απευθείας σε εσάς.
+                    </div>
+                </details>
+
+                <details class="faq-item reveal">
+                    <summary data-translate="faq-6-q">Έχει υποστήριξη;</summary>
+                    <div class="faq-answer" data-translate="faq-6-a">
+                        Ναι. Email support σε όλα τα πλάνα. Telephone support σε premium πλάνα.
+                        Απαντάμε στα ελληνικά, σε εργάσιμες ώρες (Δευτ-Παρ 9:00-18:00).
+                    </div>
+                </details>
+
+                <details class="faq-item reveal">
+                    <summary data-translate="faq-7-q">Τι γίνεται αν πέσει ο server;</summary>
+                    <div class="faq-answer" data-translate="faq-7-a">
+                        Στοχεύουμε σε best-effort 99% uptime. Έχουμε daily encrypted backups και
+                        disaster recovery procedures. Τα backups κρατιούνται σε διαφορετική γεωγραφική
+                        περιοχή για ασφάλεια.
+                    </div>
+                </details>
+
+                <details class="faq-item reveal">
+                    <summary data-translate="faq-8-q">Είμαι λογιστής — είναι κατάλληλο για τους πελάτες μου;</summary>
+                    <div class="faq-answer" data-translate="faq-8-a">
+                        Απολύτως. Πολλοί λογιστές μας συστήνουν στους πελάτες τους ακριβώς επειδή:
+                        (α) δεν χρειάζεται support για βασικές λειτουργίες, (β) τα δεδομένα είναι
+                        πάντα συγχρονισμένα με myDATA, (γ) έχετε read-only πρόσβαση ως λογιστής
+                        για να βλέπετε όλα όσα χρειάζεστε.
+                    </div>
+                </details>
+
+                <details class="faq-item reveal">
+                    <summary data-translate="faq-9-q">Τι γίνεται με τα δεδομένα μου; GDPR;</summary>
+                    <div class="faq-answer" data-translate-html="faq-9-a">
+                        Είμαστε <strong>GDPR-compliant</strong>. Τα δεδομένα φιλοξενούνται σε servers
+                        στην ΕΕ (Hetzner Γερμανία) με HTTPS και encryption at rest. Εξαγωγή όλων των
+                        δεδομένων σας με ένα κλικ, οποτεδήποτε. Δείτε την <a href="#" style="color: var(--secondary);">πολιτική απορρήτου</a>.
+                    </div>
+                </details>
+            </div>
+        </div>
+    </section>
+
+    <!-- Final CTA -->
+    <section class="final-cta" id="cta">
+        <div class="final-cta-content">
+            <h2 data-translate="final-cta-title">Ξεκινήστε σήμερα.</h2>
+            <p data-translate="final-cta-desc">
+                14 ημέρες δωρεάν. Χωρίς πιστωτική κάρτα. Χωρίς δεσμεύσεις.
+                Αν δεν σας αρέσει, απλά δεν συνεχίζετε.
+            </p>
+
+            <a href="mailto:nbegklis@btech-ai.com?subject=BTech Invoicer - Δωρεάν δοκιμή" class="btn btn-primary" style="font-size: 1.1rem; padding: 1.2rem 2.5rem;">
+                <span data-translate="final-cta-btn">Ξεκινήστε δωρεάν για 14 ημέρες</span>
+                <i class="fas fa-arrow-right"></i>
+            </a>
+
+            <div class="contact-info">
+                <a href="tel:+306988817883">
+                    <i class="fas fa-phone"></i>
+                    +30 698 881 7883
+                </a>
+                <a href="mailto:nbegklis@btech-ai.com">
+                    <i class="fas fa-envelope"></i>
+                    nbegklis@btech-ai.com
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <a href="index.html" class="footer-logo">
+                <img src="logo.png" alt="BTech Logo">
+                <span class="logo-text">BTech<span style="color: #818cf8; font-size: 0.55em; vertical-align: super;">.ai</span></span>
+            </a>
+
+            <div class="footer-links">
+                <a href="index.html" data-translate="footer-home">Αρχική</a>
+                <a href="index.html#solutions" data-translate="footer-solutions">Λύσεις</a>
+                <a href="index.html#services" data-translate="footer-services">Υπηρεσίες</a>
+                <a href="index.html#portfolio" data-translate="footer-portfolio">Portfolio</a>
+                <a href="index.html#contact" data-translate="footer-contact">Επικοινωνία</a>
+            </div>
+
+            <div class="footer-bottom">
+                <p data-translate="footer-copyright">© 2026 BTech AI. Όλα τα δικαιώματα διατηρούνται.</p>
+                <div class="footer-legal-buttons">
+                    <button class="footer-legal-btn" onclick="openLegalModal('company')">
+                        <i class="fas fa-building"></i> <span data-translate="btn-company">Η Εταιρία</span>
+                    </button>
+                    <button class="footer-legal-btn" onclick="openLegalModal('terms')">
+                        <i class="fas fa-file-contract"></i> <span data-translate="btn-terms">Όροι &amp; Νομικά</span>
+                    </button>
+                </div>
+                <div class="footer-bottom-brand">
+                    <span data-translate="footer-dev">Developed and Managed by BTech</span>
+                    <img src="cooool.png" alt="BTech">
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Lightbox -->
+    <div class="lightbox" id="lightbox">
+        <div class="lightbox-content">
+            <button class="lightbox-close" aria-label="Close">
+                <i class="fas fa-times"></i>
+            </button>
+            <div id="lightbox-media"></div>
+            <div class="lightbox-caption" id="lightbox-caption"></div>
+        </div>
+    </div>
+
+    <!-- Legal Modal: Company -->
+    <div class="legal-modal" id="modal-company">
+        <div class="legal-modal-content">
+            <button class="legal-modal-close" onclick="closeLegalModal()" aria-label="Close">
+                <i class="fas fa-times"></i>
+            </button>
+            <h2 data-translate="modal-company-title">Η Εταιρία</h2>
+
+            <h3 data-translate="modal-company-info">Στοιχεία Επιχείρησης</h3>
+            <div class="legal-info-row">
+                <span class="legal-info-label" data-translate="lbl-name">Επωνυμία</span>
+                <span class="legal-info-value">ΜΠΕΓΚΛΗΣ ΝΙΚΟΛΑΟΣ</span>
+            </div>
+            <div class="legal-info-row">
+                <span class="legal-info-label" data-translate="lbl-brand">Διακριτικός Τίτλος</span>
+                <span class="legal-info-value">BTech AI</span>
+            </div>
+            <div class="legal-info-row">
+                <span class="legal-info-label" data-translate="lbl-form">Νομική Μορφή</span>
+                <span class="legal-info-value" data-translate="val-form">Ατομική Επιχείρηση</span>
+            </div>
+            <div class="legal-info-row">
+                <span class="legal-info-label">Α.Φ.Μ.</span>
+                <span class="legal-info-value">171075890</span>
+            </div>
+            <div class="legal-info-row">
+                <span class="legal-info-label">Γ.Ε.ΜΗ.</span>
+                <span class="legal-info-value">192788706000</span>
+            </div>
+            <div class="legal-info-row">
+                <span class="legal-info-label" data-translate="lbl-hq">Έδρα</span>
+                <span class="legal-info-value" data-translate="val-hq">Θεσσαλονίκη, Ελλάδα</span>
+            </div>
+            <div class="legal-info-row">
+                <span class="legal-info-label">Email</span>
+                <span class="legal-info-value">nbegklis@btech-ai.com</span>
+            </div>
+            <div class="legal-info-row">
+                <span class="legal-info-label" data-translate="lbl-phone">Τηλέφωνο</span>
+                <span class="legal-info-value">+30 698 881 7883</span>
+            </div>
+
+            <div class="legal-divider"></div>
+
+            <h3 data-translate="modal-company-about">Σχετικά με εμάς</h3>
+            <p data-translate-html="modal-company-p1">
+                Η <strong>BTech AI</strong> είναι ελληνική επιχείρηση τεχνολογίας με έδρα τη
+                Θεσσαλονίκη. Σχεδιάζουμε και αναπτύσσουμε σύγχρονες λύσεις λογισμικού,
+                AI integrations και επαγγελματικές ιστοσελίδες για ελληνικές και διεθνείς
+                επιχειρήσεις.
+            </p>
+            <p data-translate-html="modal-company-p2">
+                Το <strong>BTech Invoicer</strong> είναι το πρώτο μας SaaS προϊόν,
+                σχεδιασμένο ειδικά για τις ανάγκες των ελληνικών επιχειρήσεων.
+            </p>
+        </div>
+    </div>
+
+    <!-- Legal Modal: Terms -->
+    <div class="legal-modal" id="modal-terms">
+        <div class="legal-modal-content">
+            <button class="legal-modal-close" onclick="closeLegalModal()" aria-label="Close">
+                <i class="fas fa-times"></i>
+            </button>
+            <h2 data-translate="modal-terms-title">Όροι &amp; Νομικά</h2>
+
+            <h3 data-translate="modal-terms-legal">Νομικό Πλαίσιο Λειτουργίας</h3>
+            <p data-translate-html="modal-terms-legal-p1">
+                Το <strong>BTech Invoicer</strong> λειτουργεί ως <strong>ERP</strong> βάσει
+                της <strong>διαδρομής α'</strong> της απόφασης <strong>Α.1138/2020</strong>
+                (Άρθρο 4α, ΦΕΚ Β' 2470/22.06.2020).
+            </p>
+            <p data-translate-html="modal-terms-legal-p2">
+                Σύμφωνα με αυτή τη διαδρομή, <strong>καμία πιστοποίηση από την ΑΑΔΕ δεν
+                απαιτείται</strong>. Η οντότητα (η επιχείρησή σας) είναι αυτή που εγγράφεται
+                στο myDATA και η εφαρμογή στέλνει τα δεδομένα με τα δικά σας credentials.
+            </p>
+            <p data-translate-html="modal-terms-legal-p3">
+                Το BTech Invoicer <strong>ΔΕΝ</strong> είναι «Πιστοποιημένος Πάροχος
+                Ηλεκτρονικής Τιμολόγησης» — αυτή είναι διαφορετική κατηγορία (διαδρομή β',
+                Άρθρο 4) και δεν χρειάζεται για τη χρήση μας.
+            </p>
+
+            <div class="legal-divider"></div>
+
+            <h3 data-translate="modal-terms-compliance">Συμμόρφωση</h3>
+            <ul data-translate-html="modal-terms-compliance-ul">
+                <li><strong>Ν.4308/2014</strong> — Ελληνικά Λογιστικά Πρότυπα</li>
+                <li><strong>GDPR</strong> — Κανονισμός Προστασίας Δεδομένων ΕΕ</li>
+                <li><strong>Hosting στην ΕΕ</strong> — Hetzner Γερμανία</li>
+                <li><strong>HTTPS + encryption at rest</strong></li>
+                <li><strong>Daily encrypted backups</strong></li>
+            </ul>
+
+            <div class="legal-divider"></div>
+
+            <h3 data-translate="modal-terms-tos">Όροι Χρήσης</h3>
+            <p data-translate="modal-terms-tos-p1">
+                Η χρήση του BTech Invoicer προϋποθέτει εγγραφή και αποδοχή των όρων.
+                Παρέχεται δωρεάν δοκιμή 14 ημερών χωρίς δέσμευση. Μετά τη λήξη της
+                δοκιμής, η συνέχιση χρήσης απαιτεί ενεργή συνδρομή.
+            </p>
+            <p data-translate="modal-terms-tos-p2">
+                Στοχεύουμε σε best-effort uptime 99%. Δεν παρέχουμε εγγυημένο SLA.
+                Έχετε δικαίωμα εξαγωγής όλων των δεδομένων σας οποτεδήποτε, σε
+                τυποποιημένες μορφές (Excel, CSV, PDF).
+            </p>
+
+            <div class="legal-divider"></div>
+
+            <h3 data-translate="modal-terms-privacy">Πολιτική Απορρήτου</h3>
+            <p data-translate="modal-terms-privacy-p1">
+                Τα προσωπικά σας δεδομένα φιλοξενούνται σε servers εντός ΕΕ και
+                χρησιμοποιούνται αποκλειστικά για την παροχή της υπηρεσίας. Δεν
+                πωλούνται και δεν διαμοιράζονται με τρίτους.
+            </p>
+            <p data-translate-html="modal-terms-privacy-p2">
+                Για ερωτήσεις σχετικά με τα δεδομένα σας, επικοινωνήστε στο
+                <strong>nbegklis@btech-ai.com</strong>.
+            </p>
+        </div>
+    </div>
+
+    <script>
+        // ============== TRANSLATIONS ==============
+        const translations = {
+            en: {
+                'nav-back': 'Back to BTech.ai',
+                'hero-tag': '🚀 BTech Invoicer · Cloud ERP for Greece',
+                'hero-title': 'Professional Invoices.<br><span class="highlight">Legal Submission.</span><br>From Anywhere.',
+                'hero-subtitle': 'Modern cloud invoicing platform with automatic submission to AADE myDATA. From browser or mobile. No installation, no accounting knowledge required.',
+                'hero-cta-1': 'Start free for 14 days',
+                'hero-cta-2': 'See how it works',
+                'trust-1': 'Compliance with Law 4308/2014',
+                'trust-2': 'AADE myDATA',
+                'trust-3': 'GDPR',
+                'trust-4': 'EU servers',
+                'pain-tag': 'The Problem → The Solution',
+                'pain-title': 'Old ERPs are not built for you',
+                'pain-subtitle': 'They are expensive, hard to use, and require you to become an accountant. BTech Invoicer changes that.',
+                'our-solution': 'Our solution:',
+                'pain-1-quote': '"Old ERPs are expensive, slow, and hard to use on mobile."',
+                'pain-1-title': 'Mobile-first, browser-based',
+                'pain-1-desc': 'Works equally well on mobile, tablet, and desktop. No installation, no updates. Access from any browser, even from your iPad at the client\'s table.',
+                'pain-2-quote': '"myDATA setup is confusing — I\'m afraid I\'ll make a mistake and get fined."',
+                'pain-2-title': 'One-time setup. Automatic submission.',
+                'pain-2-desc': 'Connect your myDATA credentials once. From then on, every invoice is automatically submitted to AADE. You don\'t need to do anything else.',
+                'pain-3-quote': '"I\'m not an accountant — I just want to issue invoices."',
+                'pain-3-title': 'Simple flow without accounting jargon',
+                'pain-3-desc': 'Fill in customer, service, and amount. The app calculates VAT, classifications, document type. You just press "Issue".',
+                'features-tag': 'Why BTech Invoicer',
+                'features-title': '8 reasons to trust it',
+                'features-subtitle': 'Everything you need to invoice legally, quickly, and without headaches.',
+                'feat-1-title': 'Legal ERP path',
+                'feat-1-desc': 'Direct myDATA with your own credentials, based on Decision A.1138/2020 (Article 4a, Government Gazette B\' 2470/22.06.2020). No certification required for its use.',
+                'feat-2-title': 'Mobile-first',
+                'feat-2-desc': 'Designed to work equally well on mobile and desktop. Bootstrap 5, dark mode, full Greek localization.',
+                'feat-3-title': 'Email with one click',
+                'feat-3-desc': 'Send the PDF invoice directly to your client from the app, with your business name as sender. Doesn\'t go to spam.',
+                'feat-4-title': 'Auto-import expenses',
+                'feat-4-desc': 'Supplier invoices download automatically from myDATA. The app remembers their classification per VAT ID and pre-fills it next time.',
+                'feat-5-title': 'All document types',
+                'feat-5-desc': 'Full coverage of all myDATA document types: invoices, credit notes 5.1/5.2, cancellations, receipts, and many more.',
+                'feat-6-title': 'Enterprise security',
+                'feat-6-desc': 'Hosting on EU servers (Hetzner Germany), HTTPS, multi-tenant isolation, daily encrypted backups. Your data stays yours.',
+                'feat-7-title': 'No commitments',
+                'feat-7-desc': '14-day free trial. Monthly or annual subscription. Export all your data with one click, anytime.',
+                'feat-8-title': 'Greek support',
+                'feat-8-desc': 'We speak Greek. We answer email and phone. We help you migrate from your old program.',
+                'how-tag': 'How it works',
+                'how-title': 'In 4 steps. From signup to first invoice.',
+                'how-subtitle': 'No installations, no appointments with a technician. Get started immediately.',
+                'step-1-title': 'Signup in 2 minutes',
+                'step-1-desc': 'Email, password, business details. Done.',
+                'step-2-title': 'Connect to myDATA',
+                'step-2-desc': 'Only once. Your credentials stay yours.',
+                'step-3-title': 'Issue document',
+                'step-3-desc': 'Automatic submission to AADE. Without doing anything.',
+                'step-4-title': 'Email to client',
+                'step-4-desc': 'One click. PDF delivered to their inbox.',
+                'show-tag': 'See it in action',
+                'show-title': 'A real snapshot of the application',
+                'show-subtitle': 'All screenshots are from the actual application. No mockups.',
+                'b1-tag': 'Dashboard',
+                'b1-title': 'Your whole business at a glance',
+                'b1-desc': 'Revenue, expenses, VAT, pending items, recent activity. All critical KPIs on one screen, with real-time sync from myDATA.',
+                'b1-li-1': 'Monthly revenue / expenses summary',
+                'b1-li-2': 'Quick-actions: New invoice, New expense',
+                'b1-li-3': 'Live myDATA notifications',
+                'b1-li-4': 'Pending receivables',
+                'b2-tag': 'Dark Mode',
+                'b2-title': 'Automatic dark mode for your eyes',
+                'b2-desc': 'Working late at night? Dark mode is toggled with one click. All colors, charts, and UI components are designed to look perfect in both versions.',
+                'b2-li-1': 'One-click toggle',
+                'b2-li-2': 'Remembers your preference',
+                'b2-li-3': 'Optimized contrast for readability',
+                'b3-tag': 'Document Management',
+                'b3-title': 'Invoice list with everything you need',
+                'b3-desc': 'Search, filters, status, amounts, dates. See which are paid, pending, cancelled. With one click open, print, send email.',
+                'b3-li-1': 'Search by client, VAT ID, amount',
+                'b3-li-2': 'Bulk actions for multiple invoices simultaneously',
+                'b3-li-3': 'myDATA status on every row',
+                'b3-li-4': 'Print & email with one click',
+                'b4-tag': 'Invoice Creation',
+                'b4-title': 'New invoice in less than 30 seconds',
+                'b4-desc': 'Select customer (autocomplete by VAT ID), add line items, the app calculates VAT, classifications, document type automatically. Press "Issue" and it\'s submitted to AADE.',
+                'b4-li-1': 'Customer autocomplete by VAT ID',
+                'b4-li-2': 'Automatic VAT calculation',
+                'b4-li-3': 'Smart service/product suggestions',
+                'b4-li-4': 'Instant submission & MARK number',
+                'b5-tag': 'Document View',
+                'b5-title': 'Professional appearance. Your brand.',
+                'b5-desc': 'Every invoice you issue has your business name, logo, and details. PDF ready for print or email — with one click.',
+                'b5-li-1': 'Custom branding (logo, colors)',
+                'b5-li-2': 'QR code for instant payment',
+                'b5-li-3': 'Full MARK & UID from myDATA',
+                'b6-tag': 'Expense Management',
+                'b6-title': 'Expenses that download themselves',
+                'b6-desc': 'You don\'t need to manually enter your supplier invoices. BTech Invoicer downloads them automatically from myDATA and pre-classifies them based on the issuer\'s VAT ID.',
+                'b6-li-1': 'Auto-fetch from myDATA',
+                'b6-li-2': 'Classification memory per supplier',
+                'b6-li-3': 'Bulk classification',
+                'b7-tag': 'Cash Flow',
+                'b7-title': 'Always know who owes you',
+                'b7-desc': 'List of outstanding invoices with aging, totals, and reminders with one click. Never miss a payment again.',
+                'b7-li-1': 'Aging analysis (0-30, 31-60, 60+ days)',
+                'b7-li-2': 'One-click email reminders',
+                'b7-li-3': 'Totals per customer',
+                'b8-tag': 'Transparency',
+                'b8-title': 'Complete history of every action',
+                'b8-desc': 'Who issued what, when, and what was the AADE response. Everything logged with timestamp for 100% transparency and compliance.',
+                'b8-li-1': 'Audit trail of every action',
+                'b8-li-2': 'myDATA responses with timestamp',
+                'b8-li-3': 'User attribution in multi-user accounts',
+                'b9-tag': 'Detailed Statistics',
+                'b9-title': 'See the full statistics page',
+                'b9-desc': 'Monthly charts, year comparisons, top customers, top services, VAT per category. Your statistics page gives you a complete view of your business in real time.',
+                'b9-li-1': 'Monthly & annual trends',
+                'b9-li-2': 'Top customers / services',
+                'b9-li-3': 'Export to Excel / PDF',
+                'b9-caption': 'Scroll capture of the statistics page',
+                'b10-tag': 'Mobile App Experience',
+                'b10-title': 'The whole app in your pocket',
+                'b10-desc': 'From your mobile you can issue invoices, view statistics, send emails, check pending items. Browser-based — no App Store install needed.',
+                'b10-li-1': 'Full functionality on mobile',
+                'b10-li-2': 'Touch-optimized UI',
+                'b10-li-3': 'No install needed — just browser',
+                'b10-li-4': 'Add to Home Screen as PWA',
+                'comp-tag': 'Comparison',
+                'comp-title': 'BTech Invoicer vs Traditional ERPs',
+                'comp-subtitle': 'Feature comparison — see why Greek freelancers choose BTech Invoicer.',
+                'comp-th-feat': 'Feature',
+                'comp-th-trad': 'Traditional ERPs',
+                'comp-th-man': 'Manual / Excel',
+                'comp-row-1': 'Cloud (browser, no install)',
+                'comp-row-2': 'Mobile-first design',
+                'comp-row-3': 'Automatic myDATA submission',
+                'comp-row-4': 'Auto-import expenses from myDATA',
+                'comp-row-5': 'Email to customer with 1 click',
+                'comp-row-6': 'Dark mode',
+                'comp-row-7': 'Free trial without credit card',
+                'comp-row-8': 'Greek support',
+                'comp-row-9': 'Data export without lock-in',
+                'comp-row-10': 'Setup in under 5 minutes',
+                'pricing-tag': 'Pricing',
+                'pricing-title': 'Clean, predictable, no surprises',
+                'pricing-subtitle': 'Cheaper than traditional providers. Free trial before committing.',
+                'pricing-card-title': '14-day free trial',
+                'pricing-card-desc': 'All features, no credit card, no document limits.',
+                'pricing-li-1': 'Unlimited invoices',
+                'pricing-li-2': 'All myDATA document types',
+                'pricing-li-3': 'Automatic AADE submission',
+                'pricing-li-4': 'Mobile + desktop access',
+                'pricing-li-5': 'Email support',
+                'pricing-cta': 'Contact for pricing',
+                'faq-tag': 'Frequently Asked Questions',
+                'faq-title': 'FAQ',
+                'faq-subtitle': 'The most common questions, with clear answers.',
+                'faq-1-q': 'How many documents can I issue?',
+                'faq-1-a': 'There is no limit. All plans include unlimited invoices, cancellations, credit notes, and any other type of document.',
+                'faq-2-q': 'What happens if my subscription expires?',
+                'faq-2-a': 'You don\'t lose your data. You have read-only access and can export everything (documents, customers, statistics) in PDF/Excel/CSV anytime.',
+                'faq-3-q': 'Does it work on mobile?',
+                'faq-3-a': 'Yes, and it\'s designed mobile-first. It works from any browser (Chrome, Safari, Firefox). You can add it to your home screen as a PWA and use it like a native app.',
+                'faq-4-q': 'How is migration from another program done?',
+                'faq-4-a': 'We help you. Send us your data (export from your old program in Excel/CSV) and we import it for free. For larger businesses we provide custom migration service.',
+                'faq-5-q': 'How exactly does the email reach my customer?',
+                'faq-5-a': 'Emails are sent via the professional service <strong>Resend</strong> to ensure high deliverability (no spam). Your customer sees <strong>your business name</strong> as the sender display name, while the technical sending address is a no-reply from BTech\'s domain. You can set <strong>reply-to to your own email</strong>, so when your customer replies, the response goes directly to you.',
+                'faq-6-q': 'Is there support?',
+                'faq-6-a': 'Yes. Email support on all plans. Phone support on premium plans. We respond in Greek, business hours (Mon-Fri 9:00-18:00).',
+                'faq-7-q': 'What if the server goes down?',
+                'faq-7-a': 'We target best-effort 99% uptime. We have daily encrypted backups and disaster recovery procedures. Backups are kept in a different geographic region for safety.',
+                'faq-8-q': 'I\'m an accountant — is it suitable for my clients?',
+                'faq-8-a': 'Absolutely. Many accountants recommend us to their clients because: (a) basic functions don\'t require support, (b) data is always synced with myDATA, (c) you have read-only access as an accountant to see everything you need.',
+                'faq-9-q': 'What about my data? GDPR?',
+                'faq-9-a': 'We are <strong>GDPR-compliant</strong>. Data is hosted on EU servers (Hetzner Germany) with HTTPS and encryption at rest. Export all your data with one click, anytime. See our <a href="#" style="color: var(--secondary);">privacy policy</a>.',
+                'final-cta-title': 'Start today.',
+                'final-cta-desc': '14 days free. No credit card. No commitments. If you don\'t like it, just don\'t continue.',
+                'final-cta-btn': 'Start free for 14 days',
+                'footer-home': 'Home',
+                'footer-solutions': 'Solutions',
+                'footer-services': 'Services',
+                'footer-portfolio': 'Portfolio',
+                'footer-contact': 'Contact',
+                'footer-copyright': '© 2026 BTech AI. All rights reserved.',
+                'footer-dev': 'Developed and Managed by BTech',
+                'btn-company': 'Company',
+                'btn-terms': 'Terms & Legal',
+                'modal-company-title': 'Company',
+                'modal-company-info': 'Business Information',
+                'lbl-name': 'Legal Name',
+                'lbl-brand': 'Trade Name',
+                'lbl-form': 'Legal Form',
+                'val-form': 'Sole Proprietorship',
+                'lbl-hq': 'Headquarters',
+                'val-hq': 'Thessaloniki, Greece',
+                'lbl-phone': 'Phone',
+                'modal-company-about': 'About us',
+                'modal-company-p1': '<strong>BTech AI</strong> is a Greek technology business based in Thessaloniki. We design and develop modern software solutions, AI integrations, and professional websites for Greek and international businesses.',
+                'modal-company-p2': '<strong>BTech Invoicer</strong> is our first SaaS product, designed specifically for the needs of Greek businesses.',
+                'modal-terms-title': 'Terms & Legal',
+                'modal-terms-legal': 'Legal Framework',
+                'modal-terms-legal-p1': '<strong>BTech Invoicer</strong> operates as an <strong>ERP</strong> based on <strong>path α\'</strong> of Decision <strong>A.1138/2020</strong> (Article 4a, Government Gazette B\' 2470/22.06.2020).',
+                'modal-terms-legal-p2': 'According to this path, <strong>no certification from AADE is required</strong>. The entity (your business) is the one registered with myDATA, and the application sends data with your own credentials.',
+                'modal-terms-legal-p3': 'BTech Invoicer is <strong>NOT</strong> a "Certified Electronic Invoicing Provider" — that is a different category (path β\', Article 4) and not needed for our use.',
+                'modal-terms-compliance': 'Compliance',
+                'modal-terms-compliance-ul': '<li><strong>Law 4308/2014</strong> — Greek Accounting Standards</li><li><strong>GDPR</strong> — EU Data Protection Regulation</li><li><strong>Hosting in EU</strong> — Hetzner Germany</li><li><strong>HTTPS + encryption at rest</strong></li><li><strong>Daily encrypted backups</strong></li>',
+                'modal-terms-tos': 'Terms of Use',
+                'modal-terms-tos-p1': 'Use of BTech Invoicer requires registration and acceptance of terms. A 14-day free trial is provided without commitment. After the trial expires, continued use requires an active subscription.',
+                'modal-terms-tos-p2': 'We target best-effort 99% uptime. We do not provide a guaranteed SLA. You have the right to export all your data anytime, in standard formats (Excel, CSV, PDF).',
+                'modal-terms-privacy': 'Privacy Policy',
+                'modal-terms-privacy-p1': 'Your personal data is hosted on servers within the EU and used exclusively for service provision. It is not sold or shared with third parties.',
+                'modal-terms-privacy-p2': 'For questions about your data, contact <strong>nbegklis@btech-ai.com</strong>.'
+            }
+        };
+
+        let currentLang = localStorage.getItem('btech-lang') || 'el';
+
+        function changeLanguage(lang) {
+            currentLang = lang;
+            localStorage.setItem('btech-lang', lang);
+
+            document.querySelectorAll('.flag-button').forEach(b => {
+                b.classList.toggle('active', b.dataset.lang === lang);
+            });
+
+            document.documentElement.lang = lang;
+
+            // Cache original Greek on first run
+            document.querySelectorAll('[data-translate]').forEach(el => {
+                if (!el.hasAttribute('data-el')) el.setAttribute('data-el', el.textContent);
+            });
+            document.querySelectorAll('[data-translate-html]').forEach(el => {
+                if (!el.hasAttribute('data-el-html')) el.setAttribute('data-el-html', el.innerHTML);
+            });
+
+            if (lang === 'el') {
+                document.querySelectorAll('[data-translate]').forEach(el => {
+                    el.textContent = el.getAttribute('data-el');
+                });
+                document.querySelectorAll('[data-translate-html]').forEach(el => {
+                    el.innerHTML = el.getAttribute('data-el-html');
+                });
+            } else {
+                const dict = translations[lang] || {};
+                document.querySelectorAll('[data-translate]').forEach(el => {
+                    const key = el.getAttribute('data-translate');
+                    if (dict[key]) el.textContent = dict[key];
+                });
+                document.querySelectorAll('[data-translate-html]').forEach(el => {
+                    const key = el.getAttribute('data-translate-html');
+                    if (dict[key]) el.innerHTML = dict[key];
+                });
+            }
+        }
+
+        // Apply saved language on load
+        document.addEventListener('DOMContentLoaded', () => {
+            if (currentLang !== 'el') changeLanguage(currentLang);
+        });
+
+        // Nav scroll effect
+        window.addEventListener('scroll', () => {
+            const nav = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                nav.classList.add('scrolled');
+            } else {
+                nav.classList.remove('scrolled');
+            }
+        });
+
+        // Scroll reveal observer
+        const observerOptions = {
+            threshold: 0.15,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.reveal, .reveal-left, .reveal-right').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Protect images: disable drag and right-click
+        document.addEventListener('DOMContentLoaded', () => {
+            document.querySelectorAll('img').forEach(img => {
+                img.setAttribute('draggable', 'false');
+                img.addEventListener('contextmenu', e => e.preventDefault());
+            });
+            document.querySelectorAll('video').forEach(v => {
+                v.addEventListener('contextmenu', e => e.preventDefault());
+            });
+        });
+
+        // Lightbox: click any device-frame screenshot to view full size
+        const lightbox = document.getElementById('lightbox');
+        const lightboxMedia = document.getElementById('lightbox-media');
+        const lightboxCaption = document.getElementById('lightbox-caption');
+        const lightboxClose = document.querySelector('.lightbox-close');
+
+        document.querySelectorAll('.device-frame').forEach(frame => {
+            frame.addEventListener('click', () => {
+                const media = frame.querySelector('img, video');
+                if (!media) return;
+
+                const block = frame.closest('.showcase-block');
+                const caption = block ? block.querySelector('h3')?.textContent : '';
+
+                lightboxMedia.innerHTML = '';
+                let clone;
+                if (media.tagName === 'IMG') {
+                    clone = document.createElement('img');
+                    clone.src = media.src;
+                    clone.alt = media.alt;
+                    clone.setAttribute('draggable', 'false');
+                    clone.addEventListener('contextmenu', e => e.preventDefault());
+                } else {
+                    clone = document.createElement('video');
+                    clone.src = media.src;
+                    clone.autoplay = true;
+                    clone.loop = true;
+                    clone.muted = true;
+                    clone.controls = true;
+                    clone.playsInline = true;
+                }
+                lightboxMedia.appendChild(clone);
+                lightboxCaption.textContent = caption || '';
+                lightbox.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            });
+        });
+
+        function closeLightbox() {
+            lightbox.classList.remove('active');
+            lightboxMedia.innerHTML = '';
+            document.body.style.overflow = '';
+        }
+
+        lightbox.addEventListener('click', (e) => {
+            if (e.target === lightbox) closeLightbox();
+        });
+        lightboxClose.addEventListener('click', closeLightbox);
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && lightbox.classList.contains('active')) closeLightbox();
+        });
+
+        // Legal modals
+        function openLegalModal(type) {
+            const modal = document.getElementById('modal-' + type);
+            if (!modal) return;
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeLegalModal() {
+            document.querySelectorAll('.legal-modal.active').forEach(m => {
+                m.classList.remove('active');
+            });
+            document.body.style.overflow = '';
+        }
+
+        document.querySelectorAll('.legal-modal').forEach(modal => {
+            modal.addEventListener('click', (e) => {
+                if (e.target === modal) closeLegalModal();
+            });
+        });
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && document.querySelector('.legal-modal.active')) {
+                closeLegalModal();
+            }
+        });
+    </script>
+</body>
+</html>

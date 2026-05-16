@@ -140,6 +140,52 @@
             scroll-behavior: smooth;
         }
 
+        /* Cyber Matrix Background (subtle, behind content) */
+        #cyber-grid {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            z-index: 0;
+            pointer-events: none;
+            display: grid;
+            grid-template-columns: repeat(var(--cyber-cols, 20), 1fr);
+            grid-template-rows: repeat(var(--cyber-rows, 12), 1fr);
+            opacity: 0.5;
+            mix-blend-mode: screen;
+        }
+
+        .cyber-tile {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 0.9rem;
+            opacity: calc(0.03 + var(--intensity, 0) * 0.85);
+            color: hsl(270, 100%, calc(55% + var(--intensity, 0) * 45%));
+            text-shadow: 0 0 calc(var(--intensity, 0) * 14px) hsl(270, 100%, 70%);
+            transform: scale(calc(1 + var(--intensity, 0) * 0.15));
+            transition: color 0.15s ease, text-shadow 0.15s ease, transform 0.15s ease;
+            user-select: none;
+            will-change: opacity, color, transform;
+        }
+
+        /* Keep all content layers above the grid */
+        nav, section, footer, .legal-modal, .lightbox, .hero-bg-blob {
+            position: relative;
+            z-index: 1;
+        }
+        nav { z-index: 1000; }
+        .lightbox { z-index: 10000; }
+        .legal-modal { z-index: 10001; }
+        .hero { z-index: 1; }
+
+        /* Disable on touch / small screens for performance */
+        @media (max-width: 768px), (hover: none) {
+            #cyber-grid { display: none; }
+        }
+
         /* Navigation (same as main site) */
         nav {
             position: fixed;
@@ -562,7 +608,7 @@
 
         /* Problem → Solution */
         .pain-section {
-            background: linear-gradient(180deg, var(--dark) 0%, #0c1325 100%);
+            background: linear-gradient(180deg, rgba(15, 23, 42, 0.82) 0%, rgba(12, 19, 37, 0.88) 100%);
         }
 
         .pain-grid {
@@ -626,7 +672,7 @@
 
         /* Features Grid */
         .features-section {
-            background: var(--dark);
+            background: rgba(15, 23, 42, 0.82);
         }
 
         .features-grid {
@@ -696,7 +742,7 @@
 
         /* How it works */
         .how-section {
-            background: linear-gradient(180deg, var(--dark) 0%, #1e293b 50%, var(--dark) 100%);
+            background: linear-gradient(180deg, rgba(15, 23, 42, 0.82) 0%, rgba(30, 41, 59, 0.85) 50%, rgba(15, 23, 42, 0.82) 100%);
         }
 
         .steps-grid {
@@ -741,7 +787,7 @@
 
         /* Showcase / Scroll Reveal Screenshots */
         .showcase-section {
-            background: var(--dark);
+            background: rgba(15, 23, 42, 0.82);
             padding: 6rem 5%;
         }
 
@@ -999,7 +1045,7 @@
 
         /* Comparison Table */
         .comparison-section {
-            background: var(--dark);
+            background: rgba(15, 23, 42, 0.82);
         }
 
         .comparison-wrapper {
@@ -1068,7 +1114,7 @@
 
         /* Pricing */
         .pricing-section {
-            background: linear-gradient(180deg, var(--dark) 0%, #1e293b 100%);
+            background: linear-gradient(180deg, rgba(15, 23, 42, 0.82) 0%, rgba(30, 41, 59, 0.85) 100%);
             text-align: center;
         }
 
@@ -1127,7 +1173,7 @@
 
         /* FAQ */
         .faq-section {
-            background: var(--dark);
+            background: rgba(15, 23, 42, 0.82);
         }
 
         .faq-list {
@@ -1548,6 +1594,9 @@
     </style>
 </head>
 <body>
+
+    <!-- Cyber Matrix Background -->
+    <div id="cyber-grid" aria-hidden="true"></div>
 
     <!-- Navigation -->
     <nav id="navbar">
@@ -2785,6 +2834,84 @@
                 closeLegalModal();
             }
         });
+
+        // ============== CYBER MATRIX BACKGROUND ==============
+        (function() {
+            // Skip on touch / no-hover devices (mobile)
+            if (window.matchMedia && window.matchMedia('(hover: none)').matches) return;
+            if (window.innerWidth < 769) return;
+
+            const grid = document.getElementById('cyber-grid');
+            if (!grid) return;
+
+            const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789<>/?;:[]{}\\|!@#$%^&*+-=';
+            let tiles = [];
+            let tileCenters = [];
+            let mouseX = -9999, mouseY = -9999;
+            let pending = false;
+
+            function createGrid() {
+                grid.innerHTML = '';
+                tiles = [];
+                const size = 80;
+                const cols = Math.ceil(window.innerWidth / size);
+                const rows = Math.ceil(window.innerHeight / size);
+                grid.style.setProperty('--cyber-cols', cols);
+                grid.style.setProperty('--cyber-rows', rows);
+                const frag = document.createDocumentFragment();
+                const total = cols * rows;
+                for (let i = 0; i < total; i++) {
+                    const tile = document.createElement('div');
+                    tile.className = 'cyber-tile';
+                    tile.textContent = chars[Math.floor(Math.random() * chars.length)];
+                    frag.appendChild(tile);
+                    tiles.push(tile);
+                }
+                grid.appendChild(frag);
+                requestAnimationFrame(cacheRects);
+            }
+
+            function cacheRects() {
+                tileCenters = tiles.map(t => {
+                    const r = t.getBoundingClientRect();
+                    return { x: r.left + r.width / 2, y: r.top + r.height / 2 };
+                });
+            }
+
+            function updateIntensity() {
+                const radius = window.innerWidth / 4;
+                const radiusSq = radius * radius;
+                for (let i = 0; i < tiles.length; i++) {
+                    const c = tileCenters[i];
+                    if (!c) continue;
+                    const dx = mouseX - c.x;
+                    const dy = mouseY - c.y;
+                    const distSq = dx * dx + dy * dy;
+                    let intensity = 0;
+                    if (distSq < radiusSq) {
+                        intensity = 1 - Math.sqrt(distSq) / radius;
+                    }
+                    tiles[i].style.setProperty('--intensity', intensity.toFixed(3));
+                }
+                pending = false;
+            }
+
+            window.addEventListener('mousemove', (e) => {
+                mouseX = e.clientX;
+                mouseY = e.clientY;
+                if (pending) return;
+                pending = true;
+                requestAnimationFrame(updateIntensity);
+            }, { passive: true });
+
+            let resizeTimer;
+            window.addEventListener('resize', () => {
+                clearTimeout(resizeTimer);
+                resizeTimer = setTimeout(createGrid, 200);
+            });
+
+            createGrid();
+        })();
     </script>
 </body>
 </html>

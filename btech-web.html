@@ -309,6 +309,9 @@
             position: relative;
         }
 
+        /* On desktop, hide the inline mobile canvas (floating ball takes over) */
+        #hero-canvas-mobile { display: none; }
+
         /* The playful floating ball — circular, follows scroll */
         .floating-ball {
             position: fixed;
@@ -1323,30 +1326,35 @@
             display: flex;
             justify-content: center;
             flex-wrap: wrap;
-            gap: 0.75rem;
-            margin-top: 1rem;
+            gap: 1.25rem;
+            margin-top: 0.75rem;
         }
 
         .footer-legal-btn {
             display: inline-flex;
             align-items: center;
-            gap: 0.5rem;
-            padding: 0.5rem 1rem;
+            gap: 0.35rem;
+            padding: 0;
             background: transparent;
-            border: 1px solid rgba(99, 102, 241, 0.25);
-            border-radius: 50px;
-            color: #94a3b8;
-            font-size: 0.8rem;
-            font-weight: 500;
+            border: none;
+            color: #64748b;
+            font-size: 0.72rem;
+            font-weight: 400;
             cursor: pointer;
-            transition: all 0.3s ease;
+            transition: color 0.3s ease;
             font-family: inherit;
+            text-decoration: none;
+        }
+
+        .footer-legal-btn i {
+            font-size: 0.7rem;
+            opacity: 0.6;
         }
 
         .footer-legal-btn:hover {
-            border-color: var(--secondary);
             color: var(--secondary);
-            background: rgba(99, 102, 241, 0.08);
+            text-decoration: underline;
+            text-underline-offset: 3px;
         }
 
         .footer-bottom-brand {
@@ -1477,17 +1485,283 @@
 
         .legal-info-value { color: #cbd5e1; flex: 1; }
 
-        /* Mobile */
+        /* Mobile — comprehensive */
+        @media (max-width: 900px) {
+            /* On mobile: the SAME interactive particle wave, but static in layout
+               (not following scroll). The floating-ball is hidden by media query above. */
+            .hero-canvas-wrap {
+                width: 260px;
+                height: 260px;
+                margin: 2rem auto 0;
+                position: relative;
+                clip-path: circle(46% at 50% 50%);
+                -webkit-clip-path: circle(46% at 50% 50%);
+                filter:
+                    drop-shadow(0 0 60px rgba(99, 102, 241, 0.4))
+                    drop-shadow(0 0 30px rgba(168, 85, 247, 0.35));
+            }
+
+            #hero-canvas-mobile {
+                display: block;
+                width: 100%;
+                height: 100%;
+            }
+        }
+
         @media (max-width: 768px) {
             .nav-back span { display: none; }
             .nav-back { padding: 0.5rem 0.75rem; }
             section { padding: 4rem 5%; }
-            .hero { padding: 7rem 5% 3rem; }
+
+            /* Hero — switch flex to column so stats land BELOW the title,
+               with extra breathing room from header */
+            .hero {
+                padding: 8rem 5% 3rem;
+                min-height: auto;
+                flex-direction: column;
+                gap: 1.5rem;
+                justify-content: flex-start;
+            }
+            .hero-layout {
+                width: 100%;
+            }
+            .hero h1 {
+                font-size: clamp(1.9rem, 8vw, 2.6rem);
+                text-align: center;
+            }
+            .hero-left {
+                text-align: center;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+            }
+            .hero-tagline-pills {
+                text-align: center;
+            }
+            .hero-tagline-pills {
+                font-size: 0.95rem;
+            }
             .hero-ctas .btn { width: 100%; justify-content: center; }
+
+            /* Stats: clean centered card below the ball */
+            .hero-stats {
+                position: relative;
+                bottom: auto; left: auto; transform: none;
+                width: 100%;
+                max-width: 360px;
+                margin: 1.5rem auto 0;
+                padding: 1.5rem 1.5rem;
+                gap: 0.5rem;
+                grid-template-columns: 1fr;
+                background: rgba(15, 23, 42, 0.85);
+                border-radius: 20px;
+                border-color: rgba(99, 102, 241, 0.28);
+            }
+            .hero-stat {
+                justify-content: flex-start;
+                padding: 0.5rem 0;
+                border-bottom: 1px solid rgba(99, 102, 241, 0.1);
+            }
+            .hero-stat:last-child { border-bottom: none; }
+            .hero-stat-icon {
+                width: 44px;
+                height: 44px;
+                font-size: 1.05rem;
+                flex-shrink: 0;
+            }
+            .hero-stat-text strong {
+                font-size: 1.4rem;
+                line-height: 1.1;
+            }
+            .hero-stat-text span {
+                font-size: 0.78rem;
+                margin-top: 0.15rem;
+            }
+
+            /* Grids → single column */
             .features-grid, .pain-grid { grid-template-columns: 1fr; }
-            .websites-grid { grid-template-columns: 1fr; }
-            .packages-grid { grid-template-columns: 1fr; }
-            .category-header { flex-direction: column; text-align: center; }
+            .websites-grid { grid-template-columns: 1fr; gap: 1.5rem; }
+            .packages-grid { grid-template-columns: 1fr; gap: 1.25rem; }
+
+            /* Category header centered */
+            .category-header {
+                flex-direction: column;
+                text-align: center;
+                gap: 0.75rem;
+                padding-bottom: 0.75rem;
+            }
+            .category-info h3 { font-size: 1.35rem; }
+            .category-info p { font-size: 0.85rem; }
+
+            /* Website card text */
+            .website-info { padding: 1.25rem; }
+            .website-info h4 { font-size: 1.05rem; }
+            .website-info .website-desc { font-size: 0.85rem; }
+
+            /* Package cards: compact */
+            .package-card { padding: 1.75rem 1.5rem; }
+            .package-card h3 { font-size: 1.3rem; }
+            .package-card .package-desc { min-height: auto; font-size: 0.85rem; }
+            .package-features li { font-size: 0.85rem; padding: 0.4rem 0; }
+
+            /* Feature card padding */
+            .feature-card { padding: 1.5rem; }
+            .feature-card h3 { font-size: 1.05rem; }
+            .feature-card p { font-size: 0.88rem; }
+
+            /* Pain card */
+            .pain-card { padding: 1.5rem; }
+
+            /* Process steps */
+            .process-grid { gap: 1.5rem; }
+            .process-card { padding: 1.25rem 0.75rem; }
+
+            /* FAQ */
+            .faq-item summary { padding: 1rem 1.25rem; font-size: 0.95rem; }
+            .faq-answer { padding: 0 1.25rem 1.25rem; font-size: 0.9rem; }
+
+            /* Final CTA */
+            .final-cta { padding: 4rem 5%; }
+            .contact-info { gap: 1.25rem; font-size: 0.9rem; }
+        }
+
+        /* Comparison table — mobile: fits in ~360px viewport */
+        @media (max-width: 768px) {
+            .comparison-wrapper {
+                position: relative;
+                overflow-x: hidden;
+            }
+
+            /* Fixed layout = predictable widths; total = 115 + 75*3 = 340px (fits 360px+) */
+            .comparison-table {
+                min-width: 0;
+                width: 100%;
+                table-layout: fixed;
+            }
+
+            .comparison-table th,
+            .comparison-table td {
+                width: 75px;
+                padding: 0.7rem 0.25rem;
+                font-size: 0.78rem;
+                vertical-align: middle;
+            }
+            .comparison-table thead th {
+                font-size: 0.68rem;
+                line-height: 1.2;
+                white-space: normal;
+                word-break: keep-all;
+            }
+            .comparison-table .check,
+            .comparison-table .x,
+            .comparison-table .partial {
+                font-size: 0.95rem;
+            }
+
+            /* Col 1 (feature names) — wider so labels fit on 2-3 lines */
+            .comparison-table th:first-child,
+            .comparison-table td:first-child {
+                width: 115px;
+                font-size: 0.7rem;
+                line-height: 1.3;
+                white-space: normal;
+                text-align: left;
+                padding-left: 0.6rem;
+            }
+            .comparison-table thead th:first-child {
+                background: rgba(35, 45, 70, 0.98);
+            }
+
+            /* Col 2 (BTech) — same width as col 3 & 4 (equal/harmonic) */
+            .comparison-table th:nth-child(2),
+            .comparison-table td:nth-child(2) {
+                width: 75px;
+            }
+            .comparison-table thead th:nth-child(2).us-col {
+                background: rgba(67, 56, 140, 0.55);
+            }
+            .comparison-table td:nth-child(2).us-col {
+                background: rgba(99, 102, 241, 0.1);
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero h1 { font-size: 1.85rem; }
+            .hero-tagline-pills { font-size: 0.9rem; line-height: 1.5; }
+            .section-title { font-size: 1.75rem; }
+            .section-subtitle { font-size: 0.95rem; margin-bottom: 2.5rem; }
+            .section-tag { font-size: 0.75rem; letter-spacing: 0.1em; }
+        }
+
+        /* Website preview cards as PHONE FRAMES on mobile */
+        @media (max-width: 768px) {
+            .website-card {
+                max-width: 300px;
+                margin: 0 auto 1rem;
+                background: transparent;
+                border: none;
+                box-shadow: none;
+            }
+
+            .website-card:hover {
+                transform: translateY(-4px);
+                border: none;
+                box-shadow: none;
+            }
+
+            .website-frame {
+                background: #1a1a1a;
+                padding: 9px;
+                border-radius: 36px;
+                box-shadow:
+                    0 20px 50px rgba(0, 0, 0, 0.6),
+                    0 0 0 1px rgba(255, 255, 255, 0.06),
+                    0 0 40px rgba(99, 102, 241, 0.15);
+                position: relative;
+            }
+
+            /* Phone notch (top-center pill) */
+            .website-frame::before {
+                content: '';
+                position: absolute;
+                top: 18px;
+                left: 50%;
+                transform: translateX(-50%);
+                width: 95px;
+                height: 22px;
+                background: #0a0a0a;
+                border-radius: 14px;
+                z-index: 5;
+                display: block;
+            }
+
+            /* Hide traffic-light dots — not phone style */
+            .website-dots { display: none; }
+
+            /* Portrait phone aspect ratio (~19.5:9) */
+            .website-iframe-container {
+                padding-bottom: 200%;
+                border-radius: 28px;
+                background: #0f172a;
+            }
+
+            .website-iframe-container iframe {
+                border-radius: 28px;
+            }
+
+            /* Info section: compact under the phone */
+            .website-info {
+                padding: 1.25rem 0.5rem 0;
+                text-align: center;
+            }
+
+            .website-tags {
+                justify-content: center;
+            }
+
+            .website-visit {
+                justify-content: center;
+            }
         }
     </style>
 </head>
@@ -1543,8 +1817,11 @@
                 </div>
             </div>
 
-            <!-- RIGHT: Placeholder for the floating ball -->
-            <div class="hero-canvas-wrap" aria-hidden="true"></div>
+            <!-- RIGHT: Placeholder on desktop (floating ball lives here),
+                 actual canvas on mobile (static, same particle wave + hover) -->
+            <div class="hero-canvas-wrap" aria-hidden="true">
+                <canvas id="hero-canvas-mobile"></canvas>
+            </div>
         </div>
 
         <!-- Stats bar at bottom -->
@@ -1552,7 +1829,7 @@
             <div class="hero-stat">
                 <div class="hero-stat-icon"><i class="fas fa-file-alt"></i></div>
                 <div class="hero-stat-text">
-                    <strong>6+</strong>
+                    <strong>40+</strong>
                     <span data-translate="hero-stat-1">Ολοκληρωμένα Έργα</span>
                 </div>
             </div>
@@ -1997,7 +2274,7 @@
                         <tr>
                             <th data-translate="comp-th-feat">Χαρακτηριστικό</th>
                             <th class="us-col">BTech</th>
-                            <th data-translate="comp-th-wix">Wix / WordPress</th>
+                            <th data-translate-html="comp-th-wix">Wix /<br>WordPress</th>
                             <th data-translate="comp-th-fr">Freelancer</th>
                         </tr>
                     </thead>
@@ -2009,7 +2286,7 @@
                             <td><i class="fas fa-minus partial"></i></td>
                         </tr>
                         <tr>
-                            <td data-translate="comp-row-2">Δικαιώματα κώδικα</td>
+                            <td data-translate="comp-row-2">Χωρίς platform lock-in</td>
                             <td class="us-col"><i class="fas fa-check check"></i></td>
                             <td><i class="fas fa-times x"></i></td>
                             <td><i class="fas fa-check check"></i></td>
@@ -2083,7 +2360,7 @@
                 <details class="faq-item reveal">
                     <summary data-translate="faq-3-q">Ποιος έχει τα δικαιώματα του κώδικα;</summary>
                     <div class="faq-answer" data-translate="faq-3-a">
-                        Εσείς. Μετά την πληρωμή, ο κώδικας είναι 100% δικός σας. Σας τον παραδίδουμε σε Git repository και μπορείτε να τον μεταφέρετε όπου θέλετε, ή να συνεργαστείτε με άλλον developer αν χρειαστεί.
+                        Τα πνευματικά δικαιώματα του κώδικα και των γραφικών παραμένουν στην BTech. Εσείς αποκτάτε πλήρες δικαίωμα χρήσης και προβολής για τη δική σας επιχείρηση. Σε ειδικές περιπτώσεις (μεγάλες εταιρείες, custom projects), τα δικαιώματα μπορούν να μεταβιβαστούν με ιδιωτικό συμφωνητικό μετά από συμφωνία.
                     </div>
                 </details>
 
@@ -2104,7 +2381,7 @@
                 <details class="faq-item reveal">
                     <summary data-translate="faq-6-q">Παρέχετε hosting;</summary>
                     <div class="faq-answer" data-translate="faq-6-a">
-                        Σας βοηθάμε να επιλέξετε hosting (συνήθως Netlify, Vercel, ή dedicated VPS). Δεν χρεώνουμε hosting fees — πληρώνετε απευθείας τον πάροχο, με κόστος ~€0-15/μήνα ανάλογα με το traffic.
+                        Ναι. Το hosting το αναλαμβάνουμε εμείς, σε δικούς μας εταιρικούς servers στην Ελλάδα, με υψηλή διασφάλιση ποιότητας, ασφάλεια δεδομένων και συνεχή παρακολούθηση. Περιλαμβάνεται στην τιμή του πακέτου σας — χωρίς εκπλήξεις και χωρίς extra μηνιαία fees.
                     </div>
                 </details>
 
@@ -2384,10 +2661,10 @@
                 'comp-title': 'BTech vs Wix/WordPress vs Freelancer',
                 'comp-subtitle': 'Why choose custom development from professionals instead of templates or unreliable freelancers.',
                 'comp-th-feat': 'Feature',
-                'comp-th-wix': 'Wix / WordPress',
+                'comp-th-wix': 'Wix /<br>WordPress',
                 'comp-th-fr': 'Freelancer',
                 'comp-row-1': 'Custom code, no template',
-                'comp-row-2': 'Code ownership',
+                'comp-row-2': 'No platform lock-in',
                 'comp-row-3': 'No monthly platform fees',
                 'comp-row-4': 'Ongoing support',
                 'comp-row-5': 'Professional SEO from start',
@@ -2402,13 +2679,13 @@
                 'faq-2-q': 'What\'s included in maintenance?',
                 'faq-2-a': 'Security updates, daily backups, small content changes (text, photos), monitoring, SSL renewals. Larger changes are quoted separately.',
                 'faq-3-q': 'Who owns the code?',
-                'faq-3-a': 'You do. After payment, the code is 100% yours. We deliver it in a Git repository and you can move it anywhere, or work with another developer if needed.',
+                'faq-3-a': 'The intellectual property of the code and graphics remains with BTech. You receive a full license to use and display your website for your business. In special cases (large companies, custom projects), full IP transfer can be arranged via private agreement.',
                 'faq-4-q': 'Can I migrate an old site?',
                 'faq-4-a': 'Yes. We migrate from WordPress, Wix, SquareSpace, and other platforms. We preserve SEO ranking with proper 301 redirects.',
                 'faq-5-q': 'Do you build e-commerce websites?',
                 'faq-5-a': 'Yes. We build e-commerce platforms with Stripe/PayPal integration, inventory management, order tracking. It\'s one of our strengths.',
                 'faq-6-q': 'Do you provide hosting?',
-                'faq-6-a': 'We help you select hosting (usually Netlify, Vercel, or dedicated VPS). We don\'t charge hosting fees — you pay the provider directly, costing ~€0-15/month depending on traffic.',
+                'faq-6-a': 'Yes. We handle hosting on our own corporate servers in Greece, with high-quality assurance, data security, and continuous monitoring. It\'s included in your package price — no surprises, no extra monthly fees.',
                 'faq-7-q': 'How does payment work?',
                 'faq-7-a': '50% deposit to start, 50% at launch. Written contract, clear, with all deliverables. Most payment methods accepted.',
                 'faq-8-q': 'What if I don\'t like the result?',
@@ -2705,8 +2982,9 @@
                 return { resize: resize };
             }
 
-            // Initialize all 3 instances — same effect, different sizes
-            createParticleWave(document.getElementById('hero-canvas'));
+            // Initialize all instances — same effect, different sizes/positions
+            createParticleWave(document.getElementById('hero-canvas'));           // desktop floating ball
+            createParticleWave(document.getElementById('hero-canvas-mobile'));    // mobile static ball
             createParticleWave(document.querySelector('.twin-left .twin-canvas'));
             createParticleWave(document.querySelector('.twin-right .twin-canvas'));
         });

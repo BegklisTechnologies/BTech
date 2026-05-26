@@ -1,0 +1,2267 @@
+<!DOCTYPE html>
+<html lang="el">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>BTech AI Assistant — Ψηφιακός Βοηθός Τεχνητής Νοημοσύνης | BTech AI</title>
+    <meta name="description" content="Ο Ψηφιακός Βοηθός Τεχνητής Νοημοσύνης της BTech. Ελληνικό μοντέλο εκπαιδευμένο αποκλειστικά από εμάς, σε εταιρικούς servers στην Ελλάδα. Τηλεφωνική επικοινωνία, απάντηση κλήσεων, λήψη στοιχείων πελάτη. Ακούστε ζωντανά το voice demo.">
+    <meta name="keywords" content="AI assistant, ψηφιακός βοηθός, τεχνητή νοημοσύνη, voice AI, ελληνικό μοντέλο AI, τηλεφωνικός βοηθός, AI receptionist, BTech AI">
+
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.btech-ai.com/btech-ai-assistant.html">
+    <meta property="og:title" content="BTech AI Assistant — Ψηφιακός Βοηθός Τεχνητής Νοημοσύνης">
+    <meta property="og:description" content="Ελληνικό AI μοντέλο που μιλάει φυσικά. Ακούστε ζωντανά το voice demo. Servers στην Ελλάδα, πλήρης παραμετροποίηση ανά επάγγελμα.">
+    <meta property="og:image" content="https://www.btech-ai.com/preview.png">
+
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:title" content="BTech AI Assistant — Ψηφιακός Βοηθός Τεχνητής Νοημοσύνης">
+    <meta property="twitter:description" content="Ελληνικό AI μοντέλο που μιλάει φυσικά. Ακούστε ζωντανά το voice demo.">
+
+    <link rel="canonical" href="https://www.btech-ai.com/btech-ai-assistant.html">
+    <link rel="alternate" hreflang="el" href="https://www.btech-ai.com/btech-ai-assistant.html">
+    <link rel="alternate" hreflang="en" href="https://www.btech-ai.com/btech-ai-assistant.html">
+    <link rel="icon" type="image/png" href="favicon.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Product",
+      "name": "BTech AI Assistant",
+      "category": "AI Voice Assistant",
+      "brand": { "@type": "Brand", "name": "BTech AI" },
+      "description": "Greek AI voice assistant trained exclusively by BTech, hosted on corporate servers in Greece. Handles phone communication, call answering, customer data intake, and custom information delivery. Fully customizable per profession.",
+      "manufacturer": {
+        "@type": "Organization",
+        "name": "BTech AI",
+        "url": "https://www.btech-ai.com",
+        "email": "nbegklis@btech-ai.com",
+        "telephone": "+30 698 881 7883"
+      }
+    }
+    </script>
+
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            --primary: #6366f1;
+            --secondary: #818cf8;
+            --dark: #0f172a;
+            --darker: #0a0f1f;
+            --light: #f8fafc;
+            --accent: #fbbf24;
+            --cyan: #22d3ee;
+            --gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            --gradient-bright: linear-gradient(135deg, #6366f1 0%, #818cf8 50%, #a855f7 100%);
+        }
+
+        img {
+            -webkit-user-drag: none;
+            -khtml-user-drag: none;
+            user-drag: none;
+        }
+
+        ::-webkit-scrollbar { width: 12px; }
+        ::-webkit-scrollbar-track { background: #1a1a1a; }
+        ::-webkit-scrollbar-thumb { background: #6366f1; border-radius: 6px; }
+        ::-webkit-scrollbar-thumb:hover { background: #818cf8; }
+        * { scrollbar-width: thin; scrollbar-color: #6366f1 #1a1a1a; }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Inter", Roboto, sans-serif;
+            background: var(--dark);
+            color: var(--light);
+            overflow-x: hidden;
+            line-height: 1.6;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            user-select: none;
+        }
+
+        html { scroll-behavior: smooth; }
+
+        /* Nav */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 1rem 5%;
+            background: rgba(15, 23, 42, 0.95);
+            backdrop-filter: blur(20px);
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        nav.scrolled {
+            padding: 0.5rem 5%;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            text-decoration: none;
+        }
+
+        .logo img { height: 40px; width: auto; }
+
+        .logo-text {
+            font-size: 1.75rem;
+            font-weight: 900;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .nav-right {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .nav-back {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--secondary);
+            text-decoration: none;
+            font-weight: 500;
+            padding: 0.5rem 1rem;
+            border: 1px solid rgba(99, 102, 241, 0.3);
+            border-radius: 50px;
+            transition: all 0.3s ease;
+        }
+
+        .nav-back:hover {
+            background: rgba(99, 102, 241, 0.1);
+            border-color: var(--secondary);
+        }
+
+        .language-switcher {
+            display: flex;
+            gap: 0.5rem;
+            align-items: center;
+        }
+
+        .flag-button {
+            width: 32px;
+            height: 22px;
+            cursor: pointer;
+            border-radius: 3px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            border: 1px solid transparent;
+            opacity: 0.7;
+        }
+
+        .flag-button:hover { transform: scale(1.1); opacity: 1; }
+
+        .flag-button.active {
+            border-color: var(--secondary);
+            opacity: 1;
+            box-shadow: 0 0 15px rgba(129, 140, 248, 0.5);
+        }
+
+        .flag-button img { width: 100%; height: 100%; object-fit: cover; }
+
+        /* Buttons */
+        .btn {
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 1rem;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn-primary {
+            background: var(--gradient);
+            color: white;
+            box-shadow: 0 10px 30px rgba(99, 102, 241, 0.4);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(99, 102, 241, 0.6);
+        }
+
+        .btn-secondary {
+            border: 2px solid rgba(129, 140, 248, 0.5);
+            color: var(--secondary);
+            background: rgba(99, 102, 241, 0.05);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(99, 102, 241, 0.15);
+            border-color: var(--secondary);
+            transform: translateY(-3px);
+        }
+
+        /* Hero */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            padding: 8rem 5% 9rem;
+            overflow: hidden;
+            background: radial-gradient(ellipse at top, rgba(99, 102, 241, 0.15) 0%, transparent 60%);
+        }
+
+        .hero-bg-blob {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(80px);
+            opacity: 0.5;
+            pointer-events: none;
+            animation: blobFloat 20s ease-in-out infinite;
+        }
+
+        .hero-bg-blob.blob-1 {
+            top: -100px; left: -100px;
+            width: 400px; height: 400px;
+            background: radial-gradient(circle, rgba(99, 102, 241, 0.4), transparent);
+        }
+
+        .hero-bg-blob.blob-2 {
+            bottom: -100px; right: -100px;
+            width: 500px; height: 500px;
+            background: radial-gradient(circle, rgba(168, 85, 247, 0.3), transparent);
+            animation-delay: 5s;
+        }
+
+        @keyframes blobFloat {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            33% { transform: translate(50px, -30px) scale(1.1); }
+            66% { transform: translate(-30px, 50px) scale(0.95); }
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .hero-layout {
+            display: grid;
+            grid-template-columns: 1.05fr 1fr;
+            gap: 4rem;
+            max-width: 1400px;
+            width: 100%;
+            align-items: center;
+            position: relative;
+            z-index: 10;
+        }
+
+        .hero-left { animation: fadeInUp 1s ease-out; }
+
+        .hero-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 1.1rem;
+            background: rgba(99, 102, 241, 0.15);
+            border: 1px solid rgba(99, 102, 241, 0.3);
+            border-radius: 50px;
+            color: var(--secondary);
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            letter-spacing: 0.05em;
+        }
+
+        .hero-tag .dot {
+            width: 8px; height: 8px; border-radius: 50%;
+            background: #22c55e;
+            box-shadow: 0 0 10px #22c55e;
+            animation: livePulse 1.6s ease-in-out infinite;
+        }
+
+        @keyframes livePulse {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.4; transform: scale(0.7); }
+        }
+
+        .hero h1 {
+            font-size: clamp(2.25rem, 5.5vw, 4.75rem);
+            line-height: 1.05;
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+            letter-spacing: -0.02em;
+        }
+
+        .hero h1 .line-white { display: block; color: #ffffff; }
+
+        .hero h1 .word-purple {
+            background: linear-gradient(135deg, #a855f7 0%, #818cf8 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: 800;
+        }
+
+        .hero-tagline {
+            font-size: 1.08rem;
+            color: #cbd5e1;
+            margin-bottom: 2rem;
+            font-weight: 500;
+            max-width: 560px;
+        }
+
+        .hero-ctas {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            margin-bottom: 2rem;
+        }
+
+        .hero-canvas-wrap {
+            width: 100%;
+            height: 460px;
+            position: relative;
+        }
+
+        /* Hero stats */
+        .hero-stats {
+            position: absolute;
+            bottom: 2.5rem;
+            left: 50%;
+            transform: translateX(-50%);
+            width: calc(100% - 10%);
+            max-width: 900px;
+            background: rgba(15, 23, 42, 0.7);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(99, 102, 241, 0.2);
+            border-radius: 22px;
+            padding: 1.5rem 2rem;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+            z-index: 10;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3), 0 0 0 1px rgba(255, 255, 255, 0.03);
+        }
+
+        .hero-stat { display: flex; align-items: center; gap: 1rem; }
+
+        .hero-stat-icon {
+            width: 48px; height: 48px;
+            background: rgba(99, 102, 241, 0.15);
+            border: 1px solid rgba(99, 102, 241, 0.25);
+            border-radius: 14px;
+            display: flex; align-items: center; justify-content: center;
+            color: var(--secondary);
+            font-size: 1.2rem;
+            flex-shrink: 0;
+        }
+
+        .hero-stat-text strong {
+            display: block;
+            font-size: 1.4rem;
+            font-weight: 800;
+            line-height: 1.1;
+            background: linear-gradient(135deg, #ffffff 0%, #c4b5fd 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero-stat-text span { font-size: 0.8rem; color: #94a3b8; display: block; }
+
+        /* Sections */
+        section { padding: 6rem 5%; position: relative; }
+        .section-container { max-width: 1300px; margin: 0 auto; }
+
+        .section-tag {
+            display: block;
+            text-align: center;
+            color: var(--secondary);
+            font-size: 0.9rem;
+            font-weight: 700;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            margin-bottom: 1rem;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: clamp(2rem, 4vw, 3rem);
+            margin-bottom: 1rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #ffffff 0%, #818cf8 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: #94a3b8;
+            font-size: 1.15rem;
+            margin-bottom: 4rem;
+            max-width: 720px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1), transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .reveal.visible { opacity: 1; transform: translateY(0); }
+
+        /* ===== DEMO SECTION (centerpiece) ===== */
+        .demo-section {
+            background: linear-gradient(180deg, var(--dark) 0%, #0a0f1f 50%, var(--dark) 100%);
+            overflow: hidden;
+        }
+
+        .demo-stage {
+            position: relative;
+            max-width: 720px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .demo-orb-wrap {
+            position: relative;
+            width: min(560px, 86vw);
+            height: min(560px, 86vw);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1rem;
+        }
+
+        .demo-orb-wrap canvas {
+            width: 100%;
+            height: 100%;
+            display: block;
+            pointer-events: none; /* decorative — never swallow the play button click */
+        }
+
+        /* Center play button sits on top of the orb */
+        .demo-play-btn {
+            position: absolute;
+            top: 50%; left: 50%;
+            transform: translate(-50%, -50%);
+            width: 96px; height: 96px;
+            border-radius: 50%;
+            border: none;
+            cursor: pointer;
+            background: linear-gradient(135deg, rgba(99,102,241,0.9) 0%, rgba(168,85,247,0.9) 100%);
+            color: #fff;
+            font-size: 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 0 0 1px rgba(255,255,255,0.15),
+                        0 10px 40px rgba(99, 102, 241, 0.5),
+                        0 0 60px rgba(168, 85, 247, 0.4);
+            transition: transform 0.25s ease, box-shadow 0.25s ease;
+            z-index: 5;
+            backdrop-filter: blur(4px);
+        }
+
+        .demo-play-btn::before {
+            content: '';
+            position: absolute;
+            inset: -8px;
+            border-radius: 50%;
+            border: 2px solid rgba(129, 140, 248, 0.4);
+            animation: playRipple 2.4s ease-out infinite;
+        }
+
+        @keyframes playRipple {
+            0% { transform: scale(1); opacity: 0.7; }
+            100% { transform: scale(1.6); opacity: 0; }
+        }
+
+        .demo-play-btn:hover { transform: translate(-50%, -50%) scale(1.07); }
+
+        .demo-play-btn .fa-play { margin-left: 6px; }
+
+        .demo-play-btn.playing::before { animation: none; }
+
+        /* Equalizer bar strip under orb */
+        .demo-eq {
+            display: flex;
+            align-items: flex-end;
+            justify-content: center;
+            gap: 4px;
+            height: 56px;
+            margin: 0.5rem 0 1.25rem;
+            width: 100%;
+            max-width: 420px;
+        }
+
+        .demo-eq span {
+            flex: 1;
+            min-width: 3px;
+            height: 6px;
+            border-radius: 4px;
+            background: linear-gradient(180deg, var(--cyan), var(--primary));
+            transition: height 0.06s linear;
+            opacity: 0.85;
+        }
+
+        .demo-status {
+            font-size: 1rem;
+            color: var(--secondary);
+            font-weight: 600;
+            letter-spacing: 0.04em;
+            min-height: 1.5rem;
+            text-align: center;
+        }
+
+        .demo-note {
+            margin-top: 1.75rem;
+            text-align: center;
+            color: #94a3b8;
+            font-size: 0.95rem;
+            max-width: 560px;
+        }
+
+        .demo-compare {
+            display: flex;
+            gap: 0.75rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 1.5rem;
+        }
+
+        .demo-compare .vs-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.45rem;
+            padding: 0.5rem 1rem;
+            border-radius: 50px;
+            background: rgba(34, 211, 238, 0.08);
+            border: 1px solid rgba(34, 211, 238, 0.25);
+            color: #a5f3fc;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+
+        .demo-compare .vs-pill i { color: var(--cyan); }
+
+        /* ===== Feature cards ===== */
+        .features-section { background: var(--dark); }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .feature-card {
+            background: linear-gradient(135deg, rgba(99, 102, 241, 0.05) 0%, rgba(129, 140, 248, 0.02) 100%);
+            border: 1px solid rgba(99, 102, 241, 0.2);
+            border-radius: 20px;
+            padding: 2rem;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 2px;
+            background: var(--gradient-bright);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.4s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-8px);
+            border-color: var(--secondary);
+            box-shadow: 0 20px 40px rgba(99, 102, 241, 0.2);
+        }
+
+        .feature-card:hover::before { transform: scaleX(1); }
+
+        .feature-icon {
+            width: 54px; height: 54px;
+            background: var(--gradient);
+            border-radius: 14px;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 1.45rem; color: white;
+            margin-bottom: 1.25rem;
+            box-shadow: 0 8px 20px rgba(99, 102, 241, 0.3);
+        }
+
+        .feature-card h3 { font-size: 1.2rem; margin-bottom: 0.75rem; font-weight: 700; }
+        .feature-card p { color: #cbd5e1; font-size: 0.95rem; line-height: 1.7; }
+
+        /* ===== How it works / process ===== */
+        .process-section { background: linear-gradient(180deg, var(--dark) 0%, #0c1325 100%); }
+
+        .process-lead {
+            text-align: center;
+            color: #cbd5e1;
+            font-size: 1.1rem;
+            max-width: 760px;
+            margin: 0 auto 3.5rem;
+            line-height: 1.8;
+        }
+
+        .process-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .process-step {
+            background: rgba(30, 41, 59, 0.4);
+            border: 1px solid rgba(99, 102, 241, 0.15);
+            border-radius: 20px;
+            padding: 2rem;
+            position: relative;
+            transition: all 0.4s ease;
+        }
+
+        .process-step:hover {
+            transform: translateY(-6px);
+            border-color: rgba(99, 102, 241, 0.4);
+            box-shadow: 0 20px 40px rgba(99, 102, 241, 0.15);
+        }
+
+        .process-num {
+            font-size: 2.5rem;
+            font-weight: 900;
+            background: var(--gradient-bright);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            line-height: 1;
+            margin-bottom: 0.75rem;
+        }
+
+        .process-step h3 { font-size: 1.15rem; margin-bottom: 0.5rem; font-weight: 700; }
+        .process-step p { color: #94a3b8; font-size: 0.92rem; line-height: 1.65; }
+
+        /* ===== Use cases ===== */
+        .usecases-section { background: var(--dark); }
+
+        .usecases-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .usecase-card {
+            background: rgba(30, 41, 59, 0.4);
+            border: 1px solid rgba(99, 102, 241, 0.15);
+            border-radius: 18px;
+            padding: 1.75rem;
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            transition: all 0.4s ease;
+        }
+
+        .usecase-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--secondary);
+            box-shadow: 0 15px 35px rgba(99, 102, 241, 0.18);
+        }
+
+        .usecase-card .uc-icon {
+            width: 46px; height: 46px;
+            flex-shrink: 0;
+            border-radius: 12px;
+            background: rgba(99, 102, 241, 0.15);
+            border: 1px solid rgba(99, 102, 241, 0.25);
+            display: flex; align-items: center; justify-content: center;
+            color: var(--secondary);
+            font-size: 1.2rem;
+        }
+
+        .usecase-card h3 { font-size: 1.05rem; margin-bottom: 0.3rem; font-weight: 700; }
+        .usecase-card p { color: #94a3b8; font-size: 0.88rem; line-height: 1.55; }
+
+        /* ===== Comparison ===== */
+        .comparison-section { background: linear-gradient(180deg, #0c1325 0%, var(--dark) 100%); }
+
+        .comparison-table {
+            max-width: 900px;
+            margin: 0 auto;
+            border-radius: 20px;
+            overflow: hidden;
+            border: 1px solid rgba(99, 102, 241, 0.2);
+            background: rgba(30, 41, 59, 0.4);
+        }
+
+        .comparison-row {
+            display: grid;
+            grid-template-columns: 1.4fr 1fr 1fr;
+            align-items: center;
+        }
+
+        .comparison-row > div {
+            padding: 1.1rem 1.25rem;
+            border-bottom: 1px solid rgba(99, 102, 241, 0.1);
+            font-size: 0.95rem;
+        }
+
+        .comparison-row:last-child > div { border-bottom: none; }
+
+        .comparison-row.head > div {
+            font-weight: 700;
+            background: rgba(99, 102, 241, 0.1);
+            text-transform: uppercase;
+            font-size: 0.78rem;
+            letter-spacing: 0.05em;
+            color: var(--secondary);
+        }
+
+        .comparison-row.head .col-btech {
+            background: var(--gradient);
+            color: #fff;
+        }
+
+        .comparison-row .feat { color: #cbd5e1; font-weight: 600; }
+        .comparison-row .col-btech { color: #fff; font-weight: 600; background: rgba(99, 102, 241, 0.06); }
+        .comparison-row .col-other { color: #94a3b8; }
+
+        .comparison-row .yes { color: #22c55e; font-weight: 700; }
+        .comparison-row .no { color: #ef4444; }
+        .comparison-row i { margin-right: 0.4rem; }
+
+        /* ===== Infra / trust ===== */
+        .infra-section { background: var(--dark); }
+
+        .infra-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 1.5rem;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .infra-card {
+            text-align: center;
+            padding: 2.25rem 1.75rem;
+            border-radius: 20px;
+            background: linear-gradient(135deg, rgba(99, 102, 241, 0.07) 0%, rgba(34, 211, 238, 0.03) 100%);
+            border: 1px solid rgba(99, 102, 241, 0.2);
+            transition: all 0.4s ease;
+        }
+
+        .infra-card:hover {
+            transform: translateY(-6px);
+            border-color: var(--secondary);
+            box-shadow: 0 20px 40px rgba(99, 102, 241, 0.18);
+        }
+
+        .infra-card .infra-icon {
+            font-size: 2.2rem;
+            color: var(--secondary);
+            margin-bottom: 1rem;
+        }
+
+        .infra-card h3 { font-size: 1.15rem; margin-bottom: 0.6rem; font-weight: 700; }
+        .infra-card p { color: #94a3b8; font-size: 0.9rem; line-height: 1.6; }
+
+        /* ===== FAQ ===== */
+        .faq-section { background: linear-gradient(180deg, var(--dark) 0%, #0c1325 100%); }
+
+        .faq-list { max-width: 800px; margin: 0 auto; display: flex; flex-direction: column; gap: 1rem; }
+
+        .faq-item {
+            background: rgba(30, 41, 59, 0.4);
+            border: 1px solid rgba(99, 102, 241, 0.15);
+            border-radius: 14px;
+            overflow: hidden;
+            transition: border-color 0.3s ease;
+        }
+
+        .faq-item[open] { border-color: rgba(99, 102, 241, 0.4); }
+
+        .faq-item summary {
+            padding: 1.25rem 1.5rem;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 1.05rem;
+            color: #f1f5f9;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            list-style: none;
+        }
+
+        .faq-item summary::-webkit-details-marker { display: none; }
+
+        .faq-item summary::after {
+            content: '+';
+            font-size: 1.5rem;
+            color: var(--secondary);
+            font-weight: 300;
+            transition: transform 0.3s ease;
+        }
+
+        .faq-item[open] summary::after { transform: rotate(45deg); }
+
+        .faq-answer { padding: 0 1.5rem 1.5rem; color: #cbd5e1; line-height: 1.75; }
+
+        /* ===== Final CTA ===== */
+        .final-cta {
+            background: linear-gradient(135deg, rgba(99, 102, 241, 0.15) 0%, rgba(168, 85, 247, 0.1) 100%);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            padding: 6rem 5%;
+        }
+
+        .final-cta::before, .final-cta::after {
+            content: '';
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(80px);
+            pointer-events: none;
+        }
+
+        .final-cta::before { top: -100px; left: 10%; width: 300px; height: 300px; background: rgba(99, 102, 241, 0.3); }
+        .final-cta::after { bottom: -100px; right: 10%; width: 300px; height: 300px; background: rgba(168, 85, 247, 0.3); }
+
+        .final-cta-content { position: relative; z-index: 2; max-width: 700px; margin: 0 auto; }
+
+        .final-cta h2 {
+            font-size: clamp(2rem, 4vw, 3rem);
+            margin-bottom: 1rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #ffffff 0%, #818cf8 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .final-cta p { color: #cbd5e1; font-size: 1.15rem; margin-bottom: 2.5rem; }
+
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 2rem;
+            margin-top: 2.5rem;
+            color: #94a3b8;
+        }
+
+        .contact-info a {
+            color: var(--secondary);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: color 0.3s ease;
+        }
+
+        .contact-info a:hover { color: var(--light); }
+
+        /* Footer */
+        footer {
+            background: var(--darker);
+            padding: 3rem 5% 2rem;
+            text-align: center;
+            border-top: 1px solid rgba(99, 102, 241, 0.1);
+        }
+
+        .footer-content { max-width: 1200px; margin: 0 auto; }
+
+        .footer-logo {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+            text-decoration: none;
+        }
+
+        .footer-logo img { height: 40px; }
+        .footer-logo .logo-text { font-size: 1.5rem; }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            margin: 1.5rem 0;
+            font-size: 0.9rem;
+        }
+
+        .footer-links a { color: #94a3b8; text-decoration: none; transition: color 0.3s ease; }
+        .footer-links a:hover { color: var(--secondary); }
+
+        .footer-bottom {
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(99, 102, 241, 0.1);
+            color: #64748b;
+            font-size: 0.85rem;
+        }
+
+        .footer-legal-buttons {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 1.25rem;
+            margin-top: 0.75rem;
+        }
+
+        .footer-legal-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.35rem;
+            padding: 0;
+            background: transparent;
+            border: none;
+            color: #64748b;
+            font-size: 0.72rem;
+            font-weight: 400;
+            cursor: pointer;
+            transition: color 0.3s ease;
+            font-family: inherit;
+            text-decoration: none;
+        }
+
+        .footer-legal-btn i { font-size: 0.7rem; opacity: 0.6; }
+
+        .footer-legal-btn:hover { color: var(--secondary); text-decoration: underline; text-underline-offset: 3px; }
+
+        .footer-bottom-brand {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+
+        .footer-bottom-brand img { height: 1.5rem; transition: filter 0.3s ease; }
+        .footer-bottom-brand img:hover { filter: drop-shadow(0 0 8px rgba(99, 102, 241, 0.8)) drop-shadow(0 0 15px rgba(129, 140, 248, 0.6)); }
+
+        /* Legal Modal */
+        .legal-modal {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: rgba(5, 10, 25, 0.92);
+            backdrop-filter: blur(15px);
+            z-index: 10001;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+            animation: modalFadeIn 0.3s ease-out;
+        }
+
+        .legal-modal.active { display: flex; }
+
+        @keyframes modalFadeIn { from { opacity: 0; } to { opacity: 1; } }
+        @keyframes modalZoomIn { from { transform: scale(0.8); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+
+        .legal-modal-content {
+            background: linear-gradient(135deg, rgba(30, 41, 59, 0.98) 0%, rgba(15, 23, 42, 0.98) 100%);
+            border: 1px solid rgba(99, 102, 241, 0.3);
+            border-radius: 20px;
+            max-width: 700px;
+            width: 100%;
+            max-height: 85vh;
+            overflow-y: auto;
+            padding: 2.5rem;
+            position: relative;
+            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.6), 0 0 100px rgba(99, 102, 241, 0.15);
+            animation: modalZoomIn 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .legal-modal-close {
+            position: absolute;
+            top: 1rem; right: 1rem;
+            width: 36px; height: 36px;
+            background: rgba(99, 102, 241, 0.15);
+            border: 1px solid rgba(99, 102, 241, 0.3);
+            border-radius: 50%;
+            color: var(--light);
+            cursor: pointer;
+            display: flex; align-items: center; justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .legal-modal-close:hover { background: var(--gradient); transform: rotate(90deg); }
+
+        .legal-modal-content h2 {
+            font-size: 1.75rem;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(135deg, #ffffff 0%, #818cf8 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            padding-right: 2.5rem;
+        }
+
+        .legal-modal-content h3 { font-size: 1.1rem; color: var(--secondary); margin: 1.5rem 0 0.75rem; font-weight: 600; }
+        .legal-modal-content p, .legal-modal-content li { color: #cbd5e1; line-height: 1.75; margin-bottom: 0.75rem; font-size: 0.95rem; }
+        .legal-modal-content ul { padding-left: 1.5rem; }
+        .legal-modal-content strong { color: var(--light); }
+
+        .legal-divider { height: 1px; background: rgba(99, 102, 241, 0.2); margin: 1.5rem 0; }
+
+        .legal-info-row {
+            display: flex;
+            gap: 0.75rem;
+            padding: 0.6rem 0;
+            border-bottom: 1px solid rgba(99, 102, 241, 0.1);
+            font-size: 0.95rem;
+        }
+
+        .legal-info-row:last-child { border-bottom: none; }
+        .legal-info-label { color: var(--secondary); font-weight: 600; min-width: 140px; }
+        .legal-info-value { color: #cbd5e1; flex: 1; }
+
+        /* Responsive */
+        /* ---------- Tablet ---------- */
+        @media (max-width: 1024px) {
+            .hero-layout { grid-template-columns: 1fr; gap: 2rem; text-align: center; }
+            .hero-tagline { margin-left: auto; margin-right: auto; }
+            .hero-ctas { justify-content: center; }
+            .hero-canvas-wrap { max-width: 460px; height: 380px; margin: 0 auto; order: -1; }
+            .comparison-row { grid-template-columns: 1.3fr 1fr 1fr; }
+        }
+
+        /* ---------- Phone ---------- */
+        @media (max-width: 768px) {
+            section { padding: 4rem 5%; }
+
+            /* Nav: icon-only back button so the header doesn't crowd */
+            nav { padding: 0.85rem 5%; }
+            .nav-right { gap: 0.75rem; }
+            .nav-back span { display: none; }
+            .nav-back { padding: 0.5rem 0.7rem; }
+            .logo img { height: 34px; }
+            .logo-text { font-size: 1.5rem; }
+
+            /* Hero → vertical; stats flow below instead of overlapping (no absolute) */
+            .hero {
+                flex-direction: column;
+                min-height: auto;
+                justify-content: flex-start;
+                padding: 7rem 5% 3rem;
+            }
+            .hero-layout { gap: 1.5rem; }
+            .hero h1 { font-size: clamp(1.9rem, 8vw, 2.6rem); }
+            .hero-tagline { font-size: 0.98rem; }
+            .hero-canvas-wrap { height: 300px; max-width: 340px; }
+            .hero-ctas { width: 100%; }
+            .hero-ctas .btn { width: 100%; justify-content: center; }
+
+            .hero-stats {
+                position: relative;
+                bottom: auto; left: auto; transform: none;
+                width: 100%;
+                max-width: 360px;
+                margin: 1.75rem auto 0;
+                grid-template-columns: 1fr;
+                gap: 0.5rem;
+                padding: 1.25rem 1.5rem;
+                background: rgba(15, 23, 42, 0.85);
+            }
+            .hero-stat {
+                justify-content: flex-start;
+                padding: 0.55rem 0;
+                border-bottom: 1px solid rgba(99, 102, 241, 0.1);
+            }
+            .hero-stat:last-child { border-bottom: none; }
+
+            /* Demo */
+            .demo-play-btn { width: 76px; height: 76px; font-size: 1.5rem; }
+            .demo-eq { height: 44px; gap: 3px; }
+            .demo-note { font-size: 0.9rem; }
+
+            /* Grids → single column */
+            .features-grid, .process-grid, .usecases-grid, .infra-grid { grid-template-columns: 1fr; }
+
+            /* Comparison: keep 3 columns but compact */
+            .comparison-row { grid-template-columns: 1.25fr 1fr 1fr; }
+            .comparison-row > div { padding: 0.8rem 0.55rem; font-size: 0.8rem; }
+            .comparison-row.head > div { font-size: 0.64rem; }
+            .comparison-row i { margin-right: 0.2rem; }
+
+            .footer-links { gap: 1rem 1.25rem; }
+        }
+
+        /* ---------- Small phone ---------- */
+        @media (max-width: 420px) {
+            .hero h1 { font-size: 1.75rem; }
+            .hero-canvas-wrap { height: 260px; }
+            .demo-orb-wrap { width: 92vw; height: 92vw; }
+            .section-tag { font-size: 0.78rem; }
+            .comparison-row > div { padding: 0.7rem 0.45rem; font-size: 0.72rem; }
+            .comparison-row.head > div { font-size: 0.58rem; }
+            .legal-modal-content { padding: 1.5rem 1.1rem; }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navigation -->
+    <nav id="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo">
+                <img src="logo.png" alt="BTech Logo">
+                <span class="logo-text">BTech<span style="color: #818cf8; font-size: 0.55em; vertical-align: super;">.ai</span></span>
+            </a>
+            <div class="nav-right">
+                <a href="index.html" class="nav-back">
+                    <i class="fas fa-arrow-left"></i>
+                    <span data-translate="nav-back">Πίσω στο BTech.ai</span>
+                </a>
+                <div class="language-switcher">
+                    <div class="flag-button" onclick="changeLanguage('en')" data-lang="en">
+                        <img src="https://flagcdn.com/w40/gb.png" alt="English">
+                    </div>
+                    <div class="flag-button active" onclick="changeLanguage('el')" data-lang="el">
+                        <img src="https://flagcdn.com/w40/gr.png" alt="Greek">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <section class="hero">
+        <div class="hero-bg-blob blob-1"></div>
+        <div class="hero-bg-blob blob-2"></div>
+
+        <div class="hero-layout">
+            <div class="hero-left">
+                <span class="hero-tag">
+                    <span class="dot"></span>
+                    <span data-translate="hero-tag">ΝΕΟ · Αποκλειστικό Προϊόν BTech AI</span>
+                </span>
+                <h1 data-translate-html="hero-title">
+                    <span class="line-white">Ο Ψηφιακός Βοηθός</span>
+                    <span class="line-white"><span class="word-purple">Τεχνητής Νοημοσύνης</span></span>
+                </h1>
+                <p class="hero-tagline" data-translate="hero-tagline">
+                    Ένα καινοτόμο προϊόν της BTech. Μοντέλο εκπαιδευμένο αποκλειστικά από εμάς, σε υπερσύγχρονα συστήματα τεχνητής νοημοσύνης και εταιρικούς servers στην Ελλάδα. Παραμετροποιείται για κάθε επάγγελμα και επιχείρηση.
+                </p>
+
+                <div class="hero-ctas">
+                    <a href="#demo" class="btn btn-primary">
+                        <i class="fas fa-headphones"></i>
+                        <span data-translate="hero-cta-demo">Ακούστε το Demo</span>
+                    </a>
+                    <a href="#cta" class="btn btn-secondary">
+                        <span data-translate="hero-cta-quote">Ζητήστε Παρουσίαση</span>
+                    </a>
+                </div>
+            </div>
+
+            <div class="hero-canvas-wrap" aria-hidden="true">
+                <canvas id="hero-orb"></canvas>
+            </div>
+        </div>
+
+        <div class="hero-stats">
+            <div class="hero-stat">
+                <div class="hero-stat-icon"><i class="fas fa-flag"></i></div>
+                <div class="hero-stat-text">
+                    <strong data-translate="stat-1-num">100%</strong>
+                    <span data-translate="stat-1-label">Ελληνικό μοντέλο</span>
+                </div>
+            </div>
+            <div class="hero-stat">
+                <div class="hero-stat-icon"><i class="fas fa-clock"></i></div>
+                <div class="hero-stat-text">
+                    <strong data-translate="stat-2-num">24/7</strong>
+                    <span data-translate="stat-2-label">Διαθεσιμότητα</span>
+                </div>
+            </div>
+            <div class="hero-stat">
+                <div class="hero-stat-icon"><i class="fas fa-server"></i></div>
+                <div class="hero-stat-text">
+                    <strong data-translate="stat-3-num">Servers</strong>
+                    <span data-translate="stat-3-label">στην Ελλάδα</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- DEMO Section (centerpiece — audio-reactive orb) -->
+    <section class="demo-section" id="demo">
+        <div class="section-container">
+            <span class="section-tag reveal" data-translate="demo-tag">Voice Demo</span>
+            <h2 class="section-title reveal" data-translate="demo-title">Ακούστε το Ελληνικό Μοντέλο μας</h2>
+            <p class="section-subtitle reveal" data-translate="demo-subtitle">
+                Πατήστε play και ακούστε πώς μιλάει — φυσικά, καθαρά, ανθρώπινα. Η μπάλα παλλόμενη ζωντανά με τα ηχητικά κύματα της φωνής.
+            </p>
+
+            <div class="demo-stage reveal">
+                <div class="demo-orb-wrap">
+                    <canvas id="demo-orb"></canvas>
+                    <button class="demo-play-btn" id="demoPlayBtn" aria-label="Play voice demo">
+                        <i class="fas fa-play"></i>
+                    </button>
+                </div>
+
+                <div class="demo-eq" id="demoEq" aria-hidden="true"></div>
+
+                <div class="demo-status" id="demoStatus" data-translate="demo-status-idle">Πατήστε για αναπαραγωγή</div>
+
+                <div class="demo-compare">
+                    <span class="vs-pill"><i class="fas fa-trophy"></i> <span data-translate="demo-vs-1">10× καλύτερη ελληνική φωνή</span></span>
+                    <span class="vs-pill"><i class="fas fa-check-circle"></i> <span data-translate="demo-vs-2">Νικά Gemini &amp; ChatGPT</span></span>
+                </div>
+
+                <p class="demo-note" data-translate="demo-note">
+                    Το μοντέλο μας μιλάει τα Ελληνικά 10 φορές καλύτερα από Gemini και ChatGPT — με σωστό τονισμό, ροή και προφορά που δεν ξεχωρίζεις από άνθρωπο.
+                </p>
+            </div>
+
+            <!-- Hidden audio element wired to the orb visualizer.
+                 NOTE: no crossorigin attribute — the MP3 is same-origin, and setting
+                 crossorigin blocks loading over file:// / hosts without CORS headers. -->
+            <audio id="demoAudio" src="VoiceDemo.mp3" preload="auto"></audio>
+        </div>
+    </section>
+
+    <!-- Features — what it can do -->
+    <section class="features-section">
+        <div class="section-container">
+            <span class="section-tag reveal" data-translate="feat-tag">Δυνατότητες</span>
+            <h2 class="section-title reveal" data-translate="feat-title">Τι Μπορεί να Κάνει για Εσάς</h2>
+            <p class="section-subtitle reveal" data-translate="feat-subtitle">
+                Ένας ακούραστος ψηφιακός συνεργάτης που καλύπτει τις πραγματικές ανάγκες της επιχείρησής σας.
+            </p>
+
+            <div class="features-grid">
+                <div class="feature-card reveal">
+                    <div class="feature-icon"><i class="fas fa-phone-volume"></i></div>
+                    <h3 data-translate="feat-1-title">Τηλεφωνική Επικοινωνία</h3>
+                    <p data-translate="feat-1-desc">Απαντά στο τηλέφωνο με φυσική φωνή, διεξάγει ολοκληρωμένες συνομιλίες και εξυπηρετεί τους πελάτες σας όπως ένας πραγματικός υπάλληλος.</p>
+                </div>
+                <div class="feature-card reveal">
+                    <div class="feature-icon"><i class="fas fa-headset"></i></div>
+                    <h3 data-translate="feat-2-title">Απάντηση Κλήσεων</h3>
+                    <p data-translate="feat-2-desc">Καμία αναπάντητη κλήση. Σηκώνει το τηλέφωνο 24/7, χωρίς αναμονή και χωρίς χαμένες ευκαιρίες — ακόμα και εκτός ωραρίου.</p>
+                </div>
+                <div class="feature-card reveal">
+                    <div class="feature-icon"><i class="fas fa-id-card"></i></div>
+                    <h3 data-translate="feat-3-title">Λήψη Στοιχείων Πελάτη</h3>
+                    <p data-translate="feat-3-desc">Καταγράφει όνομα, τηλέφωνο, αίτημα και κάθε σχετική πληροφορία, και σας τα παραδίδει οργανωμένα για άμεση παρακολούθηση.</p>
+                </div>
+                <div class="feature-card reveal">
+                    <div class="feature-icon"><i class="fas fa-comments"></i></div>
+                    <h3 data-translate="feat-4-title">Απαντήσεις σε Πληροφορίες</h3>
+                    <p data-translate="feat-4-desc">Δίνει συγκεκριμένες, ακριβείς απαντήσεις για ωράρια, υπηρεσίες, τιμές και ό,τι άλλο χρειάζεται ο πελάτης σας — πάντα σωστά.</p>
+                </div>
+                <div class="feature-card reveal">
+                    <div class="feature-icon"><i class="fas fa-sliders-h"></i></div>
+                    <h3 data-translate="feat-5-title">Πλήρης Παραμετροποίηση</h3>
+                    <p data-translate="feat-5-desc">Προσαρμόζεται σε κάθε επάγγελμα, επιχείρηση και εταιρεία. Το μοντέλο μαθαίνει τη δική σας δουλειά και μιλάει με τη δική σας φωνή.</p>
+                </div>
+                <div class="feature-card reveal">
+                    <div class="feature-icon"><i class="fas fa-wave-square"></i></div>
+                    <h3 data-translate="feat-6-title">Φυσική Ελληνική Φωνή</h3>
+                    <p data-translate="feat-6-desc">Υπερσύγχρονο μοντέλο με ανθρώπινο τονισμό και ροή. Οι πελάτες σας μιλούν με κάποιον που ακούγεται — και νιώθεται — αληθινός.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How it works / customization -->
+    <section class="process-section">
+        <div class="section-container">
+            <span class="section-tag reveal" data-translate="proc-tag">Πώς Λειτουργεί</span>
+            <h2 class="section-title reveal" data-translate="proc-title">Προσαρμοσμένο 100% στις Ανάγκες σας</h2>
+            <p class="process-lead reveal" data-translate="proc-lead">
+                Κατανοούμε τις ανάγκες κάθε επαγγελματία και προσαρμόζουμε το μοντέλο ώστε να τις καλύπτει στο 100%. Δεν σας δίνουμε ένα γενικό εργαλείο — χτίζουμε τον δικό σας ψηφιακό βοηθό.
+            </p>
+
+            <div class="process-grid">
+                <div class="process-step reveal">
+                    <div class="process-num">01</div>
+                    <h3 data-translate="proc-1-title">Ανάλυση Αναγκών</h3>
+                    <p data-translate="proc-1-desc">Καταγράφουμε πώς δουλεύετε, τι σας ρωτούν οι πελάτες και τι θέλετε να αυτοματοποιήσετε.</p>
+                </div>
+                <div class="process-step reveal">
+                    <div class="process-num">02</div>
+                    <h3 data-translate="proc-2-title">Εκπαίδευση Μοντέλου</h3>
+                    <p data-translate="proc-2-desc">Εκπαιδεύουμε το μοντέλο αποκλειστικά πάνω στη δική σας δουλειά, τις υπηρεσίες και τον τρόπο που μιλάτε.</p>
+                </div>
+                <div class="process-step reveal">
+                    <div class="process-num">03</div>
+                    <h3 data-translate="proc-3-title">Ενσωμάτωση</h3>
+                    <p data-translate="proc-3-desc">Συνδέουμε τον βοηθό με το τηλέφωνο και τα συστήματά σας. Έτοιμος να απαντά από την πρώτη μέρα.</p>
+                </div>
+                <div class="process-step reveal">
+                    <div class="process-num">04</div>
+                    <h3 data-translate="proc-4-title">Υποστήριξη &amp; Βελτίωση</h3>
+                    <p data-translate="proc-4-desc">Παρακολουθούμε, βελτιώνουμε και εξελίσσουμε συνεχώς το μοντέλο ώστε να γίνεται όλο και καλύτερο.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Use cases by profession -->
+    <section class="usecases-section">
+        <div class="section-container">
+            <span class="section-tag reveal" data-translate="uc-tag">Για Κάθε Επάγγελμα</span>
+            <h2 class="section-title reveal" data-translate="uc-title">Φτιαγμένο για τη Δική σας Δουλειά</h2>
+            <p class="section-subtitle reveal" data-translate="uc-subtitle">
+                Από ιατρεία μέχρι εστιατόρια — ο βοηθός προσαρμόζεται σε κάθε κλάδο.
+            </p>
+
+            <div class="usecases-grid">
+                <div class="usecase-card reveal">
+                    <div class="uc-icon"><i class="fas fa-stethoscope"></i></div>
+                    <div>
+                        <h3 data-translate="uc-1-title">Ιατρεία &amp; Κλινικές</h3>
+                        <p data-translate="uc-1-desc">Κλείνει ραντεβού, απαντά σε ερωτήσεις ασθενών και κρατά στοιχεία επικοινωνίας.</p>
+                    </div>
+                </div>
+                <div class="usecase-card reveal">
+                    <div class="uc-icon"><i class="fas fa-balance-scale"></i></div>
+                    <div>
+                        <h3 data-translate="uc-2-title">Δικηγορικά Γραφεία</h3>
+                        <p data-translate="uc-2-desc">Φιλτράρει κλήσεις, καταγράφει υποθέσεις και προγραμματίζει συναντήσεις.</p>
+                    </div>
+                </div>
+                <div class="usecase-card reveal">
+                    <div class="uc-icon"><i class="fas fa-utensils"></i></div>
+                    <div>
+                        <h3 data-translate="uc-3-title">Εστιατόρια &amp; Delivery</h3>
+                        <p data-translate="uc-3-desc">Δέχεται κρατήσεις και παραγγελίες, ενημερώνει για το μενού και τις ώρες.</p>
+                    </div>
+                </div>
+                <div class="usecase-card reveal">
+                    <div class="uc-icon"><i class="fas fa-car"></i></div>
+                    <div>
+                        <h3 data-translate="uc-4-title">Συνεργεία &amp; Service</h3>
+                        <p data-translate="uc-4-desc">Κανονίζει ραντεβού service, δίνει εκτιμήσεις και κρατά τα στοιχεία οχήματος.</p>
+                    </div>
+                </div>
+                <div class="usecase-card reveal">
+                    <div class="uc-icon"><i class="fas fa-shopping-cart"></i></div>
+                    <div>
+                        <h3 data-translate="uc-5-title">E-shops &amp; Υποστήριξη</h3>
+                        <p data-translate="uc-5-desc">Απαντά σε ερωτήσεις παραγγελιών, διαθεσιμότητας και επιστροφών 24/7.</p>
+                    </div>
+                </div>
+                <div class="usecase-card reveal">
+                    <div class="uc-icon"><i class="fas fa-building"></i></div>
+                    <div>
+                        <h3 data-translate="uc-6-title">Real Estate</h3>
+                        <p data-translate="uc-6-desc">Ενημερώνει για ακίνητα, κλείνει επισκέψεις και συλλέγει ενδιαφερόμενους.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Comparison vs competition -->
+    <section class="comparison-section">
+        <div class="section-container">
+            <span class="section-tag reveal" data-translate="cmp-tag">Γιατί BTech</span>
+            <h2 class="section-title reveal" data-translate="cmp-title">BTech AI vs Ο Ανταγωνισμός</h2>
+            <p class="section-subtitle reveal" data-translate="cmp-subtitle">
+                Δικό μας μοντέλο, δικοί μας servers στην Ελλάδα, εκπαιδευμένο για εσάς.
+            </p>
+
+            <div class="comparison-table reveal">
+                <div class="comparison-row head">
+                    <div class="feat" data-translate="cmp-col-feat">Χαρακτηριστικό</div>
+                    <div class="col-btech">BTech AI</div>
+                    <div class="col-other" data-translate="cmp-col-other">Gemini / ChatGPT</div>
+                </div>
+                <div class="comparison-row">
+                    <div class="feat" data-translate="cmp-r1">Ποιότητα ελληνικής φωνής</div>
+                    <div class="col-btech"><span class="yes"><i class="fas fa-check"></i></span><span data-translate="cmp-r1-b">Φυσική, ανθρώπινη</span></div>
+                    <div class="col-other" data-translate="cmp-r1-o">Ρομποτική, με λάθη</div>
+                </div>
+                <div class="comparison-row">
+                    <div class="feat" data-translate="cmp-r2">Servers στην Ελλάδα</div>
+                    <div class="col-btech"><span class="yes"><i class="fas fa-check"></i></span><span data-translate="cmp-r2-b">Εταιρικοί, δικοί μας</span></div>
+                    <div class="col-other"><span class="no"><i class="fas fa-times"></i></span><span data-translate="cmp-r2-o">Εξωτερικό</span></div>
+                </div>
+                <div class="comparison-row">
+                    <div class="feat" data-translate="cmp-r3">Δεδομένα στην Ελλάδα</div>
+                    <div class="col-btech"><span class="yes"><i class="fas fa-check"></i></span><span data-translate="cmp-r3-b">Μένουν εδώ</span></div>
+                    <div class="col-other"><span class="no"><i class="fas fa-times"></i></span><span data-translate="cmp-r3-o">Στο εξωτερικό</span></div>
+                </div>
+                <div class="comparison-row">
+                    <div class="feat" data-translate="cmp-r4">Εκπαίδευση για εσάς</div>
+                    <div class="col-btech"><span class="yes"><i class="fas fa-check"></i></span><span data-translate="cmp-r4-b">Αποκλειστική</span></div>
+                    <div class="col-other" data-translate="cmp-r4-o">Γενικό μοντέλο</div>
+                </div>
+                <div class="comparison-row">
+                    <div class="feat" data-translate="cmp-r5">Τηλεφωνική εξυπηρέτηση</div>
+                    <div class="col-btech"><span class="yes"><i class="fas fa-check"></i></span><span data-translate="cmp-r5-b">Πλήρης</span></div>
+                    <div class="col-other"><span class="no"><i class="fas fa-times"></i></span><span data-translate="cmp-r5-o">Όχι out-of-the-box</span></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Infrastructure / trust -->
+    <section class="infra-section">
+        <div class="section-container">
+            <span class="section-tag reveal" data-translate="infra-tag">Υποδομή</span>
+            <h2 class="section-title reveal" data-translate="infra-title">Υπερσύγχρονη &amp; Ασφαλής</h2>
+            <p class="section-subtitle reveal" data-translate="infra-subtitle">
+                Τεχνολογία αιχμής σε δικούς μας εταιρικούς servers στην Ελλάδα.
+            </p>
+
+            <div class="infra-grid">
+                <div class="infra-card reveal">
+                    <div class="infra-icon"><i class="fas fa-microchip"></i></div>
+                    <h3 data-translate="infra-1-title">Υπερσύγχρονα Συστήματα AI</h3>
+                    <p data-translate="infra-1-desc">Μοντέρνα μοντέλα τεχνητής νοημοσύνης αιχμής, σε συνεχή εξέλιξη.</p>
+                </div>
+                <div class="infra-card reveal">
+                    <div class="infra-icon"><i class="fas fa-server"></i></div>
+                    <h3 data-translate="infra-2-title">Εταιρικοί Servers στην Ελλάδα</h3>
+                    <p data-translate="infra-2-desc">Δικοί μας servers, με υψηλή διαθεσιμότητα και πλήρη έλεγχο.</p>
+                </div>
+                <div class="infra-card reveal">
+                    <div class="infra-icon"><i class="fas fa-shield-alt"></i></div>
+                    <h3 data-translate="infra-3-title">Τα Δεδομένα Μένουν Εδώ</h3>
+                    <p data-translate="infra-3-desc">Τα δεδομένα σας παραμένουν στην Ελλάδα — κυριαρχία και ασφάλεια.</p>
+                </div>
+                <div class="infra-card reveal">
+                    <div class="infra-icon"><i class="fas fa-user-shield"></i></div>
+                    <h3 data-translate="infra-4-title">GDPR Compliant</h3>
+                    <p data-translate="infra-4-desc">Πλήρης συμμόρφωση με την ευρωπαϊκή νομοθεσία προστασίας δεδομένων.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="faq-section">
+        <div class="section-container">
+            <span class="section-tag reveal" data-translate="faq-tag">Συχνές Ερωτήσεις</span>
+            <h2 class="section-title reveal" data-translate="faq-title">FAQ</h2>
+            <p class="section-subtitle reveal" data-translate="faq-subtitle">Τα πιο συχνά ερωτήματα για τον ψηφιακό βοηθό.</p>
+
+            <div class="faq-list">
+                <details class="faq-item reveal">
+                    <summary data-translate="faq-1-q">Είναι πραγματικά ελληνικό το μοντέλο;</summary>
+                    <div class="faq-answer" data-translate="faq-1-a">Ναι. Το μοντέλο είναι εκπαιδευμένο αποκλειστικά από τη BTech και τρέχει σε δικούς μας εταιρικούς servers στην Ελλάδα. Μιλάει τα Ελληνικά με φυσικό τονισμό και ροή.</div>
+                </details>
+                <details class="faq-item reveal">
+                    <summary data-translate="faq-2-q">Μπορεί να προσαρμοστεί στη δική μου επιχείρηση;</summary>
+                    <div class="faq-answer" data-translate="faq-2-a">Απόλυτα. Παραμετροποιείται για κάθε επάγγελμα και εταιρεία. Εκπαιδεύουμε το μοντέλο πάνω στις δικές σας υπηρεσίες, ώστε να καλύπτει 100% τις ανάγκες σας.</div>
+                </details>
+                <details class="faq-item reveal">
+                    <summary data-translate="faq-3-q">Μπορεί να σηκώνει το τηλέφωνο της επιχείρησης;</summary>
+                    <div class="faq-answer" data-translate="faq-3-a">Ναι. Απαντά κλήσεις, διεξάγει συνομιλίες, παίρνει στοιχεία πελατών και δίνει συγκεκριμένες πληροφορίες — 24/7, χωρίς αναμονή.</div>
+                </details>
+                <details class="faq-item reveal">
+                    <summary data-translate="faq-4-q">Πού αποθηκεύονται τα δεδομένα;</summary>
+                    <div class="faq-answer" data-translate="faq-4-a">Όλα τα δεδομένα παραμένουν σε εταιρικούς servers στην Ελλάδα, με πλήρη συμμόρφωση GDPR. Δεν φεύγουν στο εξωτερικό.</div>
+                </details>
+                <details class="faq-item reveal">
+                    <summary data-translate="faq-5-q">Σε τι διαφέρει από Gemini ή ChatGPT;</summary>
+                    <div class="faq-answer" data-translate="faq-5-a">Είναι δικό μας μοντέλο, εκπαιδευμένο αποκλειστικά για ελληνικά και για τη δική σας δουλειά, με φυσική φωνή, δικούς μας servers στην Ελλάδα και έτοιμη τηλεφωνική εξυπηρέτηση.</div>
+                </details>
+                <details class="faq-item reveal">
+                    <summary data-translate="faq-6-q">Πόσο γρήγορα μπορεί να ξεκινήσει;</summary>
+                    <div class="faq-answer" data-translate="faq-6-a">Μετά από μια σύντομη ανάλυση αναγκών, εκπαιδεύουμε και ενσωματώνουμε τον βοηθό. Σας δίνουμε ακριβές χρονοδιάγραμμα στην πρώτη επικοινωνία.</div>
+                </details>
+            </div>
+        </div>
+    </section>
+
+    <!-- Final CTA -->
+    <section class="final-cta" id="cta">
+        <div class="final-cta-content">
+            <h2 data-translate="final-cta-title">Έτοιμοι να ακούσετε το μέλλον;</h2>
+            <p data-translate="final-cta-desc">
+                Κλείστε μια δωρεάν παρουσίαση. Θα σας δείξουμε ζωντανά πώς ο ψηφιακός βοηθός μπορεί να απαντά τις κλήσεις σας και να εξυπηρετεί τους πελάτες σας.
+            </p>
+
+            <a href="mailto:nbegklis@btech-ai.com?subject=AI Assistant - Παρουσίαση" class="btn btn-primary" style="font-size: 1.1rem; padding: 1.2rem 2.5rem;">
+                <span data-translate="final-cta-btn">Ζητήστε δωρεάν παρουσίαση</span>
+                <i class="fas fa-arrow-right"></i>
+            </a>
+
+            <div class="contact-info">
+                <a href="tel:+306988817883"><i class="fas fa-phone"></i> +30 698 881 7883</a>
+                <a href="mailto:nbegklis@btech-ai.com"><i class="fas fa-envelope"></i> nbegklis@btech-ai.com</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <a href="index.html" class="footer-logo">
+                <img src="logo.png" alt="BTech Logo">
+                <span class="logo-text">BTech<span style="color: #818cf8; font-size: 0.55em; vertical-align: super;">.ai</span></span>
+            </a>
+
+            <div class="footer-links">
+                <a href="index.html" data-translate="footer-home">Αρχική</a>
+                <a href="index.html#solutions" data-translate="footer-solutions">Λύσεις</a>
+                <a href="index.html#services" data-translate="footer-services">Υπηρεσίες</a>
+                <a href="btech-invoicer.html">BTech Invoicer</a>
+                <a href="btech-web.html">BTech Web</a>
+                <a href="index.html#contact" data-translate="footer-contact">Επικοινωνία</a>
+            </div>
+
+            <div class="footer-bottom">
+                <p data-translate="footer-copyright">© 2026 BTech AI. Όλα τα δικαιώματα διατηρούνται.</p>
+                <div class="footer-legal-buttons">
+                    <button class="footer-legal-btn" onclick="openLegalModal('company')">
+                        <i class="fas fa-building"></i> <span data-translate="btn-company">Η Εταιρία</span>
+                    </button>
+                    <button class="footer-legal-btn" onclick="openLegalModal('terms')">
+                        <i class="fas fa-file-contract"></i> <span data-translate="btn-terms">Όροι &amp; Νομικά</span>
+                    </button>
+                </div>
+                <div class="footer-bottom-brand">
+                    <span data-translate="footer-dev">Developed and Managed by BTech</span>
+                    <img src="cooool.png" alt="BTech">
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Legal Modal: Company -->
+    <div class="legal-modal" id="modal-company">
+        <div class="legal-modal-content">
+            <button class="legal-modal-close" onclick="closeLegalModal()" aria-label="Close"><i class="fas fa-times"></i></button>
+            <h2 data-translate="modal-company-title">Η Εταιρία</h2>
+
+            <h3 data-translate="modal-company-info">Στοιχεία Επιχείρησης</h3>
+            <div class="legal-info-row"><span class="legal-info-label" data-translate="lbl-name">Επωνυμία</span><span class="legal-info-value">ΜΠΕΓΚΛΗΣ ΝΙΚΟΛΑΟΣ</span></div>
+            <div class="legal-info-row"><span class="legal-info-label" data-translate="lbl-brand">Διακριτικός Τίτλος</span><span class="legal-info-value">BTech AI</span></div>
+            <div class="legal-info-row"><span class="legal-info-label" data-translate="lbl-form">Νομική Μορφή</span><span class="legal-info-value" data-translate="val-form">Ατομική Επιχείρηση</span></div>
+            <div class="legal-info-row"><span class="legal-info-label">Α.Φ.Μ.</span><span class="legal-info-value">171075890</span></div>
+            <div class="legal-info-row"><span class="legal-info-label">Γ.Ε.ΜΗ.</span><span class="legal-info-value">192788706000</span></div>
+            <div class="legal-info-row"><span class="legal-info-label" data-translate="lbl-hq">Έδρα</span><span class="legal-info-value" data-translate="val-hq">Θεσσαλονίκη, Ελλάδα</span></div>
+            <div class="legal-info-row"><span class="legal-info-label">Email</span><span class="legal-info-value">nbegklis@btech-ai.com</span></div>
+            <div class="legal-info-row"><span class="legal-info-label" data-translate="lbl-phone">Τηλέφωνο</span><span class="legal-info-value">+30 698 881 7883</span></div>
+
+            <div class="legal-divider"></div>
+
+            <h3 data-translate="modal-company-about">Σχετικά με εμάς</h3>
+            <p data-translate-html="modal-company-p1">
+                Η <strong>BTech AI</strong> είναι ελληνική επιχείρηση τεχνολογίας με έδρα τη Θεσσαλονίκη. Σχεδιάζουμε και αναπτύσσουμε σύγχρονες λύσεις λογισμικού, AI integrations και ψηφιακούς βοηθούς τεχνητής νοημοσύνης για ελληνικές και διεθνείς επιχειρήσεις.
+            </p>
+        </div>
+    </div>
+
+    <!-- Legal Modal: Terms -->
+    <div class="legal-modal" id="modal-terms">
+        <div class="legal-modal-content">
+            <button class="legal-modal-close" onclick="closeLegalModal()" aria-label="Close"><i class="fas fa-times"></i></button>
+            <h2 data-translate="modal-terms-title">Όροι &amp; Νομικά</h2>
+
+            <h3 data-translate="modal-terms-tos">Όροι Παροχής Υπηρεσιών</h3>
+            <p data-translate="modal-terms-tos-p1">Οι υπηρεσίες ψηφιακού βοηθού AI προσφέρονται με γραπτό συμβόλαιο που περιγράφει το αντικείμενο, τις δυνατότητες, το χρονοδιάγραμμα και τις προδιαγραφές παράδοσης.</p>
+            <p data-translate="modal-terms-tos-p2">Το μοντέλο και η υποδομή παραμένουν ιδιοκτησία της BTech. Ο πελάτης αποκτά πλήρες δικαίωμα χρήσης για τη δική του επιχείρηση σύμφωνα με τους όρους της συνεργασίας.</p>
+
+            <div class="legal-divider"></div>
+
+            <h3 data-translate="modal-terms-privacy">Πολιτική Απορρήτου</h3>
+            <p data-translate="modal-terms-privacy-p1">Είμαστε <strong>GDPR-compliant</strong>. Τα δεδομένα που διαχειρίζεται ο βοηθός αποθηκεύονται σε εταιρικούς servers στην Ελλάδα και χρησιμοποιούνται αποκλειστικά για την παροχή της υπηρεσίας.</p>
+            <p data-translate-html="modal-terms-privacy-p2">Για ερωτήσεις σχετικά με τα δεδομένα σας, επικοινωνήστε στο <strong>nbegklis@btech-ai.com</strong>.</p>
+        </div>
+    </div>
+
+    <!-- voicedemo-data.js holds the demo audio as base64. It is loaded ON DEMAND
+         (only on file://, or if fetching the MP3 fails) so production stays lean. -->
+
+    <script>
+        // ============== TRANSLATIONS (default page is Greek; en overrides) ==============
+        const translations = {
+            en: {
+                'nav-back': 'Back to BTech.ai',
+                'hero-tag': 'NEW · Exclusive BTech AI Product',
+                'hero-title': '<span class="line-white">The Digital</span><span class="line-white"><span class="word-purple">AI Assistant</span></span>',
+                'hero-tagline': 'An innovative product by BTech. A model trained exclusively by us, on ultra-modern AI systems and corporate servers in Greece. Customizable for every profession and business.',
+                'hero-cta-demo': 'Listen to the Demo',
+                'hero-cta-quote': 'Request a Demo',
+                'stat-1-num': '100%',
+                'stat-1-label': 'Greek model',
+                'stat-2-num': '24/7',
+                'stat-2-label': 'Availability',
+                'stat-3-num': 'Servers',
+                'stat-3-label': 'in Greece',
+
+                'demo-tag': 'Voice Demo',
+                'demo-title': 'Listen to Our Greek Model',
+                'demo-subtitle': 'Press play and hear how it speaks — natural, clear, human. The orb pulses live with the sound waves of the voice.',
+                'demo-status-idle': 'Press to play',
+                'demo-status-playing': 'Speaking…',
+                'demo-status-loading': 'Loading…',
+                'demo-vs-1': '10× better Greek voice',
+                'demo-vs-2': 'Beats Gemini & ChatGPT',
+                'demo-note': 'Our model speaks Greek 10 times better than Gemini and ChatGPT — with correct intonation, flow and pronunciation indistinguishable from a human.',
+
+                'feat-tag': 'Capabilities',
+                'feat-title': 'What It Can Do for You',
+                'feat-subtitle': 'A tireless digital colleague that covers the real needs of your business.',
+                'feat-1-title': 'Phone Communication',
+                'feat-1-desc': 'Answers the phone with a natural voice, holds full conversations and serves your customers like a real employee.',
+                'feat-2-title': 'Call Answering',
+                'feat-2-desc': 'No missed calls. Picks up 24/7, no waiting and no lost opportunities — even after hours.',
+                'feat-3-title': 'Customer Data Intake',
+                'feat-3-desc': 'Records name, phone, request and every relevant detail, then delivers it to you organized for immediate follow-up.',
+                'feat-4-title': 'Answers Specific Info',
+                'feat-4-desc': 'Gives precise answers about hours, services, prices and anything else your customer needs — always correct.',
+                'feat-5-title': 'Fully Customizable',
+                'feat-5-desc': 'Adapts to every profession, business and company. The model learns your work and speaks with your voice.',
+                'feat-6-title': 'Natural Greek Voice',
+                'feat-6-desc': 'An ultra-modern model with human intonation and flow. Your customers talk to someone who sounds — and feels — real.',
+
+                'proc-tag': 'How It Works',
+                'proc-title': '100% Tailored to Your Needs',
+                'proc-lead': 'We understand the needs of every professional and adapt the model to cover them 100%. We don\'t hand you a generic tool — we build your own digital assistant.',
+                'proc-1-title': 'Needs Analysis',
+                'proc-1-desc': 'We map how you work, what customers ask and what you want to automate.',
+                'proc-2-title': 'Model Training',
+                'proc-2-desc': 'We train the model exclusively on your work, services and the way you speak.',
+                'proc-3-title': 'Integration',
+                'proc-3-desc': 'We connect the assistant to your phone and systems. Ready to answer from day one.',
+                'proc-4-title': 'Support & Improvement',
+                'proc-4-desc': 'We monitor, refine and continuously evolve the model so it keeps getting better.',
+
+                'uc-tag': 'For Every Profession',
+                'uc-title': 'Built for Your Line of Work',
+                'uc-subtitle': 'From clinics to restaurants — the assistant adapts to every industry.',
+                'uc-1-title': 'Clinics & Practices',
+                'uc-1-desc': 'Books appointments, answers patient questions and keeps contact details.',
+                'uc-2-title': 'Law Firms',
+                'uc-2-desc': 'Screens calls, logs cases and schedules meetings.',
+                'uc-3-title': 'Restaurants & Delivery',
+                'uc-3-desc': 'Takes reservations and orders, informs about the menu and hours.',
+                'uc-4-title': 'Garages & Service',
+                'uc-4-desc': 'Arranges service appointments, gives estimates and keeps vehicle details.',
+                'uc-5-title': 'E-shops & Support',
+                'uc-5-desc': 'Answers order, availability and return questions 24/7.',
+                'uc-6-title': 'Real Estate',
+                'uc-6-desc': 'Informs about properties, books viewings and collects leads.',
+
+                'cmp-tag': 'Why BTech',
+                'cmp-title': 'BTech AI vs The Competition',
+                'cmp-subtitle': 'Our own model, our own servers in Greece, trained for you.',
+                'cmp-col-feat': 'Feature',
+                'cmp-col-other': 'Gemini / ChatGPT',
+                'cmp-r1': 'Greek voice quality',
+                'cmp-r1-b': 'Natural, human',
+                'cmp-r1-o': 'Robotic, with errors',
+                'cmp-r2': 'Servers in Greece',
+                'cmp-r2-b': 'Corporate, our own',
+                'cmp-r2-o': 'Abroad',
+                'cmp-r3': 'Data stays in Greece',
+                'cmp-r3-b': 'Stays here',
+                'cmp-r3-o': 'Abroad',
+                'cmp-r4': 'Trained for you',
+                'cmp-r4-b': 'Exclusive',
+                'cmp-r4-o': 'Generic model',
+                'cmp-r5': 'Phone service',
+                'cmp-r5-b': 'Full',
+                'cmp-r5-o': 'Not out-of-the-box',
+
+                'infra-tag': 'Infrastructure',
+                'infra-title': 'Ultra-Modern & Secure',
+                'infra-subtitle': 'Cutting-edge technology on our own corporate servers in Greece.',
+                'infra-1-title': 'Ultra-Modern AI Systems',
+                'infra-1-desc': 'State-of-the-art AI models, continuously evolving.',
+                'infra-2-title': 'Corporate Servers in Greece',
+                'infra-2-desc': 'Our own servers, with high availability and full control.',
+                'infra-3-title': 'Data Stays Here',
+                'infra-3-desc': 'Your data remains in Greece — sovereignty and security.',
+                'infra-4-title': 'GDPR Compliant',
+                'infra-4-desc': 'Full compliance with European data protection law.',
+
+                'faq-tag': 'FAQ',
+                'faq-title': 'FAQ',
+                'faq-subtitle': 'The most common questions about the digital assistant.',
+                'faq-1-q': 'Is the model really Greek?',
+                'faq-1-a': 'Yes. The model is trained exclusively by BTech and runs on our own corporate servers in Greece. It speaks Greek with natural intonation and flow.',
+                'faq-2-q': 'Can it be customized for my business?',
+                'faq-2-a': 'Absolutely. It is customized for every profession and company. We train the model on your own services so it covers 100% of your needs.',
+                'faq-3-q': 'Can it answer my business phone?',
+                'faq-3-a': 'Yes. It answers calls, holds conversations, takes customer details and gives specific information — 24/7, with no waiting.',
+                'faq-4-q': 'Where is the data stored?',
+                'faq-4-a': 'All data stays on corporate servers in Greece, fully GDPR-compliant. It does not leave the country.',
+                'faq-5-q': 'How is it different from Gemini or ChatGPT?',
+                'faq-5-a': 'It is our own model, trained exclusively for Greek and for your work, with a natural voice, our own servers in Greece and ready-made phone service.',
+                'faq-6-q': 'How quickly can it start?',
+                'faq-6-a': 'After a short needs analysis, we train and integrate the assistant. We give you an exact timeline at the first contact.',
+
+                'final-cta-title': 'Ready to hear the future?',
+                'final-cta-desc': 'Book a free demo. We\'ll show you live how the digital assistant can answer your calls and serve your customers.',
+                'final-cta-btn': 'Request a free demo',
+
+                'footer-home': 'Home',
+                'footer-solutions': 'Solutions',
+                'footer-services': 'Services',
+                'footer-contact': 'Contact',
+                'footer-copyright': '© 2026 BTech AI. All rights reserved.',
+                'btn-company': 'The Company',
+                'btn-terms': 'Terms & Legal',
+                'footer-dev': 'Developed and Managed by BTech',
+
+                'modal-company-title': 'The Company',
+                'modal-company-info': 'Business Details',
+                'lbl-name': 'Name',
+                'lbl-brand': 'Brand Name',
+                'lbl-form': 'Legal Form',
+                'val-form': 'Sole Proprietorship',
+                'lbl-hq': 'Headquarters',
+                'val-hq': 'Thessaloniki, Greece',
+                'lbl-phone': 'Phone',
+                'modal-company-about': 'About Us',
+                'modal-company-p1': '<strong>BTech AI</strong> is a Greek technology company based in Thessaloniki. We design and develop modern software solutions, AI integrations and AI digital assistants for Greek and international businesses.',
+                'modal-terms-title': 'Terms & Legal',
+                'modal-terms-tos': 'Terms of Service',
+                'modal-terms-tos-p1': 'AI digital assistant services are provided under a written contract describing the scope, capabilities, timeline and delivery specifications.',
+                'modal-terms-tos-p2': 'The model and infrastructure remain the property of BTech. The client receives full usage rights for their own business under the terms of the agreement.',
+                'modal-terms-privacy': 'Privacy Policy',
+                'modal-terms-privacy-p1': 'We are <strong>GDPR-compliant</strong>. Data handled by the assistant is stored on corporate servers in Greece and used exclusively to provide the service.',
+                'modal-terms-privacy-p2': 'For questions about your data, contact <strong>nbegklis@btech-ai.com</strong>.'
+            }
+        };
+
+        let currentLang = localStorage.getItem('btech-lang') || 'el';
+
+        function changeLanguage(lang) {
+            currentLang = lang;
+            localStorage.setItem('btech-lang', lang);
+
+            document.querySelectorAll('.flag-button').forEach(b => {
+                b.classList.toggle('active', b.dataset.lang === lang);
+            });
+
+            document.documentElement.lang = lang;
+
+            document.querySelectorAll('[data-translate]').forEach(el => {
+                if (!el.hasAttribute('data-el')) el.setAttribute('data-el', el.textContent);
+            });
+            document.querySelectorAll('[data-translate-html]').forEach(el => {
+                if (!el.hasAttribute('data-el-html')) el.setAttribute('data-el-html', el.innerHTML);
+            });
+
+            if (lang === 'el') {
+                document.querySelectorAll('[data-translate]').forEach(el => {
+                    el.textContent = el.getAttribute('data-el');
+                });
+                document.querySelectorAll('[data-translate-html]').forEach(el => {
+                    el.innerHTML = el.getAttribute('data-el-html');
+                });
+            } else {
+                const dict = translations[lang] || {};
+                document.querySelectorAll('[data-translate]').forEach(el => {
+                    const key = el.getAttribute('data-translate');
+                    if (dict[key]) el.textContent = dict[key];
+                });
+                document.querySelectorAll('[data-translate-html]').forEach(el => {
+                    const key = el.getAttribute('data-translate-html');
+                    if (dict[key]) el.innerHTML = dict[key];
+                });
+            }
+            // Keep the live demo status text in sync with the active language
+            if (window.__refreshDemoStatus) window.__refreshDemoStatus();
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            if (currentLang !== 'el') changeLanguage(currentLang);
+        });
+
+        // Nav scroll
+        window.addEventListener('scroll', () => {
+            const nav = document.getElementById('navbar');
+            if (window.scrollY > 50) nav.classList.add('scrolled');
+            else nav.classList.remove('scrolled');
+        });
+
+        // Scroll reveal
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) entry.target.classList.add('visible');
+            });
+        }, { threshold: 0.15, rootMargin: '0px 0px -50px 0px' });
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+        // Legal modals
+        function openLegalModal(type) {
+            const modal = document.getElementById('modal-' + type);
+            if (!modal) return;
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+        function closeLegalModal() {
+            document.querySelectorAll('.legal-modal.active').forEach(m => m.classList.remove('active'));
+            document.body.style.overflow = '';
+        }
+        document.querySelectorAll('.legal-modal').forEach(modal => {
+            modal.addEventListener('click', (e) => { if (e.target === modal) closeLegalModal(); });
+        });
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && document.querySelector('.legal-modal.active')) closeLegalModal();
+        });
+
+        // Image protection
+        document.addEventListener('DOMContentLoaded', () => {
+            document.querySelectorAll('img').forEach(img => {
+                img.setAttribute('draggable', 'false');
+                img.addEventListener('contextmenu', e => e.preventDefault());
+            });
+        });
+
+        // ============================================================
+        //  AUDIO-REACTIVE AI ORB
+        //  A 3D particle sphere that pulses with the REAL waveform of
+        //  the MP3 (via Web Audio AnalyserNode) — not random motion.
+        // ============================================================
+        (function () {
+            const audioEl = document.getElementById('demoAudio');
+            const playBtn = document.getElementById('demoPlayBtn');
+            const statusEl = document.getElementById('demoStatus');
+            const eqEl = document.getElementById('demoEq');
+
+            // ---- Web Audio engine ----
+            // We decode the MP3 into an AudioBuffer and play it through an AudioBufferSourceNode
+            // → AnalyserNode → destination. This ALWAYS gives real spectrum data (it does not
+            // suffer the file:// MediaElement muting problem), so the orb truly follows the voice
+            // whether the page is opened via file://, localhost, or production.
+            let audioCtx = null, analyser = null, freqData = null, timeData = null;
+            let audioBuffer = null, decoded = false, decodeFailed = false, decodePromise = null;
+            let srcNode = null, isPlaying = false, manualStop = false;
+            let startedAt = 0, pauseOffset = 0, bufDuration = 0;
+
+            function ensureCtx() {
+                if (audioCtx) return;
+                const AC = window.AudioContext || window.webkitAudioContext;
+                audioCtx = new AC();
+                analyser = audioCtx.createAnalyser();
+                analyser.fftSize = 1024;                // 512 frequency bins
+                analyser.smoothingTimeConstant = 0.72;
+                freqData = new Uint8Array(analyser.frequencyBinCount); // 512
+                timeData = new Uint8Array(analyser.fftSize);           // 1024 waveform samples
+                analyser.connect(audioCtx.destination);
+            }
+
+            function b64ToArrayBuffer(b64) {
+                const bin = atob(b64);
+                const len = bin.length;
+                const bytes = new Uint8Array(len);
+                for (let i = 0; i < len; i++) bytes[i] = bin.charCodeAt(i);
+                return bytes.buffer;
+            }
+
+            // Loads the big base64 audio file on demand (only when really needed).
+            function loadB64Script() {
+                return new Promise((resolve) => {
+                    if (window.__VOICE_DEMO_B64) return resolve();
+                    const s = document.createElement('script');
+                    s.src = 'voicedemo-data.js';
+                    s.onload = () => resolve();
+                    s.onerror = () => resolve();
+                    document.head.appendChild(s);
+                });
+            }
+
+            // Get the encoded MP3 bytes: prefer the external file on http(s) (lean, cacheable),
+            // fall back to the embedded base64 (loaded on demand — works on file://).
+            async function getEncodedBytes() {
+                if (location.protocol !== 'file:') {
+                    try {
+                        const resp = await fetch('VoiceDemo.mp3');
+                        if (resp.ok) return await resp.arrayBuffer();
+                    } catch (e) { /* fall through to embedded */ }
+                }
+                if (!window.__VOICE_DEMO_B64) await loadB64Script();
+                if (window.__VOICE_DEMO_B64) {
+                    try { return b64ToArrayBuffer(window.__VOICE_DEMO_B64); } catch (e) {}
+                }
+                return null;
+            }
+
+            function ensureDecoded() {
+                if (decoded || decodeFailed) return Promise.resolve();
+                if (decodePromise) return decodePromise;
+                decodePromise = (async () => {
+                    const bytes = await getEncodedBytes();
+                    if (!bytes) { decodeFailed = true; return; }
+                    try {
+                        audioBuffer = await audioCtx.decodeAudioData(bytes);
+                        bufDuration = audioBuffer.duration;
+                        decoded = true;
+                    } catch (e) { decodeFailed = true; }
+                })();
+                return decodePromise;
+            }
+
+            function startPlayback(offset) {
+                srcNode = audioCtx.createBufferSource();
+                srcNode.buffer = audioBuffer;
+                srcNode.connect(analyser);
+                srcNode.onended = () => {
+                    if (manualStop) { manualStop = false; return; } // paused, not finished
+                    isPlaying = false; pauseOffset = 0; setPlayingUI(false);
+                };
+                srcNode.start(0, offset % bufDuration);
+                startedAt = audioCtx.currentTime - offset;
+                isPlaying = true;
+            }
+
+            function pausePlayback() {
+                if (!srcNode) return;
+                manualStop = true;
+                pauseOffset = (audioCtx.currentTime - startedAt) % bufDuration;
+                try { srcNode.stop(); } catch (e) {}
+                try { srcNode.disconnect(); } catch (e) {}
+                srcNode = null;
+                isPlaying = false;
+            }
+
+            // ---- Native <audio> fallback (only if decoding is impossible) ----
+            let usingFallback = false;
+
+            // Returns live audio metrics or null when not speaking.
+            // `loud` is RMS instantaneous loudness (0..1) — drives the orb's pump.
+            function readAudio() {
+                if (isPlaying && analyser) {
+                    analyser.getByteFrequencyData(freqData);
+                    analyser.getByteTimeDomainData(timeData);
+                    let sumSq = 0;
+                    for (let i = 0; i < timeData.length; i++) {
+                        const v = (timeData[i] - 128) / 128;
+                        sumSq += v * v;
+                    }
+                    const loud = Math.min(1, Math.sqrt(sumSq / timeData.length) * 3.2);
+                    let bassSum = 0;
+                    const bassCount = Math.max(1, Math.floor(freqData.length * 0.08));
+                    for (let i = 0; i < bassCount; i++) bassSum += freqData[i];
+                    return { loud: loud, bass: (bassSum / bassCount) / 255, freq: freqData, time: timeData };
+                }
+                if (usingFallback && !audioEl.paused && !audioEl.ended) {
+                    const t = audioEl.currentTime;
+                    const o = 0.30 + Math.abs(Math.sin(t * 5.0)) * 0.32 + Math.abs(Math.sin(t * 11.0)) * 0.16;
+                    return { loud: Math.min(1, o), bass: 0.3 + Math.abs(Math.sin(t * 4.0)) * 0.3, freq: null, time: null };
+                }
+                return null;
+            }
+
+            // ---- Equalizer bars ----
+            const EQ_BARS = 40;
+            const eqSpans = [];
+            for (let i = 0; i < EQ_BARS; i++) {
+                const s = document.createElement('span');
+                eqEl.appendChild(s);
+                eqSpans.push(s);
+            }
+            function drawEq(audio) {
+                for (let i = 0; i < EQ_BARS; i++) {
+                    let h;
+                    if (audio && audio.freq) {
+                        const bin = Math.floor((i / EQ_BARS) * (audio.freq.length * 0.42));
+                        h = 6 + (audio.freq[bin] / 255) * 50;
+                    } else if (audio) {
+                        h = 6 + (0.4 + 0.6 * Math.abs(Math.sin(performance.now() / 130 + i * 0.5))) * audio.loud * 50;
+                    } else {
+                        // idle shimmer
+                        h = 5 + (0.5 + 0.5 * Math.sin(performance.now() / 420 + i * 0.4)) * 7;
+                    }
+                    eqSpans[i].style.height = h.toFixed(1) + 'px';
+                    eqSpans[i].style.opacity = audio ? '0.95' : '0.4';
+                }
+            }
+
+            // ---- Particle sphere factory ----
+            function createOrb(canvas, opts) {
+                if (!canvas) return null;
+                opts = opts || {};
+                const ctx = canvas.getContext('2d', { alpha: true });
+                const wrap = canvas.parentElement;
+                const N = opts.points || 1200;
+                const reactive = !!opts.reactive;
+
+                let width = 0, height = 0, dpr = 1, cx = 0, cy = 0, baseRadius = 0;
+                let pts = [];
+                let rings = [];
+                let rotation = Math.random() * Math.PI * 2;
+                let time = Math.random() * 1000;
+                let smoothAmp = 0, smoothBass = 0;
+                let lastRing = 0;
+                let animationId = null;
+
+                function build() {
+                    pts = [];
+                    const golden = Math.PI * (3 - Math.sqrt(5));
+                    for (let i = 0; i < N; i++) {
+                        const y = 1 - (i / (N - 1)) * 2;
+                        const r = Math.sqrt(Math.max(0, 1 - y * y));
+                        const theta = golden * i;
+                        // Stable per-point "band" in [0,1] → maps to a frequency bin at draw time.
+                        // Organic spread so spikes scatter over the sphere, but consistent per point
+                        // (so the surface reacts to the spectrum coherently, never randomly).
+                        const band = ((Math.sin(theta * 2.0) * 0.5 + 0.5) * 0.45) + (((y + 1) / 2) * 0.55);
+                        pts.push({ x: Math.cos(theta) * r, y: y, z: Math.sin(theta) * r, idx: i, band: band });
+                    }
+                }
+
+                function resize() {
+                    dpr = Math.min(window.devicePixelRatio || 1, 2);
+                    const rect = wrap.getBoundingClientRect();
+                    width = rect.width; height = rect.height;
+                    if (width === 0 || height === 0) return;
+                    canvas.width = Math.floor(width * dpr);
+                    canvas.height = Math.floor(height * dpr);
+                    canvas.style.width = width + 'px';
+                    canvas.style.height = height + 'px';
+                    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+                    cx = width / 2; cy = height / 2;
+                    baseRadius = Math.min(width, height) * 0.21; // leaves room for loud-peak expansion
+                }
+
+                function frame() {
+                    time += 0.016;
+
+                    const audio = reactive ? readAudio() : null;
+                    const active = !!audio;
+
+                    // ---- loudness (RMS) drives the pump; fast attack / slow release reads as "in sync" ----
+                    const idleLoud = 0.05 + (Math.sin(time * 1.0) * 0.5 + 0.5) * 0.04;
+                    const targetLoud = active ? audio.loud : idleLoud;
+                    const kA = (targetLoud > smoothAmp) ? 0.50 : 0.12; // snap up, ease down
+                    smoothAmp += (targetLoud - smoothAmp) * kA;
+
+                    const targetBass = active ? audio.bass : (0.06 + (Math.sin(time * 0.7) * 0.5 + 0.5) * 0.05);
+                    smoothBass += (targetBass - smoothBass) * 0.40;
+
+                    // rotation stays slow so the AUDIO is what you notice, not spinning
+                    rotation += 0.0016 + smoothAmp * 0.004;
+
+                    const maxVis = Math.min(width, height) * 0.5;
+                    ctx.clearRect(0, 0, width, height);
+
+                    // ----- pulsing core glow (bounded, fades to transparent) -----
+                    const glowR = Math.min(maxVis * 0.98, baseRadius * (1.9 + smoothAmp * 1.3));
+                    const g = ctx.createRadialGradient(cx, cy, baseRadius * 0.1, cx, cy, glowR);
+                    g.addColorStop(0, 'rgba(129,140,248,' + (0.22 + smoothAmp * 0.45).toFixed(3) + ')');
+                    g.addColorStop(0.4, 'rgba(168,85,247,' + (0.10 + smoothAmp * 0.22).toFixed(3) + ')');
+                    g.addColorStop(1, 'rgba(15,23,42,0)');
+                    ctx.fillStyle = g;
+                    ctx.beginPath(); ctx.arc(cx, cy, glowR, 0, Math.PI * 2); ctx.fill();
+
+                    const globalScale = 1 + smoothAmp * 0.40;
+                    const bodyR = baseRadius * globalScale;
+
+                    // ----- expanding sound-wave rings (spawned on loud peaks), faded before the edge -----
+                    if (active && smoothAmp > 0.34 && (time - lastRing) > 0.20) {
+                        rings.push({ r: bodyR * 1.12, a: 0.55 });
+                        lastRing = time;
+                    }
+                    for (let i = rings.length - 1; i >= 0; i--) {
+                        const ring = rings[i];
+                        ring.r += 2.2 + smoothAmp * 3.5;
+                        ring.a *= 0.94;
+                        const prox = Math.max(0, 1 - ring.r / (maxVis * 0.96)); // fade as it nears edge → no square
+                        const drawA = ring.a * prox;
+                        if (ring.a < 0.02 || ring.r > maxVis * 0.96) { rings.splice(i, 1); continue; }
+                        ctx.strokeStyle = 'rgba(34,211,238,' + drawA.toFixed(3) + ')';
+                        ctx.lineWidth = 1.4;
+                        ctx.beginPath(); ctx.arc(cx, cy, ring.r, 0, Math.PI * 2); ctx.stroke();
+                    }
+
+                    // ----- live waveform ring around the sphere (classic synced AI-voice look) -----
+                    if (active) {
+                        const segs = 110;
+                        const ringBase = bodyR * 1.16;
+                        ctx.beginPath();
+                        for (let s = 0; s <= segs; s++) {
+                            const a = (s / segs) * Math.PI * 2;
+                            let w;
+                            if (audio.time) {
+                                const ti = Math.floor((s / segs) * (audio.time.length - 1));
+                                w = (audio.time[ti] - 128) / 128;      // real waveform −1..1
+                            } else {
+                                w = Math.sin(a * 7 + time * 9) * 0.5;   // fallback
+                            }
+                            const rr = ringBase + w * baseRadius * 0.18;
+                            const px = cx + Math.cos(a) * rr;
+                            const py = cy + Math.sin(a) * rr;
+                            if (s === 0) ctx.moveTo(px, py); else ctx.lineTo(px, py);
+                        }
+                        ctx.closePath();
+                        ctx.strokeStyle = 'rgba(34,211,238,' + (0.18 + smoothAmp * 0.55).toFixed(3) + ')';
+                        ctx.lineWidth = 1.6;
+                        ctx.stroke();
+                    }
+
+                    // ----- the particle sphere -----
+                    const cosR = Math.cos(rotation), sinR = Math.sin(rotation);
+                    const tilt = 0.42, cosT = Math.cos(tilt), sinT = Math.sin(tilt);
+                    const fov = 4.0; // gentle perspective so front points don't fly off-canvas
+                    const dispFactor = active ? 0.34 : 0.06;
+                    const freqLen = (audio && audio.freq) ? audio.freq.length : 0;
+                    const usefulBins = freqLen ? Math.floor(freqLen * 0.42) : 0; // voice energy band
+
+                    const proj = [];
+                    for (let i = 0; i < pts.length; i++) {
+                        const p = pts[i];
+                        const x = p.x * cosR - p.z * sinR;
+                        const z = p.x * sinR + p.z * cosR;
+                        const y = p.y;
+                        const y2 = y * cosT - z * sinT;
+                        const z2 = y * sinT + z * cosT;
+
+                        // per-point energy from a STABLE frequency bin (by its band) → coherent spikes
+                        let energy;
+                        if (freqLen) {
+                            const bin = Math.min(freqLen - 1, Math.floor(p.band * usefulBins));
+                            energy = audio.freq[bin] / 255;
+                        } else {
+                            energy = 0.22 + Math.sin(p.idx * 0.45 + time * 2.0) * 0.12;
+                        }
+
+                        const rr = bodyR * (1 + energy * dispFactor);
+                        const persp = fov / (fov - z2);
+                        proj.push({ sx: cx + x * rr * persp, sy: cy + y2 * rr * persp, depth: z2, energy: energy, persp: persp });
+                    }
+                    proj.sort((a, b) => a.depth - b.depth); // back to front
+
+                    for (let i = 0; i < proj.length; i++) {
+                        const q = proj[i];
+                        const d = (q.depth + 1) / 2; // 0 = back, 1 = front
+                        const size = Math.max(0.4, (0.5 + d * 1.6) * q.persp * (0.7 + q.energy * 1.0));
+                        let alpha = Math.min(1, 0.10 + d * 0.58 + q.energy * 0.30 + smoothAmp * 0.10);
+
+                        // circular edge-fade — dissolves into the background, eliminates the "square"
+                        const dist = Math.hypot(q.sx - cx, q.sy - cy);
+                        if (dist > maxVis * 0.78) alpha *= Math.max(0, 1 - (dist - maxVis * 0.78) / (maxVis * 0.22));
+                        if (alpha <= 0.01) continue;
+
+                        // colour shifts from indigo (calm) → bright cyan/white (loud)
+                        const hot = q.energy * 0.7 + smoothAmp * 0.5;
+                        const r = Math.min(255, Math.floor(120 + hot * 90 + d * 25));
+                        const gg = Math.min(255, Math.floor(120 + hot * 110 + d * 40));
+                        const b = 255;
+                        ctx.fillStyle = 'rgba(' + r + ',' + gg + ',' + b + ',' + alpha.toFixed(3) + ')';
+                        ctx.beginPath();
+                        ctx.arc(q.sx, q.sy, size, 0, Math.PI * 2);
+                        ctx.fill();
+                    }
+
+                    if (reactive) drawEq(audio);
+
+                    animationId = requestAnimationFrame(frame);
+                }
+
+                let resizeTimer;
+                window.addEventListener('resize', () => {
+                    clearTimeout(resizeTimer);
+                    resizeTimer = setTimeout(resize, 150);
+                });
+
+                // pause rendering when offscreen (battery)
+                const io = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            if (!animationId) frame();
+                        } else if (animationId) {
+                            cancelAnimationFrame(animationId);
+                            animationId = null;
+                        }
+                    });
+                });
+                io.observe(wrap);
+
+                build();
+                resize();
+                frame();
+                return { resize: resize };
+            }
+
+            // ---- status text (language aware) ----
+            // Managed locally so it always reflects the live playback state.
+            // changeLanguage() calls window.__refreshDemoStatus() last, so this wins.
+            const STATUS_TEXT = {
+                el: { idle: 'Πατήστε για αναπαραγωγή', playing: 'Μιλάει…', loading: 'Φόρτωση…' },
+                en: { idle: 'Press to play', playing: 'Speaking…', loading: 'Loading…' }
+            };
+            let currentStatusState = 'idle';
+            function renderStatus() {
+                const lang = (currentLang === 'el') ? 'el' : 'en';
+                statusEl.textContent = STATUS_TEXT[lang][currentStatusState];
+            }
+            function setStatusKey(state) { currentStatusState = state; renderStatus(); }
+            window.__refreshDemoStatus = renderStatus;
+
+            // ---- play / pause control ----
+            function setPlayingUI(playing) {
+                const icon = playBtn.querySelector('i');
+                if (playing) {
+                    icon.className = 'fas fa-pause';
+                    playBtn.classList.add('playing');
+                    setStatusKey('playing');
+                } else {
+                    icon.className = 'fas fa-play';
+                    playBtn.classList.remove('playing');
+                    setStatusKey('idle');
+                }
+            }
+
+            playBtn.addEventListener('click', async () => {
+                ensureCtx();
+                if (audioCtx.state === 'suspended') { try { await audioCtx.resume(); } catch (e) {} }
+
+                // Buffer-source path is playing → pause
+                if (isPlaying) { pausePlayback(); setPlayingUI(false); return; }
+
+                // Native fallback path is active → toggle the <audio> element
+                if (usingFallback) {
+                    if (audioEl.paused) {
+                        try { await audioEl.play(); setPlayingUI(true); } catch (e) { setStatusKey('idle'); }
+                    } else { audioEl.pause(); setPlayingUI(false); }
+                    return;
+                }
+
+                // First press (or resume): decode then play through the analyser
+                setStatusKey('loading');
+                await ensureDecoded();
+                if (decoded) {
+                    startPlayback(pauseOffset || 0);
+                    setPlayingUI(true);
+                } else {
+                    // Decoding impossible → last-resort native playback (sound, time-based orb)
+                    usingFallback = true;
+                    try { await audioEl.play(); setPlayingUI(true); }
+                    catch (e) { setStatusKey('idle'); }
+                }
+            });
+
+            // Native fallback element lifecycle (only relevant if usingFallback)
+            audioEl.addEventListener('ended', () => { if (usingFallback) setPlayingUI(false); });
+            audioEl.addEventListener('pause', () => { if (usingFallback && !audioEl.ended) setPlayingUI(false); });
+
+            // ---- boot orbs ----
+            document.addEventListener('DOMContentLoaded', () => {
+                createOrb(document.getElementById('hero-orb'), { reactive: false, points: 900 });
+                createOrb(document.getElementById('demo-orb'), { reactive: true, points: 1400 });
+            });
+        })();
+    </script>
+</body>
+</html>

@@ -1113,10 +1113,95 @@
             .comparison-row.head > div { font-size: 0.58rem; }
             .legal-modal-content { padding: 1.5rem 1.1rem; }
         }
+
+        /* ============================================================
+           GOLDEN MODE — "Doctor Strange" environment unlocked by spam-clicking the orb
+           ============================================================ */
+        .hero-canvas-wrap { cursor: pointer; }
+
+        /* Smooth theme transition for the whole page when gold mode flips */
+        body, section, nav, footer, .hero, .feature-card, .process-step,
+        .usecase-card, .infra-card, .comparison-table, .faq-item, .demo-section {
+            transition: background 1.1s ease, border-color 1.1s ease, color 1.1s ease;
+        }
+
+        /* Variable swap → all gradient titles / buttons / icons / accents go gold */
+        body.gold-mode {
+            --primary: #d4af37;
+            --secondary: #f0c84a;
+            --gradient: linear-gradient(135deg, #b8860b 0%, #d4af37 50%, #f5d76e 100%);
+            --gradient-bright: linear-gradient(135deg, #d4af37 0%, #f5d76e 50%, #fff3b0 100%);
+            background: #120d02;
+        }
+
+        /* Warm wash that tints the remaining hard-coded blue accents toward gold */
+        .gold-wash {
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            z-index: 40;
+            opacity: 0;
+            background:
+                radial-gradient(ellipse at 50% 0%, rgba(245, 200, 80, 0.18) 0%, transparent 55%),
+                radial-gradient(ellipse at 50% 100%, rgba(184, 134, 11, 0.16) 0%, transparent 55%),
+                linear-gradient(180deg, rgba(212, 175, 55, 0.10), rgba(120, 85, 10, 0.10));
+            mix-blend-mode: overlay;
+            transition: opacity 1.2s ease;
+        }
+        body.gold-mode .gold-wash { opacity: 1; }
+
+        /* Full-page particle-wave transition canvas (sweeps the theme change across the page) */
+        #fxCanvas {
+            position: fixed;
+            inset: 0;
+            z-index: 9000;
+            pointer-events: none;
+            display: none;
+        }
+
+        /* Discreet vertical "charge" hint bar on the right */
+        .click-hint {
+            position: fixed;
+            right: 16px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 5px;
+            height: 120px;
+            border-radius: 3px;
+            background: rgba(255, 255, 255, 0.07);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            z-index: 60;
+            opacity: 0;
+            transition: opacity 0.45s ease;
+            overflow: hidden;
+        }
+        .click-hint.show { opacity: 0.75; }
+        .click-hint-fill {
+            position: absolute;
+            bottom: 0; left: 0;
+            width: 100%;
+            height: 0%;
+            background: linear-gradient(180deg, #fff3b0, #f5d76e 45%, #d4af37);
+            box-shadow: 0 0 10px rgba(245, 200, 80, 0.7);
+            transition: height 0.25s ease;
+        }
+        /* When already gold, the charge hints the way BACK to indigo */
+        .click-hint.to-blue .click-hint-fill {
+            background: linear-gradient(180deg, #c7d2fe, #818cf8 45%, #6366f1);
+            box-shadow: 0 0 10px rgba(129, 140, 248, 0.7);
+        }
+        @media (max-width: 768px) {
+            .click-hint { right: 10px; height: 96px; width: 4px; }
+        }
     </style>
 </head>
 
 <body>
+    <!-- Golden-mode overlays -->
+    <div class="gold-wash" aria-hidden="true"></div>
+    <canvas id="fxCanvas" aria-hidden="true"></canvas>
+    <div class="click-hint" id="clickHint" aria-hidden="true"><div class="click-hint-fill" id="clickHintFill"></div></div>
+
     <!-- Navigation -->
     <nav id="navbar">
         <div class="nav-container">
@@ -1839,6 +1924,156 @@
             const statusEl = document.getElementById('demoStatus');
             const eqEl = document.getElementById('demoEq');
 
+            // ============================================================
+            //  GOLDEN-MODE / INTERACTION STATE (shared by both orbs)
+            // ============================================================
+            const GOLD_THRESHOLD = 30;   // clicks/taps within the window to unlock
+            const GOLD_WINDOW = 5000;    // ms
+            let goldMode = false;        // permanent once unlocked
+            let goldBlend = 0;           // 0 = indigo, 1 = full gold (animated)
+            let teaseTint = 0;           // 0..~0.7 — particles warm up to hint the easter-egg
+            let clickTimes = [];
+            const orbs = [];             // registered orbs (for shared signals)
+            let hintHideTimer = null;
+            const hintEl = document.getElementById('clickHint');
+            const hintFill = document.getElementById('clickHintFill');
+
+            function updateHint(count) {
+                if (!hintEl) return;
+                hintEl.classList.toggle('to-blue', goldMode); // charging toward blue when already gold
+                hintFill.style.height = (Math.min(1, count / GOLD_THRESHOLD) * 100) + '%';
+                if (count > 0) hintEl.classList.add('show');
+                clearTimeout(hintHideTimer);
+                hintHideTimer = setTimeout(() => hintEl.classList.remove('show'), 1600);
+            }
+
+            // Toggle the theme (blue-purple ⇄ gold) with a particle-wave sweep.
+            let transitioning = false;
+            function toggleGold() {
+                if (transitioning) return;
+                goldMode = !goldMode;
+                clickTimes = [];                 // reset so it doesn't instantly re-trigger
+                teaseTint = 0;
+                if (hintEl) { hintEl.classList.remove('show'); hintFill.style.height = '0%'; }
+                runTransition(goldMode);
+            }
+
+            // A wave of tiny glittering particles sweeps top→bottom across the WHOLE page,
+            // converting everything to the target theme as it passes (Doctor Strange vibe).
+            function runTransition(toGold) {
+                const cvs = document.getElementById('fxCanvas');
+                if (!cvs) { document.body.classList.toggle('gold-mode', toGold); return; }
+                transitioning = true;
+                const ctx = cvs.getContext('2d');
+                const dpr = Math.min(window.devicePixelRatio || 1, 2);
+                let W = window.innerWidth, H = window.innerHeight;
+                cvs.width = Math.floor(W * dpr); cvs.height = Math.floor(H * dpr);
+                cvs.style.width = W + 'px'; cvs.style.height = H + 'px';
+                ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+                cvs.style.display = 'block';
+
+                // colours for the two themes
+                const C = toGold
+                    ? { core: '255,250,225', mid: '245,205,90', deep: '200,150,40' }
+                    : { core: '230,235,255', mid: '129,140,248', deep: '150,90,235' };
+
+                const DUR = 2000;
+                const start = performance.now();
+                let parts = [];
+                let swapped = false;
+
+                function loop(now) {
+                    const p = (now - start) / DUR;
+                    if (p >= 1) { ctx.clearRect(0, 0, W, H); cvs.style.display = 'none'; transitioning = false; return; }
+
+                    // ease-in-out front position, travels a bit past top & bottom
+                    const ease = p < 0.5 ? 2 * p * p : 1 - Math.pow(-2 * p + 2, 2) / 2;
+                    const frontY = (-0.12 + ease * 1.24) * H;
+
+                    // flip the real theme once the bright front is ~past the middle
+                    if (!swapped && p > 0.60) { document.body.classList.toggle('gold-mode', toGold); swapped = true; }
+
+                    ctx.clearRect(0, 0, W, H);
+
+                    // soft "converted" veil filling the area the wave has already crossed
+                    const veilBottom = Math.max(1, Math.min(H, frontY + 30));
+                    const grd = ctx.createLinearGradient(0, 0, 0, veilBottom);
+                    grd.addColorStop(0, 'rgba(' + C.deep + ',0.0)');
+                    grd.addColorStop(0.75, 'rgba(' + C.mid + ',0.16)');
+                    grd.addColorStop(1, 'rgba(' + C.core + ',0.30)');
+                    ctx.fillStyle = grd;
+                    ctx.fillRect(0, 0, W, veilBottom);
+
+                    ctx.save();
+                    ctx.globalCompositeOperation = 'lighter';
+
+                    // bright leading band
+                    const band = ctx.createLinearGradient(0, frontY - 80, 0, frontY + 30);
+                    band.addColorStop(0, 'rgba(' + C.mid + ',0)');
+                    band.addColorStop(0.7, 'rgba(' + C.mid + ',0.45)');
+                    band.addColorStop(1, 'rgba(' + C.core + ',0.85)');
+                    ctx.fillStyle = band;
+                    ctx.fillRect(0, frontY - 80, W, 110);
+
+                    // spawn sparks along the front
+                    const spawn = 30;
+                    for (let i = 0; i < spawn; i++) {
+                        parts.push({
+                            x: Math.random() * W,
+                            y: frontY + (Math.random() - 0.5) * 46,
+                            vx: (Math.random() - 0.5) * 0.7,
+                            vy: 0.4 + Math.random() * 2.4,
+                            r: 0.6 + Math.random() * 2.4,
+                            life: 1,
+                            decay: 0.012 + Math.random() * 0.022,
+                            tw: Math.random() * 6.28
+                        });
+                    }
+                    if (parts.length > 1600) parts.splice(0, parts.length - 1600);
+
+                    // update + draw sparks (additive glow)
+                    for (let i = parts.length - 1; i >= 0; i--) {
+                        const pt = parts[i];
+                        pt.x += pt.vx; pt.y += pt.vy; pt.vy *= 0.99; pt.life -= pt.decay;
+                        if (pt.life <= 0) { parts.splice(i, 1); continue; }
+                        const tw = 0.6 + 0.4 * Math.sin(now * 0.01 + pt.tw);
+                        const a = pt.life * tw;
+                        ctx.fillStyle = 'rgba(' + C.mid + ',' + (a * 0.22).toFixed(3) + ')';
+                        ctx.beginPath(); ctx.arc(pt.x, pt.y, pt.r * 3.2, 0, 6.2832); ctx.fill();
+                        ctx.fillStyle = 'rgba(' + C.core + ',' + (a * 0.9).toFixed(3) + ')';
+                        ctx.beginPath(); ctx.arc(pt.x, pt.y, pt.r, 0, 6.2832); ctx.fill();
+                    }
+                    ctx.restore();
+
+                    requestAnimationFrame(loop);
+                }
+                requestAnimationFrame(loop);
+            }
+
+            // Called by an orb whenever it is clicked/tapped.
+            function registerInteraction() {
+                if (transitioning) return;
+                const now = performance.now();
+                clickTimes.push(now);
+                while (clickTimes.length && now - clickTimes[0] > GOLD_WINDOW) clickTimes.shift();
+                const count = clickTimes.length;
+                teaseTint = count >= 4 ? Math.min(0.7, (count - 4) / (GOLD_THRESHOLD - 4)) : 0;
+                updateHint(count);
+                if (count >= GOLD_THRESHOLD) toggleGold();
+            }
+
+            // Drain the charge (tease tint + hint bar) when the user stops tapping
+            setInterval(() => {
+                if (transitioning) return;
+                const now = performance.now();
+                while (clickTimes.length && now - clickTimes[0] > GOLD_WINDOW) clickTimes.shift();
+                const count = clickTimes.length;
+                teaseTint = count >= 4 ? Math.min(0.7, (count - 4) / (GOLD_THRESHOLD - 4)) : 0;
+                if (hintFill) hintFill.style.height = (Math.min(1, count / GOLD_THRESHOLD) * 100) + '%';
+                if (hintEl) hintEl.classList.toggle('to-blue', goldMode);
+                if (count === 0 && hintEl) hintEl.classList.remove('show');
+            }, 350);
+
             // ---- Web Audio engine ----
             // We decode the MP3 into an AudioBuffer and play it through an AudioBufferSourceNode
             // → AnalyserNode → destination. This ALWAYS gives real spectrum data (it does not
@@ -1996,6 +2231,7 @@
                 const wrap = canvas.parentElement;
                 const N = opts.points || 1200;
                 const reactive = !!opts.reactive;
+                const interactive = !!opts.interactive;
 
                 let width = 0, height = 0, dpr = 1, cx = 0, cy = 0, baseRadius = 0;
                 let pts = [];
@@ -2005,6 +2241,12 @@
                 let smoothAmp = 0, smoothBass = 0;
                 let lastRing = 0;
                 let animationId = null;
+
+                // interaction state (hero orb only)
+                let pulse = 0;                       // click/tap energy, decays each frame
+                let impacts = [];                    // ripple sources in view-space {x,y,z,t,power}
+                const mouse = { x: 0, y: 0, inside: false };
+                let gBlend = 0;                      // eased 0→1 indigo→gold for THIS orb
 
                 function build() {
                     pts = [];
@@ -2035,40 +2277,90 @@
                     baseRadius = Math.min(width, height) * 0.21; // leaves room for loud-peak expansion
                 }
 
+                // blend two [r,g,b] colours → "r,g,b" string
+                function mix3(a, b, t) {
+                    return Math.round(a[0] + (b[0] - a[0]) * t) + ',' +
+                           Math.round(a[1] + (b[1] - a[1]) * t) + ',' +
+                           Math.round(a[2] + (b[2] - a[2]) * t);
+                }
+
+                // ---- interaction (hero orb) ----
+                function localFromClient(clientX, clientY) {
+                    const rect = canvas.getBoundingClientRect();
+                    return {
+                        x: (clientX - rect.left) * (width / Math.max(1, rect.width)),
+                        y: (clientY - rect.top) * (height / Math.max(1, rect.height))
+                    };
+                }
+                function addImpact(localX, localY) {
+                    // map the hit to a front-hemisphere unit vector in view space
+                    let nx = (localX - cx) / Math.max(1, baseRadius);
+                    let ny = (localY - cy) / Math.max(1, baseRadius);
+                    const r2 = nx * nx + ny * ny;
+                    if (r2 > 1) { const s = 1 / Math.sqrt(r2); nx *= s; ny *= s; }
+                    const vz = Math.sqrt(Math.max(0, 1 - (nx * nx + ny * ny)));
+                    impacts.push({ x: nx, y: ny, z: vz, t: time, power: 1 });
+                    if (impacts.length > 6) impacts.shift();
+                    pulse = Math.min(3.4, pulse + 0.7);          // more taps → bigger pulse
+                    rings.push({ r: baseRadius * 1.15, a: 0.5 }); // shockwave ring per tap
+                }
+                if (interactive) {
+                    canvas.style.touchAction = 'manipulation';
+                    canvas.addEventListener('pointermove', (e) => {
+                        const p = localFromClient(e.clientX, e.clientY);
+                        mouse.x = p.x; mouse.y = p.y; mouse.inside = true;
+                    });
+                    canvas.addEventListener('pointerleave', () => { mouse.inside = false; });
+                    canvas.addEventListener('pointerdown', (e) => {
+                        const p = localFromClient(e.clientX, e.clientY);
+                        addImpact(p.x, p.y);
+                        registerInteraction();
+                    });
+                }
+
                 function frame() {
                     time += 0.016;
+                    pulse *= 0.955; // spring decay of click energy
 
                     const audio = reactive ? readAudio() : null;
                     const active = !!audio;
 
-                    // ---- loudness (RMS) drives the pump; fast attack / slow release reads as "in sync" ----
+                    // ease this orb's gold blend toward the page theme (so it converts WITH the wave),
+                    // or toward the tease tint while the user is charging up the toggle
+                    const goldTarget = document.body.classList.contains('gold-mode') ? 1 : teaseTint;
+                    gBlend += (goldTarget - gBlend) * 0.10;
+
+                    // ---- pump (global swell): audio loudness, OR click-pulse (hero), OR idle breath ----
                     const idleLoud = 0.05 + (Math.sin(time * 1.0) * 0.5 + 0.5) * 0.04;
-                    const targetLoud = active ? audio.loud : idleLoud;
+                    let targetLoud;
+                    if (active) targetLoud = audio.loud;
+                    else if (interactive) targetLoud = Math.min(1, idleLoud * 0.5 + pulse * 0.32 + (mouse.inside ? 0.10 : 0));
+                    else targetLoud = idleLoud;
                     const kA = (targetLoud > smoothAmp) ? 0.50 : 0.12; // snap up, ease down
                     smoothAmp += (targetLoud - smoothAmp) * kA;
 
                     const targetBass = active ? audio.bass : (0.06 + (Math.sin(time * 0.7) * 0.5 + 0.5) * 0.05);
                     smoothBass += (targetBass - smoothBass) * 0.40;
 
-                    // rotation stays slow so the AUDIO is what you notice, not spinning
-                    rotation += 0.0016 + smoothAmp * 0.004;
+                    rotation += 0.0016 + smoothAmp * 0.004; // slow — the reaction is the star
 
                     const maxVis = Math.min(width, height) * 0.5;
                     ctx.clearRect(0, 0, width, height);
 
-                    // ----- pulsing core glow (bounded, fades to transparent) -----
+                    // ----- core glow (indigo → gold blend) -----
                     const glowR = Math.min(maxVis * 0.98, baseRadius * (1.9 + smoothAmp * 1.3));
                     const g = ctx.createRadialGradient(cx, cy, baseRadius * 0.1, cx, cy, glowR);
-                    g.addColorStop(0, 'rgba(129,140,248,' + (0.22 + smoothAmp * 0.45).toFixed(3) + ')');
-                    g.addColorStop(0.4, 'rgba(168,85,247,' + (0.10 + smoothAmp * 0.22).toFixed(3) + ')');
+                    g.addColorStop(0, 'rgba(' + mix3([129, 140, 248], [250, 210, 90], gBlend) + ',' + (0.22 + smoothAmp * 0.45).toFixed(3) + ')');
+                    g.addColorStop(0.4, 'rgba(' + mix3([168, 85, 247], [212, 150, 30], gBlend) + ',' + (0.10 + smoothAmp * 0.22).toFixed(3) + ')');
                     g.addColorStop(1, 'rgba(15,23,42,0)');
                     ctx.fillStyle = g;
                     ctx.beginPath(); ctx.arc(cx, cy, glowR, 0, Math.PI * 2); ctx.fill();
 
                     const globalScale = 1 + smoothAmp * 0.40;
                     const bodyR = baseRadius * globalScale;
+                    const ringCol = mix3([34, 211, 238], [250, 215, 130], gBlend);
 
-                    // ----- expanding sound-wave rings (spawned on loud peaks), faded before the edge -----
+                    // ----- expanding rings: audio peaks (demo) or one per tap (hero) — bounded -----
                     if (active && smoothAmp > 0.34 && (time - lastRing) > 0.20) {
                         rings.push({ r: bodyR * 1.12, a: 0.55 });
                         lastRing = time;
@@ -2077,15 +2369,15 @@
                         const ring = rings[i];
                         ring.r += 2.2 + smoothAmp * 3.5;
                         ring.a *= 0.94;
-                        const prox = Math.max(0, 1 - ring.r / (maxVis * 0.96)); // fade as it nears edge → no square
+                        const prox = Math.max(0, 1 - ring.r / (maxVis * 0.96)); // fade near edge → no square
                         const drawA = ring.a * prox;
                         if (ring.a < 0.02 || ring.r > maxVis * 0.96) { rings.splice(i, 1); continue; }
-                        ctx.strokeStyle = 'rgba(34,211,238,' + drawA.toFixed(3) + ')';
+                        ctx.strokeStyle = 'rgba(' + ringCol + ',' + drawA.toFixed(3) + ')';
                         ctx.lineWidth = 1.4;
                         ctx.beginPath(); ctx.arc(cx, cy, ring.r, 0, Math.PI * 2); ctx.stroke();
                     }
 
-                    // ----- live waveform ring around the sphere (classic synced AI-voice look) -----
+                    // ----- live waveform ring (reactive/demo only) -----
                     if (active) {
                         const segs = 110;
                         const ringBase = bodyR * 1.16;
@@ -2097,7 +2389,7 @@
                                 const ti = Math.floor((s / segs) * (audio.time.length - 1));
                                 w = (audio.time[ti] - 128) / 128;      // real waveform −1..1
                             } else {
-                                w = Math.sin(a * 7 + time * 9) * 0.5;   // fallback
+                                w = Math.sin(a * 7 + time * 9) * 0.5;
                             }
                             const rr = ringBase + w * baseRadius * 0.18;
                             const px = cx + Math.cos(a) * rr;
@@ -2105,7 +2397,7 @@
                             if (s === 0) ctx.moveTo(px, py); else ctx.lineTo(px, py);
                         }
                         ctx.closePath();
-                        ctx.strokeStyle = 'rgba(34,211,238,' + (0.18 + smoothAmp * 0.55).toFixed(3) + ')';
+                        ctx.strokeStyle = 'rgba(' + ringCol + ',' + (0.18 + smoothAmp * 0.55).toFixed(3) + ')';
                         ctx.lineWidth = 1.6;
                         ctx.stroke();
                     }
@@ -2113,10 +2405,11 @@
                     // ----- the particle sphere -----
                     const cosR = Math.cos(rotation), sinR = Math.sin(rotation);
                     const tilt = 0.42, cosT = Math.cos(tilt), sinT = Math.sin(tilt);
-                    const fov = 4.0; // gentle perspective so front points don't fly off-canvas
-                    const dispFactor = active ? 0.34 : 0.06;
+                    const fov = 4.0;
+                    const dispFactor = active ? 0.34 : (interactive ? 0.26 : 0.06);
                     const freqLen = (audio && audio.freq) ? audio.freq.length : 0;
-                    const usefulBins = freqLen ? Math.floor(freqLen * 0.42) : 0; // voice energy band
+                    const usefulBins = freqLen ? Math.floor(freqLen * 0.42) : 0;
+                    const hasImpacts = interactive && impacts.length > 0;
 
                     const proj = [];
                     for (let i = 0; i < pts.length; i++) {
@@ -2127,11 +2420,28 @@
                         const y2 = y * cosT - z * sinT;
                         const z2 = y * sinT + z * cosT;
 
-                        // per-point energy from a STABLE frequency bin (by its band) → coherent spikes
                         let energy;
                         if (freqLen) {
+                            // demo: stable frequency bin → coherent spectrum spikes
                             const bin = Math.min(freqLen - 1, Math.floor(p.band * usefulBins));
                             energy = audio.freq[bin] / 255;
+                        } else if (interactive) {
+                            // hero: idle shimmer + non-uniform click-pulse + ripples from each tap
+                            energy = 0.15 + Math.sin(p.idx * 0.45 + time * 2.0) * 0.07;
+                            energy += pulse * (0.45 + 0.55 * Math.sin(p.idx * 0.6 + time * 2.4)) * 0.32;
+                            if (hasImpacts) {
+                                for (let k = 0; k < impacts.length; k++) {
+                                    const im = impacts[k];
+                                    const el = time - im.t;
+                                    if (el > 1.8) continue;
+                                    const dot = x * im.x + y2 * im.y + z2 * im.z;
+                                    const ad = 1 - dot;                 // 0 at impact … 2 opposite
+                                    const env = Math.exp(-el * 2.3);    // fade over time
+                                    const fall = Math.exp(-ad * 1.7);   // fade with distance
+                                    energy += Math.sin(ad * 6.5 - el * 9.0) * env * fall * 0.6;
+                                }
+                            }
+                            if (energy < 0) energy = 0;
                         } else {
                             energy = 0.22 + Math.sin(p.idx * 0.45 + time * 2.0) * 0.12;
                         }
@@ -2142,25 +2452,42 @@
                     }
                     proj.sort((a, b) => a.depth - b.depth); // back to front
 
+                    const mouseR = baseRadius * 1.05;
                     for (let i = 0; i < proj.length; i++) {
                         const q = proj[i];
                         const d = (q.depth + 1) / 2; // 0 = back, 1 = front
-                        const size = Math.max(0.4, (0.5 + d * 1.6) * q.persp * (0.7 + q.energy * 1.0));
-                        let alpha = Math.min(1, 0.10 + d * 0.58 + q.energy * 0.30 + smoothAmp * 0.10);
+                        let sx = q.sx, sy = q.sy, reach = 0;
 
-                        // circular edge-fade — dissolves into the background, eliminates the "square"
-                        const dist = Math.hypot(q.sx - cx, q.sy - cy);
+                        // hover: nearby particles lean toward the cursor — the orb feels alive
+                        if (interactive && mouse.inside) {
+                            const mdx = mouse.x - sx, mdy = mouse.y - sy;
+                            const md = Math.hypot(mdx, mdy);
+                            if (md < mouseR) {
+                                const f = 1 - md / mouseR;
+                                const pull = f * f * 0.42;
+                                sx += mdx * pull; sy += mdy * pull;
+                                reach = f;
+                            }
+                        }
+
+                        const size = Math.max(0.4, (0.5 + d * 1.6) * q.persp * (0.7 + q.energy * 1.0) + reach * 1.2);
+                        let alpha = Math.min(1, 0.10 + d * 0.58 + q.energy * 0.30 + smoothAmp * 0.10 + reach * 0.30);
+
+                        // circular edge-fade — dissolves into the background, no square
+                        const dist = Math.hypot(sx - cx, sy - cy);
                         if (dist > maxVis * 0.78) alpha *= Math.max(0, 1 - (dist - maxVis * 0.78) / (maxVis * 0.22));
                         if (alpha <= 0.01) continue;
 
-                        // colour shifts from indigo (calm) → bright cyan/white (loud)
-                        const hot = q.energy * 0.7 + smoothAmp * 0.5;
-                        const r = Math.min(255, Math.floor(120 + hot * 90 + d * 25));
-                        const gg = Math.min(255, Math.floor(120 + hot * 110 + d * 40));
-                        const b = 255;
-                        ctx.fillStyle = 'rgba(' + r + ',' + gg + ',' + b + ',' + alpha.toFixed(3) + ')';
+                        const hot = q.energy * 0.7 + smoothAmp * 0.5 + reach * 0.6;
+                        // indigo/cyan-white → gold
+                        const bR = 120 + hot * 90 + d * 25, bG = 120 + hot * 110 + d * 40, bB = 255;
+                        const dR = 255, dG = 205 + hot * 45 + d * 8, dB = 70 + hot * 80 + d * 20;
+                        const r = Math.min(255, bR + (dR - bR) * gBlend);
+                        const gg = Math.min(255, bG + (dG - bG) * gBlend);
+                        const b = Math.min(255, bB + (dB - bB) * gBlend);
+                        ctx.fillStyle = 'rgba(' + Math.floor(r) + ',' + Math.floor(gg) + ',' + Math.floor(b) + ',' + alpha.toFixed(3) + ')';
                         ctx.beginPath();
-                        ctx.arc(q.sx, q.sy, size, 0, Math.PI * 2);
+                        ctx.arc(sx, sy, size, 0, Math.PI * 2);
                         ctx.fill();
                     }
 
@@ -2258,7 +2585,7 @@
 
             // ---- boot orbs ----
             document.addEventListener('DOMContentLoaded', () => {
-                createOrb(document.getElementById('hero-orb'), { reactive: false, points: 900 });
+                createOrb(document.getElementById('hero-orb'), { reactive: false, interactive: true, points: 900 });
                 createOrb(document.getElementById('demo-orb'), { reactive: true, points: 1400 });
             });
         })();

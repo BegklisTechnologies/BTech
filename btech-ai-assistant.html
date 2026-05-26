@@ -43,7 +43,12 @@
     </script>
 
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent; /* kill the blue tap square on mobile */
+        }
 
         :root {
             --primary: #6366f1;
@@ -1118,6 +1123,16 @@
            GOLDEN MODE — "Doctor Strange" environment unlocked by spam-clicking the orb
            ============================================================ */
         .hero-canvas-wrap { cursor: pointer; }
+
+        /* No selection / tap highlight / callout on the interactive orb & button (mobile) */
+        .hero-canvas-wrap, #hero-orb, .demo-orb-wrap, #demo-orb, .demo-play-btn {
+            -webkit-tap-highlight-color: transparent;
+            -webkit-touch-callout: none;
+            -webkit-user-select: none;
+            user-select: none;
+            outline: none;
+            touch-action: manipulation;
+        }
 
         /* Smooth theme transition for the whole page when gold mode flips */
         body, section, nav, footer, .hero, .feature-card, .process-step,

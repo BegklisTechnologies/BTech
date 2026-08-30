@@ -1,17 +1,21 @@
 <!DOCTYPE html>
 <html lang="el">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>BTech Web Development — Σύγχρονες Ιστοσελίδες & Web Apps | BTech AI</title>
-    <meta name="description" content="Επαγγελματικά websites για κάθε ανάγκη: εταιρικά, e-commerce, real estate, healthcare, agriculture, custom web apps. SEO-optimized, mobile-first, ελληνικά παντού.">
-    <meta name="keywords" content="κατασκευή ιστοσελίδων, web development, responsive design, SEO, e-commerce Ελλάδα, web design Θεσσαλονίκη, BTech AI">
+    <meta name="description"
+        content="Επαγγελματικά websites για κάθε ανάγκη: εταιρικά, e-commerce, real estate, healthcare, agriculture, custom web apps. SEO-optimized, mobile-first, ελληνικά παντού.">
+    <meta name="keywords"
+        content="κατασκευή ιστοσελίδων, web development, responsive design, SEO, e-commerce Ελλάδα, web design Θεσσαλονίκη, BTech AI">
 
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://www.btech-ai.com/btech-web.html">
     <meta property="og:title" content="BTech Web Development — Σύγχρονες Ιστοσελίδες">
-    <meta property="og:description" content="Επαγγελματικά websites για κάθε επιχείρηση. SEO, mobile-first, ταχύτητα. Δείτε ζωντανά τα έργα μας.">
+    <meta property="og:description"
+        content="Επαγγελματικά websites για κάθε επιχείρηση. SEO, mobile-first, ταχύτητα. Δείτε ζωντανά τα έργα μας.">
     <meta property="og:image" content="https://www.btech-ai.com/preview.png">
 
     <meta property="twitter:card" content="summary_large_image">
@@ -43,7 +47,11 @@
     </script>
 
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
         :root {
             --primary: #6366f1;
@@ -62,11 +70,27 @@
             user-drag: none;
         }
 
-        ::-webkit-scrollbar { width: 12px; }
-        ::-webkit-scrollbar-track { background: #1a1a1a; }
-        ::-webkit-scrollbar-thumb { background: #6366f1; border-radius: 6px; }
-        ::-webkit-scrollbar-thumb:hover { background: #818cf8; }
-        * { scrollbar-width: thin; scrollbar-color: #6366f1 #1a1a1a; }
+        ::-webkit-scrollbar {
+            width: 12px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #1a1a1a;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #6366f1;
+            border-radius: 6px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #818cf8;
+        }
+
+        * {
+            scrollbar-width: thin;
+            scrollbar-color: #6366f1 #1a1a1a;
+        }
 
         body {
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Inter", Roboto, sans-serif;
@@ -79,7 +103,9 @@
             user-select: none;
         }
 
-        html { scroll-behavior: smooth; }
+        html {
+            scroll-behavior: smooth;
+        }
 
 
         /* Nav */
@@ -114,7 +140,10 @@
             text-decoration: none;
         }
 
-        .logo img { height: 40px; width: auto; }
+        .logo img {
+            height: 40px;
+            width: auto;
+        }
 
         .logo-text {
             font-size: 1.75rem;
@@ -165,7 +194,10 @@
             opacity: 0.7;
         }
 
-        .flag-button:hover { transform: scale(1.1); opacity: 1; }
+        .flag-button:hover {
+            transform: scale(1.1);
+            opacity: 1;
+        }
 
         .flag-button.active {
             border-color: var(--secondary);
@@ -174,7 +206,9 @@
         }
 
         .flag-button img {
-            width: 100%; height: 100%; object-fit: cover;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
         }
 
         /* Hero */
@@ -199,27 +233,48 @@
         }
 
         .hero-bg-blob.blob-1 {
-            top: -100px; left: -100px;
-            width: 400px; height: 400px;
+            top: -100px;
+            left: -100px;
+            width: 400px;
+            height: 400px;
             background: radial-gradient(circle, rgba(99, 102, 241, 0.4), transparent);
         }
 
         .hero-bg-blob.blob-2 {
-            bottom: -100px; right: -100px;
-            width: 500px; height: 500px;
+            bottom: -100px;
+            right: -100px;
+            width: 500px;
+            height: 500px;
             background: radial-gradient(circle, rgba(168, 85, 247, 0.3), transparent);
             animation-delay: 5s;
         }
 
         @keyframes blobFloat {
-            0%, 100% { transform: translate(0, 0) scale(1); }
-            33% { transform: translate(50px, -30px) scale(1.1); }
-            66% { transform: translate(-30px, 50px) scale(0.95); }
+
+            0%,
+            100% {
+                transform: translate(0, 0) scale(1);
+            }
+
+            33% {
+                transform: translate(50px, -30px) scale(1.1);
+            }
+
+            66% {
+                transform: translate(-30px, 50px) scale(0.95);
+            }
         }
 
         @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(30px); }
-            to { opacity: 1; transform: translateY(0); }
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         /* New two-column hero layout */
@@ -310,7 +365,9 @@
         }
 
         /* On desktop, hide the inline mobile canvas (floating ball takes over) */
-        #hero-canvas-mobile { display: none; }
+        #hero-canvas-mobile {
+            display: none;
+        }
 
         /* The playful floating ball — circular, follows scroll */
         .floating-ball {
@@ -345,9 +402,7 @@
         /* Stronger, more intense glow when in hero */
         .floating-ball.hero-mode {
             filter:
-                drop-shadow(0 0 90px rgba(99, 102, 241, 0.55))
-                drop-shadow(0 0 50px rgba(168, 85, 247, 0.45))
-                drop-shadow(0 0 25px rgba(192, 132, 252, 0.35));
+                drop-shadow(0 0 90px rgba(99, 102, 241, 0.55)) drop-shadow(0 0 50px rgba(168, 85, 247, 0.45)) drop-shadow(0 0 25px rgba(192, 132, 252, 0.35));
         }
 
         .floating-ball canvas {
@@ -393,17 +448,43 @@
         }
 
         @keyframes ball-bounce-1 {
-            0%, 100% { transform: translateY(-50%) scale(1); }
-            25%      { transform: translateY(-78%) scale(1.07); }
-            50%      { transform: translateY(-28%) scale(0.93); }
-            75%      { transform: translateY(-68%) scale(1.04); }
+
+            0%,
+            100% {
+                transform: translateY(-50%) scale(1);
+            }
+
+            25% {
+                transform: translateY(-78%) scale(1.07);
+            }
+
+            50% {
+                transform: translateY(-28%) scale(0.93);
+            }
+
+            75% {
+                transform: translateY(-68%) scale(1.04);
+            }
         }
 
         @keyframes ball-bounce-2 {
-            0%, 100% { transform: translateY(-50%) scale(1); }
-            25%      { transform: translateY(-65%) scale(1.05); }
-            50%      { transform: translateY(-38%) scale(0.95); }
-            75%      { transform: translateY(-75%) scale(1.07); }
+
+            0%,
+            100% {
+                transform: translateY(-50%) scale(1);
+            }
+
+            25% {
+                transform: translateY(-65%) scale(1.05);
+            }
+
+            50% {
+                transform: translateY(-38%) scale(0.95);
+            }
+
+            75% {
+                transform: translateY(-75%) scale(1.07);
+            }
         }
 
         /* Smaller ball on medium screens so it doesn't overlap content */
@@ -423,10 +504,15 @@
 
         /* Hide playful balls on small screens (no room beside content) */
         @media (max-width: 900px) {
-            .floating-ball { display: none; }
+            .floating-ball {
+                display: none;
+            }
         }
+
         @media (max-width: 768px) {
-            .ball-twin { display: none; }
+            .ball-twin {
+                display: none;
+            }
         }
 
         /* Hero Stats Bar (bottom of hero, like the image) */
@@ -606,7 +692,9 @@
             gap: 0.4rem;
         }
 
-        .trust-strip i { color: var(--secondary); }
+        .trust-strip i {
+            color: var(--secondary);
+        }
 
         /* Sections */
         section {
@@ -656,7 +744,11 @@
             transform: translateY(40px);
             transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1), transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
         }
-        .reveal.visible { opacity: 1; transform: translateY(0); }
+
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
 
         /* Pain Section */
         .pain-section {
@@ -722,7 +814,9 @@
         }
 
         /* Features */
-        .features-section { background: var(--dark); }
+        .features-section {
+            background: var(--dark);
+        }
 
         .features-grid {
             display: grid;
@@ -743,7 +837,9 @@
         .feature-card::before {
             content: '';
             position: absolute;
-            top: 0; left: 0; right: 0;
+            top: 0;
+            left: 0;
+            right: 0;
             height: 2px;
             background: var(--gradient-bright);
             transform: scaleX(0);
@@ -757,7 +853,9 @@
             box-shadow: 0 20px 40px rgba(99, 102, 241, 0.2);
         }
 
-        .feature-card:hover::before { transform: scaleX(1); }
+        .feature-card:hover::before {
+            transform: scaleX(1);
+        }
 
         .feature-icon {
             width: 50px;
@@ -904,13 +1002,17 @@
         }
 
         /* Showcase / Categories */
-        .showcase-section { background: var(--dark); }
+        .showcase-section {
+            background: var(--dark);
+        }
 
         .category-block {
             margin-bottom: 5rem;
         }
 
-        .category-block:last-child { margin-bottom: 0; }
+        .category-block:last-child {
+            margin-bottom: 0;
+        }
 
         .category-header {
             display: flex;
@@ -992,14 +1094,23 @@
             background: #2a2a2a;
         }
 
-        .website-dots span:nth-child(1) { background: #ef4444; }
-        .website-dots span:nth-child(2) { background: #f59e0b; }
-        .website-dots span:nth-child(3) { background: #22c55e; }
+        .website-dots span:nth-child(1) {
+            background: #ef4444;
+        }
+
+        .website-dots span:nth-child(2) {
+            background: #f59e0b;
+        }
+
+        .website-dots span:nth-child(3) {
+            background: #22c55e;
+        }
 
         .website-iframe-container {
             position: relative;
             width: 100%;
-            padding-bottom: 62.5%; /* 16:10 aspect ratio */
+            padding-bottom: 62.5%;
+            /* 16:10 aspect ratio */
             background: white;
             border-radius: 4px 4px 0 0;
             overflow: hidden;
@@ -1104,7 +1215,9 @@
         }
 
         /* Comparison */
-        .comparison-section { background: var(--dark); }
+        .comparison-section {
+            background: var(--dark);
+        }
 
         .comparison-wrapper {
             max-width: 1100px;
@@ -1135,7 +1248,9 @@
             color: #cbd5e1;
         }
 
-        .comparison-table thead { background: rgba(99, 102, 241, 0.15); }
+        .comparison-table thead {
+            background: rgba(99, 102, 241, 0.15);
+        }
 
         .comparison-table thead th {
             color: var(--light);
@@ -1152,12 +1267,26 @@
             background: rgba(99, 102, 241, 0.08);
         }
 
-        .check { color: #22c55e; font-size: 1.2rem; }
-        .x { color: #ef4444; font-size: 1.2rem; opacity: 0.5; }
-        .partial { color: #fbbf24; font-size: 1.2rem; }
+        .check {
+            color: #22c55e;
+            font-size: 1.2rem;
+        }
+
+        .x {
+            color: #ef4444;
+            font-size: 1.2rem;
+            opacity: 0.5;
+        }
+
+        .partial {
+            color: #fbbf24;
+            font-size: 1.2rem;
+        }
 
         /* FAQ */
-        .faq-section { background: linear-gradient(180deg, var(--dark) 0%, #1e293b 100%); }
+        .faq-section {
+            background: linear-gradient(180deg, var(--dark) 0%, #1e293b 100%);
+        }
 
         .faq-list {
             max-width: 850px;
@@ -1173,7 +1302,9 @@
             transition: all 0.3s ease;
         }
 
-        .faq-item:hover { border-color: rgba(99, 102, 241, 0.3); }
+        .faq-item:hover {
+            border-color: rgba(99, 102, 241, 0.3);
+        }
 
         .faq-item summary {
             padding: 1.25rem 1.5rem;
@@ -1187,7 +1318,9 @@
             list-style: none;
         }
 
-        .faq-item summary::-webkit-details-marker { display: none; }
+        .faq-item summary::-webkit-details-marker {
+            display: none;
+        }
 
         .faq-item summary::after {
             content: '+';
@@ -1197,7 +1330,9 @@
             transition: transform 0.3s ease;
         }
 
-        .faq-item[open] summary::after { transform: rotate(45deg); }
+        .faq-item[open] summary::after {
+            transform: rotate(45deg);
+        }
 
         .faq-answer {
             padding: 0 1.5rem 1.5rem;
@@ -1214,7 +1349,8 @@
             padding: 6rem 5%;
         }
 
-        .final-cta::before, .final-cta::after {
+        .final-cta::before,
+        .final-cta::after {
             content: '';
             position: absolute;
             border-radius: 50%;
@@ -1223,14 +1359,18 @@
         }
 
         .final-cta::before {
-            top: -100px; left: 10%;
-            width: 300px; height: 300px;
+            top: -100px;
+            left: 10%;
+            width: 300px;
+            height: 300px;
             background: rgba(99, 102, 241, 0.3);
         }
 
         .final-cta::after {
-            bottom: -100px; right: 10%;
-            width: 300px; height: 300px;
+            bottom: -100px;
+            right: 10%;
+            width: 300px;
+            height: 300px;
             background: rgba(168, 85, 247, 0.3);
         }
 
@@ -1274,7 +1414,9 @@
             transition: color 0.3s ease;
         }
 
-        .contact-info a:hover { color: var(--light); }
+        .contact-info a:hover {
+            color: var(--light);
+        }
 
         /* Footer */
         footer {
@@ -1284,7 +1426,10 @@
             border-top: 1px solid rgba(99, 102, 241, 0.1);
         }
 
-        .footer-content { max-width: 1200px; margin: 0 auto; }
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
 
         .footer-logo {
             display: inline-flex;
@@ -1294,8 +1439,13 @@
             text-decoration: none;
         }
 
-        .footer-logo img { height: 40px; }
-        .footer-logo .logo-text { font-size: 1.5rem; }
+        .footer-logo img {
+            height: 40px;
+        }
+
+        .footer-logo .logo-text {
+            font-size: 1.5rem;
+        }
 
         .footer-links {
             display: flex;
@@ -1312,7 +1462,9 @@
             transition: color 0.3s ease;
         }
 
-        .footer-links a:hover { color: var(--secondary); }
+        .footer-links a:hover {
+            color: var(--secondary);
+        }
 
         .footer-bottom {
             margin-top: 2rem;
@@ -1377,8 +1529,10 @@
         /* Legal Modal (same as invoicer) */
         .legal-modal {
             position: fixed;
-            top: 0; left: 0;
-            width: 100%; height: 100%;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
             background: rgba(5, 10, 25, 0.92);
             backdrop-filter: blur(15px);
             z-index: 10001;
@@ -1389,16 +1543,30 @@
             animation: modalFadeIn 0.3s ease-out;
         }
 
-        .legal-modal.active { display: flex; }
+        .legal-modal.active {
+            display: flex;
+        }
 
         @keyframes modalFadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
         }
 
         @keyframes modalZoomIn {
-            from { transform: scale(0.8); opacity: 0; }
-            to { transform: scale(1); opacity: 1; }
+            from {
+                transform: scale(0.8);
+                opacity: 0;
+            }
+
+            to {
+                transform: scale(1);
+                opacity: 1;
+            }
         }
 
         .legal-modal-content {
@@ -1417,8 +1585,10 @@
 
         .legal-modal-close {
             position: absolute;
-            top: 1rem; right: 1rem;
-            width: 36px; height: 36px;
+            top: 1rem;
+            right: 1rem;
+            width: 36px;
+            height: 36px;
             background: rgba(99, 102, 241, 0.15);
             border: 1px solid rgba(99, 102, 241, 0.3);
             border-radius: 50%;
@@ -1451,15 +1621,21 @@
             font-weight: 600;
         }
 
-        .legal-modal-content p, .legal-modal-content li {
+        .legal-modal-content p,
+        .legal-modal-content li {
             color: #cbd5e1;
             line-height: 1.75;
             margin-bottom: 0.75rem;
             font-size: 0.95rem;
         }
 
-        .legal-modal-content ul { padding-left: 1.5rem; }
-        .legal-modal-content strong { color: var(--light); }
+        .legal-modal-content ul {
+            padding-left: 1.5rem;
+        }
+
+        .legal-modal-content strong {
+            color: var(--light);
+        }
 
         .legal-divider {
             height: 1px;
@@ -1475,7 +1651,9 @@
             font-size: 0.95rem;
         }
 
-        .legal-info-row:last-child { border-bottom: none; }
+        .legal-info-row:last-child {
+            border-bottom: none;
+        }
 
         .legal-info-label {
             color: var(--secondary);
@@ -1483,10 +1661,14 @@
             min-width: 140px;
         }
 
-        .legal-info-value { color: #cbd5e1; flex: 1; }
+        .legal-info-value {
+            color: #cbd5e1;
+            flex: 1;
+        }
 
         /* Mobile — comprehensive */
         @media (max-width: 900px) {
+
             /* On mobile: the SAME interactive particle wave, but static in layout
                (not following scroll). The floating-ball is hidden by media query above. */
             .hero-canvas-wrap {
@@ -1497,8 +1679,7 @@
                 clip-path: circle(46% at 50% 50%);
                 -webkit-clip-path: circle(46% at 50% 50%);
                 filter:
-                    drop-shadow(0 0 60px rgba(99, 102, 241, 0.4))
-                    drop-shadow(0 0 30px rgba(168, 85, 247, 0.35));
+                    drop-shadow(0 0 60px rgba(99, 102, 241, 0.4)) drop-shadow(0 0 30px rgba(168, 85, 247, 0.35));
             }
 
             #hero-canvas-mobile {
@@ -1509,9 +1690,17 @@
         }
 
         @media (max-width: 768px) {
-            .nav-back span { display: none; }
-            .nav-back { padding: 0.5rem 0.75rem; }
-            section { padding: 4rem 5%; }
+            .nav-back span {
+                display: none;
+            }
+
+            .nav-back {
+                padding: 0.5rem 0.75rem;
+            }
+
+            section {
+                padding: 4rem 5%;
+            }
 
             /* Hero — switch flex to column so stats land BELOW the title,
                with extra breathing room from header */
@@ -1522,31 +1711,42 @@
                 gap: 1.5rem;
                 justify-content: flex-start;
             }
+
             .hero-layout {
                 width: 100%;
             }
+
             .hero h1 {
                 font-size: clamp(1.9rem, 8vw, 2.6rem);
                 text-align: center;
             }
+
             .hero-left {
                 text-align: center;
                 display: flex;
                 flex-direction: column;
                 align-items: center;
             }
+
             .hero-tagline-pills {
                 text-align: center;
             }
+
             .hero-tagline-pills {
                 font-size: 0.95rem;
             }
-            .hero-ctas .btn { width: 100%; justify-content: center; }
+
+            .hero-ctas .btn {
+                width: 100%;
+                justify-content: center;
+            }
 
             /* Stats: clean centered card below the ball */
             .hero-stats {
                 position: relative;
-                bottom: auto; left: auto; transform: none;
+                bottom: auto;
+                left: auto;
+                transform: none;
                 width: 100%;
                 max-width: 360px;
                 margin: 1.5rem auto 0;
@@ -1557,31 +1757,49 @@
                 border-radius: 20px;
                 border-color: rgba(99, 102, 241, 0.28);
             }
+
             .hero-stat {
                 justify-content: flex-start;
                 padding: 0.5rem 0;
                 border-bottom: 1px solid rgba(99, 102, 241, 0.1);
             }
-            .hero-stat:last-child { border-bottom: none; }
+
+            .hero-stat:last-child {
+                border-bottom: none;
+            }
+
             .hero-stat-icon {
                 width: 44px;
                 height: 44px;
                 font-size: 1.05rem;
                 flex-shrink: 0;
             }
+
             .hero-stat-text strong {
                 font-size: 1.4rem;
                 line-height: 1.1;
             }
+
             .hero-stat-text span {
                 font-size: 0.78rem;
                 margin-top: 0.15rem;
             }
 
             /* Grids → single column */
-            .features-grid, .pain-grid { grid-template-columns: 1fr; }
-            .websites-grid { grid-template-columns: 1fr; gap: 1.5rem; }
-            .packages-grid { grid-template-columns: 1fr; gap: 1.25rem; }
+            .features-grid,
+            .pain-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .websites-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .packages-grid {
+                grid-template-columns: 1fr;
+                gap: 1.25rem;
+            }
 
             /* Category header centered */
             .category-header {
@@ -1590,39 +1808,94 @@
                 gap: 0.75rem;
                 padding-bottom: 0.75rem;
             }
-            .category-info h3 { font-size: 1.35rem; }
-            .category-info p { font-size: 0.85rem; }
+
+            .category-info h3 {
+                font-size: 1.35rem;
+            }
+
+            .category-info p {
+                font-size: 0.85rem;
+            }
 
             /* Website card text */
-            .website-info { padding: 1.25rem; }
-            .website-info h4 { font-size: 1.05rem; }
-            .website-info .website-desc { font-size: 0.85rem; }
+            .website-info {
+                padding: 1.25rem;
+            }
+
+            .website-info h4 {
+                font-size: 1.05rem;
+            }
+
+            .website-info .website-desc {
+                font-size: 0.85rem;
+            }
 
             /* Package cards: compact */
-            .package-card { padding: 1.75rem 1.5rem; }
-            .package-card h3 { font-size: 1.3rem; }
-            .package-card .package-desc { min-height: auto; font-size: 0.85rem; }
-            .package-features li { font-size: 0.85rem; padding: 0.4rem 0; }
+            .package-card {
+                padding: 1.75rem 1.5rem;
+            }
+
+            .package-card h3 {
+                font-size: 1.3rem;
+            }
+
+            .package-card .package-desc {
+                min-height: auto;
+                font-size: 0.85rem;
+            }
+
+            .package-features li {
+                font-size: 0.85rem;
+                padding: 0.4rem 0;
+            }
 
             /* Feature card padding */
-            .feature-card { padding: 1.5rem; }
-            .feature-card h3 { font-size: 1.05rem; }
-            .feature-card p { font-size: 0.88rem; }
+            .feature-card {
+                padding: 1.5rem;
+            }
+
+            .feature-card h3 {
+                font-size: 1.05rem;
+            }
+
+            .feature-card p {
+                font-size: 0.88rem;
+            }
 
             /* Pain card */
-            .pain-card { padding: 1.5rem; }
+            .pain-card {
+                padding: 1.5rem;
+            }
 
             /* Process steps */
-            .process-grid { gap: 1.5rem; }
-            .process-card { padding: 1.25rem 0.75rem; }
+            .process-grid {
+                gap: 1.5rem;
+            }
+
+            .process-card {
+                padding: 1.25rem 0.75rem;
+            }
 
             /* FAQ */
-            .faq-item summary { padding: 1rem 1.25rem; font-size: 0.95rem; }
-            .faq-answer { padding: 0 1.25rem 1.25rem; font-size: 0.9rem; }
+            .faq-item summary {
+                padding: 1rem 1.25rem;
+                font-size: 0.95rem;
+            }
+
+            .faq-answer {
+                padding: 0 1.25rem 1.25rem;
+                font-size: 0.9rem;
+            }
 
             /* Final CTA */
-            .final-cta { padding: 4rem 5%; }
-            .contact-info { gap: 1.25rem; font-size: 0.9rem; }
+            .final-cta {
+                padding: 4rem 5%;
+            }
+
+            .contact-info {
+                gap: 1.25rem;
+                font-size: 0.9rem;
+            }
         }
 
         /* Comparison table — mobile: fits in ~360px viewport */
@@ -1646,12 +1919,14 @@
                 font-size: 0.78rem;
                 vertical-align: middle;
             }
+
             .comparison-table thead th {
                 font-size: 0.68rem;
                 line-height: 1.2;
                 white-space: normal;
                 word-break: keep-all;
             }
+
             .comparison-table .check,
             .comparison-table .x,
             .comparison-table .partial {
@@ -1668,6 +1943,7 @@
                 text-align: left;
                 padding-left: 0.6rem;
             }
+
             .comparison-table thead th:first-child {
                 background: rgba(35, 45, 70, 0.98);
             }
@@ -1677,20 +1953,39 @@
             .comparison-table td:nth-child(2) {
                 width: 75px;
             }
+
             .comparison-table thead th:nth-child(2).us-col {
                 background: rgba(67, 56, 140, 0.55);
             }
+
             .comparison-table td:nth-child(2).us-col {
                 background: rgba(99, 102, 241, 0.1);
             }
         }
 
         @media (max-width: 480px) {
-            .hero h1 { font-size: 1.85rem; }
-            .hero-tagline-pills { font-size: 0.9rem; line-height: 1.5; }
-            .section-title { font-size: 1.75rem; }
-            .section-subtitle { font-size: 0.95rem; margin-bottom: 2.5rem; }
-            .section-tag { font-size: 0.75rem; letter-spacing: 0.1em; }
+            .hero h1 {
+                font-size: 1.85rem;
+            }
+
+            .hero-tagline-pills {
+                font-size: 0.9rem;
+                line-height: 1.5;
+            }
+
+            .section-title {
+                font-size: 1.75rem;
+            }
+
+            .section-subtitle {
+                font-size: 0.95rem;
+                margin-bottom: 2.5rem;
+            }
+
+            .section-tag {
+                font-size: 0.75rem;
+                letter-spacing: 0.1em;
+            }
         }
 
         /* Website preview cards as PHONE FRAMES on mobile */
@@ -1736,7 +2031,9 @@
             }
 
             /* Hide traffic-light dots — not phone style */
-            .website-dots { display: none; }
+            .website-dots {
+                display: none;
+            }
 
             /* Portrait phone aspect ratio (~19.5:9) */
             .website-iframe-container {
@@ -1765,6 +2062,7 @@
         }
     </style>
 </head>
+
 <body>
 
     <!-- Navigation -->
@@ -1772,7 +2070,8 @@
         <div class="nav-container">
             <a href="index.html" class="logo">
                 <img src="logo.png" alt="BTech Logo">
-                <span class="logo-text">BTech<span style="color: #818cf8; font-size: 0.55em; vertical-align: super;">.ai</span></span>
+                <span class="logo-text">BTech<span
+                        style="color: #818cf8; font-size: 0.55em; vertical-align: super;">.ai</span></span>
             </a>
             <div class="nav-right">
                 <a href="index.html" class="nav-back">
@@ -1862,26 +2161,35 @@
             <div class="pain-grid">
                 <div class="pain-card reveal">
                     <i class="fas fa-quote-left pain-icon"></i>
-                    <p class="pain-quote" data-translate="pain-1-quote">"Το site μου δεν φαίνεται καλά σε κινητό — οι πελάτες φεύγουν."</p>
-                    <div class="solution-icon-small"><i class="fas fa-check-circle"></i> <span data-translate="our-solution">Η λύση μας:</span></div>
+                    <p class="pain-quote" data-translate="pain-1-quote">"Το site μου δεν φαίνεται καλά σε κινητό — οι
+                        πελάτες φεύγουν."</p>
+                    <div class="solution-icon-small"><i class="fas fa-check-circle"></i> <span
+                            data-translate="our-solution">Η λύση μας:</span></div>
                     <h3 data-translate="pain-1-title">100% Mobile-first σχεδίαση</h3>
-                    <p data-translate="pain-1-desc">Κάθε website που φτιάχνουμε σχεδιάζεται πρώτα για κινητό. 70%+ των επισκεπτών σας θα έρθουν από smartphone — πρέπει να φαίνεται τέλειο εκεί.</p>
+                    <p data-translate="pain-1-desc">Κάθε website που φτιάχνουμε σχεδιάζεται πρώτα για κινητό. 70%+ των
+                        επισκεπτών σας θα έρθουν από smartphone — πρέπει να φαίνεται τέλειο εκεί.</p>
                 </div>
 
                 <div class="pain-card reveal">
                     <i class="fas fa-quote-left pain-icon"></i>
-                    <p class="pain-quote" data-translate="pain-2-quote">"Δεν με βρίσκουν στο Google — οι ανταγωνιστές μου εμφανίζονται πρώτοι."</p>
-                    <div class="solution-icon-small"><i class="fas fa-check-circle"></i> <span data-translate="our-solution">Η λύση μας:</span></div>
+                    <p class="pain-quote" data-translate="pain-2-quote">"Δεν με βρίσκουν στο Google — οι ανταγωνιστές
+                        μου εμφανίζονται πρώτοι."</p>
+                    <div class="solution-icon-small"><i class="fas fa-check-circle"></i> <span
+                            data-translate="our-solution">Η λύση μας:</span></div>
                     <h3 data-translate="pain-2-title">Advanced SEO από την αρχή</h3>
-                    <p data-translate="pain-2-desc">Schema.org structured data, meta tags, sitemap, hreflang, Open Graph, Core Web Vitals optimization. Όλα ενσωματωμένα από την πρώτη μέρα.</p>
+                    <p data-translate="pain-2-desc">Schema.org structured data, meta tags, sitemap, hreflang, Open
+                        Graph, Core Web Vitals optimization. Όλα ενσωματωμένα από την πρώτη μέρα.</p>
                 </div>
 
                 <div class="pain-card reveal">
                     <i class="fas fa-quote-left pain-icon"></i>
-                    <p class="pain-quote" data-translate="pain-3-quote">"Πληρώνω €50/μήνα σε Wix/WordPress για features που δεν χρησιμοποιώ."</p>
-                    <div class="solution-icon-small"><i class="fas fa-check-circle"></i> <span data-translate="our-solution">Η λύση μας:</span></div>
+                    <p class="pain-quote" data-translate="pain-3-quote">"Πληρώνω €50/μήνα σε Wix/WordPress για features
+                        που δεν χρησιμοποιώ."</p>
+                    <div class="solution-icon-small"><i class="fas fa-check-circle"></i> <span
+                            data-translate="our-solution">Η λύση μας:</span></div>
                     <h3 data-translate="pain-3-title">Custom code, δικός σας κώδικας</h3>
-                    <p data-translate="pain-3-desc">Σας παραδίδουμε καθαρό, σύγχρονο κώδικα. Χωρίς template platforms, χωρίς μηνιαία fees άλλων εταιριών. Φιλοξενία όπου θέλετε.</p>
+                    <p data-translate="pain-3-desc">Σας παραδίδουμε καθαρό, σύγχρονο κώδικα. Χωρίς template platforms,
+                        χωρίς μηνιαία fees άλλων εταιριών. Φιλοξενία όπου θέλετε.</p>
                 </div>
             </div>
         </div>
@@ -1900,49 +2208,57 @@
                 <div class="feature-card reveal">
                     <div class="feature-icon"><i class="fas fa-mobile-alt"></i></div>
                     <h3 data-translate="feat-1-title">Responsive Design</h3>
-                    <p data-translate="feat-1-desc">Τέλεια εμφάνιση σε κινητό, tablet, laptop και 4K οθόνες. Χωρίς οριζόντιο scroll, χωρίς ασυνέπειες.</p>
+                    <p data-translate="feat-1-desc">Τέλεια εμφάνιση σε κινητό, tablet, laptop και 4K οθόνες. Χωρίς
+                        οριζόντιο scroll, χωρίς ασυνέπειες.</p>
                 </div>
 
                 <div class="feature-card reveal">
                     <div class="feature-icon"><i class="fas fa-search"></i></div>
                     <h3 data-translate="feat-2-title">Advanced SEO</h3>
-                    <p data-translate="feat-2-desc">Schema markup, meta tags, sitemap.xml, robots.txt, canonical URLs, structured data. Έτοιμο για Google indexing.</p>
+                    <p data-translate="feat-2-desc">Schema markup, meta tags, sitemap.xml, robots.txt, canonical URLs,
+                        structured data. Έτοιμο για Google indexing.</p>
                 </div>
 
                 <div class="feature-card reveal">
                     <div class="feature-icon"><i class="fas fa-bolt"></i></div>
                     <h3 data-translate="feat-3-title">Ταχύτητα & Performance</h3>
-                    <p data-translate="feat-3-desc">Core Web Vitals all green. LCP under 1.5s, image optimization, lazy loading, minified CSS/JS.</p>
+                    <p data-translate="feat-3-desc">Core Web Vitals all green. LCP under 1.5s, image optimization, lazy
+                        loading, minified CSS/JS.</p>
                 </div>
 
                 <div class="feature-card reveal">
                     <div class="feature-icon"><i class="fas fa-shield-alt"></i></div>
                     <h3 data-translate="feat-4-title">Ασφάλεια</h3>
-                    <p data-translate="feat-4-desc">HTTPS, secure headers, XSS protection, form validation. Image protection ενάντια σε right-click/drag.</p>
+                    <p data-translate="feat-4-desc">HTTPS, secure headers, XSS protection, form validation. Image
+                        protection ενάντια σε right-click/drag.</p>
                 </div>
 
                 <div class="feature-card reveal">
                     <div class="feature-icon"><i class="fas fa-globe"></i></div>
                     <h3 data-translate="feat-5-title">Πολυγλωσσικό</h3>
-                    <p data-translate="feat-5-desc">Ελληνικά & Αγγλικά (ή όποια γλώσσα θέλετε) με σύστημα translation, hreflang tags για SEO σε κάθε γλώσσα.</p>
+                    <p data-translate="feat-5-desc">Ελληνικά & Αγγλικά (ή όποια γλώσσα θέλετε) με σύστημα translation,
+                        hreflang tags για SEO σε κάθε γλώσσα.</p>
                 </div>
 
                 <div class="feature-card reveal">
                     <div class="feature-icon"><i class="fas fa-chart-line"></i></div>
                     <h3 data-translate="feat-6-title">Analytics Ready</h3>
-                    <p data-translate="feat-6-desc">Google Analytics 4, Meta Pixel, Search Console integration. Μετράτε το traffic σας από την πρώτη μέρα.</p>
+                    <p data-translate="feat-6-desc">Google Analytics 4, Meta Pixel, Search Console integration. Μετράτε
+                        το traffic σας από την πρώτη μέρα.</p>
                 </div>
 
                 <div class="feature-card reveal">
                     <div class="feature-icon"><i class="fas fa-server"></i></div>
                     <h3 data-translate="feat-7-title">Hosting & Domain</h3>
-                    <p data-translate="feat-7-desc">Σας βοηθάμε με επιλογή hosting, DNS, SSL certificate, email setup. Από το domain μέχρι το launch.</p>
+                    <p data-translate="feat-7-desc">Σας βοηθάμε με επιλογή hosting, DNS, SSL certificate, email setup.
+                        Από το domain μέχρι το launch.</p>
                 </div>
 
                 <div class="feature-card reveal">
                     <div class="feature-icon"><i class="fas fa-tools"></i></div>
                     <h3 data-translate="feat-8-title">Συντήρηση & Support</h3>
-                    <p data-translate="feat-8-desc">Updates, backups, security patches, μικρές αλλαγές περιεχομένου. Δεν σας αφήνουμε μόνους.</p>
+                    <p data-translate="feat-8-desc">Updates, backups, security patches, μικρές αλλαγές περιεχομένου. Δεν
+                        σας αφήνουμε μόνους.</p>
                 </div>
             </div>
         </div>
@@ -1954,14 +2270,16 @@
             <span class="section-tag reveal" data-translate="pkg-tag">Τα Πακέτα μας</span>
             <h2 class="section-title reveal" data-translate="pkg-title">4 πακέτα για κάθε επιχείρηση</h2>
             <p class="section-subtitle reveal" data-translate="pkg-subtitle">
-                Από landing page μέχρι enterprise platform. Επιλέξτε το πακέτο που ταιριάζει — και επικοινωνήστε για ακριβή προσφορά.
+                Από landing page μέχρι enterprise platform. Επιλέξτε το πακέτο που ταιριάζει — και επικοινωνήστε για
+                ακριβή προσφορά.
             </p>
 
             <div class="packages-grid">
                 <div class="package-card reveal">
                     <div class="package-icon"><i class="fas fa-file"></i></div>
                     <h3 data-translate="pkg-1-title">Basic</h3>
-                    <p class="package-desc" data-translate="pkg-1-desc">Επαγγελματικό landing page με one-page flow και basic SEO.</p>
+                    <p class="package-desc" data-translate="pkg-1-desc">Επαγγελματικό landing page με one-page flow και
+                        basic SEO.</p>
                     <ul class="package-features">
                         <li><i class="fas fa-check"></i> <span data-translate="pkg-1-li-1">One-page σχεδίαση</span></li>
                         <li><i class="fas fa-check"></i> <span data-translate="pkg-1-li-2">Basic SEO setup</span></li>
@@ -1978,13 +2296,17 @@
                 <div class="package-card featured reveal">
                     <div class="package-icon"><i class="fas fa-sitemap"></i></div>
                     <h3 data-translate="pkg-2-title">Advanced</h3>
-                    <p class="package-desc" data-translate="pkg-2-desc">Όλα του Basic, και 5 σελίδες, blog και advanced SEO.</p>
+                    <p class="package-desc" data-translate="pkg-2-desc">Όλα του Basic, και 5 σελίδες, blog και advanced
+                        SEO.</p>
                     <ul class="package-features">
                         <li><i class="fas fa-check"></i> <span data-translate="pkg-2-li-1">5 σελίδες</span></li>
                         <li><i class="fas fa-check"></i> <span data-translate="pkg-2-li-2">Blog / Articles</span></li>
-                        <li><i class="fas fa-check"></i> <span data-translate="pkg-2-li-3">Advanced SEO + Schema</span></li>
-                        <li><i class="fas fa-check"></i> <span data-translate="pkg-2-li-4">Multi-language ready</span></li>
-                        <li><i class="fas fa-check"></i> <span data-translate="pkg-2-li-5">Social media integration</span></li>
+                        <li><i class="fas fa-check"></i> <span data-translate="pkg-2-li-3">Advanced SEO + Schema</span>
+                        </li>
+                        <li><i class="fas fa-check"></i> <span data-translate="pkg-2-li-4">Multi-language ready</span>
+                        </li>
+                        <li><i class="fas fa-check"></i> <span data-translate="pkg-2-li-5">Social media
+                                integration</span></li>
                     </ul>
                     <a href="#cta" class="package-cta">
                         <span data-translate="pkg-get-quote">Ζητήστε προσφορά</span>
@@ -1995,13 +2317,17 @@
                 <div class="package-card reveal">
                     <div class="package-icon"><i class="fas fa-crown"></i></div>
                     <h3 data-translate="pkg-3-title">Premium</h3>
-                    <p class="package-desc" data-translate="pkg-3-desc">Όλα του Advanced, και online booking, content strategy και Google visibility.</p>
+                    <p class="package-desc" data-translate="pkg-3-desc">Όλα του Advanced, και online booking, content
+                        strategy και Google visibility.</p>
                     <ul class="package-features">
                         <li><i class="fas fa-check"></i> <span data-translate="pkg-3-li-1">10 σελίδες</span></li>
-                        <li><i class="fas fa-check"></i> <span data-translate="pkg-3-li-2">Online booking system</span></li>
+                        <li><i class="fas fa-check"></i> <span data-translate="pkg-3-li-2">Online booking system</span>
+                        </li>
                         <li><i class="fas fa-check"></i> <span data-translate="pkg-3-li-3">Content strategy</span></li>
-                        <li><i class="fas fa-check"></i> <span data-translate="pkg-3-li-4">Google Maps optimization</span></li>
-                        <li><i class="fas fa-check"></i> <span data-translate="pkg-3-li-5">Google Business setup</span></li>
+                        <li><i class="fas fa-check"></i> <span data-translate="pkg-3-li-4">Google Maps
+                                optimization</span></li>
+                        <li><i class="fas fa-check"></i> <span data-translate="pkg-3-li-5">Google Business setup</span>
+                        </li>
                     </ul>
                     <a href="#cta" class="package-cta">
                         <span data-translate="pkg-get-quote">Ζητήστε προσφορά</span>
@@ -2012,12 +2338,16 @@
                 <div class="package-card reveal">
                     <div class="package-icon"><i class="fas fa-rocket"></i></div>
                     <h3 data-translate="pkg-4-title">Enterprise</h3>
-                    <p class="package-desc" data-translate="pkg-4-desc">Όλα του Premium, και custom design, branding και απεριόριστες δυνατότητες.</p>
+                    <p class="package-desc" data-translate="pkg-4-desc">Όλα του Premium, και custom design, branding και
+                        απεριόριστες δυνατότητες.</p>
                     <ul class="package-features">
-                        <li><i class="fas fa-check"></i> <span data-translate="pkg-4-li-1">Απεριόριστες σελίδες</span></li>
-                        <li><i class="fas fa-check"></i> <span data-translate="pkg-4-li-2">Custom design & graphics</span></li>
+                        <li><i class="fas fa-check"></i> <span data-translate="pkg-4-li-1">Απεριόριστες σελίδες</span>
+                        </li>
+                        <li><i class="fas fa-check"></i> <span data-translate="pkg-4-li-2">Custom design &
+                                graphics</span></li>
                         <li><i class="fas fa-check"></i> <span data-translate="pkg-4-li-3">Πλήρες branding</span></li>
-                        <li><i class="fas fa-check"></i> <span data-translate="pkg-4-li-4">Custom integrations</span></li>
+                        <li><i class="fas fa-check"></i> <span data-translate="pkg-4-li-4">Custom integrations</span>
+                        </li>
                         <li><i class="fas fa-check"></i> <span data-translate="pkg-4-li-5">Dedicated support</span></li>
                     </ul>
                     <a href="#cta" class="package-cta">
@@ -2044,7 +2374,8 @@
                     <div class="category-icon"><i class="fas fa-building"></i></div>
                     <div class="category-info">
                         <h3 data-translate="cat-1-title">Real Estate & Construction</h3>
-                        <p data-translate="cat-1-desc">Εταιρικά websites για κατασκευαστικές και real estate επιχειρήσεις</p>
+                        <p data-translate="cat-1-desc">Εταιρικά websites για κατασκευαστικές και real estate
+                            επιχειρήσεις</p>
                     </div>
                 </div>
 
@@ -2053,19 +2384,23 @@
                         <div class="website-frame">
                             <div class="website-dots"><span></span><span></span><span></span></div>
                             <div class="website-iframe-container">
-                                <iframe src="https://www.cranbrookcivil.com/" title="Cranbrook Civil" loading="lazy"></iframe>
+                                <iframe src="https://www.cranbrookcivil.com/" title="Cranbrook Civil"
+                                    loading="lazy"></iframe>
                             </div>
                         </div>
                         <div class="website-info">
                             <h4>Cranbrook Civil</h4>
-                            <p class="website-desc" data-translate="site-1-desc">Σύγχρονο corporate website για κατασκευαστική εταιρεία στις ΗΠΑ.</p>
+                            <p class="website-desc" data-translate="site-1-desc">Σύγχρονο corporate website για
+                                κατασκευαστική εταιρεία στις ΗΠΑ.</p>
                             <div class="website-tags">
                                 <span class="website-tag">Corporate</span>
                                 <span class="website-tag">Construction</span>
                                 <span class="website-tag">SEO</span>
                             </div>
-                            <a href="https://www.cranbrookcivil.com/" target="_blank" rel="noopener" class="website-visit">
-                                <span data-translate="visit-site">Επισκεφθείτε</span> <i class="fas fa-external-link-alt"></i>
+                            <a href="https://www.cranbrookcivil.com/" target="_blank" rel="noopener"
+                                class="website-visit">
+                                <span data-translate="visit-site">Επισκεφθείτε</span> <i
+                                    class="fas fa-external-link-alt"></i>
                             </a>
                         </div>
                     </div>
@@ -2074,19 +2409,23 @@
                         <div class="website-frame">
                             <div class="website-dots"><span></span><span></span><span></span></div>
                             <div class="website-iframe-container">
-                                <iframe src="https://cranbrookpartners-btech-preview.netlify.app/" title="Cranbrook Partners" loading="lazy"></iframe>
+                                <iframe src="https://cranbrookpartners-btech-preview.netlify.app/"
+                                    title="Cranbrook Partners" loading="lazy"></iframe>
                             </div>
                         </div>
                         <div class="website-info">
                             <h4>Cranbrook Partners</h4>
-                            <p class="website-desc" data-translate="site-2-desc">Πλατφόρμα παρουσίασης επενδυτικών ευκαιριών για real estate partners.</p>
+                            <p class="website-desc" data-translate="site-2-desc">Πλατφόρμα παρουσίασης επενδυτικών
+                                ευκαιριών για real estate partners.</p>
                             <div class="website-tags">
                                 <span class="website-tag">Investment</span>
                                 <span class="website-tag">Real Estate</span>
                                 <span class="website-tag">B2B</span>
                             </div>
-                            <a href="https://cranbrookpartners-btech-preview.netlify.app/" target="_blank" rel="noopener" class="website-visit">
-                                <span data-translate="visit-site">Επισκεφθείτε</span> <i class="fas fa-external-link-alt"></i>
+                            <a href="https://cranbrookpartners-btech-preview.netlify.app/" target="_blank"
+                                rel="noopener" class="website-visit">
+                                <span data-translate="visit-site">Επισκεφθείτε</span> <i
+                                    class="fas fa-external-link-alt"></i>
                             </a>
                         </div>
                     </div>
@@ -2095,19 +2434,22 @@
                         <div class="website-frame">
                             <div class="website-dots"><span></span><span></span><span></span></div>
                             <div class="website-iframe-container">
-                                <iframe src="https://stewartcorealty.com/" title="Stewart Co Realty" loading="lazy"></iframe>
+                                <iframe src="https://stewartcorealty.com/" title="Stewart Co Realty"
+                                    loading="lazy"></iframe>
                             </div>
                         </div>
                         <div class="website-info">
                             <h4>Stewart Co Realty</h4>
-                            <p class="website-desc" data-translate="site-3-desc">Listings platform με property search, gallery και contact forms.</p>
+                            <p class="website-desc" data-translate="site-3-desc">Listings platform με property search,
+                                gallery και contact forms.</p>
                             <div class="website-tags">
                                 <span class="website-tag">Real Estate</span>
                                 <span class="website-tag">Listings</span>
                                 <span class="website-tag">Search</span>
                             </div>
                             <a href="https://stewartcorealty.com/" target="_blank" rel="noopener" class="website-visit">
-                                <span data-translate="visit-site">Επισκεφθείτε</span> <i class="fas fa-external-link-alt"></i>
+                                <span data-translate="visit-site">Επισκεφθείτε</span> <i
+                                    class="fas fa-external-link-alt"></i>
                             </a>
                         </div>
                     </div>
@@ -2129,32 +2471,36 @@
                         <div class="website-frame">
                             <div class="website-dots"><span></span><span></span><span></span></div>
                             <div class="website-iframe-container">
-                                <iframe src="https://www.smileandcompany.com/" title="Smile and Company" loading="lazy"></iframe>
+                                <iframe src="https://www.smileandcompany.com/" title="Smile and Company"
+                                    loading="lazy"></iframe>
                             </div>
                         </div>
                         <div class="website-info">
                             <h4>Smile and Company</h4>
-                            <p class="website-desc" data-translate="site-4-desc">Σύγχρονο website για οδοντιατρική κλινική με online booking και υπηρεσίες.</p>
+                            <p class="website-desc" data-translate="site-4-desc">Σύγχρονο website για οδοντιατρική
+                                κλινική με online booking και υπηρεσίες.</p>
                             <div class="website-tags">
                                 <span class="website-tag">Dental</span>
                                 <span class="website-tag">Booking</span>
                                 <span class="website-tag">Healthcare</span>
                             </div>
-                            <a href="https://www.smileandcompany.com/" target="_blank" rel="noopener" class="website-visit">
-                                <span data-translate="visit-site">Επισκεφθείτε</span> <i class="fas fa-external-link-alt"></i>
+                            <a href="https://www.smileandcompany.com/" target="_blank" rel="noopener"
+                                class="website-visit">
+                                <span data-translate="visit-site">Επισκεφθείτε</span> <i
+                                    class="fas fa-external-link-alt"></i>
                             </a>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <!-- Category 3: Agriculture & Food -->
+            <!-- Category 3: Automotive -->
             <div class="category-block reveal">
                 <div class="category-header">
-                    <div class="category-icon"><i class="fas fa-leaf"></i></div>
+                    <div class="category-icon"><i class="fas fa-car"></i></div>
                     <div class="category-info">
-                        <h3 data-translate="cat-3-title">Agriculture & Food</h3>
-                        <p data-translate="cat-3-desc">Brand websites για εταιρίες τροφίμων και αγροτικών προϊόντων</p>
+                        <h3 data-translate="cat-3-title">Automotive</h3>
+                        <p data-translate="cat-3-desc">Websites για αντιπροσωπείες αυτοκινήτων και συνεργεία — μοντέλα, υπηρεσίες, test drive</p>
                     </div>
                 </div>
 
@@ -2163,32 +2509,36 @@
                         <div class="website-frame">
                             <div class="website-dots"><span></span><span></span><span></span></div>
                             <div class="website-iframe-container">
-                                <iframe src="https://agrino-btech-preview-2.netlify.app/" title="Agrino" loading="lazy"></iframe>
+                                <iframe src="https://tolis-motors-site.vercel.app/" title="Τόλης Motors"
+                                    loading="lazy"></iframe>
                             </div>
                         </div>
                         <div class="website-info">
-                            <h4>Agrino</h4>
-                            <p class="website-desc" data-translate="site-5-desc">Brand website για εταιρία αγροτικών προϊόντων με product showcase και distributor finder.</p>
+                            <h4>Τόλης Motors</h4>
+                            <p class="website-desc" data-translate="site-5-desc">Website για επίσημη αντιπροσωπεία Opel
+                                &amp; Isuzu: παρουσίαση μοντέλων, υπηρεσίες service και online αίτημα για test drive.</p>
                             <div class="website-tags">
-                                <span class="website-tag">Brand</span>
-                                <span class="website-tag">Products</span>
-                                <span class="website-tag">B2C</span>
+                                <span class="website-tag">Automotive</span>
+                                <span class="website-tag">Dealership</span>
+                                <span class="website-tag">Test Drive</span>
                             </div>
-                            <a href="https://agrino-btech-preview-2.netlify.app/" target="_blank" rel="noopener" class="website-visit">
-                                <span data-translate="visit-site">Επισκεφθείτε</span> <i class="fas fa-external-link-alt"></i>
+                            <a href="https://tolis-motors-site.vercel.app/" target="_blank" rel="noopener"
+                                class="website-visit">
+                                <span data-translate="visit-site">Επισκεφθείτε</span> <i
+                                    class="fas fa-external-link-alt"></i>
                             </a>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <!-- Category 4: Web Apps & Custom -->
+            <!-- Category 4: Doctors & Clinics -->
             <div class="category-block reveal">
                 <div class="category-header">
-                    <div class="category-icon"><i class="fas fa-code"></i></div>
+                    <div class="category-icon"><i class="fas fa-stethoscope"></i></div>
                     <div class="category-info">
-                        <h3 data-translate="cat-4-title">Web Apps & Custom Platforms</h3>
-                        <p data-translate="cat-4-desc">Custom web applications & εξειδικευμένες πλατφόρμες</p>
+                        <h3 data-translate="cat-4-title">Doctors & Clinics</h3>
+                        <p data-translate="cat-4-desc">Websites για ιατρούς, ιδιωτικά ιατρεία και κλινικές — με online ραντεβού και τοπικό SEO</p>
                     </div>
                 </div>
 
@@ -2197,27 +2547,34 @@
                         <div class="website-frame">
                             <div class="website-dots"><span></span><span></span><span></span></div>
                             <div class="website-iframe-container">
-                                <iframe src="https://precious-gumdrop-37bb5c.netlify.app/" title="Custom Web App" loading="lazy"></iframe>
+                                <iframe src="https://medical-site-template.vercel.app/"
+                                    title="Ιατρικό Website — Ορθοπαιδικός Χειρουργός" loading="lazy"></iframe>
                             </div>
                         </div>
                         <div class="website-info">
-                            <h4 data-translate="site-6-title">Custom Web Platform</h4>
-                            <p class="website-desc" data-translate="site-6-desc">Εξειδικευμένη web platform με custom features για συγκεκριμένες ανάγκες επιχείρησης.</p>
+                            <h4 data-translate="site-6-title">Ιατρείο Ορθοπαιδικού</h4>
+                            <p class="website-desc" data-translate="site-6-desc">Website για ιδιωτικό ιατρείο: προβολή
+                                του γιατρού και των τίτλων του, αναλυτικές σελίδες υπηρεσιών, online αίτημα ραντεβού,
+                                FAQ ασθενών και τοπικό SEO για αναζητήσεις όπως «ορθοπαιδικός Αθήνα».</p>
                             <div class="website-tags">
-                                <span class="website-tag">Custom</span>
-                                <span class="website-tag">Web App</span>
-                                <span class="website-tag">SaaS</span>
+                                <span class="website-tag">Doctors</span>
+                                <span class="website-tag">Booking</span>
+                                <span class="website-tag">Local SEO</span>
                             </div>
-                            <a href="https://precious-gumdrop-37bb5c.netlify.app/" target="_blank" rel="noopener" class="website-visit">
-                                <span data-translate="visit-site">Επισκεφθείτε</span> <i class="fas fa-external-link-alt"></i>
+                            <a href="https://medical-site-template.vercel.app/" target="_blank" rel="noopener"
+                                class="website-visit">
+                                <span data-translate="visit-site">Επισκεφθείτε</span> <i
+                                    class="fas fa-external-link-alt"></i>
                             </a>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <p style="text-align: center; color: #94a3b8; margin-top: 3rem; font-size: 0.95rem;" data-translate="more-categories">
-                Δεν βλέπετε την κατηγορία σας; Φτιάχνουμε websites για κάθε τύπο επιχείρησης. <a href="#cta" style="color: var(--secondary);">Επικοινωνήστε μαζί μας</a>.
+            <p style="text-align: center; color: #94a3b8; margin-top: 3rem; font-size: 0.95rem;"
+                data-translate="more-categories">
+                Δεν βλέπετε την κατηγορία σας; Φτιάχνουμε websites για κάθε τύπο επιχείρησης. <a href="#cta"
+                    style="color: var(--secondary);">Επικοινωνήστε μαζί μας</a>.
             </p>
         </div>
     </section>
@@ -2247,13 +2604,15 @@
                 <div class="process-card reveal">
                     <div class="process-number">3</div>
                     <h3 data-translate="proc-3-title">Ανάπτυξη</h3>
-                    <p data-translate="proc-3-desc">Καθαρός κώδικας, καθημερινά updates, staging environment για preview.</p>
+                    <p data-translate="proc-3-desc">Καθαρός κώδικας, καθημερινά updates, staging environment για
+                        preview.</p>
                 </div>
 
                 <div class="process-card reveal">
                     <div class="process-number">4</div>
                     <h3 data-translate="proc-4-title">Launch & Support</h3>
-                    <p data-translate="proc-4-desc">Deployment, SEO submission, και συνεχής υποστήριξη μετά το launch.</p>
+                    <p data-translate="proc-4-desc">Deployment, SEO submission, και συνεχής υποστήριξη μετά το launch.
+                    </p>
                 </div>
             </div>
         </div>
@@ -2346,56 +2705,67 @@
                 <details class="faq-item reveal">
                     <summary data-translate="faq-1-q">Πόσος χρόνος χρειάζεται για ένα website;</summary>
                     <div class="faq-answer" data-translate="faq-1-a">
-                        Εξαρτάται από το πακέτο. Basic 1-2 εβδομάδες, Advanced 2-4 εβδομάδες, Premium 4-6 εβδομάδες, Enterprise 6-12 εβδομάδες. Σας δίνουμε ακριβές χρονοδιάγραμμα μετά το πρώτο meeting.
+                        Εξαρτάται από το πακέτο. Basic 1-2 εβδομάδες, Advanced 2-4 εβδομάδες, Premium 4-6 εβδομάδες,
+                        Enterprise 6-12 εβδομάδες. Σας δίνουμε ακριβές χρονοδιάγραμμα μετά το πρώτο meeting.
                     </div>
                 </details>
 
                 <details class="faq-item reveal">
                     <summary data-translate="faq-2-q">Τι περιλαμβάνεται στη συντήρηση;</summary>
                     <div class="faq-answer" data-translate="faq-2-a">
-                        Security updates, daily backups, μικρές αλλαγές περιεχομένου (κείμενα, φωτογραφίες), monitoring, SSL renewals. Για μεγαλύτερες αλλαγές παρέχουμε ξεχωριστή προσφορά.
+                        Security updates, daily backups, μικρές αλλαγές περιεχομένου (κείμενα, φωτογραφίες), monitoring,
+                        SSL renewals. Για μεγαλύτερες αλλαγές παρέχουμε ξεχωριστή προσφορά.
                     </div>
                 </details>
 
                 <details class="faq-item reveal">
                     <summary data-translate="faq-3-q">Ποιος έχει τα δικαιώματα του κώδικα;</summary>
                     <div class="faq-answer" data-translate="faq-3-a">
-                        Τα πνευματικά δικαιώματα του κώδικα και των γραφικών παραμένουν στην BTech. Εσείς αποκτάτε πλήρες δικαίωμα χρήσης και προβολής για τη δική σας επιχείρηση. Σε ειδικές περιπτώσεις (μεγάλες εταιρείες, custom projects), τα δικαιώματα μπορούν να μεταβιβαστούν με ιδιωτικό συμφωνητικό μετά από συμφωνία.
+                        Τα πνευματικά δικαιώματα του κώδικα και των γραφικών παραμένουν στην BTech. Εσείς αποκτάτε
+                        πλήρες δικαίωμα χρήσης και προβολής για τη δική σας επιχείρηση. Σε ειδικές περιπτώσεις (μεγάλες
+                        εταιρείες, custom projects), τα δικαιώματα μπορούν να μεταβιβαστούν με ιδιωτικό συμφωνητικό μετά
+                        από συμφωνία.
                     </div>
                 </details>
 
                 <details class="faq-item reveal">
                     <summary data-translate="faq-4-q">Μπορώ να μεταφέρω παλιό site;</summary>
                     <div class="faq-answer" data-translate="faq-4-a">
-                        Ναι. Κάνουμε migration από WordPress, Wix, SquareSpace, και άλλες πλατφόρμες. Διατηρούμε το SEO ranking με σωστά 301 redirects.
+                        Ναι. Κάνουμε migration από WordPress, Wix, SquareSpace, και άλλες πλατφόρμες. Διατηρούμε το SEO
+                        ranking με σωστά 301 redirects.
                     </div>
                 </details>
 
                 <details class="faq-item reveal">
                     <summary data-translate="faq-5-q">Φτιάχνετε e-commerce websites;</summary>
                     <div class="faq-answer" data-translate="faq-5-a">
-                        Ναι. Φτιάχνουμε e-commerce platforms με Stripe/PayPal integration, inventory management, order tracking. Είναι ένα από τα δυνατά μας σημεία.
+                        Ναι. Φτιάχνουμε e-commerce platforms με Stripe/PayPal integration, inventory management, order
+                        tracking. Είναι ένα από τα δυνατά μας σημεία.
                     </div>
                 </details>
 
                 <details class="faq-item reveal">
                     <summary data-translate="faq-6-q">Παρέχετε hosting;</summary>
                     <div class="faq-answer" data-translate="faq-6-a">
-                        Ναι. Το hosting το αναλαμβάνουμε εμείς, σε δικούς μας εταιρικούς servers στην Ελλάδα, με υψηλή διασφάλιση ποιότητας, ασφάλεια δεδομένων και συνεχή παρακολούθηση. Περιλαμβάνεται στην τιμή του πακέτου σας — χωρίς εκπλήξεις και χωρίς extra μηνιαία fees.
+                        Ναι. Το hosting το αναλαμβάνουμε εμείς, σε δικούς μας εταιρικούς servers στην Ελλάδα, με υψηλή
+                        διασφάλιση ποιότητας, ασφάλεια δεδομένων και συνεχή παρακολούθηση. Περιλαμβάνεται στην τιμή του
+                        πακέτου σας — χωρίς εκπλήξεις και χωρίς extra μηνιαία fees.
                     </div>
                 </details>
 
                 <details class="faq-item reveal">
                     <summary data-translate="faq-7-q">Πώς γίνεται η πληρωμή;</summary>
                     <div class="faq-answer" data-translate="faq-7-a">
-                        50% προκαταβολή για ξεκίνημα, 50% στο launch. Συμβόλαιο γραπτό, ξεκάθαρο, με όλα τα deliverables. Δεκτές οι περισσότερες μέθοδοι πληρωμής.
+                        50% προκαταβολή για ξεκίνημα, 50% στο launch. Συμβόλαιο γραπτό, ξεκάθαρο, με όλα τα
+                        deliverables. Δεκτές οι περισσότερες μέθοδοι πληρωμής.
                     </div>
                 </details>
 
                 <details class="faq-item reveal">
                     <summary data-translate="faq-8-q">Τι γίνεται αν δεν μου αρέσει το αποτέλεσμα;</summary>
                     <div class="faq-answer" data-translate="faq-8-a">
-                        Εργαζόμαστε σε iterations με review meetings. Έχετε δικαίωμα revisions σε κάθε στάδιο. Παραδίδουμε μόνο αφού εσείς είστε 100% ικανοποιημένοι.
+                        Εργαζόμαστε σε iterations με review meetings. Έχετε δικαίωμα revisions σε κάθε στάδιο.
+                        Παραδίδουμε μόνο αφού εσείς είστε 100% ικανοποιημένοι.
                     </div>
                 </details>
             </div>
@@ -2411,7 +2781,8 @@
                 Το brief είναι δωρεάν.
             </p>
 
-            <a href="mailto:nbegklis@btech-ai.com?subject=Web Development - Πρόταση" class="btn btn-primary" style="font-size: 1.1rem; padding: 1.2rem 2.5rem;">
+            <a href="mailto:nbegklis@btech-ai.com?subject=Web Development - Πρόταση" class="btn btn-primary"
+                style="font-size: 1.1rem; padding: 1.2rem 2.5rem;">
                 <span data-translate="final-cta-btn">Ζητήστε δωρεάν προσφορά</span>
                 <i class="fas fa-arrow-right"></i>
             </a>
@@ -2434,7 +2805,8 @@
         <div class="footer-content">
             <a href="index.html" class="footer-logo">
                 <img src="logo.png" alt="BTech Logo">
-                <span class="logo-text">BTech<span style="color: #818cf8; font-size: 0.55em; vertical-align: super;">.ai</span></span>
+                <span class="logo-text">BTech<span
+                        style="color: #818cf8; font-size: 0.55em; vertical-align: super;">.ai</span></span>
             </a>
 
             <div class="footer-links">
@@ -2633,17 +3005,17 @@
                 'cat-1-desc': 'Corporate websites for construction and real estate businesses',
                 'cat-2-title': 'Healthcare & Wellness',
                 'cat-2-desc': 'Professional sites for medical practices, dental clinics, wellness',
-                'cat-3-title': 'Agriculture & Food',
-                'cat-3-desc': 'Brand websites for food and agricultural companies',
-                'cat-4-title': 'Web Apps & Custom Platforms',
-                'cat-4-desc': 'Custom web applications & specialized platforms',
+                'cat-3-title': 'Automotive',
+                'cat-3-desc': 'Websites for car dealerships and service centers — models, services, test drives',
+                'cat-4-title': 'Doctors & Clinics',
+                'cat-4-desc': 'Websites for doctors, private practices and clinics — with online booking and local SEO',
                 'site-1-desc': 'Modern corporate website for a construction company in the USA.',
                 'site-2-desc': 'Investment opportunities platform for real estate partners.',
                 'site-3-desc': 'Listings platform with property search, gallery and contact forms.',
                 'site-4-desc': 'Modern website for a dental clinic with online booking and services.',
-                'site-5-desc': 'Brand website for agricultural products company with product showcase and distributor finder.',
-                'site-6-title': 'Custom Web Platform',
-                'site-6-desc': 'Specialized web platform with custom features for specific business needs.',
+                'site-5-desc': 'Website for an official Opel & Isuzu dealership: model showcase, service offering and online test drive requests.',
+                'site-6-title': 'Orthopedic Practice',
+                'site-6-desc': 'Website for a private practice: doctor profile and credentials, detailed service pages, online appointment requests, patient FAQ, and local SEO for searches like "orthopedic surgeon Athens".',
                 'visit-site': 'Visit',
                 'more-categories': 'Don\'t see your category? We build websites for every type of business. <a href="#cta" style="color: var(--secondary);">Contact us</a>.',
                 'proc-tag': 'How we work',
@@ -2813,7 +3185,7 @@
         });
 
         // ============== PARTICLE WAVE FACTORY (reusable for main + twin balls) ==============
-        document.addEventListener('DOMContentLoaded', function() {
+        document.addEventListener('DOMContentLoaded', function () {
             function createParticleWave(canvas) {
                 if (!canvas) return null;
                 const ctx = canvas.getContext('2d', { alpha: true });
@@ -2990,7 +3362,7 @@
         });
 
         // ============== PLAYFUL BALL — SCROLL TRACKING & SECTION ALTERNATION ==============
-        document.addEventListener('DOMContentLoaded', function() {
+        document.addEventListener('DOMContentLoaded', function () {
             const ball = document.getElementById('floating-ball');
             if (!ball) return;
             const twinLeft = document.querySelector('.ball-twin.twin-left');
@@ -3071,7 +3443,7 @@
             let ticking = false;
             function onScroll() {
                 if (!ticking) {
-                    requestAnimationFrame(function() {
+                    requestAnimationFrame(function () {
                         updateBall();
                         ticking = false;
                     });
@@ -3086,8 +3458,8 @@
             ball.style.transition = 'none';
             updateBall();
             // Wait a frame so layout settles, then enable transitions and fade in
-            requestAnimationFrame(function() {
-                requestAnimationFrame(function() {
+            requestAnimationFrame(function () {
+                requestAnimationFrame(function () {
                     ball.style.transition = '';
                     ball.classList.add('ready');
                 });
@@ -3109,4 +3481,5 @@
         <canvas class="twin-canvas"></canvas>
     </div>
 </body>
+
 </html>

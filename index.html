@@ -26,6 +26,8 @@
     <link rel="canonical" href="https://www.btech-ai.com/">
 
     <link rel="icon" type="image/png" href="favicon.png">
+    <link rel="privacy-policy" href="https://www.btech-ai.com/privacy.html">
+    <link rel="terms-of-service" href="https://www.btech-ai.com/terms.html">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 
     <style>
@@ -1413,6 +1415,43 @@
             transform: translateY(-3px);
         }
 
+        /* Legal links & company details */
+        .footer-legal {
+            color: #64748b;
+            margin-top: 2rem;
+            font-size: 0.9rem;
+        }
+
+        .footer-legal a {
+            color: #94a3b8;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-legal a:hover {
+            color: var(--secondary);
+        }
+
+        .footer-company {
+            color: #64748b;
+            font-size: 0.85rem;
+            margin-top: 0.75rem;
+        }
+
+        .footer-company a {
+            color: #64748b;
+        }
+
+        .form-privacy-note {
+            color: #94a3b8;
+            font-size: 0.85rem;
+            line-height: 1.6;
+        }
+
+        .form-privacy-note a {
+            color: var(--secondary);
+        }
+
         /* Responsive Styles */
         @media (max-width: 768px) {
             .nav-links {
@@ -1506,6 +1545,16 @@
         "alternateName": ["BTech", "btech", "btech ai"],
         "url": "https://www.btech-ai.com",
         "description": "Leading AI consulting, software development, and digital infrastructure solutions provider",
+        "legalName": "ΜΠΕΓΚΛΗΣ ΝΙΚΟΛΑΟΣ",
+        "vatID": "EL171075890",
+        "email": "nbegklis@btech-ai.com",
+        "telephone": "+30 698 881 7883",
+        "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Thessaloniki",
+            "addressCountry": "GR"
+        },
+        "logo": "https://www.btech-ai.com/cooool.png",
         "foundingDate": "2025",
         "serviceType": ["AI Consulting", "Software Development", "Web Development", "Digital Infrastructure", "AI Chatbots", "Business Automation", "Machine Learning", "Process Automation"],
         "areaServed": "Worldwide",
@@ -1983,6 +2032,8 @@
                         <span class="error-message" data-translate="error-required">This field is required</span>
                     </div>
                     
+                    <p class="form-privacy-note" data-translate="form-privacy-note">By submitting this form, you agree that BTech AI will process your details in order to reply to your enquiry, as described in our <a href="privacy.html">Privacy Policy</a>.</p>
+
                     <button type="submit" class="form-submit" data-translate="form-submit">Start Your Journey</button>
                 </form>
             </div>
@@ -2010,9 +2061,12 @@
             <p style="color: #94a3b8; margin-bottom: 2rem;" data-translate="footer-tagline">Empowering businesses with AI and cutting-edge technology</p>
             
             
-            <p style="color: #64748b; margin-top: 2rem; font-size: 0.9rem;" data-translate="footer-copyright">
-                © 2026 BTech AI. All rights reserved. | Privacy Policy | Terms of Service
+            <p class="footer-legal">
+                <span data-translate="footer-copyright">© 2026 BTech AI. All rights reserved.</span> |
+                <a href="privacy.html" data-translate="footer-privacy">Privacy Policy</a> |
+                <a href="terms.html" data-translate="footer-terms">Terms of Service</a>
             </p>
+            <p class="footer-company" data-translate="footer-company">ΜΠΕΓΚΛΗΣ ΝΙΚΟΛΑΟΣ · VAT 171075890 · G.E.MI. 192788706000 · Thessaloniki, Greece · <a href="mailto:nbegklis@btech-ai.com">nbegklis@btech-ai.com</a></p>
             <div style="display: flex; align-items: center; justify-content: center; gap: 0.5rem; margin-top: 1.5rem; color: #64748b; font-size: 0.85rem;">
                 <span>Developed and Managed by BTech</span>
                 <img src="cooool.png" alt="BTech" style="height: 1.5rem; width: auto; transition: filter 0.3s ease;" onmouseover="this.style.filter='drop-shadow(0 0 8px rgba(99, 102, 241, 0.8)) drop-shadow(0 0 15px rgba(129, 140, 248, 0.6))'" onmouseout="this.style.filter='none'">
@@ -2144,6 +2198,7 @@
                 'option-ai-secretary': 'AI Secretary & Meeting Assistant',
                 'option-consulting': 'Training & Consulting',
                 'form-submit': 'Start Your Journey',
+                'form-privacy-note': 'By submitting this form, you agree that BTech AI will process your details in order to reply to your enquiry, as described in our <a href="privacy.html">Privacy Policy</a>.',
                 'error-required': 'This field is required',
                 'error-email': 'Please enter a valid email address',
                 'error-phone': 'Please enter a valid Greek mobile number (e.g. +30 694 263 162)',
@@ -2160,7 +2215,10 @@
                 
                 // Footer
                 'footer-tagline': 'Empowering businesses with AI and cutting-edge technology',
-                'footer-copyright': '© 2026 BTech AI. All rights reserved. | Privacy Policy | Terms of Service'
+                'footer-copyright': '© 2026 BTech AI. All rights reserved.',
+                'footer-privacy': 'Privacy Policy',
+                'footer-terms': 'Terms of Service',
+                'footer-company': 'ΜΠΕΓΚΛΗΣ ΝΙΚΟΛΑΟΣ · VAT 171075890 · G.E.MI. 192788706000 · Thessaloniki, Greece · <a href="mailto:nbegklis@btech-ai.com">nbegklis@btech-ai.com</a>'
             },
 
             el: {
@@ -2270,6 +2328,7 @@
                 'option-ai-secretary': 'AI Γραμματέας & Βοηθός Συναντήσεων',
                 'option-consulting': 'Εκπαίδευση & Συμβουλευτική',
                 'form-submit': 'Ξεκινήστε το Ταξίδι σας',
+                'form-privacy-note': 'Υποβάλλοντας τη φόρμα, αποδέχεστε ότι η BTech AI θα επεξεργαστεί τα στοιχεία σας για να απαντήσει στο αίτημά σας, όπως περιγράφεται στην <a href="privacy.html">Πολιτική Απορρήτου</a>.',
                 'error-required': 'Αυτό το πεδίο είναι υποχρεωτικό',
                 'error-email': 'Παρακαλώ εισάγετε μια έγκυρη διεύθυνση email',
                 'error-phone': 'Παρακαλώ εισάγετε έναν έγκυρο ελληνικό αριθμό κινητού (π.χ. +30 694 263 162)',
@@ -2286,7 +2345,10 @@
                 
                 // Footer
                 'footer-tagline': 'Ενδυναμώνουμε επιχειρήσεις με AI και τεχνολογία αιχμής',
-                'footer-copyright': '© 2026 BTech AI. Όλα τα δικαιώματα διατηρούνται. | Πολιτική Απορρήτου | Όροι Χρήσης'
+                'footer-copyright': '© 2026 BTech AI. Όλα τα δικαιώματα διατηρούνται.',
+                'footer-privacy': 'Πολιτική Απορρήτου',
+                'footer-terms': 'Όροι Χρήσης',
+                'footer-company': 'ΜΠΕΓΚΛΗΣ ΝΙΚΟΛΑΟΣ · Α.Φ.Μ. 171075890 · Γ.Ε.ΜΗ. 192788706000 · Θεσσαλονίκη · <a href="mailto:nbegklis@btech-ai.com">nbegklis@btech-ai.com</a>'
             }
         };
 
@@ -2430,20 +2492,8 @@
                 if (response.ok) {
                     document.getElementById('successModal').style.display = 'flex';
                     form.reset();
-                    
-                    const data = {
-                        name: formData.get('name'),
-                        company: formData.get('company'),
-                        email: formData.get('email'),
-                        phone: formData.get('phone'),
-                        service: formData.get('service'),
-                        message: formData.get('message'),
-                        timestamp: new Date().toLocaleString('el-GR', { timeZone: 'Europe/Athens' })
-                    };
-                    
-                    let submissions = JSON.parse(localStorage.getItem('btechSubmissions') || '[]');
-                    submissions.push(data);
-                    localStorage.setItem('btechSubmissions', JSON.stringify(submissions));
+                    // Personal data is no longer copied into the visitor's browser storage (GDPR data minimisation)
+                    try { localStorage.removeItem('btechSubmissions'); } catch (err) {}
                 } else {
                     alert('Oops! There was a problem submitting your form. Please try again.');
                 }
@@ -2785,7 +2835,3 @@
     </script>
 </body>
 </html>
-
-        
-
-

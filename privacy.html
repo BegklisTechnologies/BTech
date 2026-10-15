@@ -1,0 +1,746 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Privacy Policy | BTech AI</title>
+    <meta name="description" content="Privacy Policy of BTech AI (ΜΠΕΓΚΛΗΣ ΝΙΚΟΛΑΟΣ): how we collect, use and protect personal data, including Google and YouTube API user data.">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://www.btech-ai.com/privacy.html">
+    <link rel="alternate" hreflang="en" href="https://www.btech-ai.com/privacy.html?lang=en">
+    <link rel="alternate" hreflang="el" href="https://www.btech-ai.com/privacy.html?lang=el">
+    <link rel="alternate" hreflang="x-default" href="https://www.btech-ai.com/privacy.html">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.btech-ai.com/privacy.html">
+    <meta property="og:title" content="Privacy Policy | BTech AI">
+    <meta property="og:image" content="https://www.btech-ai.com/preview.png">
+    <link rel="icon" type="image/png" href="favicon.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+:root {
+    --primary: #6366f1;
+    --secondary: #818cf8;
+    --dark: #0f172a;
+    --light: #f8fafc;
+    --accent: #fbbf24;
+    --muted: #94a3b8;
+    --soft: #cbd5e1;
+    --gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+::-webkit-scrollbar { width: 12px; }
+::-webkit-scrollbar-track { background: #1a1a1a; }
+::-webkit-scrollbar-thumb { background: #6366f1; border-radius: 6px; }
+::-webkit-scrollbar-thumb:hover { background: #818cf8; }
+* { scrollbar-width: thin; scrollbar-color: #6366f1 #1a1a1a; }
+html { scroll-behavior: smooth; }
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    background: var(--dark);
+    color: var(--light);
+    line-height: 1.7;
+    overflow-x: hidden;
+}
+a { color: var(--secondary); }
+a:hover { color: #a5b4fc; }
+code, a { overflow-wrap: anywhere; }
+code { background: rgba(99,102,241,.15); border: 1px solid rgba(99,102,241,.25); border-radius: 6px; padding: 1px 6px; font-size: .88em; }
+
+#particles-canvas { position: fixed; inset: 0; width: 100%; height: 100%; pointer-events: none; opacity: .5; z-index: 0; }
+
+/* Navigation (same as homepage) */
+#navbar { position: fixed; top: 0; width: 100%; padding: 1rem 5%; background: rgba(15,23,42,.95); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); z-index: 1000; transition: all .3s ease; }
+#navbar.scrolled { padding: .5rem 5%; box-shadow: 0 10px 30px rgba(0,0,0,.3); }
+.nav-container { display: flex; justify-content: space-between; align-items: center; max-width: 1400px; margin: 0 auto; gap: 1rem; }
+.logo { display: flex; align-items: center; gap: .5rem; text-decoration: none; }
+.logo img { height: 40px; width: auto; }
+.logo-text { font-size: 2rem; font-weight: 900; background: var(--gradient); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; animation: glow 2s ease-in-out infinite alternate; white-space: nowrap; }
+.logo-text .tld { color: #818cf8; -webkit-text-fill-color: #818cf8; font-size: .5em; vertical-align: super; }
+@keyframes glow { from { filter: drop-shadow(0 0 20px rgba(99,102,241,.5)); } to { filter: drop-shadow(0 0 30px rgba(99,102,241,.8)); } }
+.nav-right { display: flex; align-items: center; gap: 2rem; }
+.nav-links { display: flex; gap: 2rem; list-style: none; }
+.nav-links a { color: var(--light); text-decoration: none; font-weight: 500; position: relative; transition: color .3s ease; white-space: nowrap; }
+.nav-links a::after { content: ''; position: absolute; bottom: -5px; left: 0; width: 0; height: 2px; background: var(--secondary); transition: width .3s ease; }
+.nav-links a:hover, .nav-links a.current { color: var(--secondary); }
+.nav-links a:hover::after, .nav-links a.current::after { width: 100%; }
+.language-switcher { display: flex; gap: .5rem; align-items: center; }
+.flag-button { width: 32px; height: 22px; cursor: pointer; border-radius: 3px; overflow: hidden; transition: all .3s ease; border: 1px solid transparent; opacity: .7; padding: 0; background: none; }
+.flag-button:hover { transform: scale(1.1); opacity: 1; }
+.flag-button.active { border-color: var(--secondary); opacity: 1; box-shadow: 0 0 15px rgba(129,140,248,.5); }
+.flag-button img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+/* Hero */
+.legal-hero { position: relative; z-index: 1; padding: 9rem 5% 3rem; text-align: center; background: radial-gradient(ellipse at center top, rgba(99,102,241,.15) 0%, transparent 65%); }
+.hero-icon { width: 70px; height: 70px; margin: 0 auto 1.5rem; border-radius: 18px; background: var(--gradient); display: flex; align-items: center; justify-content: center; font-size: 2rem; color: #fff; box-shadow: 0 10px 30px rgba(99,102,241,.3); }
+.legal-hero h1 { font-size: clamp(2.2rem, 5vw, 3.5rem); line-height: 1.15; font-weight: 900; margin-bottom: .75rem; background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%); background-size: 200% 200%; -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; animation: gradient 6s ease infinite; }
+@keyframes gradient { 0% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } 100% { background-position: 0% 50%; } }
+.hero-sub { color: var(--muted); font-size: 1.2rem; margin-bottom: 1.25rem; }
+.updated { display: inline-flex; align-items: center; gap: .5rem; color: var(--secondary); background: rgba(99,102,241,.1); border: 1px solid rgba(99,102,241,.3); border-radius: 50px; padding: .45rem 1.1rem; font-size: .9rem; font-weight: 600; }
+
+/* Content */
+main { position: relative; z-index: 1; max-width: 1000px; margin: 0 auto; padding: 0 5% 5rem; }
+.card { background: rgba(30,41,59,.5); border: 1px solid rgba(99,102,241,.2); border-radius: 30px; padding: 3rem clamp(1.25rem, 4vw, 3.5rem); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); animation: fadeInUp .6s ease-out; }
+@keyframes fadeInUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: none; } }
+.card p, .card li { color: var(--soft); }
+.card strong { color: var(--light); }
+.card > p:first-child { font-size: 1.08rem; }
+.card h2 { font-size: 1.55rem; margin: 3rem 0 1rem; padding-left: 1rem; border-left: 4px solid; border-image: var(--gradient) 1; scroll-margin-top: 100px; color: var(--light); line-height: 1.3; }
+.card h3 { font-size: 1.12rem; margin: 1.75rem 0 .5rem; color: var(--secondary); }
+.card p { margin: .75rem 0; }
+.card > :first-child { margin-top: 0; }
+.card ul { padding-left: 1.4rem; margin: .75rem 0; }
+.card li { margin: .4rem 0; }
+.card li::marker { color: var(--primary); }
+
+.toc { background: rgba(99,102,241,.08); border: 1px solid rgba(99,102,241,.25); border-radius: 20px; padding: 1.5rem 1.75rem; margin: 2rem 0 0; }
+.toc strong { display: block; margin-bottom: .75rem; font-size: 1.1rem; }
+.toc ol { margin: 0; padding-left: 1.6rem; columns: 2; column-gap: 2.5rem; }
+.toc li { break-inside: avoid; margin: 0; padding: .2rem 0; color: var(--muted); }
+.toc li::marker { color: var(--secondary); }
+.toc a { color: var(--soft); text-decoration: none; transition: color .2s ease; }
+.toc a:hover { color: var(--secondary); }
+
+.box { background: linear-gradient(135deg, rgba(99,102,241,.12) 0%, rgba(129,140,248,.05) 100%); border: 1px solid rgba(99,102,241,.35); border-radius: 16px; padding: 1.1rem 1.4rem; margin: 1.25rem 0; }
+.box p { margin: 0; }
+
+.table-wrap { overflow-x: auto; margin: 1rem 0; border-radius: 14px; border: 1px solid rgba(99,102,241,.25); }
+table { border-collapse: collapse; width: 100%; min-width: 600px; font-size: .95rem; }
+th, td { border-bottom: 1px solid rgba(99,102,241,.18); padding: .8rem 1rem; text-align: left; vertical-align: top; color: var(--soft); }
+th { background: rgba(99,102,241,.15); color: var(--light); font-weight: 600; }
+tr:last-child td { border-bottom: 0; }
+td + td, th + th { border-left: 1px solid rgba(99,102,241,.18); }
+@media (max-width: 640px) {
+    .table-wrap { border: 0; overflow: visible; }
+    table { min-width: 0; }
+    thead { display: none; }
+    table, tbody, tr, td { display: block; width: 100%; }
+    tr { background: rgba(15,23,42,.5); border: 1px solid rgba(99,102,241,.25); border-radius: 14px; margin-bottom: .9rem; overflow: hidden; }
+    td { border: 0 !important; padding: .55rem 1rem; }
+    td::before { content: attr(data-label); display: block; font-size: .75rem; font-weight: 700; letter-spacing: .05em; text-transform: uppercase; color: var(--secondary); margin-bottom: .15rem; }
+    td:first-child { background: rgba(99,102,241,.12); color: var(--light); font-weight: 600; }
+}
+
+dl.info { display: grid; grid-template-columns: max-content 1fr; gap: .45rem 1.5rem; margin: 1rem 0; padding: 1.25rem 1.5rem; background: rgba(15,23,42,.5); border: 1px solid rgba(99,102,241,.2); border-radius: 16px; }
+dl.info dt { color: var(--muted); }
+dl.info dd { color: var(--light); font-weight: 600; }
+
+.back-top { display: inline-flex; align-items: center; gap: .5rem; margin-top: 2.5rem; padding: .75rem 1.5rem; border-radius: 50px; background: var(--gradient); color: #fff; text-decoration: none; font-weight: 600; box-shadow: 0 10px 30px rgba(99,102,241,.3); transition: all .3s ease; }
+.back-top:hover { color: #fff; transform: translateY(-3px); box-shadow: 0 15px 40px rgba(99,102,241,.4); }
+
+/* Footer (same as homepage) */
+footer { position: relative; z-index: 1; padding: 3rem 5%; background: #0a0e1a; text-align: center; border-top: 1px solid rgba(99,102,241,.2); }
+.footer-content { max-width: 1200px; margin: 0 auto; }
+.footer-logo { justify-content: center; margin-bottom: 1rem; }
+.footer-logo img { height: 60px; }
+.footer-logo .logo-text { font-size: 2.5rem; }
+.footer-tagline { color: var(--muted); margin-bottom: 1.5rem; }
+.footer-links { color: #64748b; font-size: .9rem; }
+.footer-links a { color: var(--muted); text-decoration: none; transition: color .2s ease; }
+.footer-links a:hover, .footer-links a.current { color: var(--secondary); }
+.footer-company { color: #64748b; font-size: .85rem; margin-top: .75rem; }
+.footer-company a { color: #64748b; }
+.footer-dev { display: flex; align-items: center; justify-content: center; gap: .5rem; margin-top: 1.5rem; color: #64748b; font-size: .85rem; }
+.footer-dev img { height: 1.5rem; width: auto; transition: filter .3s ease; }
+.footer-dev img:hover { filter: drop-shadow(0 0 8px rgba(99,102,241,.8)) drop-shadow(0 0 15px rgba(129,140,248,.6)); }
+
+/* Language switching */
+body[data-lang="en"] .lang-el { display: none !important; }
+body[data-lang="el"] .lang-en { display: none !important; }
+.switching .card, .switching .legal-hero > * { animation: langFade .35s ease-out; }
+@keyframes langFade { from { opacity: 0; filter: blur(4px); } to { opacity: 1; filter: none; } }
+
+@media (max-width: 900px) {
+    .nav-links { display: none; }
+}
+@media (max-width: 768px) {
+    .toc ol { columns: 1; }
+    .card { border-radius: 20px; padding: 2rem 1.25rem; }
+    .legal-hero { padding-top: 7.5rem; }
+    .hero-sub { font-size: 1.05rem; }
+    #particles-canvas { display: none; }
+}
+@media (max-width: 520px) {
+    #navbar { padding: .75rem 16px; }
+    .logo img { height: 32px; }
+    .logo-text { font-size: 1.6rem; }
+    dl.info { grid-template-columns: 1fr; gap: 0; }
+    dl.info dd { margin-bottom: .6rem; }
+    .footer-logo .logo-text { font-size: 2rem; }
+    .footer-logo img { height: 48px; }
+}
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
+    #particles-canvas { display: none; }
+}
+@media print {
+    #navbar, #particles-canvas, .toc, .back-top, .language-switcher { display: none !important; }
+    body { background: #fff; color: #000; }
+    .card { background: none; border: 0; backdrop-filter: none; }
+    .card p, .card li, .card h2, .card h3, th, td { color: #000; }
+}
+</style>
+    <noscript><style>.lang-el, .lang-en { display: revert !important; }</style></noscript>
+</head>
+<body data-lang="en">
+    <canvas id="particles-canvas" aria-hidden="true"></canvas>
+
+    <nav id="navbar">
+        <div class="nav-container">
+            <a class="logo" href="index.html" aria-label="BTech AI home">
+                <img src="cooool.png" alt="BTech Logo">
+                <span class="logo-text">BTech<span class="tld">.ai</span></span>
+            </a>
+            <div class="nav-right">
+                <ul class="nav-links">
+                    <li><a href="index.html"><span class="lang-en">Home</span><span class="lang-el">Αρχική</span></a></li>
+                    <li><a href="index.html#solutions"><span class="lang-en">Solutions</span><span class="lang-el">Λύσεις</span></a></li>
+                    <li><a href="index.html#services"><span class="lang-en">Services</span><span class="lang-el">Υπηρεσίες</span></a></li>
+                    <li><a href="privacy.html" class="current" aria-current="page"><span class="lang-en">Privacy</span><span class="lang-el">Απόρρητο</span></a></li>
+                    <li><a href="terms.html"><span class="lang-en">Terms</span><span class="lang-el">Όροι</span></a></li>
+                    <li><a href="index.html#contact"><span class="lang-en">Contact</span><span class="lang-el">Επικοινωνία</span></a></li>
+                </ul>
+                <div class="language-switcher" role="group" aria-label="Language / Γλώσσα">
+                    <button type="button" class="flag-button active" data-lang="en" aria-pressed="true" onclick="changeLanguage('en')" title="English">
+                        <img src="https://flagcdn.com/w40/gb.png" alt="English">
+                    </button>
+                    <button type="button" class="flag-button" data-lang="el" aria-pressed="false" onclick="changeLanguage('el')" title="Ελληνικά">
+                        <img src="https://flagcdn.com/w40/gr.png" alt="Ελληνικά">
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <header class="legal-hero" id="top">
+        <div class="hero-icon"><i class="fas fa-shield-halved" aria-hidden="true"></i></div>
+        <h1 class="lang-en">Privacy Policy</h1>
+        <h1 class="lang-el" lang="el">Πολιτική Απορρήτου</h1>
+        <p class="hero-sub"><span class="lang-en">How we collect, use and protect your personal data</span><span class="lang-el">Πώς συλλέγουμε, χρησιμοποιούμε και προστατεύουμε τα προσωπικά σας δεδομένα</span></p>
+        <span class="updated"><i class="far fa-calendar-check" aria-hidden="true"></i><span class="lang-en">Last updated: 16 October 2026 · Effective from: 16 October 2026</span><span class="lang-el">Τελευταία ενημέρωση: 16 Οκτωβρίου 2026 · Ισχύει από: 16 Οκτωβρίου 2026</span></span>
+    </header>
+
+    <main>
+        <article class="card lang-en" lang="en">
+<p>This Privacy Policy explains how <strong>BTech AI</strong> collects, uses, shares and protects personal data when you visit <a href="https://www.btech-ai.com">www.btech-ai.com</a>, contact us, use our products (such as BTech Invoicer and BTech AI Assistant), work with us on a project, or use any of our applications that connect to Google and YouTube services. It is written to comply with the EU General Data Protection Regulation (Regulation (EU) 2016/679, "GDPR"), Greek Law 4624/2019, Greek Law 3471/2006 on electronic communications, and the Google API Services User Data Policy and YouTube API Services Developer Policies.</p>
+
+  <nav class="toc" aria-label="Contents">
+    <strong>Contents</strong>
+    <ol>
+      <li><a href="#en-1">Who we are</a></li>
+      <li><a href="#en-2">Scope of this policy</a></li>
+      <li><a href="#en-3">Personal data we collect</a></li>
+      <li><a href="#en-4">Purposes and legal bases</a></li>
+      <li><a href="#en-5">Controller and processor roles</a></li>
+      <li><a href="#en-6">Google &amp; YouTube API user data</a></li>
+      <li><a href="#en-7">Who we share data with</a></li>
+      <li><a href="#en-8">International transfers</a></li>
+      <li><a href="#en-9">How long we keep data</a></li>
+      <li><a href="#en-10">Security</a></li>
+      <li><a href="#en-11">Cookies and local storage</a></li>
+      <li><a href="#en-12">Artificial intelligence &amp; automated decisions</a></li>
+      <li><a href="#en-13">Your rights</a></li>
+      <li><a href="#en-14">Children</a></li>
+      <li><a href="#en-15">Third-party websites</a></li>
+      <li><a href="#en-16">Changes to this policy</a></li>
+      <li><a href="#en-17">Contact us</a></li>
+    </ol>
+  </nav>
+
+  <h2 id="en-1">1. Who we are</h2>
+  <p>The controller responsible for your personal data is:</p>
+  <dl class="info">
+    <dt>Legal name</dt><dd>ΜΠΕΓΚΛΗΣ ΝΙΚΟΛΑΟΣ (Nikolaos Begklis)</dd>
+    <dt>Trade name</dt><dd>BTech AI</dd>
+    <dt>Legal form</dt><dd>Sole proprietorship (Greece)</dd>
+    <dt>VAT number (Α.Φ.Μ.)</dt><dd>171075890</dd>
+    <dt>G.E.MI. number</dt><dd>192788706000</dd>
+    <dt>Registered seat</dt><dd>Thessaloniki, Greece</dd>
+    <dt>Email</dt><dd><a href="mailto:nbegklis@btech-ai.com">nbegklis@btech-ai.com</a></dd>
+    <dt>Phone</dt><dd><a href="tel:+306988817883">+30 698 881 7883</a></dd>
+  </dl>
+  <p>We are not required to appoint a Data Protection Officer. For any privacy matter, please contact us at the email address above.</p>
+
+  <h2 id="en-2">2. Scope of this policy</h2>
+  <p>This policy applies to:</p>
+  <ul>
+    <li>the website www.btech-ai.com and all of its pages (the "Website");</li>
+    <li>the contact form and any communication with us by email, phone or messaging;</li>
+    <li><strong>BTech Invoicer</strong>, our cloud invoicing and ERP software connected to AADE myDATA;</li>
+    <li><strong>BTech AI Assistant</strong>, our AI voice assistant that answers calls on behalf of businesses;</li>
+    <li>custom software, AI, web development, infrastructure, training and consulting services;</li>
+    <li>any of our applications that use <strong>Google APIs or YouTube API Services</strong>, including our video upload application (see section 6).</li>
+  </ul>
+  <p>Where we provide a service under a separate written agreement or Data Processing Agreement, that agreement also applies and prevails for the matters it covers.</p>
+
+  <h2 id="en-3">3. Personal data we collect</h2>
+  <h3>3.1 Data you give us</h3>
+  <ul>
+    <li><strong>Contact form:</strong> your name, company, email address, phone number, the service you are interested in and the content of your message. The form is transmitted to us through our form-processing provider (see section 7).</li>
+    <li><strong>Communications:</strong> anything you send us by email, phone or other channels, together with the date and time.</li>
+    <li><strong>Customers:</strong> name, company name, VAT number, tax office, billing address, contact details, contract and project details, invoices and payment records.</li>
+    <li><strong>BTech Invoicer accounts:</strong> email address, password (stored only in hashed form), business details (name, VAT number, address, logo), your AADE myDATA credentials (stored encrypted), and the content you enter or import: invoices and other tax documents, customer and supplier details, products/services, expenses and payments.</li>
+    <li><strong>BTech AI Assistant:</strong> on behalf of our business customers, the assistant may process callers' phone numbers, voice audio, call transcripts and the information callers provide (e.g. name, contact details, appointment request), according to how each customer configures the service.</li>
+  </ul>
+  <h3>3.2 Data collected automatically</h3>
+  <ul>
+    <li><strong>Technical data:</strong> IP address, browser type and version, device and operating system, referring page, pages visited, date and time of access. These are recorded in server logs by our hosting providers for security and proper operation.</li>
+    <li><strong>Application logs:</strong> in BTech Invoicer we keep an activity log (which user did what and when, and the responses received from AADE) for security, transparency and compliance.</li>
+    <li><strong>Local storage:</strong> see section 11.</li>
+  </ul>
+  <h3>3.3 Data from third parties</h3>
+  <ul>
+    <li><strong>AADE myDATA:</strong> when you connect BTech Invoicer to myDATA, we retrieve on your behalf documents issued to or by your business (e.g. supplier invoices) and their identifiers (MARK, UID).</li>
+    <li><strong>Google / YouTube:</strong> when you authorise one of our applications through Google sign-in, we receive the data described in section 6.</li>
+  </ul>
+  <h3>3.4 Special categories of data</h3>
+  <p>We do not intentionally collect special categories of data (e.g. health data). Some of our customers (for example medical or dental practices) may use our services in a way that involves such data. In those cases we act only as a processor on the customer's documented instructions and under appropriate safeguards (see section 5).</p>
+
+  <h2 id="en-4">4. Purposes and legal bases</h2>
+  <div class="table-wrap">
+  <table>
+    <thead><tr><th>Purpose</th><th>Data</th><th>Legal basis (GDPR)</th></tr></thead>
+    <tbody>
+      <tr><td data-label="Purpose">Answering enquiries and preparing offers</td><td data-label="Data">Contact form and communication data</td><td data-label="Legal basis (GDPR)">Steps prior to a contract at your request (Art. 6(1)(b)); our legitimate interest in replying to business enquiries (Art. 6(1)(f))</td></tr>
+      <tr><td data-label="Purpose">Providing our services and products, customer support</td><td data-label="Data">Customer, account and service data</td><td data-label="Legal basis (GDPR)">Performance of a contract (Art. 6(1)(b))</td></tr>
+      <tr><td data-label="Purpose">Invoicing, accounting and tax obligations</td><td data-label="Data">Billing and transaction data</td><td data-label="Legal basis (GDPR)">Legal obligation (Art. 6(1)(c)), e.g. Greek Law 4308/2014 and the Tax Procedure Code</td></tr>
+      <tr><td data-label="Purpose">Operating, securing and improving the Website and applications; preventing fraud and abuse</td><td data-label="Data">Technical data, logs</td><td data-label="Legal basis (GDPR)">Legitimate interest (Art. 6(1)(f))</td></tr>
+      <tr><td data-label="Purpose">Uploading and managing videos on YouTube through our application</td><td data-label="Data">Google / YouTube data (section 6)</td><td data-label="Legal basis (GDPR)">Your consent given through Google's authorisation screen (Art. 6(1)(a)) and performance of the service you request (Art. 6(1)(b))</td></tr>
+      <tr><td data-label="Purpose">Establishing, exercising or defending legal claims</td><td data-label="Data">Any relevant data</td><td data-label="Legal basis (GDPR)">Legitimate interest (Art. 6(1)(f))</td></tr>
+      <tr><td data-label="Purpose">Sending news about our services to existing customers</td><td data-label="Data">Name, email</td><td data-label="Legal basis (GDPR)">Legitimate interest for similar services (Art. 11(3) Law 3471/2006) or your consent. You can opt out at any time.</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <p>We do not sell personal data and we do not use it for advertising profiling.</p>
+
+  <h2 id="en-5">5. Controller and processor roles</h2>
+  <p>We are the <strong>controller</strong> for data about Website visitors, people who contact us, and our customers' account and billing data.</p>
+  <p>We act as a <strong>processor</strong> (Art. 28 GDPR) when we process data on behalf of our business customers, for example the invoices, customer and supplier data a business stores in BTech Invoicer, the caller data handled by BTech AI Assistant, or data contained in systems we build or manage for a customer. In those cases the customer is the controller and is responsible for having a lawful basis and for informing the people concerned (for example informing callers that they are speaking with an AI assistant and whether calls are recorded). We process such data only on the customer's documented instructions and under a Data Processing Agreement, which we provide on request.</p>
+  <p>If you are a customer of one of our business customers and want to exercise your rights, please contact that business directly. We will assist them in responding.</p>
+
+  <h2 id="en-6">6. Google &amp; YouTube API user data</h2>
+  <div class="box">
+    <p style="margin:0">Some of our applications, including our <strong>video upload application ("BTech YouTube Uploader")</strong>, use <strong>YouTube API Services</strong> provided by Google. By using these applications you agree to be bound by the <a href="https://www.youtube.com/t/terms" target="_blank" rel="noopener">YouTube Terms of Service</a>. Google's handling of your data is governed by the <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Google Privacy Policy</a> (<a href="http://www.google.com/policies/privacy" target="_blank" rel="noopener">http://www.google.com/policies/privacy</a>).</p>
+  </div>
+  <h3>6.1 What the application is for</h3>
+  <p>BTech YouTube Uploader is a tool operated by BTech AI that uploads video files to a YouTube channel and sets their details (title, description, tags, category, privacy status, thumbnail and playlist). It is used to publish videos to YouTube channels owned or managed by BTech AI, or by a user who has expressly authorised it for their own channel.</p>
+  <h3>6.2 What data we access</h3>
+  <p>Only after you sign in with Google and grant permission on Google's consent screen, the application may access:</p>
+  <ul>
+    <li>the permission to upload videos and manage their metadata on your YouTube channel (OAuth scope <code>https://www.googleapis.com/auth/youtube.upload</code>);</li>
+    <li>basic information about your YouTube channel, such as channel ID and channel name, to confirm which channel videos are uploaded to;</li>
+    <li>the identifiers and processing/upload status of the videos uploaded through the application;</li>
+    <li>OAuth access and refresh tokens issued by Google, which allow the application to act on your behalf.</li>
+  </ul>
+  <p>The application does not access your Google account password, your Gmail, contacts, Drive files, or any data unrelated to uploading videos.</p>
+  <h3>6.3 How we use it</h3>
+  <ul>
+    <li>to upload the videos you select and to set or update the details you choose;</li>
+    <li>to show you whether an upload succeeded and to handle errors and retries;</li>
+    <li>to keep you signed in so that you do not need to re-authorise on every upload.</li>
+  </ul>
+  <p>We do <strong>not</strong> use Google or YouTube data for advertising, we do <strong>not</strong> sell it, we do <strong>not</strong> use it to determine creditworthiness or for lending purposes, and we do <strong>not</strong> use it to develop, improve or train generalised artificial intelligence or machine learning models.</p>
+  <h3>6.4 How we store it</h3>
+  <ul>
+    <li>OAuth tokens are stored encrypted, on secured servers or on the device running the application, and are used only by the application.</li>
+    <li>Video files are processed only for the time needed to complete the upload and are then deleted from our systems (the copy on YouTube remains under your control).</li>
+    <li>Any data obtained from YouTube API Services is stored only as long as needed for the purpose above and is refreshed or deleted no later than 30 days after it was retrieved, in line with the YouTube API Services Developer Policies.</li>
+  </ul>
+  <h3>6.5 How we share it</h3>
+  <p>Google and YouTube data is not shared with any third party, except (a) with Google/YouTube itself, as needed to perform the upload you request, (b) with our hosting provider, solely to store it securely on our behalf, or (c) where required by law. It is never transferred to data brokers or advertising platforms.</p>
+  <h3>6.6 Limited Use</h3>
+  <div class="box"><p style="margin:0">BTech AI's use and transfer to any other app of information received from Google APIs will adhere to the <a href="https://developers.google.com/terms/api-services-user-data-policy" target="_blank" rel="noopener">Google API Services User Data Policy</a>, including the Limited Use requirements.</p></div>
+  <h3>6.7 Cookies</h3>
+  <p>The application does not place advertising or tracking cookies on your device. It only stores the authorisation tokens described above.</p>
+  <h3>6.8 How to revoke access and delete data</h3>
+  <ul>
+    <li>You can revoke the application's access to your Google account at any time from the Google security settings page: <a href="https://security.google.com/settings/security/permissions" target="_blank" rel="noopener">https://security.google.com/settings/security/permissions</a>.</li>
+    <li>When access is revoked, the stored tokens stop working and we delete them.</li>
+    <li>You can also ask us to delete all data we hold in connection with your Google account by emailing <a href="mailto:nbegklis@btech-ai.com">nbegklis@btech-ai.com</a>. We will delete it within 7 days, unless we are legally required to keep it.</li>
+  </ul>
+
+  <h2 id="en-7">7. Who we share data with</h2>
+  <p>We share personal data only where necessary and only with:</p>
+  <ul>
+    <li><strong>Hosting and infrastructure providers</strong>, such as Hetzner Online GmbH (data centres in Germany, EU) and our website hosting provider;</li>
+    <li><strong>Form-processing provider</strong>: Formspree, Inc. (USA), which receives the messages you send through the Website's contact form and forwards them to us;</li>
+    <li><strong>Email delivery providers</strong>, such as Resend, which delivers emails sent from BTech Invoicer (e.g. invoices to your customers), and our business email provider;</li>
+    <li><strong>AADE (Independent Authority for Public Revenue)</strong>, through myDATA, when you issue or transmit documents through BTech Invoicer, on your instruction;</li>
+    <li><strong>Google LLC / YouTube</strong>, as described in section 6;</li>
+    <li><strong>Telecommunications providers</strong> that route calls to BTech AI Assistant;</li>
+    <li><strong>Professional advisers</strong> (accountants, lawyers, auditors) under confidentiality obligations;</li>
+    <li><strong>Public authorities, courts or law enforcement</strong>, where we are legally required to do so.</li>
+  </ul>
+  <p>All service providers acting on our behalf are bound by contract to process data only on our instructions and to protect it.</p>
+
+  <h2 id="en-8">8. International transfers</h2>
+  <p>We primarily store data within the European Union (Germany and Greece). The BTech AI Assistant runs on our own servers in Greece. Some providers (for example Formspree, Google or Resend) are based in, or may process data in, the United States or other countries outside the European Economic Area. Where this happens, the transfer is protected by an adequacy decision of the European Commission (including the EU–U.S. Data Privacy Framework, where the provider is certified) or by the European Commission's Standard Contractual Clauses, together with additional safeguards where needed. You can request a copy of the relevant safeguards by contacting us.</p>
+
+  <h2 id="en-9">9. How long we keep data</h2>
+  <ul>
+    <li><strong>Contact enquiries</strong> that do not lead to a collaboration: up to 24 months after our last communication (including the copy kept by our form-processing provider, which we delete from its dashboard within the same period).</li>
+    <li><strong>Customer and contract data:</strong> for the duration of the collaboration and afterwards for as long as needed to establish or defend legal claims (generally up to 5 years, in line with Greek limitation periods).</li>
+    <li><strong>Accounting and tax records:</strong> for as long as required by Greek tax and accounting law (generally 5 years from the end of the relevant fiscal year, longer where the law requires).</li>
+    <li><strong>BTech Invoicer data:</strong> for as long as your account is active. After your subscription ends, your data remains available in read-only mode for export, and is then deleted or returned in accordance with your plan and our Terms of Service. Note that you, as a business, remain responsible for retaining your own tax records for the period required by law.</li>
+    <li><strong>BTech AI Assistant data</strong> (recordings, transcripts, caller details): for the period configured with each business customer, after which it is deleted.</li>
+    <li><strong>Server logs:</strong> usually up to 90 days, unless needed to investigate a security incident.</li>
+    <li><strong>Google / YouTube data:</strong> as described in section 6.</li>
+  </ul>
+
+  <h2 id="en-10">10. Security</h2>
+  <p>We use appropriate technical and organisational measures to protect personal data, including HTTPS/TLS encryption in transit, encryption at rest, encrypted daily backups stored in a separate location, strict tenant isolation in BTech Invoicer, hashed passwords, encrypted storage of credentials and tokens, access limited to authorised persons, and regular updates. No system is 100% secure; if a personal data breach occurs that is likely to put your rights at risk, we will notify the Hellenic Data Protection Authority within 72 hours and inform you where required by law (Arts. 33–34 GDPR).</p>
+
+  <h2 id="en-11">11. Cookies and local storage</h2>
+  <p>The Website does <strong>not</strong> use advertising or analytics cookies and does not track you across other websites. We only use storage that is strictly necessary to provide the service you request, which does not require consent under Article 4(5) of Greek Law 3471/2006:</p>
+  <ul>
+    <li><strong>Language preference</strong>, stored in your browser's local storage so that the Website remembers whether you chose Greek or English;</li>
+    <li><strong>Session / authentication cookies</strong> in BTech Invoicer and our other applications, which keep you signed in securely;</li>
+    <li><strong>Interface preferences</strong> such as dark mode.</li>
+  </ul>
+  <p><strong>Third-party resources and embedded content.</strong> Our pages load some resources from content delivery networks: icons from cdnjs (operated by Cloudflare, Inc.) and country-flag images from flagcdn.com. When this happens, your browser sends your IP address to that provider so the content can be delivered; these resources are not used by us to track you. The portfolio section of our homepage shows live previews (embedded frames) of websites we have built for clients. Those websites are operated by our clients, not by us, and may set their own cookies under their own privacy policies.</p>
+  <p>You can delete or block cookies and local storage through your browser settings; some functions may then not work properly. If we ever introduce non-essential cookies (such as analytics), we will ask for your consent first and update this policy.</p>
+
+  <h2 id="en-12">12. Artificial intelligence and automated decisions</h2>
+  <ul>
+    <li>We do not make decisions about you based solely on automated processing that produce legal or similarly significant effects (Art. 22 GDPR).</li>
+    <li>BTech AI Assistant is designed to make clear to callers that they are speaking with an AI system, in line with the EU Artificial Intelligence Act (Regulation (EU) 2024/1689). Our business customers are responsible for also informing callers about recording and data use.</li>
+    <li>Data that a business customer provides to configure or train its own assistant is used only for that customer's assistant, and is not used for other customers without that customer's written agreement.</li>
+    <li>When we use third-party AI tools in projects, we choose options that do not use customer data to train the provider's models, wherever such options are available.</li>
+  </ul>
+
+  <h2 id="en-13">13. Your rights</h2>
+  <p>Under the GDPR you have the right to:</p>
+  <ul>
+    <li><strong>access</strong> your personal data and receive a copy (Art. 15);</li>
+    <li><strong>rectification</strong> of inaccurate data (Art. 16);</li>
+    <li><strong>erasure</strong> ("right to be forgotten") (Art. 17);</li>
+    <li><strong>restriction</strong> of processing (Art. 18);</li>
+    <li><strong>data portability</strong> in a structured, machine-readable format (Art. 20);</li>
+    <li><strong>object</strong> to processing based on legitimate interest, and at any time to direct marketing (Art. 21);</li>
+    <li><strong>withdraw consent</strong> at any time, without affecting the lawfulness of processing before withdrawal (Art. 7(3)).</li>
+  </ul>
+  <p>To exercise your rights, email <a href="mailto:nbegklis@btech-ai.com">nbegklis@btech-ai.com</a>. We will reply within one month (extendable by two further months for complex requests, in which case we will tell you). We may ask you to verify your identity. Exercising your rights is free of charge.</p>
+  <p>You also have the right to lodge a complaint with the <strong>Hellenic Data Protection Authority</strong> (Αρχή Προστασίας Δεδομένων Προσωπικού Χαρακτήρα), Kifisias Ave. 1-3, 115 23 Athens, Greece, <a href="https://www.dpa.gr" target="_blank" rel="noopener">www.dpa.gr</a>, or with the supervisory authority of your country of residence.</p>
+
+  <h2 id="en-14">14. Children</h2>
+  <p>Our Website and services are intended for businesses and adults. They are not directed at children under 15 (the age of digital consent in Greece under Law 4624/2019), and we do not knowingly collect their data. If you believe a child has provided us with personal data, please contact us and we will delete it.</p>
+
+  <h2 id="en-15">15. Third-party websites</h2>
+  <p>Our Website contains links to other websites, such as our portfolio projects and third-party services. We are not responsible for the privacy practices of those websites; please read their own privacy policies.</p>
+
+  <h2 id="en-16">16. Changes to this policy</h2>
+  <p>We may update this policy when our services or the law change. The "Last updated" date at the top shows the latest version. Where changes are significant, we will notify customers and account holders by email or through our applications before they take effect.</p>
+
+  <h2 id="en-17">17. Contact us</h2>
+  <p>For any question about this policy or your personal data:<br>
+  <strong>BTech AI – ΜΠΕΓΚΛΗΣ ΝΙΚΟΛΑΟΣ</strong>, Thessaloniki, Greece<br>
+  Email: <a href="mailto:nbegklis@btech-ai.com">nbegklis@btech-ai.com</a> · Phone: <a href="tel:+306988817883">+30 698 881 7883</a></p>
+  <p>See also our <a href="terms.html?lang=en">Terms of Service</a>.</p>
+            <a href="#top" class="back-top"><i class="fas fa-arrow-up" aria-hidden="true"></i> Back to top</a>
+        </article>
+
+        <article class="card lang-el" lang="el">
+<p>Η παρούσα Πολιτική Απορρήτου εξηγεί πώς η <strong>BTech AI</strong> συλλέγει, χρησιμοποιεί, κοινοποιεί και προστατεύει τα προσωπικά δεδομένα όταν επισκέπτεστε το <a href="https://www.btech-ai.com">www.btech-ai.com</a>, επικοινωνείτε μαζί μας, χρησιμοποιείτε τα προϊόντα μας (όπως το BTech Invoicer και τον BTech AI Assistant), συνεργάζεστε μαζί μας σε κάποιο έργο ή χρησιμοποιείτε εφαρμογές μας που συνδέονται με υπηρεσίες της Google και του YouTube. Έχει συνταχθεί σύμφωνα με τον Γενικό Κανονισμό Προστασίας Δεδομένων (Κανονισμός (ΕΕ) 2016/679, «ΓΚΠΔ»), τον Ν. 4624/2019, τον Ν. 3471/2006 για τις ηλεκτρονικές επικοινωνίες, καθώς και την Πολιτική Δεδομένων Χρηστών των Google API Services και τις Πολιτικές Προγραμματιστών των YouTube API Services.</p>
+
+  <nav class="toc" aria-label="Περιεχόμενα">
+    <strong>Περιεχόμενα</strong>
+    <ol>
+      <li><a href="#el-1">Ποιοι είμαστε</a></li>
+      <li><a href="#el-2">Πεδίο εφαρμογής</a></li>
+      <li><a href="#el-3">Δεδομένα που συλλέγουμε</a></li>
+      <li><a href="#el-4">Σκοποί και νομικές βάσεις</a></li>
+      <li><a href="#el-5">Υπεύθυνος και εκτελών την επεξεργασία</a></li>
+      <li><a href="#el-6">Δεδομένα χρηστών Google &amp; YouTube API</a></li>
+      <li><a href="#el-7">Αποδέκτες δεδομένων</a></li>
+      <li><a href="#el-8">Διαβιβάσεις εκτός ΕΕ</a></li>
+      <li><a href="#el-9">Χρόνος διατήρησης</a></li>
+      <li><a href="#el-10">Ασφάλεια</a></li>
+      <li><a href="#el-11">Cookies και τοπική αποθήκευση</a></li>
+      <li><a href="#el-12">Τεχνητή νοημοσύνη &amp; αυτοματοποιημένες αποφάσεις</a></li>
+      <li><a href="#el-13">Τα δικαιώματά σας</a></li>
+      <li><a href="#el-14">Ανήλικοι</a></li>
+      <li><a href="#el-15">Ιστοσελίδες τρίτων</a></li>
+      <li><a href="#el-16">Αλλαγές της πολιτικής</a></li>
+      <li><a href="#el-17">Επικοινωνία</a></li>
+    </ol>
+  </nav>
+
+  <h2 id="el-1">1. Ποιοι είμαστε</h2>
+  <p>Υπεύθυνος επεξεργασίας των προσωπικών σας δεδομένων είναι:</p>
+  <dl class="info">
+    <dt>Επωνυμία</dt><dd>ΜΠΕΓΚΛΗΣ ΝΙΚΟΛΑΟΣ</dd>
+    <dt>Διακριτικός τίτλος</dt><dd>BTech AI</dd>
+    <dt>Νομική μορφή</dt><dd>Ατομική επιχείρηση</dd>
+    <dt>Α.Φ.Μ.</dt><dd>171075890</dd>
+    <dt>Γ.Ε.ΜΗ.</dt><dd>192788706000</dd>
+    <dt>Έδρα</dt><dd>Θεσσαλονίκη, Ελλάδα</dd>
+    <dt>Email</dt><dd><a href="mailto:nbegklis@btech-ai.com">nbegklis@btech-ai.com</a></dd>
+    <dt>Τηλέφωνο</dt><dd><a href="tel:+306988817883">+30 698 881 7883</a></dd>
+  </dl>
+  <p>Δεν υποχρεούμαστε να ορίσουμε Υπεύθυνο Προστασίας Δεδομένων (DPO). Για κάθε θέμα που αφορά τα δεδομένα σας, επικοινωνήστε μαζί μας στο παραπάνω email.</p>
+
+  <h2 id="el-2">2. Πεδίο εφαρμογής</h2>
+  <p>Η πολιτική αυτή εφαρμόζεται:</p>
+  <ul>
+    <li>στην ιστοσελίδα www.btech-ai.com και σε όλες τις σελίδες της (η «Ιστοσελίδα»)·</li>
+    <li>στη φόρμα επικοινωνίας και σε κάθε επικοινωνία μαζί μας μέσω email, τηλεφώνου ή μηνυμάτων·</li>
+    <li>στο <strong>BTech Invoicer</strong>, το cloud πρόγραμμα τιμολόγησης και ERP με σύνδεση στο myDATA της ΑΑΔΕ·</li>
+    <li>στον <strong>BTech AI Assistant</strong>, τον φωνητικό ψηφιακό βοηθό που απαντά κλήσεις για λογαριασμό επιχειρήσεων·</li>
+    <li>στις υπηρεσίες ανάπτυξης λογισμικού, AI, ιστοσελίδων, ψηφιακής υποδομής, εκπαίδευσης και συμβουλευτικής·</li>
+    <li>σε κάθε εφαρμογή μας που χρησιμοποιεί <strong>Google APIs ή YouTube API Services</strong>, συμπεριλαμβανομένης της εφαρμογής ανεβάσματος βίντεο (βλ. ενότητα 6).</li>
+  </ul>
+  <p>Όπου παρέχουμε υπηρεσία βάσει χωριστής γραπτής σύμβασης ή Σύμβασης Επεξεργασίας Δεδομένων, εφαρμόζεται και αυτή και υπερισχύει για τα θέματα που ρυθμίζει.</p>
+
+  <h2 id="el-3">3. Δεδομένα που συλλέγουμε</h2>
+  <h3>3.1 Δεδομένα που μας δίνετε</h3>
+  <ul>
+    <li><strong>Φόρμα επικοινωνίας:</strong> ονοματεπώνυμο, εταιρεία, διεύθυνση email, τηλέφωνο, υπηρεσία που σας ενδιαφέρει και το περιεχόμενο του μηνύματός σας. Η φόρμα μάς διαβιβάζεται μέσω του παρόχου επεξεργασίας φορμών (βλ. ενότητα 7).</li>
+    <li><strong>Επικοινωνία:</strong> ό,τι μας στέλνετε μέσω email, τηλεφώνου ή άλλων καναλιών, μαζί με ημερομηνία και ώρα.</li>
+    <li><strong>Πελάτες:</strong> ονοματεπώνυμο, επωνυμία, Α.Φ.Μ., Δ.Ο.Υ., διεύθυνση τιμολόγησης, στοιχεία επικοινωνίας, στοιχεία σύμβασης και έργου, τιμολόγια και πληρωμές.</li>
+    <li><strong>Λογαριασμοί BTech Invoicer:</strong> email, κωδικός πρόσβασης (αποθηκεύεται μόνο κρυπτογραφημένος με hash), στοιχεία επιχείρησης (επωνυμία, Α.Φ.Μ., διεύθυνση, λογότυπο), τα διαπιστευτήρια myDATA της ΑΑΔΕ (αποθηκεύονται κρυπτογραφημένα) και το περιεχόμενο που καταχωρίζετε ή εισάγετε: τιμολόγια και λοιπά παραστατικά, στοιχεία πελατών και προμηθευτών, είδη/υπηρεσίες, έξοδα και πληρωμές.</li>
+    <li><strong>BTech AI Assistant:</strong> για λογαριασμό των επιχειρήσεων-πελατών μας, ο βοηθός μπορεί να επεξεργάζεται τον αριθμό τηλεφώνου του καλούντος, τη φωνή του, απομαγνητοφωνήσεις κλήσεων και τις πληροφορίες που δίνει ο καλών (π.χ. όνομα, στοιχεία επικοινωνίας, αίτημα ραντεβού), ανάλογα με τη ρύθμιση της υπηρεσίας από κάθε πελάτη.</li>
+  </ul>
+  <h3>3.2 Δεδομένα που συλλέγονται αυτόματα</h3>
+  <ul>
+    <li><strong>Τεχνικά δεδομένα:</strong> διεύθυνση IP, τύπος και έκδοση browser, συσκευή και λειτουργικό σύστημα, σελίδα παραπομπής, σελίδες που επισκεφθήκατε, ημερομηνία και ώρα πρόσβασης. Καταγράφονται σε αρχεία καταγραφής (logs) των παρόχων φιλοξενίας για λόγους ασφάλειας και ορθής λειτουργίας.</li>
+    <li><strong>Αρχεία εφαρμογών:</strong> στο BTech Invoicer τηρείται ιστορικό ενεργειών (ποιος χρήστης έκανε τι και πότε, καθώς και οι απαντήσεις της ΑΑΔΕ) για λόγους ασφάλειας, διαφάνειας και συμμόρφωσης.</li>
+    <li><strong>Τοπική αποθήκευση:</strong> βλ. ενότητα 11.</li>
+  </ul>
+  <h3>3.3 Δεδομένα από τρίτους</h3>
+  <ul>
+    <li><strong>myDATA της ΑΑΔΕ:</strong> όταν συνδέετε το BTech Invoicer με το myDATA, ανακτούμε για λογαριασμό σας παραστατικά που εκδόθηκαν από ή προς την επιχείρησή σας (π.χ. τιμολόγια προμηθευτών) και τα αναγνωριστικά τους (ΜΑΡΚ, UID).</li>
+    <li><strong>Google / YouTube:</strong> όταν εξουσιοδοτείτε μια εφαρμογή μας μέσω σύνδεσης με Google, λαμβάνουμε τα δεδομένα της ενότητας 6.</li>
+  </ul>
+  <h3>3.4 Ειδικές κατηγορίες δεδομένων</h3>
+  <p>Δεν συλλέγουμε σκόπιμα ειδικές κατηγορίες δεδομένων (π.χ. δεδομένα υγείας). Ορισμένοι πελάτες μας (π.χ. ιατρεία ή οδοντιατρεία) ενδέχεται να χρησιμοποιούν τις υπηρεσίες μας με τρόπο που περιλαμβάνει τέτοια δεδομένα. Στις περιπτώσεις αυτές ενεργούμε αποκλειστικά ως εκτελών την επεξεργασία, με βάση τις γραπτές εντολές του πελάτη και με κατάλληλες εγγυήσεις (βλ. ενότητα 5).</p>
+
+  <h2 id="el-4">4. Σκοποί και νομικές βάσεις</h2>
+  <div class="table-wrap">
+  <table>
+    <thead><tr><th>Σκοπός</th><th>Δεδομένα</th><th>Νομική βάση (ΓΚΠΔ)</th></tr></thead>
+    <tbody>
+      <tr><td data-label="Σκοπός">Απάντηση σε αιτήματα και σύνταξη προσφορών</td><td data-label="Δεδομένα">Δεδομένα φόρμας και επικοινωνίας</td><td data-label="Νομική βάση (ΓΚΠΔ)">Ενέργειες πριν από τη σύναψη σύμβασης κατόπιν αιτήματός σας (άρθ. 6 παρ. 1 β)· έννομο συμφέρον μας να απαντάμε σε επαγγελματικά αιτήματα (άρθ. 6 παρ. 1 στ)</td></tr>
+      <tr><td data-label="Σκοπός">Παροχή υπηρεσιών και προϊόντων, υποστήριξη πελατών</td><td data-label="Δεδομένα">Δεδομένα πελάτη, λογαριασμού και υπηρεσίας</td><td data-label="Νομική βάση (ΓΚΠΔ)">Εκτέλεση σύμβασης (άρθ. 6 παρ. 1 β)</td></tr>
+      <tr><td data-label="Σκοπός">Τιμολόγηση, λογιστικές και φορολογικές υποχρεώσεις</td><td data-label="Δεδομένα">Δεδομένα τιμολόγησης και συναλλαγών</td><td data-label="Νομική βάση (ΓΚΠΔ)">Έννομη υποχρέωση (άρθ. 6 παρ. 1 γ), π.χ. Ν. 4308/2014 και Κώδικας Φορολογικής Διαδικασίας</td></tr>
+      <tr><td data-label="Σκοπός">Λειτουργία, ασφάλεια και βελτίωση της Ιστοσελίδας και των εφαρμογών· πρόληψη απάτης και κατάχρησης</td><td data-label="Δεδομένα">Τεχνικά δεδομένα, logs</td><td data-label="Νομική βάση (ΓΚΠΔ)">Έννομο συμφέρον (άρθ. 6 παρ. 1 στ)</td></tr>
+      <tr><td data-label="Σκοπός">Ανέβασμα και διαχείριση βίντεο στο YouTube μέσω της εφαρμογής μας</td><td data-label="Δεδομένα">Δεδομένα Google / YouTube (ενότητα 6)</td><td data-label="Νομική βάση (ΓΚΠΔ)">Συγκατάθεσή σας μέσω της οθόνης εξουσιοδότησης της Google (άρθ. 6 παρ. 1 α) και εκτέλεση της υπηρεσίας που ζητάτε (άρθ. 6 παρ. 1 β)</td></tr>
+      <tr><td data-label="Σκοπός">Θεμελίωση, άσκηση ή υπεράσπιση νομικών αξιώσεων</td><td data-label="Δεδομένα">Κάθε σχετικό δεδομένο</td><td data-label="Νομική βάση (ΓΚΠΔ)">Έννομο συμφέρον (άρθ. 6 παρ. 1 στ)</td></tr>
+      <tr><td data-label="Σκοπός">Ενημέρωση υφιστάμενων πελατών για τις υπηρεσίες μας</td><td data-label="Δεδομένα">Όνομα, email</td><td data-label="Νομική βάση (ΓΚΠΔ)">Έννομο συμφέρον για παρόμοιες υπηρεσίες (άρθ. 11 παρ. 3 Ν. 3471/2006) ή συγκατάθεσή σας. Μπορείτε να διαγραφείτε οποτεδήποτε.</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <p>Δεν πουλάμε προσωπικά δεδομένα και δεν τα χρησιμοποιούμε για διαφημιστική κατάρτιση προφίλ.</p>
+
+  <h2 id="el-5">5. Υπεύθυνος και εκτελών την επεξεργασία</h2>
+  <p>Είμαστε <strong>υπεύθυνος επεξεργασίας</strong> για τα δεδομένα των επισκεπτών της Ιστοσελίδας, όσων επικοινωνούν μαζί μας και για τα δεδομένα λογαριασμού και τιμολόγησης των πελατών μας.</p>
+  <p>Ενεργούμε ως <strong>εκτελών την επεξεργασία</strong> (άρθ. 28 ΓΚΠΔ) όταν επεξεργαζόμαστε δεδομένα για λογαριασμό επιχειρήσεων-πελατών μας, π.χ. τα τιμολόγια και τα στοιχεία πελατών και προμηθευτών που αποθηκεύει μια επιχείρηση στο BTech Invoicer, τα δεδομένα καλούντων που διαχειρίζεται ο BTech AI Assistant ή δεδομένα σε συστήματα που αναπτύσσουμε ή διαχειριζόμαστε για πελάτη. Τότε υπεύθυνος επεξεργασίας είναι ο πελάτης, ο οποίος οφείλει να διαθέτει νόμιμη βάση και να ενημερώνει τα πρόσωπα που αφορούν τα δεδομένα (π.χ. να ενημερώνει τους καλούντες ότι μιλούν με ψηφιακό βοηθό τεχνητής νοημοσύνης και αν οι κλήσεις καταγράφονται). Επεξεργαζόμαστε τα δεδομένα αυτά μόνο σύμφωνα με τις γραπτές εντολές του πελάτη και βάσει Σύμβασης Επεξεργασίας Δεδομένων, την οποία παρέχουμε κατόπιν αιτήματος.</p>
+  <p>Αν είστε πελάτης κάποιας επιχείρησης που συνεργάζεται μαζί μας και θέλετε να ασκήσετε τα δικαιώματά σας, απευθυνθείτε απευθείας σε εκείνη την επιχείρηση. Θα τη συνδράμουμε στην απάντηση.</p>
+
+  <h2 id="el-6">6. Δεδομένα χρηστών Google &amp; YouTube API</h2>
+  <div class="box">
+    <p style="margin:0">Ορισμένες εφαρμογές μας, μεταξύ των οποίων η <strong>εφαρμογή ανεβάσματος βίντεο («BTech YouTube Uploader»)</strong>, χρησιμοποιούν τις <strong>YouTube API Services</strong> της Google. Χρησιμοποιώντας τις εφαρμογές αυτές, αποδέχεστε ότι δεσμεύεστε από τους <a href="https://www.youtube.com/t/terms" target="_blank" rel="noopener">Όρους Παροχής Υπηρεσιών του YouTube</a>. Η διαχείριση των δεδομένων σας από τη Google διέπεται από την <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Πολιτική Απορρήτου της Google</a> (<a href="http://www.google.com/policies/privacy" target="_blank" rel="noopener">http://www.google.com/policies/privacy</a>).</p>
+  </div>
+  <h3>6.1 Σκοπός της εφαρμογής</h3>
+  <p>Το BTech YouTube Uploader είναι εργαλείο που λειτουργεί η BTech AI και ανεβάζει αρχεία βίντεο σε κανάλι YouTube, ορίζοντας τα στοιχεία τους (τίτλο, περιγραφή, ετικέτες, κατηγορία, κατάσταση απορρήτου, μικρογραφία και playlist). Χρησιμοποιείται για τη δημοσίευση βίντεο σε κανάλια YouTube που ανήκουν ή διαχειρίζεται η BTech AI, ή χρήστης που την έχει εξουσιοδοτήσει ρητά για το δικό του κανάλι.</p>
+  <h3>6.2 Σε ποια δεδομένα έχουμε πρόσβαση</h3>
+  <p>Μόνο αφού συνδεθείτε με τον λογαριασμό σας Google και δώσετε άδεια στην οθόνη συναίνεσης της Google, η εφαρμογή μπορεί να έχει πρόσβαση σε:</p>
+  <ul>
+    <li>άδεια ανεβάσματος βίντεο και διαχείρισης των στοιχείων τους στο κανάλι σας YouTube (OAuth scope <code>https://www.googleapis.com/auth/youtube.upload</code>)·</li>
+    <li>βασικές πληροφορίες του καναλιού σας, όπως ID και όνομα καναλιού, ώστε να επιβεβαιώνεται σε ποιο κανάλι ανεβαίνουν τα βίντεο·</li>
+    <li>τα αναγνωριστικά και την κατάσταση επεξεργασίας/ανεβάσματος των βίντεο που ανεβαίνουν μέσω της εφαρμογής·</li>
+    <li>τα OAuth access και refresh tokens που εκδίδει η Google και επιτρέπουν στην εφαρμογή να ενεργεί για λογαριασμό σας.</li>
+  </ul>
+  <p>Η εφαρμογή δεν έχει πρόσβαση στον κωδικό του λογαριασμού σας Google, στο Gmail, στις επαφές, στα αρχεία του Drive ή σε οποιαδήποτε δεδομένα άσχετα με το ανέβασμα βίντεο.</p>
+  <h3>6.3 Πώς τα χρησιμοποιούμε</h3>
+  <ul>
+    <li>για να ανεβάζουμε τα βίντεο που επιλέγετε και να ορίζουμε ή να ενημερώνουμε τα στοιχεία που επιλέγετε·</li>
+    <li>για να σας δείχνουμε αν το ανέβασμα ολοκληρώθηκε και να διαχειριζόμαστε σφάλματα και επαναλήψεις·</li>
+    <li>για να παραμένετε συνδεδεμένοι, ώστε να μη χρειάζεται νέα εξουσιοδότηση σε κάθε ανέβασμα.</li>
+  </ul>
+  <p><strong>Δεν</strong> χρησιμοποιούμε δεδομένα Google ή YouTube για διαφήμιση, <strong>δεν</strong> τα πουλάμε, <strong>δεν</strong> τα χρησιμοποιούμε για αξιολόγηση πιστοληπτικής ικανότητας ή δανειοδότηση και <strong>δεν</strong> τα χρησιμοποιούμε για την ανάπτυξη, βελτίωση ή εκπαίδευση γενικευμένων μοντέλων τεχνητής νοημοσύνης ή μηχανικής μάθησης.</p>
+  <h3>6.4 Πώς τα αποθηκεύουμε</h3>
+  <ul>
+    <li>Τα OAuth tokens αποθηκεύονται κρυπτογραφημένα, σε ασφαλείς servers ή στη συσκευή όπου εκτελείται η εφαρμογή, και χρησιμοποιούνται μόνο από αυτήν.</li>
+    <li>Τα αρχεία βίντεο επεξεργάζονται μόνο για τον χρόνο που απαιτείται για να ολοκληρωθεί το ανέβασμα και στη συνέχεια διαγράφονται από τα συστήματά μας (το αντίγραφο στο YouTube παραμένει υπό τον έλεγχό σας).</li>
+    <li>Τα δεδομένα που λαμβάνονται από τις YouTube API Services διατηρούνται μόνο όσο απαιτείται για τον παραπάνω σκοπό και ανανεώνονται ή διαγράφονται το αργότερο 30 ημέρες μετά τη λήψη τους, σύμφωνα με τις Πολιτικές Προγραμματιστών των YouTube API Services.</li>
+  </ul>
+  <h3>6.5 Με ποιους τα κοινοποιούμε</h3>
+  <p>Τα δεδομένα Google και YouTube δεν κοινοποιούνται σε τρίτους, εκτός (α) από την ίδια την Google/YouTube, στον βαθμό που απαιτείται για το ανέβασμα που ζητάτε, (β) από τον πάροχο φιλοξενίας μας, αποκλειστικά για την ασφαλή αποθήκευσή τους για λογαριασμό μας, ή (γ) όπου το επιβάλλει ο νόμος. Δεν διαβιβάζονται ποτέ σε data brokers ή διαφημιστικές πλατφόρμες.</p>
+  <h3>6.6 Περιορισμένη Χρήση (Limited Use)</h3>
+  <div class="box"><p style="margin:0">Η χρήση από την BTech AI, καθώς και η μεταφορά σε οποιαδήποτε άλλη εφαρμογή, πληροφοριών που λαμβάνονται από Google APIs θα συμμορφώνεται με την <a href="https://developers.google.com/terms/api-services-user-data-policy" target="_blank" rel="noopener">Πολιτική Δεδομένων Χρηστών των Google API Services</a>, συμπεριλαμβανομένων των απαιτήσεων Περιορισμένης Χρήσης (Limited Use).</p></div>
+  <h3>6.7 Cookies</h3>
+  <p>Η εφαρμογή δεν τοποθετεί διαφημιστικά cookies ή cookies παρακολούθησης στη συσκευή σας. Αποθηκεύει μόνο τα tokens εξουσιοδότησης που περιγράφονται παραπάνω.</p>
+  <h3>6.8 Ανάκληση πρόσβασης και διαγραφή δεδομένων</h3>
+  <ul>
+    <li>Μπορείτε να ανακαλέσετε οποτεδήποτε την πρόσβαση της εφαρμογής στον λογαριασμό σας Google από τη σελίδα ρυθμίσεων ασφαλείας της Google: <a href="https://security.google.com/settings/security/permissions" target="_blank" rel="noopener">https://security.google.com/settings/security/permissions</a>.</li>
+    <li>Μετά την ανάκληση, τα αποθηκευμένα tokens παύουν να λειτουργούν και τα διαγράφουμε.</li>
+    <li>Μπορείτε επίσης να ζητήσετε τη διαγραφή όλων των δεδομένων που τηρούμε σε σχέση με τον λογαριασμό σας Google με email στο <a href="mailto:nbegklis@btech-ai.com">nbegklis@btech-ai.com</a>. Θα τα διαγράψουμε εντός 7 ημερών, εκτός αν υποχρεούμαστε από τον νόμο να τα διατηρήσουμε.</li>
+  </ul>
+
+  <h2 id="el-7">7. Αποδέκτες δεδομένων</h2>
+  <p>Κοινοποιούμε προσωπικά δεδομένα μόνο όπου είναι απαραίτητο και μόνο σε:</p>
+  <ul>
+    <li><strong>Παρόχους φιλοξενίας και υποδομής</strong>, όπως η Hetzner Online GmbH (data centers στη Γερμανία, ΕΕ) και ο πάροχος φιλοξενίας της Ιστοσελίδας·</li>
+    <li><strong>Πάροχο επεξεργασίας φορμών</strong>: Formspree, Inc. (ΗΠΑ), που λαμβάνει τα μηνύματα που στέλνετε μέσω της φόρμας επικοινωνίας της Ιστοσελίδας και μας τα προωθεί·</li>
+    <li><strong>Παρόχους αποστολής email</strong>, όπως η Resend, μέσω της οποίας αποστέλλονται τα emails του BTech Invoicer (π.χ. τιμολόγια προς τους πελάτες σας), και τον πάροχο του εταιρικού μας email·</li>
+    <li><strong>ΑΑΔΕ (Ανεξάρτητη Αρχή Δημοσίων Εσόδων)</strong>, μέσω του myDATA, όταν εκδίδετε ή διαβιβάζετε παραστατικά μέσω του BTech Invoicer, κατ' εντολή σας·</li>
+    <li><strong>Google LLC / YouTube</strong>, όπως περιγράφεται στην ενότητα 6·</li>
+    <li><strong>Παρόχους τηλεπικοινωνιών</strong> που δρομολογούν κλήσεις προς τον BTech AI Assistant·</li>
+    <li><strong>Επαγγελματίες συμβούλους</strong> (λογιστές, δικηγόρους, ελεγκτές) που δεσμεύονται από υποχρέωση εχεμύθειας·</li>
+    <li><strong>Δημόσιες αρχές, δικαστήρια ή διωκτικές αρχές</strong>, όπου υποχρεούμαστε από τον νόμο.</li>
+  </ul>
+  <p>Όλοι οι πάροχοι που ενεργούν για λογαριασμό μας δεσμεύονται συμβατικά να επεξεργάζονται τα δεδομένα μόνο σύμφωνα με τις εντολές μας και να τα προστατεύουν.</p>
+
+  <h2 id="el-8">8. Διαβιβάσεις εκτός ΕΕ</h2>
+  <p>Αποθηκεύουμε τα δεδομένα κυρίως εντός της Ευρωπαϊκής Ένωσης (Γερμανία και Ελλάδα). Ο BTech AI Assistant λειτουργεί σε δικούς μας servers στην Ελλάδα. Ορισμένοι πάροχοι (π.χ. Formspree, Google ή Resend) εδρεύουν ή ενδέχεται να επεξεργάζονται δεδομένα στις ΗΠΑ ή σε άλλες χώρες εκτός του Ευρωπαϊκού Οικονομικού Χώρου. Στις περιπτώσεις αυτές η διαβίβαση προστατεύεται από απόφαση επάρκειας της Ευρωπαϊκής Επιτροπής (συμπεριλαμβανομένου του Πλαισίου Προστασίας Δεδομένων ΕΕ–ΗΠΑ, όπου ο πάροχος είναι πιστοποιημένος) ή από τις Τυποποιημένες Συμβατικές Ρήτρες της Ευρωπαϊκής Επιτροπής, μαζί με πρόσθετα μέτρα όπου απαιτείται. Μπορείτε να ζητήσετε αντίγραφο των σχετικών εγγυήσεων επικοινωνώντας μαζί μας.</p>
+
+  <h2 id="el-9">9. Χρόνος διατήρησης</h2>
+  <ul>
+    <li><strong>Αιτήματα επικοινωνίας</strong> που δεν καταλήγουν σε συνεργασία: έως 24 μήνες από την τελευταία επικοινωνία (συμπεριλαμβανομένου του αντιγράφου που τηρεί ο πάροχος επεξεργασίας φορμών, το οποίο διαγράφουμε εντός του ίδιου διαστήματος).</li>
+    <li><strong>Δεδομένα πελατών και συμβάσεων:</strong> για όσο διαρκεί η συνεργασία και στη συνέχεια για όσο απαιτείται για τη θεμελίωση ή υπεράσπιση νομικών αξιώσεων (κατά κανόνα έως 5 έτη, σύμφωνα με τους χρόνους παραγραφής).</li>
+    <li><strong>Λογιστικά και φορολογικά αρχεία:</strong> για όσο απαιτεί η φορολογική και λογιστική νομοθεσία (κατά κανόνα 5 έτη από τη λήξη της σχετικής διαχειριστικής χρήσης, ή περισσότερο όπου ορίζει ο νόμος).</li>
+    <li><strong>Δεδομένα BTech Invoicer:</strong> για όσο ο λογαριασμός σας είναι ενεργός. Μετά τη λήξη της συνδρομής, τα δεδομένα παραμένουν διαθέσιμα σε λειτουργία μόνο ανάγνωσης για εξαγωγή και στη συνέχεια διαγράφονται ή επιστρέφονται σύμφωνα με το πλάνο σας και τους Όρους Χρήσης. Σημειώνεται ότι εσείς, ως επιχείρηση, παραμένετε υπεύθυνοι για τη διατήρηση των φορολογικών σας αρχείων για το διάστημα που ορίζει ο νόμος.</li>
+    <li><strong>Δεδομένα BTech AI Assistant</strong> (ηχογραφήσεις, απομαγνητοφωνήσεις, στοιχεία καλούντων): για το διάστημα που έχει συμφωνηθεί με κάθε επιχείρηση-πελάτη, μετά το οποίο διαγράφονται.</li>
+    <li><strong>Αρχεία καταγραφής server:</strong> κατά κανόνα έως 90 ημέρες, εκτός αν απαιτούνται για τη διερεύνηση περιστατικού ασφαλείας.</li>
+    <li><strong>Δεδομένα Google / YouTube:</strong> όπως περιγράφεται στην ενότητα 6.</li>
+  </ul>
+
+  <h2 id="el-10">10. Ασφάλεια</h2>
+  <p>Εφαρμόζουμε κατάλληλα τεχνικά και οργανωτικά μέτρα για την προστασία των προσωπικών δεδομένων, όπως κρυπτογράφηση HTTPS/TLS κατά τη μεταφορά, κρυπτογράφηση κατά την αποθήκευση, καθημερινά κρυπτογραφημένα αντίγραφα ασφαλείας σε διαφορετική τοποθεσία, αυστηρό διαχωρισμό δεδομένων μεταξύ πελατών στο BTech Invoicer, κωδικούς αποθηκευμένους με hash, κρυπτογραφημένη αποθήκευση διαπιστευτηρίων και tokens, πρόσβαση μόνο από εξουσιοδοτημένα πρόσωπα και τακτικές ενημερώσεις. Κανένα σύστημα δεν είναι 100% ασφαλές· σε περίπτωση παραβίασης δεδομένων που ενδέχεται να θέσει σε κίνδυνο τα δικαιώματά σας, θα ενημερώσουμε την Αρχή Προστασίας Δεδομένων Προσωπικού Χαρακτήρα εντός 72 ωρών και εσάς όπου το απαιτεί ο νόμος (άρθ. 33–34 ΓΚΠΔ).</p>
+
+  <h2 id="el-11">11. Cookies και τοπική αποθήκευση</h2>
+  <p>Η Ιστοσελίδα <strong>δεν</strong> χρησιμοποιεί διαφημιστικά cookies ή cookies στατιστικών και δεν σας παρακολουθεί σε άλλες ιστοσελίδες. Χρησιμοποιούμε μόνο αποθήκευση απολύτως απαραίτητη για την παροχή της υπηρεσίας που ζητάτε, η οποία δεν απαιτεί συγκατάθεση σύμφωνα με το άρθ. 4 παρ. 5 του Ν. 3471/2006:</p>
+  <ul>
+    <li><strong>Προτίμηση γλώσσας</strong>, αποθηκευμένη στην τοπική αποθήκευση (local storage) του browser σας, ώστε η Ιστοσελίδα να θυμάται αν επιλέξατε Ελληνικά ή Αγγλικά·</li>
+    <li><strong>Cookies συνεδρίας / σύνδεσης</strong> στο BTech Invoicer και στις άλλες εφαρμογές μας, που σας κρατούν συνδεδεμένους με ασφάλεια·</li>
+    <li><strong>Προτιμήσεις εμφάνισης</strong>, όπως το dark mode.</li>
+  </ul>
+  <p><strong>Πόροι τρίτων και ενσωματωμένο περιεχόμενο.</strong> Οι σελίδες μας φορτώνουν ορισμένους πόρους από δίκτυα διανομής περιεχομένου: εικονίδια από το cdnjs (της Cloudflare, Inc.) και εικόνες σημαιών από το flagcdn.com. Τότε ο browser σας αποστέλλει τη διεύθυνση IP σας στον πάροχο ώστε να παραδοθεί το περιεχόμενο· οι πόροι αυτοί δεν χρησιμοποιούνται από εμάς για την παρακολούθησή σας. Η ενότητα portfolio της αρχικής σελίδας εμφανίζει ζωντανές προεπισκοπήσεις (ενσωματωμένα πλαίσια) ιστοσελίδων που έχουμε δημιουργήσει για πελάτες. Τις ιστοσελίδες αυτές λειτουργούν οι πελάτες μας και όχι εμείς, και ενδέχεται να τοποθετούν δικά τους cookies σύμφωνα με τις δικές τους πολιτικές απορρήτου.</p>
+  <p>Μπορείτε να διαγράψετε ή να μπλοκάρετε cookies και τοπική αποθήκευση από τις ρυθμίσεις του browser σας· ορισμένες λειτουργίες ενδέχεται τότε να μη λειτουργούν σωστά. Αν στο μέλλον χρησιμοποιήσουμε μη απαραίτητα cookies (π.χ. στατιστικών), θα ζητήσουμε πρώτα τη συγκατάθεσή σας και θα ενημερώσουμε την πολιτική αυτή.</p>
+
+  <h2 id="el-12">12. Τεχνητή νοημοσύνη και αυτοματοποιημένες αποφάσεις</h2>
+  <ul>
+    <li>Δεν λαμβάνουμε αποφάσεις για εσάς βασισμένες αποκλειστικά σε αυτοματοποιημένη επεξεργασία που παράγουν έννομα ή ανάλογα σημαντικά αποτελέσματα (άρθ. 22 ΓΚΠΔ).</li>
+    <li>Ο BTech AI Assistant έχει σχεδιαστεί ώστε να καθιστά σαφές στους καλούντες ότι μιλούν με σύστημα τεχνητής νοημοσύνης, σύμφωνα με τον Ευρωπαϊκό Κανονισμό για την Τεχνητή Νοημοσύνη (Κανονισμός (ΕΕ) 2024/1689). Οι επιχειρήσεις-πελάτες μας είναι υπεύθυνες να ενημερώνουν επίσης τους καλούντες για την καταγραφή και τη χρήση των δεδομένων.</li>
+    <li>Τα δεδομένα που παρέχει μια επιχείρηση-πελάτης για τη ρύθμιση ή εκπαίδευση του δικού της βοηθού χρησιμοποιούνται μόνο για τον βοηθό αυτού του πελάτη και όχι για άλλους πελάτες χωρίς τη γραπτή συμφωνία του.</li>
+    <li>Όταν χρησιμοποιούμε εργαλεία AI τρίτων σε έργα, επιλέγουμε, όπου υπάρχει η δυνατότητα, ρυθμίσεις που δεν επιτρέπουν τη χρήση δεδομένων πελατών για την εκπαίδευση των μοντέλων του παρόχου.</li>
+  </ul>
+
+  <h2 id="el-13">13. Τα δικαιώματά σας</h2>
+  <p>Σύμφωνα με τον ΓΚΠΔ έχετε δικαίωμα:</p>
+  <ul>
+    <li><strong>πρόσβασης</strong> στα δεδομένα σας και λήψης αντιγράφου (άρθ. 15)·</li>
+    <li><strong>διόρθωσης</strong> ανακριβών δεδομένων (άρθ. 16)·</li>
+    <li><strong>διαγραφής</strong> («δικαίωμα στη λήθη») (άρθ. 17)·</li>
+    <li><strong>περιορισμού</strong> της επεξεργασίας (άρθ. 18)·</li>
+    <li><strong>φορητότητας</strong> σε δομημένο, μηχαναγνώσιμο μορφότυπο (άρθ. 20)·</li>
+    <li><strong>εναντίωσης</strong> στην επεξεργασία που βασίζεται σε έννομο συμφέρον και, οποτεδήποτε, στην απευθείας εμπορική προώθηση (άρθ. 21)·</li>
+    <li><strong>ανάκλησης της συγκατάθεσης</strong> οποτεδήποτε, χωρίς να θίγεται η νομιμότητα της επεξεργασίας πριν από την ανάκληση (άρθ. 7 παρ. 3).</li>
+  </ul>
+  <p>Για να ασκήσετε τα δικαιώματά σας, στείλτε email στο <a href="mailto:nbegklis@btech-ai.com">nbegklis@btech-ai.com</a>. Θα απαντήσουμε εντός ενός μήνα (με δυνατότητα παράτασης κατά δύο μήνες για σύνθετα αιτήματα, για την οποία θα σας ενημερώσουμε). Ενδέχεται να σας ζητήσουμε επιβεβαίωση ταυτότητας. Η άσκηση των δικαιωμάτων είναι δωρεάν.</p>
+  <p>Έχετε επίσης δικαίωμα υποβολής καταγγελίας στην <strong>Αρχή Προστασίας Δεδομένων Προσωπικού Χαρακτήρα</strong>, Λεωφ. Κηφισίας 1-3, 115 23 Αθήνα, <a href="https://www.dpa.gr" target="_blank" rel="noopener">www.dpa.gr</a>, ή στην εποπτική αρχή της χώρας διαμονής σας.</p>
+
+  <h2 id="el-14">14. Ανήλικοι</h2>
+  <p>Η Ιστοσελίδα και οι υπηρεσίες μας απευθύνονται σε επιχειρήσεις και ενήλικες. Δεν απευθύνονται σε παιδιά κάτω των 15 ετών (ηλικία ψηφιακής συναίνεσης στην Ελλάδα σύμφωνα με τον Ν. 4624/2019) και δεν συλλέγουμε εν γνώσει μας δεδομένα τους. Αν πιστεύετε ότι κάποιο παιδί μάς έχει δώσει προσωπικά δεδομένα, επικοινωνήστε μαζί μας και θα τα διαγράψουμε.</p>
+
+  <h2 id="el-15">15. Ιστοσελίδες τρίτων</h2>
+  <p>Η Ιστοσελίδα περιέχει συνδέσμους προς άλλες ιστοσελίδες, όπως έργα του portfolio μας και υπηρεσίες τρίτων. Δεν ευθυνόμαστε για τις πρακτικές απορρήτου των ιστοσελίδων αυτών· σας προτείνουμε να διαβάσετε τις δικές τους πολιτικές απορρήτου.</p>
+
+  <h2 id="el-16">16. Αλλαγές της πολιτικής</h2>
+  <p>Ενδέχεται να επικαιροποιούμε την πολιτική αυτή όταν αλλάζουν οι υπηρεσίες μας ή η νομοθεσία. Η ημερομηνία «Τελευταία ενημέρωση» στην αρχή δείχνει την τρέχουσα έκδοση. Σε περίπτωση σημαντικών αλλαγών θα ενημερώνουμε τους πελάτες και τους κατόχους λογαριασμών μέσω email ή μέσω των εφαρμογών μας πριν τεθούν σε ισχύ.</p>
+
+  <h2 id="el-17">17. Επικοινωνία</h2>
+  <p>Για κάθε ερώτηση σχετικά με την πολιτική αυτή ή τα προσωπικά σας δεδομένα:<br>
+  <strong>BTech AI – ΜΠΕΓΚΛΗΣ ΝΙΚΟΛΑΟΣ</strong>, Θεσσαλονίκη<br>
+  Email: <a href="mailto:nbegklis@btech-ai.com">nbegklis@btech-ai.com</a> · Τηλ.: <a href="tel:+306988817883">+30 698 881 7883</a></p>
+  <p>Δείτε επίσης τους <a href="terms.html?lang=el">Όρους Χρήσης</a>.</p>
+            <a href="#top" class="back-top"><i class="fas fa-arrow-up" aria-hidden="true"></i> Επιστροφή στην αρχή</a>
+        </article>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <a class="logo footer-logo" href="index.html">
+                <img src="cooool.png" alt="BTech Logo">
+                <span class="logo-text">BTech<span class="tld">.ai</span></span>
+            </a>
+            <p class="footer-tagline"><span class="lang-en">Empowering businesses with AI and cutting-edge technology</span><span class="lang-el">Ενδυναμώνουμε επιχειρήσεις με AI και τεχνολογία αιχμής</span></p>
+            <p class="footer-links">
+                <span class="lang-en">© 2026 BTech AI. All rights reserved.</span><span class="lang-el">© 2026 BTech AI. Όλα τα δικαιώματα διατηρούνται.</span> |
+                <a href="privacy.html" class="current" aria-current="page"><span class="lang-en">Privacy Policy</span><span class="lang-el">Πολιτική Απορρήτου</span></a> |
+                <a href="terms.html"><span class="lang-en">Terms of Service</span><span class="lang-el">Όροι Χρήσης</span></a>
+            </p>
+            <p class="footer-company">ΜΠΕΓΚΛΗΣ ΝΙΚΟΛΑΟΣ · <span class="lang-en">VAT</span><span class="lang-el">Α.Φ.Μ.</span> 171075890 · <span class="lang-en">G.E.MI.</span><span class="lang-el">Γ.Ε.ΜΗ.</span> 192788706000 · <span class="lang-en">Thessaloniki, Greece</span><span class="lang-el">Θεσσαλονίκη</span> · <a href="mailto:nbegklis@btech-ai.com">nbegklis@btech-ai.com</a></p>
+            <div class="footer-dev">
+                <span>Developed and Managed by BTech</span>
+                <img src="cooool.png" alt="BTech">
+            </div>
+        </div>
+    </footer>
+
+    <script>
+(function () {
+    var KEY = 'preferredLanguage';            // same key as the homepage
+    var TITLES = {"en": "Privacy Policy | BTech AI", "el": "Πολιτική Απορρήτου | BTech AI"};
+    function valid(l) { return l === 'en' || l === 'el'; }
+    function apply(l, animate) {
+        document.body.setAttribute('data-lang', l);
+        document.documentElement.lang = l;
+        document.title = TITLES[l];
+        var b = document.querySelectorAll('.flag-button');
+        for (var i = 0; i < b.length; i++) {
+            var on = b[i].getAttribute('data-lang') === l;
+            b[i].classList.toggle('active', on);
+            b[i].setAttribute('aria-pressed', on ? 'true' : 'false');
+        }
+        if (animate) {
+            document.body.classList.remove('switching');
+            void document.body.offsetWidth;
+            document.body.classList.add('switching');
+        }
+    }
+    var q = null, s = null;
+    try { q = new URLSearchParams(location.search).get('lang'); } catch (e) {}
+    if (q === 'gr') q = 'el';
+    try { s = localStorage.getItem(KEY); } catch (e) {}
+    var nav = (navigator.language || '').toLowerCase().indexOf('el') === 0 ? 'el' : 'en';
+    apply(valid(q) ? q : (valid(s) ? s : nav), false);
+
+    window.changeLanguage = function (l) {
+        if (!valid(l)) return;
+        apply(l, true);
+        try { localStorage.setItem(KEY, l); } catch (e) {}
+        try { var u = new URL(location.href); u.searchParams.set('lang', l); history.replaceState(null, '', u); } catch (e) {}
+    };
+
+    // navbar shadow on scroll
+    var navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', function () { navbar.classList.toggle('scrolled', window.scrollY > 60); }, { passive: true });
+
+    // calm version of the homepage particle network
+    var canvas = document.getElementById('particles-canvas');
+    var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (!canvas || reduce || window.innerWidth <= 768) return;
+    var ctx = canvas.getContext('2d');
+    function size() { canvas.width = window.innerWidth; canvas.height = window.innerHeight; }
+    size(); window.addEventListener('resize', size);
+    var P = [], N = 28, D = 180;
+    for (var i = 0; i < N; i++) P.push({ x: Math.random() * canvas.width, y: Math.random() * canvas.height, vx: (Math.random() - .5) * .4, vy: (Math.random() - .5) * .4, r: Math.random() * 2.5 + 1 });
+    function frame() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        for (var i = 0; i < N; i++) {
+            var p = P[i]; p.x += p.vx; p.y += p.vy;
+            if (p.x < 0 || p.x > canvas.width) p.vx = -p.vx;
+            if (p.y < 0 || p.y > canvas.height) p.vy = -p.vy;
+            ctx.beginPath(); ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2); ctx.fillStyle = 'rgba(129,140,248,.7)'; ctx.fill();
+            for (var j = i + 1; j < N; j++) {
+                var o = P[j], dx = p.x - o.x, dy = p.y - o.y, d = Math.sqrt(dx * dx + dy * dy);
+                if (d < D) { ctx.beginPath(); ctx.moveTo(p.x, p.y); ctx.lineTo(o.x, o.y); ctx.strokeStyle = 'rgba(99,102,241,' + (0.35 * (1 - d / D)) + ')'; ctx.lineWidth = 1.2; ctx.stroke(); }
+            }
+        }
+        requestAnimationFrame(frame);
+    }
+    frame();
+})();
+</script>
+</body>
+</html>
